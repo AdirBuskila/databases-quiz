@@ -1,0 +1,893 @@
+{
+  "examCode": "24B-A",
+  "examLabel": "2024 סמסטר ב׳ מועד א׳",
+  "year": 2024,
+  "examDate": "22.7.2024",
+  "course": "61303",
+  "contexts": {
+    "erd": {
+      "kind": "image",
+      "title": "חלק א׳ — ERD: דיאגרמת \"ניהול שאלות\"",
+      "image": "images/exams/24B-A-erd.png",
+      "caption": "התייחסו לתרשים ה-ERD \"ניהול שאלות\" המתאר בסיס נתונים, וענו על השאלות."
+    },
+    "sql": {
+      "kind": "schema",
+      "title": "חלק ב׳ — סכמת בסיס הנתונים (טיסות)",
+      "intro": "נתונות תבניות/סכמות יחסים מתוך בסיס נתונים של טיסות:",
+      "relations": [
+        {
+          "schema": "Airline([u]AirlineID[/u], Name, Country)",
+          "meaning": "חברת תעופה: מזהה חברת תעופה, שם חברת תעופה, מדינת חברת התעופה."
+        },
+        {
+          "schema": "Flight([u]FlightID[/u], AirlineID, Origin, Destination)",
+          "meaning": "טיסה: מזהה טיסה, מזהה חברת תעופה, מקום המוצא, יעד הטיסה."
+        },
+        {
+          "schema": "Schedule([u]ScheduleID[/u], FlightID, DepartureTime, ArrivalTime, Date)",
+          "meaning": "לוח זמנים: מזהה לוח זמנים, מזהה הטיסה, שעת המראה, שעת נחיתה, תאריך הטיסה. *תאריך הטיסה הוא לפי שעת ההמראה."
+        },
+        {
+          "schema": "Passenger([u]PassportNumber[/u], FirstName, LastName)",
+          "meaning": "נוסע: מספר דרכון, שם פרטי, שם משפחה."
+        },
+        {
+          "schema": "Booking([u]BookingID[/u], ScheduleID, PassportNumber, SeatNumber)",
+          "meaning": "הזמנה: מזהה הזמנה, מזהה לוח זמנים, מספר דרכון נוסע, מספר מושב."
+        }
+      ]
+    },
+    "ra": {
+      "kind": "schema",
+      "title": "חלק ג׳ — סכמת בסיס הנתונים (ספרייה)",
+      "intro": "השאלות הבאות מתייחסות לאלגברת היחסים ולבסיס הנתונים הנתון. פעולות שנעשו לפני כל שאלה (קיצורים לשמות הטבלאות): `ρA Author`, `ρB Book`, `ρM Member`, `ρBR Borrow`, `ρG Genre`.",
+      "relations": [
+        {
+          "schema": "Author([u]a_name[/u], birth_year, country)",
+          "meaning": "מחברים: שמם, שנת לידה, מדינת מוצא."
+        },
+        {
+          "schema": "Book([u]ISBN[/u], title, a_name, genre, published_year)",
+          "meaning": "ספרים: מספר ISBN, שם הספר, שם המחבר, ז'אנר ושנת הפרסום."
+        },
+        {
+          "schema": "Member([u]m_id[/u], m_name, age, gender, membership_date)",
+          "meaning": "חברי ספרייה: מזהה החבר, שם החבר, גיל, מגדר ותאריך החברות."
+        },
+        {
+          "schema": "Borrow([u]m_id[/u], [u]ISBN[/u], [u]borrow_date[/u], return_date)",
+          "meaning": "רשומות השאלה: מספר חבר שהשאיל את הספר, ISBN של הספר, תאריך ההשאלה ותאריך ההחזרה."
+        },
+        {
+          "schema": "Genre([u]genre[/u], description)",
+          "meaning": "ז'אנרים: שמם ותיאור קצר."
+        }
+      ]
+    }
+  },
+  "questions": [
+    {
+      "num": 1,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "מתוך דיאגרמת ER \"ניהול שאלות\" אשר מופיעה כנספח לבחינה: איזה מבין הקשרים הבאים יהפוך בהכרח לסכמה (טבלה)?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "מקור השאלה"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "נושא אב"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "מקור אב"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "מחבר"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות"
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "קשר מסוג רבים-לרבים (\"מקור השאלה\") חייב להפוך ליחס/טבלה נפרד."
+    },
+    {
+      "num": 2,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "מתוך דיאגרמת ER \"ניהול שאלות\": מאלו שדות המפתח של טיפוס ישויות \"כניסות\" יורכב?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "מזהה כניסה, מזהה משתמש"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "מזהה כניסה"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "מזהה משתמש"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "מזהה כניסה, כתובת IP, זמן התחברות"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות"
+        }
+      ],
+      "correctId": "a",
+      "acceptedIds": [
+        "a",
+        "b"
+      ],
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "\"כניסות\" הוא טיפוס ישויות חלש התלוי ב\"משתמש\", ולכן מפתחו כולל את המפתח החלקי שלו יחד עם מפתח הישות השולטת. התקבלו א וגם ב."
+    },
+    {
+      "num": 3,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "מתוך דיאגרמת ER \"ניהול שאלות\": מה יהיה מספר השדות של סכמת \"נושא\"?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "2"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "1"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "3"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "4"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "5"
+        }
+      ],
+      "correctId": "a",
+      "acceptedIds": [
+        "a",
+        "b"
+      ],
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "לפי הקשר הרקורסיבי \"נושא אב\", סכמת \"נושא\" כוללת את שם הנושא ואת ה-FK לנושא האב. התקבלו א וגם ב."
+    },
+    {
+      "num": 4,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "מתוך דיאגרמת ER \"ניהול שאלות\": מה יהיה מספר השדות בסכמת \"מקור השאלה\"?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "4"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "3"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "2"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "1"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "\"מקור השאלה\" לא יהיה סכמה"
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "קשר \"מקור השאלה\" (רבים-לרבים) הופך לטבלה עם שני מפתחות זרים ושתי תכונות הקשר (מספר שאלה במקור, נקודות במקור)."
+    },
+    {
+      "num": 5,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "שאלה בנושא אפיון ERD: איזו טענה מבין הבאות היא נכונה?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "כל טיפוס ישויות חלש הוא נשלט"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "כל טיפוס ישויות נשלט הוא חלש"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "טיפוס ישויות יכול להיות גם חזק וגם חלש בו זמנית"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "טיפוס ישויות לא יכול להיות חלש ונשלט בו זמנית"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות"
+        }
+      ],
+      "correctId": "a",
+      "acceptedIds": [
+        "a",
+        "b"
+      ],
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "ישות חלשה תלויה לזיהוי בישות אחרת ולכן היא נשלטת. התקבלו א וגם ב."
+    },
+    {
+      "num": 6,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "כתבו שאילתה שמציגה את שם המשפחה והשם הפרטי של נוסעות ונוסעים שטסו עם חברת אל-על והמריאו מתל אביב. בחרו את החלק החסר המסומן בסימן שאלה בשאילתא:",
+      "code": "SELECT .......\n  FROM ______?______\n  WHERE .......",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "Passenger As p\n  JOIN Booking AS b ON b.PassportNumber= p.PassportNumber\n  JOIN Schedule using(ScheduleID)\n  JOIN Flight AS f ON s.FlightID = f.FlightID\n  JOIN Airline AS a ON f.AirlineID = a.AirlineID"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "Passenger p\n  JOIN Booking b ON p.PassportNumber = b.PassportNumber\n  JOIN Schedule s ON b.ScheduleID = s.ScheduleID\n  JOIN Flight f ON s.FlightID = f.FlightID"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "Passenger JOIN Flight"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "Passenger AS p\n  JOIN Booking AS b USING(PassportNumber)"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות"
+        }
+      ],
+      "correctId": "a",
+      "acceptedIds": [
+        "a",
+        "e"
+      ],
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "יש לצרף Passenger→Booking→Schedule→Flight→Airline. בתשובה ב חלה שגיאה (Schedule לא הוגדר AS s), ולכן התקבלו א או ה."
+    },
+    {
+      "num": 7,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "כתבו שאילתה שמציגה את מספר הטיסות הכולל לכל חברת תעופה ואת שם חברת התעופה.",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT a.Name, COUNT(*) AS TotalFlights\n  FROM Airline AS a\n  JOIN Flight f ON a.AirlineID = f.AirlineID\n  GROUP BY a.Name;"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT AirlineID, COUNT(*) AS TotalFlights\n  FROM Flight\n  GROUP BY AirlineID;"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT a.Name, COUNT(*) AS TotalFlights\n  FROM Flight AS f\n  JOIN Airline a ON f.AirlineID = a.AirlineID;"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT Name, COUNT(*) AS TotalFlights\n  FROM Flight\n  GROUP BY Name;"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות"
+        }
+      ],
+      "correctId": "a",
+      "acceptedIds": [
+        "a",
+        "e"
+      ],
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "יש לצרף Airline ל-Flight, לקבץ לפי שם החברה ולספור. התקבלו א וגם ה."
+    },
+    {
+      "num": 8,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "כתבו שאילתה שמציגה את ממוצע הנוסעים לכל יעד (destination) — כמה נוסעים הזמינו טיסות ליעד, לא משנה באיזו טיסה או חברת תעופה. מה מספר ה-GROUP BY, מה מספר ה-JOINS הנמוכה ביותר **ללא שימוש בשורת WHERE** (כלומר, לא לבצע JOIN ע\"י WHERE) הנדרשים לפתרון?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "השאילתא דורשת GROUP BY 2 (כלומר שאילתא מכוננת) וגם JOIN של 3 טבלאות"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "השאילתא דורשת GROUP BY 1 וגם JOIN של 2 טבלאות"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "השאילתא דורשת GROUP BY 1 וגם JOIN של 4 טבלאות"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "השאילתא דורשת GROUP BY 2 (כלומר שאילתא מכוננת) וגם JOIN של 2 טבלאות"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "השאילתא דורשת GROUP BY 2 (כלומר שאילתא מכוננת) וגם JOIN של 4 טבלאות"
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "נדרשת שאילתא מכוננת (GROUP BY בשתי רמות) וצירוף של 3 טבלאות (Booking, Schedule, Flight) כדי להגיע ליעד."
+    },
+    {
+      "num": 9,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "כתבו שאילתה שמציגה את שמות הנוסעים שהזמינו מושבים לכל היעדים של חברת אל על. השלימו את החלקים החסרים __1__ ו-__2__ בשאילתה הנתונה.",
+      "code": "SELECT p.FirstName, p.LastName\n  FROM Passenger p\n  WHERE NOT EXISTS (\n    SELECT DISTINCT ___1___\n    WHERE a.Name = 'El Al' AND f1.destination NOT IN (\n      SELECT f2.destination\n      FROM Booking b\n      JOIN Schedule s USING(ScheduleID)\n      JOIN Flight as f2 USING(FlightID)\n      WHERE ___2___\n    )\n  );",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "1:  f.destination\n    FROM Flight f1\n    JOIN Airline a ON f1.AirlineID = a.AirlineID\n2:  b.PassportNumber = p.PassportNumber"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "1:  f1.FlightID\n    FROM Flight f1\n    JOIN Airline a ON f1.AirlineID = a.AirlineID\n2:  f1.destination = f2.destination AND b.PassportNumber = p.PassportNumber"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "1:  f1.FlightID\n    FROM Flight f1\n    JOIN Airline a ON f1.AirlineID = a.AirlineID\n2:  b.PassportNumber = p.PassportNumber"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "1:  f1.destination\n    FROM Flight f1\n    JOIN Airline a ON f.AirlineID = a.AirlineID\n2:  b.LastName = p.LastName"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות"
+        }
+      ],
+      "correctId": "a",
+      "acceptedIds": [
+        "a",
+        "e"
+      ],
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "medium",
+      "explanation": "התקבלו א או ה. בתשובה א מופיע `f` במקום `f1` (אי-דיוק קל), ולכן התקבלה גם ה."
+    },
+    {
+      "num": 10,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "בחרו מה נכון לגבי שאילתה שמציגה את דרכוני הנוסעים שטסו ביותר מטיסה אחת:",
+      "code": "-- נתון פתרון 1:\nSELECT PassportNumber\n  FROM Passenger\n  WHERE PassportNumber IN (\n    SELECT PassportNumber\n    FROM Booking\n    GROUP BY PassengerID\n    WHERE COUNT(DISTINCT ScheduleID) > 1\n  );\n\n-- נתון פתרון 2:\nSELECT b1.PassportNumber\n  FROM Booking As b1, Booking As b2\n  WHERE b1.PassportNumber = b2. PassportNumber  and\n        b1.BookingID != b2.BookingID",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "פתרון 1 שגוי ופתרון 2 נכון"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "פתרון 1 שגוי ופתרון 2 שגוי"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "פתרון 1 נכון ופתרון 2 נכון"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "פתרון 1 נכון ופתרון 2 שגוי"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "לא ניתן לדעת"
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "בפתרון 1 מופיע GroupBy passengerId במקום GroupBy passportNumber, וגם חישוב ה-count בפסוקית WHERE במקום HAVING — ולכן הוא שגוי. פתרון 2 נכון (גם ללא DISTINCT)."
+    },
+    {
+      "num": 11,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "כתבו שאילתה שמחזירה את מספרי הדרכונים של הנוסעים ששם המשפחה שלהם מתחיל ב-\"בן\", למשל \"בן אל\", \"בן שי\" וכו'.",
+      "options": [
+        {
+          "id": "a",
+          "type": "image",
+          "value": "images/exams/24B-A-q11a.png"
+        },
+        {
+          "id": "b",
+          "type": "image",
+          "value": "images/exams/24B-A-q11b.png"
+        },
+        {
+          "id": "c",
+          "type": "image",
+          "value": "images/exams/24B-A-q11c.png"
+        },
+        {
+          "id": "d",
+          "type": "image",
+          "value": "images/exams/24B-A-q11d.png"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות"
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "יש להשתמש ב-`LIKE \"בן%\"` (הסימן % מייצג כל רצף תווים). (אפשרויות התשובה מוצגות כתמונות כדי לשמר את מחרוזות ה-LIKE במדויק.)"
+    },
+    {
+      "num": 12,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "כתבו שאילתה שמציגה את שמות חברות התעופה שטסות למעל 20 יעדים שונים.",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT Name FROM Airline JOIN Flight USING(AirlineID)\nGROUP BY Name\nHAVING count(DISTINCT Destination) > 20"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT Name FROM Airline JOIN Flight USING(AirlineID)\nGROUP BY Name\nWHERE count(DISTINCT Destination) > 20"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT Name FROM Airline JOIN Flight ON(AirlineID)\nGROUP BY Name\nWHERE count(DISTINCT Destination) > 20"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT Name FROM Airline JOIN Flight ON(AirlineID)\nHAVING count(DISTINCT Destination) > 20"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות"
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "צריך JOIN עם USING(AirlineID), קיבוץ לפי Name וסינון קבוצות ב-HAVING (לא WHERE)."
+    },
+    {
+      "num": 13,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "כתבו שאילתה שמחזירה את השם הפרטי ושם משפחה של הלקוחות שהזמינו הכי הרבה טיסות. היעזרו בשאילתא הנתונה:",
+      "code": "CREATE VIEW numBookingPerCustomer AS (SELECT PassportNumber, count(DISTINCT BookingID) As numBooking FROM Booking Group By PassportNumber",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT LastName, FirstName FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)\nWHERE numBooking >= ALL (SELECT numBooking FROM numBookingPerCustomer)"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT LastName, FirstName , max (numBooking ) FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT LastName, FirstName FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber) WHERE max(numBooking)"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT LastName, FirstName FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber) HAVING numBooking not in min(numBooking)"
+        },
+        {
+          "id": "e",
+          "type": "code",
+          "value": "SELECT LastName, FirstName FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)\nHAVING numBooking = (SELECT numBooking FROM numBookingPerCustomer WHERE max(numBooking)"
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "השימוש ב-`numBooking >= ALL (…)` בוחר את הלקוחות עם מספר ההזמנות המקסימלי."
+    },
+    {
+      "num": 14,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "ra",
+      "question": "מי מהתשובות הבאות מתאימה לשאלה: \"שמות חברי הספרייה, אשר השאילו לפחות ספר אחד מאת מחבר 'Rowling' וגם לפחות ספר אחד מאת מחבר 'Martin'\"?",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "∩ Π_{m_name} ((σ_{a_name='Rowling'} (B⊗BR⊗M))"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "Π_{m_name} (σ_{a_name='Martin'} (B⊗BR⊗M))"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "Π_{m_name} (σ_{a_name='Rowling' ∧ a_name='Martin'} (B⊗BR⊗M))"
+        },
+        {
+          "id": "d",
+          "type": "algebra",
+          "value": "Π_{m_name}(M) − Π_{m_name} (σ_{a_name<>'Rowling' ∧ a_name<>'Martin'} (B⊗BR⊗M))"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "יותר מתשובה אחת עונה על השאלה."
+        },
+        {
+          "id": "f",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות"
+        }
+      ],
+      "correctId": "f",
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "בעותק הבחינה המודפס אפשרות א׳ הודפסה חלקית ושגויה (סימן ∩ תלוי ללא אגף שמאלי, וחסר החלק של Martin); ב׳ מתייחסת רק ל-Martin; ג׳ דורשת שלאותו ספר יהיו שני מחברים (בלתי אפשרי בסכמה); ד׳ מחשבת \"או\" במקום \"וגם\". לכן אף אפשרות מודפסת אינה נכונה — התשובה הרשמית היא ו׳."
+    },
+    {
+      "num": 15,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "ra",
+      "question": "מי מהתשובות הבאות מתאימה לשאלה: \"מה שמות הסופרים שמוצאם באיטליה, שכתבו ספרים בכל הז'אנרים\"?",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "Π_{genre} (G) ÷ Π_{a_name, genre} (σ_{country=\"Italy\"} (A⊗B))"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "Π_{genre} (G) ÷ (σ_{country=\"Italy\"} (A) ⊗ Π_{a_name, genre} (B))"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "Π_{genre} (A⊗B) ∩ Π_{a_name} (Π_{a_name, genre} (σ_{country=\"Italy\"} (A⊗B)))"
+        },
+        {
+          "id": "d",
+          "type": "algebra",
+          "value": "Π_{a_name} (σ_{country=\"Italy\"} (A⊗B)) − Π_{a_name} (σ_{AB.genre <> G.genre} (ρ_{AB} (σ_{country=\"Italy\"} (A⊗B)) X G))"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "יותר מתשובה אחת עונה על השאלה"
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "חילוק: זוגות (מחבר, ז׳אנר) של ספרי מחברים איטלקים ÷ כל הז׳אנרים. בהדפסת הבחינה נפלה טעות בסדר אופרנדי החילוק שתוקנה במהלך הבחינה; לאחר התיקון התשובה הנכונה היא א׳."
+    },
+    {
+      "num": 16,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "ra",
+      "question": "מה מחזירה השאילתה הבאה:  $$Π_{BR.m_id} BR − Π_{BR1.m_id} (σ_{(BR1.m_id = BR2.m_id) ∧ (BR1.ISBN = BR2.ISBN) ∧ (BR1.borrow_date <> BR2.borrow_date)} (ρ_{BR1} BR X ρ_{BR2} BR))$$",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "מזהי חברי הספרייה, שלא השאילו את אותו הספר יותר מפעם אחת, כולל שלא השאילו ספרים כלל."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "מזהי חברי הספרייה, שלא השאילו ספרים כלל."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "מזהי חברי הספרייה, שהשאילו יותר מספר אחד, כולל את אותו הספר יותר מפעם אחת."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "מזהי חברי הספרייה, שהשאילו את אותו הספר לפחות פעמיים."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות"
+        }
+      ],
+      "correctId": "e",
+      "acceptedIds": [
+        "e",
+        "a"
+      ],
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "התקבלו ה' וגם א'."
+    },
+    {
+      "num": 17,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "ra",
+      "question": "מה נקבל ב-RES? **הערה:** ההנחה היא, כי אין שני תאריכים זהים בטבלת Borrow.",
+      "code": "MBD ← Π borrow_date BR1 − Π BR1.borrow_date (σ (BR1.borrow_date > BR2.borrow_date) (ρ BR1 BR X ρ BR2 BR))\nRES ← Π title (σ borrow_date=MBD.borrow_date ((B ⊗ BR) X MBD))",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "שם הספר שהושאל ראשון."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "שם הספר שהושאל אחרון."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "שם הספר שהשאילו אותו יותר מפעם אחד."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "שם הספר שהשאילו אותו יותר מכל ספר אחר."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות"
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "MBD מחזירה את תאריך ההשאלה המינימלי (המוקדם ביותר), ו-RES מחזירה את שם הספר שהושאל בתאריך זה — כלומר הספר שהושאל ראשון."
+    },
+    {
+      "num": 18,
+      "part": "ד",
+      "topic": "fd_norm",
+      "question": "נתונה סכמת R=(A,B,C) כלשהי, כמו כן נתונות 4 הטענות הבאות. כמה מהטענות הנתונות הן טענות נכונות?  **טענה 1:** ייתכן מצב שבו יהיה בדיוק מפתח קביל אחד וגודלו יהיה 1 (תכונה בודדת).  **טענה 2:** ייתכן מצב שבו יהיו בדיוק 2 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).  **טענה 3:** ייתכן מצב שבו יהיו בדיוק 3 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).  **טענה 4:** ייתכן מצב שבו יהיו בדיוק 2 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "2"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "1"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "3"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "4"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "0"
+        }
+      ],
+      "correctId": "a",
+      "acceptedIds": [
+        "a",
+        "c"
+      ],
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "medium",
+      "explanation": "התשובה שהתבקשה היא א' (2 טענות נכונות); אך מאחר וטענה 4 נוסחה בדיוק כמו טענה 2, גם תשובה ג' (3) התקבלה."
+    },
+    {
+      "num": 19,
+      "part": "ד",
+      "topic": "fd_norm",
+      "question": "נתונות קבוצות של תלויות פונקציונליות F1 ו-F2 המכילות תלויות פונקציונליות המתייחסות לטבלה R. על מנת להוכיח כי F2 הוא כיסוי מינימלי של F1 יש לבצע:",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "נחשב את הסגור של F1 ואת הסגור של F2 ונוודא כי הם שווים. בנוסף לכך נוודא שב-F2 אין תלויות/תכונות עודפות."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "נחשב את הסגור של F1 ואת הסגור של F2 ונוודא כי הם שווים."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "נחשב את הסגור של F1 ואת הסגור של F2 ונוודא כי הם שווים. בנוסף לכך נוודא שב-F1 אין תלויות/תכונות עודפות."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "נחשב את הסגור של F1 ואת הסגור של F2 ונוודא כי הם שווים. בנוסף לכך נוודא שב-F1 וב-F2 אין תלויות/תכונות עודפות."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "נוודא שכל תלות ב-F1 נמצאת ב-F2 והסגור של שתיהן שווים"
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "כיסוי מינימלי דורש שקילות של הסגורים ובנוסף שב-F2 (הכיסוי) אין תלויות או תכונות עודפות."
+    },
+    {
+      "num": 20,
+      "part": "ד",
+      "topic": "fd_norm",
+      "question": "נתונה התבנית R עם התלויות הפונקציות F הבאות. איזה מבין הבאים הינו מפתח קביל ב-R?  $$R = (A, B, C, D, E, G, I)$$  $$F = {AB→C, GAEID→C, CD→E, EI→G, IG→E, DE→C, BC→A, AIDE→I, CGI→E, ICBEG→A}$$",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "BDGI"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "BDG"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "BDI"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "BDGIA"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות"
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "accepted-answers-docx",
+      "confidence": "high",
+      "explanation": "הסגור של BDGI מכסה את כל תכונות R, והוא מינימלי (אף תת-קבוצה שלו אינה מפתח), ולכן BDGI הוא מפתח קביל."
+    }
+  ],
+  "askAdir": [
+    "Q14 ו-Q15 (אלגברת יחסים, ספרייה): ביטויי ה-σ/÷/∩ צפופים בבחינה והועתקו כמיטב היכולת — כדאי לאמת ויזואלית מול עמוד 10 של הבחינה. התשובות עצמן (Q14=ו׳, Q15=א׳) ודאיות מתוך מסמך התשובות שהתקבלו."
+  ]
+}

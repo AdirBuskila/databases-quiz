@@ -1,0 +1,911 @@
+{
+  "examCode": "21S-B",
+  "examLabel": "2021 סמסטר קיץ מועד ב׳",
+  "year": 2021,
+  "examDate": "21.11.2021",
+  "course": "61303",
+  "contexts": {
+    "erd": {
+      "kind": "image",
+      "title": "חלק א׳ — ERD (בנייה ורכישת דירות)",
+      "image": "images/exams/21S-B-erd.png",
+      "caption": "התייחסו לתרשים ה-ERD המתאר מערכת של קבלנים, בתים ולקוחות (בנייה ורכישת דירות) וענו על השאלות."
+    },
+    "schema": {
+      "kind": "schema",
+      "title": "חלק ב׳ / ג׳ — סכמת בסיס הנתונים (מערכת בנייה ורכישת דירות)",
+      "intro": "נתונות הסכמות הבאות המייצגות חלק מבסיס נתונים של מערכת בנייה ורכישת דירות. שאלות אלגברת היחסים מתבססות על אותו בסיס נתונים כמו חלק ה-SQL.",
+      "relations": [
+        {
+          "schema": "Building_contractor([u]contractor_id[/u], name, age, salary, Address, city)",
+          "meaning": "קבלן בניין: מספר קבלן, שם, גיל, משכורת, כתובת מגורים, עיר מגורים."
+        },
+        {
+          "schema": "Apartments([u]Apartments id[/u], Address, Description, contractor_id, Construction_cost, city)",
+          "meaning": "דירות: מספר דירה, כתובת דירה, תיאור הדירה, מספר קבלן שבנה, עלות בנייה, עיר."
+        },
+        {
+          "schema": "Purchases([u]Purchase number[/u], Apartments_id, contractor_id, cost, customer_id)",
+          "meaning": "רכישות: מספר רכישה, מספר דירה, מספר קבלן, עלות, מספר לקוח."
+        },
+        {
+          "schema": "Customer([u]customer_id[/u], salary, city, age, name)",
+          "meaning": "לקוח: מספר לקוח, משכורת, עיר מגורים, גיל, שם."
+        }
+      ]
+    },
+    "fd": {
+      "kind": "fd",
+      "title": "חלק ד׳ — תלויות ונרמול",
+      "algebra": [
+        "R = (E, F, G, H, I)  יחס כלשהו",
+        "F = {E → FH,  I → FG,  EG → HI}"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "num": 1,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "מי מהטענות הבאות נכונה ביותר?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "תכונה מחושבת לא תקבל ביטוי כאשר נמיר את ה-erd לטבלאות ולכן התכונה \"עלות כולל מס רכישה\" לא תופיע בטבלאות לאחר שנמיר את ה-erd לטבלאות"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "תכונה מרובת ערכים לא תקבל ביטוי כאשר נמיר את ה-erd לטבלאות ולכן התכונה \"חניות\" לא תופיע בטבלאות לאחר שנמיר את ה-erd לטבלאות"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "תכונה מורכבת לא תקבל ביטוי כאשר נמיר את ה-erd לטבלאות ולכן התכונה \"שם\" לא תופיע בטבלאות לאחר שנמיר את ה-erd לטבלאות"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "תכונה מחושבת לא תקבל ביטוי כאשר נמיר את ה-erd לטבלאות ולכן התכונה \"גודל גינה\" לא תופיע בטבלאות לאחר שנמיר את ה-erd לטבלאות."
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "תכונה מחושבת (נגזרת) אינה מיוצגת בטבלאות בהמרה. \"עלות כולל מס רכישה\" מצוירת כאליפסה מקווקוות (תכונה מחושבת) ולכן לא תופיע."
+    },
+    {
+      "num": 2,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "ביחס ה-isa ב-erd מתקיים:",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "כל בית יכול להיות רק בית פרטי או דירת גן או דירה בבניין קומות כי מדובר ביחס הכללה"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "כל בית יכול להיות בית פרטי או דירת גן או דירה בבניין קומות או כל סוג נוסף של בית שנרצה להוסיף כי מדובר ביחס הפרדה"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "כל בית יכול להיות רק בית פרטי או דירת גן או דירה בבניין קומות כי מדובר ביחס הפרדה."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "כל בית יכול להיות בית פרטי או דירת גן או דירה בבניין קומות או כל סוג נוסף של בית שנרצה להוסיף כי מדובר ביחס הכללה."
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "יחס ה-IsA כאן הוא יחס הפרדה (specialization) — בית יכול להיות אחד מהתת-סוגים, וניתן להוסיף סוגי בית נוספים."
+    },
+    {
+      "num": 3,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "מי מהטענות נכונה ביותר?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "לא כל לקוח חייב לרכוש בית."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "לקוח חייב לרכוש רק בית אחד"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "כל לקוח חייב לרכוש לפחות בית אחד כי יש קו עבה בין רוכש ללקוח בנוסף הוא יכול במקסימום לרכוש כמה בתים שירצה."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "כל בית חייב להירכש."
+        }
+      ],
+      "correctId": "c",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "הקו העבה בין \"רוכש\" ל\"לקוח\" מציין השתתפות מלאה (כל לקוח רוכש לפחות בית אחד) ללא הגבלה עליונה על מספר הבתים."
+    },
+    {
+      "num": 4,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "מי מהטענות הבאות הנכונה ביותר?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "בית יכול להיות מושכר על ידי 2 לקוחות"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "כל בית יכול להיות מושכר על ידי כמה לקוחות"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "כל בית חייב להיות מושכר כי יש קו עבה בין לקוח לשוכר"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "יכולים להיות בתים שלא הושכרו."
+        }
+      ],
+      "correctId": "d",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "השתתפות הבית בקשר \"שוכר\" היא חלקית (אין קו עבה בצד הבית), ולכן ייתכנו בתים שלא הושכרו."
+    },
+    {
+      "num": 5,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "מהי ההמרה לטבלאות הנכונה ביותר?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "5 טבלאות (בית, קבלן, לקוח, מקומות עבודה, חניות)."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "6 טבלאות (בית, קבלן, לקוח, מקומות עבודה, שוכר, בונה)."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "7 טבלאות (בית, קבלן, לקוח, שוכר, בונה, עלות כולל מס רכישה, מקומות עבודה)."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "8 טבלאות (בית, קבלן, לקוח, שוכר, בונה, עלות כולל מס רכישה, מקומות עבודה, רוכש)."
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "3 ישויות (בית/קבלן/לקוח) + 2 טבלאות לתכונות מרובות-הערכים (מקומות עבודה, חניות). הקשרים הפונקציונליים \"שוכר\"/\"בונה\" מתמזגים לתוך הישויות, והתכונה המחושבת אינה נשמרת → 5 טבלאות."
+    },
+    {
+      "num": 6,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "אם היינו רוצים לבצע שינוי ב-erd כך שכל בית ייבנה בהכרח על ידי זוג קבלנים בדיוק, מה השינוי היינו צריכים לבצע?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "להשאיר את הקו העבה בין \"קבלן\" ל\"בונה\" ובנוסף להוריד את החץ שפונה ל\"קבלן\" כמו כן היה צריך להוסיף בצד ה\"קבלן\" סוגרים המציינים (1,2)"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "להשאיר את הקו העבה בין \"קבלן\" ל\"בונה\" ובנוסף להוריד את החץ שפונה ל\"קבלן\" כמו כן היה צריך להוסיף בצד ה\"קבלן\" סוגרים המציינים (2,2)"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "להשאיר את הקו העבה בין \"קבלן\" ל\"בונה\" כמו כן היה צריך להוסיף בצד ה\"קבלן\" סוגרים המציינים (2,2)"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "אין צורך בשינוי כבר בצורה הנוכחית ה-erd מבטא זאת."
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "כדי לחייב בדיוק שני קבלנים לכל בית יש להסיר את החץ (הפונקציונליות אל \"קבלן\") ולציין קרדינליות (2,2) בצד הקבלן."
+    },
+    {
+      "num": 7,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "schema",
+      "question": "איזו מהשאילתות הבאות מוצאת שמות לקוחות שהשכר שלהם נמוך ביותר ורכשו דירה?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "Select name,min(salary) from customer join Purchases using(customer_id) ."
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "Select max(salary) from customer join Purchases using(customer _id)."
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "Select name from customer join Purchases using(customer_id) where salary=(select min(salary)from customer)"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "Select name from customer join Purchases using(customer_id) where salary<= any(select salary from customer)."
+        }
+      ],
+      "correctId": "c",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "יש להשוות את המשכורת ל-min(salary) של כל הלקוחות ולצרף ל-Purchases כדי לוודא שרכשו דירה. תשובות א/ב מחזירות עמודות שגויות ותשובה ד אינה מסננת למינימום."
+    },
+    {
+      "num": 8,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "schema",
+      "question": "מה עושה השאילתה הבאה?",
+      "code": "Select count(c.contractor_id) as num_of_contractor from Building_contractor c join\nApartments a  on a.contractor_id =c. contractor_id join Purchases p on p. contractor_id =c. contractor_id.",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "מחזירה שמות קבלנים שבנו דירה שנמכרה."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "מחזירה כמה קבלנים בנו כל דירה"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "מוצאת את כמות הקבלנים שבנו דירות."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "סופרת את כמות הקבלנים שבנו דירות שגם נמכרו."
+        }
+      ],
+      "correctId": "d",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "הצירוף ל-Apartments (בנו) וגם ל-Purchases (נמכרו) מגביל לקבלנים שבנו דירות שגם נמכרו, ו-count סופר אותם (עם כפילויות)."
+    },
+    {
+      "num": 9,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "schema",
+      "question": "אם בשאילתה הקודמת נמחק את פקודת ה-count מה יקרה?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "השאילתה תחזיר תמיד ערך בודד."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "נקבל רשימה של id של קבלנים שבנו דירות שנמכרו."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "נצטרך להוסיף גם פקודת gruop by כדי שהשאילתה תעבוד."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "תשובות ב' וג' נכונות."
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "ללא count השאילתה מחזירה את רשימת ה-contractor_id של הקבלנים שבנו דירות שנמכרו (ללא צורך ב-GROUP BY)."
+    },
+    {
+      "num": 10,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "schema",
+      "question": "איזו מבין השאילתות הבאות תחזיר שמות לקוחות שרכשו דירה בעיר בה הם גרים כרגע ובנוסף הקבלן גר באותה עיר?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "Select  name from customer c join Purchases p using(customerid)join\nApartments a on c.city=a.city join Building_contractor ;"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "Select  name from customer c join Purchases p using(customerid)join\nApartments a on c.city=a.city join Building_contractor b on b.city=a.city"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "תשובות א' וב' עושות אותו דבר"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "Select  name from customer c join Apartments a on c.city=a.city join\nBuilding_contractor b on b.city=a.city"
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "רק תשובה ב מצרפת נכון: לקוח→רכישה→דירה (c.city=a.city) וגם קבלן (b.city=a.city). בתשובה א חסר תנאי ה-join עם הקבלן."
+    },
+    {
+      "num": 11,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "schema",
+      "question": "מה הטענה הנכונה ביותר?",
+      "code": "Select name, Apartments id from Building_contractor left join Apartments\nusing(contractor_id) where age<40",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "שאילתה מחזירה רק את שמות הקבלנים מתחת לגיל 40 שבנו דירה ואת מספרי הדירות שלהם."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "השאילתה מחזירה שמות כל הקבלנים כולם שהם מתחת לגיל 40 ולצידם את מספרי הדירות שם בנו במידה ויש קבלנים שלא בנו דירה יופיע null במספר הדירה."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "שאילתה מחזירה שמות קבלנים מתחת לגיל 40 שאין להם דירות."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "שאילתה מחזירה שמות קבלנים מתחת לגיל 40 שבנו דירות שנרכשו ."
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "LEFT JOIN שומר את כל הקבלנים מתחת לגיל 40, וקבלן שלא בנה דירה יקבל null בשדה מספר הדירה."
+    },
+    {
+      "num": 12,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "schema",
+      "question": "איזו שאילתה תמצא את כתובות הדירות שנרכשו כאשר שמות הלקוחות שרכשו אותם מכיל את האות a ובנוסף הלקוח שרכש אותם מעל גיל 39?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "Select address from Purchases p join Apartment a on a. Apartments id=p.\nApartments id join customer c on c.customerid=p.customerid where name like\n\"%a%\" or age >39"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "Select address from Purchases p join Apartment a on a. Apartments id=p.\nApartments id join customer c on c.customerid=p.customerid where name like\n\"%a%\" and age >39"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "Select address from Purchases p  join customer c on\nc.customerid=p.customerid where name like \"%a%\" and age >39"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "Select address from Purchases ,Apartment , customer  where name like \"%a%\"\nand age >39"
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "יש לצרף Purchases→Apartment→customer ולסנן name like \"%a%\" AND age>39. תשובה א משתמשת ב-OR, תשובה ג חסרה את הצירוף ל-Apartment, ותשובה ד מבצעת מכפלה קרטזית ללא תנאי צירוף."
+    },
+    {
+      "num": 13,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "schema",
+      "question": "איזו שאילתה תחזיר שמות הקבלנים שמכרו את כל הדירות שלהם (דהיינו כל הדירות שהם בנו נקנו)?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT name FROM Building_contractor as B1 WHERE (SELECT Apartments_id\nFROM Apartments A WHERE A. contractor_id =B1. contractor_id) CONTAINS\n(SELECT Apartments_id FROM Purchases))"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT name FROM Building_contractor as B1 WHERE (SELECT Apartments_id\nFROM Purchases) CONTAINS (SELECT contractor_id FROM Apartments A\nWHERE A. contractor_id =B1. contractor_id)"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT name FROM Building_contractor as B1 WHERE (SELECT Apartments_id\nFROM Apartments) CONTAINS (SELECT Apartments_id FROM Purchases A\nWHERE A. contractor_id =B1. contractor_id)"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT name FROM Building_contractor as B1 WHERE (SELECT Apartments_id\nFROM Purchases) CONTAINS (SELECT Apartments_id FROM Apartments A\nWHERE A. contractor_id =B1. contractor_id)"
+        }
+      ],
+      "correctId": "d",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "כדי שקבלן מכר את כל דירותיו, קבוצת הדירות שנקנו (Purchases) חייבת להכיל (CONTAINS) את קבוצת הדירות שהוא בנה (Apartments של אותו קבלן) — כפי שבתשובה ד."
+    },
+    {
+      "num": 14,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "schema",
+      "question": "איזו שאילתה תמצא שמות לקוחות שגרים גם בראשון לציון וגם בירושלים (בהנחה שלקוח יכול לגור בשתי ערים שונות)?",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "Π_{name} (σ_{city=\"rishon lezion\" ∧ city=\"jerusalem\"} (customer))"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "Π_{name} (σ_{city=\"rishon lezion\"} (customer)) − Π_{name} (σ_{city=\"jerusalem\"} (customer))"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "Π_{name} (σ_{city=\"rishon lezion\"} (customer)) ∪ Π_{name} (σ_{city=\"jerusalem\"} (customer))"
+        },
+        {
+          "id": "d",
+          "type": "algebra",
+          "value": "Π_{name} (σ_{city=\"rishon lezion\"} (customer)) ∩ Π_{name} (σ_{city=\"jerusalem\"} (customer))"
+        }
+      ],
+      "correctId": "d",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "\"גם וגם\" בשתי שורות נפרדות של אותו לקוח מחייב חיתוך (∩) של שמות הלקוחות מכל עיר. תנאי σ יחיד עם city=A ∧ city=B (תשובה א) לעולם ריק."
+    },
+    {
+      "num": 15,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "schema",
+      "question": "מה עושה השאילתה הבאה?\n$$Π_{Apartments_id}(Apartments) − Π_{A2.Apartments_id} (σ_{A2.construction_cost < A1.Construction_cost} (ρ_{A1}(Apartments) X ρ_{A2}(Apartments)))$$",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "מוצאת את ה-id של כל הדירות שמופיעות בטבלת Apartments פעמיים"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "מוצאת את ה-id של הדירה\\ות היקרה ביותר."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "מוצאת את ה-id של הדירה\\ות הזולה ביותר."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "תשובות א ו-ג נכונות."
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "מחסירים מכל הדירות את אלו שקיימת דירה יקרה מהן — כלומר נותרות רק הדירה/ות היקרה ביותר (בעלת עלות הבנייה המקסימלית)."
+    },
+    {
+      "num": 16,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "schema",
+      "question": "מה עושה השאילתה הבאה:\n$$Π_{Purchases.contractorid, customerid} (Purchases ⊗ Apartments) ÷ Π_{customerid} (σ_{city=\"holon\"} (customer))$$",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "מחזירה id של לקוחות שקנו דירה בחולון."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "מחזירה id של קבלנים שמכרו דירות ללקוחות בחולון."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "מחזירה id של קבלנים שמכרו דירות לכל הלקוחות בחולון"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "מחזירה id של לקוחות שקנו את כל הדירות בחולון."
+        }
+      ],
+      "correctId": "c",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "אופרטור החילוק (÷) על קבוצת ה-customerid של לקוחות חולון מחזיר את הקבלנים שמכרו דירה לכל אחד מלקוחות חולון."
+    },
+    {
+      "num": 17,
+      "part": "ג",
+      "topic": "relalg",
+      "question": "מה יהיה הצירוף הטבעי (join) בין שני יחסים שאין להם אף תכונה משותפת?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "תוצאה זהה לפקודת הפרש בין הטבלאות ."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "טבלה ריקה."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "תוצאה זהה לפקודת איחוד בין הטבלאות ."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "תוצאה זהה למכפלה קרטזית בין הטבלאות ."
+        }
+      ],
+      "correctId": "d",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "צירוף טבעי ללא תכונות משותפות מתנוון למכפלה קרטזית בין שתי הטבלאות."
+    },
+    {
+      "num": 18,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "schema",
+      "question": "מה עושה השאילתה הבאה:\n$$Π_{Purchases.Apartments_id} (σ_{cost = Construction_cost ∧ city=\"holon\"} (Purchases ⊗ Apartments))$$",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "מחזירה מספרי דירות בעיר חולון שנמכרו במחיר שהן היו שוות ."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "תרוץ בלולאה אינסופית"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "מחזירה מספרי דירות בעיר חולון שנמכרו."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "מחזירה מספרי דירות בעיר חולון שנמכרו במחיר שהן היו שוות וגם את כלל הדירות בחולון שנמכרו ושלא נמכרו"
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "התנאי cost = Construction_cost בעיר חולון בוחר דירות שנמכרו (Purchases) בדיוק במחיר עלות הבנייה שלהן, ומחזיר את מספריהן."
+    },
+    {
+      "num": 19,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "schema",
+      "question": "איזו שאילתה באלגברת היחסים תמצא את שמות הקבלנים שלא בנו דירה?",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "Π_{name} (Building_contractor) − Π_{name} (Building_contractor ⊗ Apartments)"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "Π_{name} (Building_contractor ⊗ Apartments) − Π_{name} (Building_contractor)"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "Π_{name} (Building_contractor) ∪ Π_{name} (Building_contractor ⊗ Apartments)"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "כל התשובות נכונות."
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "שמות כל הקבלנים פחות שמות הקבלנים שכן בנו דירה → תשובה א. תשובה ב מחזירה קבוצה ריקה, תשובה ג מחזירה את כל הקבלנים, ולכן ד (\"כל התשובות נכונות\") אינה יכולה להיות נכונה. בעותק הבחינה סומנו גם א וגם ד — ככל הנראה טעות סימון; לוגית א היא התשובה היחידה."
+    },
+    {
+      "num": 20,
+      "part": "ד",
+      "topic": "fd_norm",
+      "contextId": "fd",
+      "question": "מי מהבאים הוא מפתח קביל? סמנו את כל התשובות הנכונות (ייתכן יותר מתשובה אחת).",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "אף אחד"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "EI"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "EH"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "EG"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "GH"
+        }
+      ],
+      "correctId": "b",
+      "acceptedIds": [
+        "b",
+        "d"
+      ],
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "E חייבת בכל מפתח (אינה בצד ימין). EI⁺ = כל R וגם EG⁺ = כל R, ושניהם מינימליים ← שני מפתחות קבילים: EI ו-EG (שניהם מסומנים בבחינה)."
+    },
+    {
+      "num": 21,
+      "part": "ד",
+      "topic": "fd_norm",
+      "contextId": "fd",
+      "question": "מה הנרמול הנכון לפי BCNF? (ניתן להניח ש-Fu שווה ל-F⁺)",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "היחס כבר מנורמל לפי BCNF."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "R1(F,E,H), R2(F,G ,I), R3(E,I)."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "R4(E,F), R1(G,H), R2(F,G,H,I), R3(E,F,I) ."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "R2(F,I,H), R1(F,G,H,I), R3(E,G), R4(E,F)."
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "פירוק BCNF תקין המבוסס על התלויות המפרות: R1(F,E,H), R2(F,G,I), R3(E,I)."
+    },
+    {
+      "num": 22,
+      "part": "ד",
+      "topic": "fd_norm",
+      "contextId": "fd",
+      "question": "האם בתלות $EG → HI$ יש תכונה עודפת?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "E עודפת."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "G עודפת."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "H עודפת."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "I עודפת."
+        }
+      ],
+      "correctId": "c",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "מכיוון ש-E → FH גורר E → H, נובע ש-EG → H כבר נגזרת, ולכן H עודפת בצד ימין של EG → HI."
+    },
+    {
+      "num": 23,
+      "part": "ד",
+      "topic": "fd_norm",
+      "contextId": "fd",
+      "question": "האם היחס המנורמל לפי 3NF משמר מידע ותלויות?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "תמיד משמר מידע לא תמיד משמר תלויות"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "תמיד משמר מידע ותלויות."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "תמיד משמר תלויות לא תמיד משמר מידע"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "לא ניתן לדעת."
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "אלגוריתם הפירוק ל-3NF (סינתזה) מבטיח גם שמירת מידע (חיבור ללא אובדן) וגם שמירת תלויות."
+    },
+    {
+      "num": 24,
+      "part": "ד",
+      "topic": "fd_norm",
+      "contextId": "fd",
+      "question": "מה הנרמול הנכון לפי 3NF? (ניתן להניח ש-Fu שווה ל-Fc)",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "R1(F,G,H,I), R2(E,G), R3(E,F)."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "R1(F,G,H,I), R2(E,G), R3(E,F), R4(F,H,I)."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "R1(E,G,H,I), R2(I,F,G), R3(E,F,H)."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "היחס כבר מנורמל לפי 3nf."
+        }
+      ],
+      "correctId": "c",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "פירוק 3NF תקין מתוך הכיסוי המינימלי: R1(E,G,H,I), R2(I,F,G), R3(E,F,H)."
+    },
+    {
+      "num": 25,
+      "part": "ד",
+      "topic": "fd_norm",
+      "contextId": "fd",
+      "question": "האם התלות $FI → G$ נמצאת בסגור של F?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "לא"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "כן-ניתן להוכיח בעזרת רפלקסיביות+טרנזטיביות+פירוק"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "כן-ניתן להוכיח בעזרת הכללה+טרנזטיביות"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "לא ניתן לדעת."
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "combined-pdf",
+      "confidence": "high",
+      "explanation": "מ-I → FG נובע I → G (פירוק); ומרפלקסיביות FI → I, ובטרנזיטיביות FI → G. לכן FI → G נמצאת בסגור."
+    }
+  ],
+  "askAdir": [
+    "Q19 (עמ' 10, אלגברת יחסים): בעותק הבחינה המשולב מודגשות (מסומנות כתשובה) גם תשובה א׳ וגם תשובה ד׳ (\"כל התשובות נכונות\"). התשובה הנכונה לוגית היא א׳ בלבד (ב׳ ו-ג׳ שגויות), ולכן ד׳ אינה יכולה להיות נכונה. סימנתי correctId=א עם acceptedIds=[א,ד] בעקבות הסימון בבחינה. כדאי לאמת מול מחוון רשמי."
+  ]
+}

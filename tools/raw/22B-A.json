@@ -1,0 +1,271 @@
+{
+  "examCode": "22B-A",
+  "examLabel": "2022 סמסטר ב׳ מועד א׳",
+  "year": 2022,
+  "examDate": "22.6.2022",
+  "course": "61303",
+  "contexts": {
+    "erd": {
+      "kind": "image",
+      "title": "חלק א׳ — ERD",
+      "image": "images/exams/22B-A-erd.png",
+      "caption": "התייחסו לתרשים ה-ERD המתאר בסיס נתונים של מכללה וענו על השאלות."
+    },
+    "schema": {
+      "kind": "schema",
+      "title": "חלק ב׳ / ג׳ — סכמת בסיס הנתונים (להקות, מוזיקאים וכלי נגינה)",
+      "intro": "נתונות תבניות/סכמות יחסים מתוך בסיס נתונים של להקות, מוזיקאים, וכלי נגינה. ניתן להניח שבטבלאות אין Null, ערכים ריקים.",
+      "relations": [
+        { "schema": "musician([u]m_id[/u], m_name, instrument, m_age, m_gender)", "meaning": "פרטי מוסיקאי: מס' תעודת זהות (`m_id`), שם, שם כלי נגינה עליו מנגן (במקרה שהמוסיקאי אינו מנגן על כלי נגינה, ערך התכונה יהיה `\"none\"`), גיל ומגדר." },
+        { "schema": "band([u]b_code[/u], b_name, b_leader_id, b_music_genre)", "meaning": "פרטי להקה שיש בה יותר מאדם אחד: קוד מזהה להקה (`b_code`), שם מילולי של הלהקה (`b_name`), תעודת זהות של מוסיקאי שהוא מנהיג הלהקה (`b_leader_id`), וסוג מוסיקה — ז'אנר (`b_music_genre`)." },
+        { "schema": "one_man_band([u]b_code[/u], num_of_instruments)", "meaning": "יחס המתאר להקה שיש בה מוסיקאי אחד בלבד: קוד להקה (`b_code`) ומספר כלי הנגינה עליהם המוסיקאי מנגן בלהקה (`num_of_instruments`)." },
+        { "schema": "band_musician([u]b_code[/u], [u]m_id[/u])", "meaning": "שייכות של מוסיקאי (`m_id`) ללהקה (`b_code`). מתאים ללהקה בת מוסיקאי יחיד, וכן ללהקה בת יותר ממוסיקאי אחד." },
+        { "schema": "Instrument_belongs_to([u]instrument[/u], [u]set[/u])", "meaning": "שייכות ישירה של מכשיר נגינה ששמו (`instrument`) לקבוצה בהיררכיה של כלי נגינה ששמה (`set`). למשל: כלי נשיפה ממתכת — סקסופון, חצוצרה, טרומבון; כלי נשיפה מעץ — חליל, אבוב, קלרינט; כלי מיתר פריטה — גיטרה, נבל; כלי מיתר קשת — כינור, ויולה." }
+      ]
+    },
+    "fd": {
+      "kind": "fd",
+      "title": "חלק ד׳ — תלויות ונרמול",
+      "algebra": ["R = (A, B, C, D, E)", "F1 = {A→CE,  C→DE,  B→A}"]
+    }
+  },
+  "questions": [
+    {
+      "num": 1, "part": "א", "topic": "erd", "contextId": "erd",
+      "question": "איזו המרה של סטודנט לתואר ראשון היא הנכונה?",
+      "options": [
+        { "id": "a", "type": "schema", "value": "סטודנט לתואר ראשון([u]תז[/u], תאריך_תחילת_לימודים, ממוצע, משך_תואר, פרויקט, תזה)" },
+        { "id": "b", "type": "schema", "value": "סטודנט לתואר ראשון([u]תז[/u], יום, חודש, שנה, ממוצע, משך_תואר, פרויקט)" },
+        { "id": "c", "type": "schema", "value": "סטודנט לתואר ראשון([u]תז[/u], יום, חודש, שנה, ממוצע, משך_תואר)  פרויקטים([u]תז[/u], פרויקט)" },
+        { "id": "d", "type": "schema", "value": "סטודנט לתואר ראשון([u]תז[/u], תאריך תחילת_לימודים, ממוצע, משך_תואר)  פרויקטים([u]תז[/u], פרויקט)" },
+        { "id": "e", "type": "text", "value": "אף תשובה אינה נכונה" }
+      ],
+      "correctId": "c", "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "\"תאריך תחילת לימודים\" הוא תכונה מורכבת ולכן מתפצל ל-יום/חודש/שנה, ו\"פרויקט\" הוא תכונה מרובת-ערכים ולכן עובר ליחס נפרד פרויקטים(תז, פרויקט)."
+    },
+    {
+      "num": 2, "part": "א", "topic": "erd", "contextId": "erd",
+      "question": "איזה מההיגדים הבאים נכון?",
+      "options": [
+        { "id": "a", "type": "text", "value": "מכללה מעסיקה מרצה אחד לפחות." },
+        { "id": "b", "type": "text", "value": "כל מרצה מלמד בכיתה אחת לכל היותר." },
+        { "id": "c", "type": "text", "value": "מכללה חייבת להכיל סטודנט אחד לפחות." },
+        { "id": "d", "type": "text", "value": "סטודנט חייב ללמוד במכללה אחת לכל היותר." },
+        { "id": "e", "type": "text", "value": "אף תשובה אינה נכונה." }
+      ],
+      "correctId": "d", "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "השתתפות הסטודנט בקשר \"לומד ב\" היא חלקית והקרדינליות מגבילה אותו למכללה אחת לכל היותר."
+    },
+    {
+      "num": 3, "part": "א", "topic": "erd", "contextId": "erd",
+      "question": "האם יש בתרשים תכונה / תכונות מרובת ערכים?",
+      "options": [
+        { "id": "a", "type": "text", "value": "כן, \"פרויקט\" ו\"מקצוע לימוד\"." },
+        { "id": "b", "type": "text", "value": "כן, \"תאריך תחילת לימודים\"." },
+        { "id": "c", "type": "text", "value": "כן, סטודנט." },
+        { "id": "d", "type": "text", "value": "אף תשובה אינה נכונה." }
+      ],
+      "correctId": "a", "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "\"פרויקט\" ו\"מקצוע לימוד\" מצוירים כאליפסה כפולה — תכונות מרובות-ערכים. (\"תאריך תחילת לימודים\" היא מורכבת, לא מרובת-ערכים.)"
+    },
+    {
+      "num": 5, "part": "ב", "topic": "sql", "contextId": "schema",
+      "question": "נתונה השאלה: \"הצג שמות קבוצות בהיררכיית כלי הנגינה בבסיס הנתונים, שמספר הכלים השייכים אליהן הוא מקסימלי, וגם את ערכו של מספר מקסימלי זה\". הפתרון המוצע מורכב משלוש שאילתות, וחסר בו הקטע המסומן __ (I) __. **שים לב:** `INTO inst_n` נותן שם ליחס תוצאה של השאילתה הראשונה (בדומה ל-`Create View inst_n As (Select…)`), וכן `INTO max_set` לשנייה. מהו הקטע החסר __ (I) __?",
+      "code": "-- שאילתה 1:\nSelect set, count (instrument) AS inst_num INTO inst_n\nFrom instrument_belongs_to\nGroup by set\n\n-- שאילתה 2:\nSelect max (inst_num) as max_num INTO max_set\nFrom inst_n\n\n-- שאילתה 3:\nSelect set, max_num\n__ (I) __",
+      "options": [
+        { "id": "a", "type": "code", "value": "From instrument_belongs_to ,max_set, having  inst_n.inst_num=max_set.max_num" },
+        { "id": "b", "type": "code", "value": "From inst_n,max_set where inst_n.inst_num = max_set.max_num" },
+        { "id": "c", "type": "code", "value": "From max_set, inst_n  group by max_set.max_num\nhaving  inst_n. inst_num = max_set.max_num" },
+        { "id": "d", "type": "text", "value": "אף תשובה לא נכונה." }
+      ],
+      "correctId": "b", "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "מצרפים את שני היחסים המבוקשים (inst_n ו-max_set) בתנאי inst_n.inst_num = max_set.max_num כדי לבחור את הקבוצות בעלות מספר הכלים המקסימלי."
+    },
+    {
+      "num": 6, "part": "ב", "topic": "sql", "contextId": "schema",
+      "question": "נתונה השאילתה הבאה. סמן את השאלה (מנוסחת בשפה טבעית) המתאימה ביותר לשאילתה הנתונה:",
+      "code": "( SELECT    bm.b_code, COUNT(*) AS num_of_Instruments\n  FROM      band_musician AS bm, musician AS m\n  WHERE     bm.m_id = m.m_id  AND  m.Instrument != \"none\"  AND\n            NOT EXISTS ( SELECT  *\n                FROM   one_man_band AS omb\n                WHERE bm.b_code = omb.b_code )\n  GROUP BY  bm.b_code )\nUNION\n( SELECT band.b_code, omb.num_of_instruments\n  FROM  one_man_band AS omb,  band\n  WHERE band.b_code = omb.b_code  AND\n        omb.num_of_instruments > 0 )",
+      "options": [
+        { "id": "a", "type": "text", "value": "הצג לכל להקה בבסיס הנתונים את מספר כלי הנגינה שלה." },
+        { "id": "b", "type": "text", "value": "הצג לכל להקה בבסיס הנתונים את מספר כלי הנגינה שלה. התשובה צריכה לכלול להקות בנות מספר מוסיקאים, וכן להקות בנות מוסיקאי יחיד." },
+        { "id": "c", "type": "text", "value": "הצג לכל להקה בבסיס הנתונים את מספר כלי הנגינה שלה. התשובה צריכה לכלול להקות בנות מספר מוסיקאים, שלא משתתף בהן מוסיקאי השייך גם ללהקה בת מוסיקאי יחיד, וכן להקות בנות מוסיקאי יחיד שמספר הכלים בהן הוא לפחות אחד." },
+        { "id": "d", "type": "text", "value": "הצג לכל להקה בבסיס הנתונים את מספר כלי הנגינה שלה. התשובה צריכה לכלול להקות בנות מספר מוסיקאים (שלמעשה, שמן שונה משם של להקה בת מוסיקאי יחיד); וכן להקות בנות מוסיקאי יחיד, שמספר הכלים בהן הוא לפחות אחד." },
+        { "id": "e", "type": "text", "value": "אף אחת מהתשובות." }
+      ],
+      "correctId": "c", "acceptedIds": ["c", "d", "e"], "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "לפי הפתרון הרשמי התקבלו התשובות C, D ו-E למלוא הנקודות (השאלה לא הובהרה דיה, ובתשובה D נכתב \"שם שונה\" ולא \"קוד שונה\")."
+    },
+    {
+      "num": 7, "part": "ב", "topic": "sql", "contextId": "schema",
+      "question": "האם השאילתה הבאה עונה על הדרישה: \"הצג לכל שם כלי נגינה בבסיס הנתונים את מספר הלהקות, בנות יותר ממוסיקאי אחד, בהן משתמשים בכלי זה\". מהי הטענה הנכונה:",
+      "code": "Select ibt.instrument  AS  ins_name, count (band.b_name)  AS  bands_number\nFrom instrument_belongs_to AS ibt, musician, band, band_musician\nWhere musician.m_id  =  band_musician.m_id  AND\n      musician. instrument  =  ibt.instrument\nGroup by ibt.instrument",
+      "options": [
+        { "id": "a", "type": "text", "value": "השאילתה נכונה אך מסורבלת." },
+        { "id": "b", "type": "text", "value": "השאילתה נכונה, אך ניתן היה לכתוב אותה עם JOIN בצורה אחרת." },
+        { "id": "c", "type": "text", "value": "השאילתה נכונה, כיוון שיש התייחסות לכל הטבלאות המופיעות ב-FROM." },
+        { "id": "d", "type": "text", "value": "השאילתה שגויה כיוון שאינה מתייחסת כנדרש לסוג הלהקה (האם בת מספר מוסיקאים, או בת מוסיקאי יחיד)." },
+        { "id": "e", "type": "text", "value": "אף אחת מהתשובות." }
+      ],
+      "correctId": "e", "acceptedIds": ["d", "e"], "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "השאילתה אינה נכונה — חסר בה חלק של JOIN (הקשר band.b_code = band_musician.b_code), ואינה מתייחסת לסוג הלהקה. התקבלו התשובות D ו-E."
+    },
+    {
+      "num": 8, "part": "ב", "topic": "sql", "contextId": "schema",
+      "question": "נתונות 3 הצעות פתרון עבור השאלה: \"הציגו את גילו המינימלי של מוסיקאי מבסיס הנתונים, את שמו ואת המגדר אליו משתייך\". סמנו את הטענה הנכונה:",
+      "code": "-- הצעת פתרון 1:\nSelect musician.m_age, musician.m_name, musician.m_gender\nFrom musician\nWhere musician.m_age <= all (Select musician.m_age  From musician)\n\n-- הצעת פתרון 2:\nSelect min (musician.m_age), musician. m_name, musician.m_gender\nFrom musician\n\n-- הצעת פתרון 3:\nSelect musician.m_age, musician. m_name, musician.m_gender\nFrom musician\nWhere musician.m_age  =  any (Select min (musician.m_age ) From musician)",
+      "options": [
+        { "id": "a", "type": "text", "value": "פתרון 1 ופתרון 2 נכונים." },
+        { "id": "b", "type": "text", "value": "פתרון 1 ופתרון 3 נכונים." },
+        { "id": "c", "type": "text", "value": "כל שלושת הפתרונות נכונים." },
+        { "id": "d", "type": "text", "value": "רק פתרון 2 נכון." },
+        { "id": "e", "type": "text", "value": "רק פתרון 3 נכון." }
+      ],
+      "correctId": "b", "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "פתרון 2 שגוי (min ללא GROUP BY עם עמודות נוספות). פתרונות 1 ו-3 מחזירים את המוסיקאי בעל הגיל המינימלי. (על A, C, E ניתנו חצי מהנקודות.)"
+    },
+    {
+      "num": 9, "part": "ב", "topic": "sql", "contextId": "schema",
+      "question": "נתון פתרון מוצע עבור השאלה: \"הצג לכל כלי נגינה את הקבוצה בהיררכיה אליה הוא שייך, שמות המוסיקאים המנגנים בכלי, ושם הלהקה אליה המוסיקאי שייך. שמות כלי הנגינה יוצגו בסדר עולה, ושמות המוסיקאים המנגנים על כלי יוצגו בסדר יורד\". בפתרון המוצע חסר הקטע המסומן __ (III) __. הקטע החסר __ (III) __ הוא:",
+      "code": "Select inst. instrument, inst. set, m.m_name, b.b_name\nFrom instrument_belongs_to AS  inst, band_musician  AS  bm, musician  AS  m, band  AS  b\nWhere  bm.m_id = m.m_id  AND  b.b_code = bm.b_code  AND\n       m. instrument  =  inst. instrument\n__ (III) __",
+      "options": [
+        { "id": "a", "type": "text", "value": "הקטע __ (III) __ מיותר. אין צורך לרשום דבר." },
+        { "id": "b", "type": "code", "value": "Group by inst. instrument, m.m_name" },
+        { "id": "c", "type": "code", "value": "Order by inst.instrument, m.m_name" },
+        { "id": "d", "type": "code", "value": "Order by inst.instrument , m.m_name desc" }
+      ],
+      "correctId": "d", "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "המיון: כלי נגינה בסדר עולה ושמות המוסיקאים בסדר יורד → Order by inst.instrument, m.m_name desc. אין צורך ב-GROUP BY כי מוצגות שורות עם חזרות."
+    },
+    {
+      "num": 10, "part": "ב", "topic": "sql", "contextId": "schema",
+      "question": "סמנו את השאלה (מנוסחת בשפה טבעית) המתאימה ביותר לשאילתה הנתונה:",
+      "code": "Select inst.instrument\nFrom instrument_belongs_to AS inst\nWhere NOT EXISTS\n    ( Select band.b_code\n      From band_musician  AS  bm, band\n      Where  bm.b_code = band.b_code  AND bm.m_id NOT IN\n          (Select musician.m_id\n           From musician Where musician.instrument ! = inst.istrument) )",
+      "options": [
+        { "id": "a", "type": "text", "value": "הציגו שם כלי נגינה המופיע בכל הלהקות." },
+        { "id": "b", "type": "text", "value": "הציגו שם כלי נגינה המופיע רק בכל הלהקות בנות מוסיקאי אחד." },
+        { "id": "c", "type": "text", "value": "הציגו שם כלי נגינה המופיע בכל הלהקות (בנות מספר מוסיקאים) שבהן יש לפחות מוסיקאי אחד שאינו מנגן על הכלי הנבדק." },
+        { "id": "d", "type": "text", "value": "הציגו שם כלי נגינה, עבורו לא קיימת להקה בת מספר מוסיקאים, אשר מוסיקאי השייך לה, אינו שייך לקבוצת מוסיקאים, המנגנים על כלי נגינה השונה מכלי הנגינה הנבדק." },
+        { "id": "e", "type": "text", "value": "השאילתה כתובה באופן שגוי, ולכן אי אפשר לנסח בשפה טבעית שאלה מתאימה." }
+      ],
+      "correctId": "d", "acceptedIds": ["d", "e"], "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "שאלה מורכבת — התקבלו שתי התשובות D ו-E (יש חוסר התאמה בשורות אך הוא אפשרי כיוון שמדובר ב-NOT EXISTS)."
+    },
+    {
+      "num": 11, "part": "ג", "topic": "relalg", "contextId": "schema",
+      "question": "מי מהתשובות הבאות מתאימה לשאילתה: \"באילו כלים מנגנים מוזיקאים שהם להקה של איש אחד\"?",
+      "options": [
+        { "id": "a", "type": "algebra", "value": "Π instrument (one_man_band X musician X band_musician)" },
+        { "id": "b", "type": "algebra", "value": "Π instrument (one_man_band ⊗ musician ⊗ band_musician)" },
+        { "id": "c", "type": "algebra", "value": "Π instrument σ_{one_man_band.b_code=band_musician.b_code} (one_man_band X musician X band_musician)" },
+        { "id": "d", "type": "algebra", "value": "Π instrument σ_{band_musician.m_id=band_musician.m_id} (one_man_band X musician ⊗ band_musician)" },
+        { "id": "e", "type": "text", "value": "אף אחת מהתשובות" }
+      ],
+      "correctId": "b", "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "צירוף טבעי (⊗) בין שלושת היחסים מבצע את ההתאמות הנדרשות לפי המפתחות המשותפים, ואז היטל (Π) על instrument."
+    },
+    {
+      "num": 12, "part": "ג", "topic": "relalg", "contextId": "schema",
+      "question": "מה דורשת השאילתה \"מה שמות המוזיקאים שמנגנים בכל כלי הפריטה\"?",
+      "options": [
+        { "id": "a", "type": "text", "value": "צירוף טבעי" },
+        { "id": "b", "type": "text", "value": "חילוק" },
+        { "id": "c", "type": "text", "value": "חיסור" },
+        { "id": "d", "type": "text", "value": "צירוף טבעי וחילוק" },
+        { "id": "e", "type": "text", "value": "צירוף טבעי וחיסור" }
+      ],
+      "correctId": "b", "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "\"מנגנים בכל כלי הפריטה\" הוא כימות אוניברסלי ← אופרטור החילוק (÷). (על D ניתנו חצי מהנקודות.)"
+    },
+    {
+      "num": 13, "part": "ג", "topic": "relalg", "contextId": "schema",
+      "question": "מה עושה השאילתה הבאה:  $$Π m_id σ_{m_gender=\"אשה\"} (musician) − Π B2.m_id σ_{B1.num_of_instruments > B2.num_of_instruments} (ρ B1 one_man_band X ρ B2 one_man_band)$$",
+      "options": [
+        { "id": "a", "type": "text", "value": "מחזירה את תעודת זהות האומנים שמנגנים לבד על הכי הרבה כלים." },
+        { "id": "b", "type": "text", "value": "מחזירה את תעודת זהות האומנים שמנגנים לבד על הכי מעט כלים." },
+        { "id": "c", "type": "text", "value": "מחזירה את תעודת זהות האומנים שהם נשים שמנגנים על הכי הרבה כלים." },
+        { "id": "d", "type": "text", "value": "מחזירה את תעודת זהות האומנים שהם נשים שמנגנות על הכי מעט כלים." },
+        { "id": "e", "type": "text", "value": "אף אחת מהתשובות אינה נכונה." }
+      ],
+      "correctId": "e", "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "ב-B2 אין m_id, ולכן השאילתה אינה נכונה; אם היינו רוצים שהיא תעבוד היה צריך צירוף טבעי עם musician שחסר. (על C ניתנו חצי מהנקודות.)"
+    },
+    {
+      "num": 15, "part": "ד", "topic": "fd_norm", "contextId": "fd",
+      "question": "מה הסגור של התכונה A?",
+      "options": [
+        { "id": "a", "type": "text", "value": "{DE}" },
+        { "id": "b", "type": "text", "value": "{C}" },
+        { "id": "c", "type": "text", "value": "{CDE}" },
+        { "id": "d", "type": "text", "value": "R" },
+        { "id": "e", "type": "text", "value": "אף אחת מהתשובות" }
+      ],
+      "correctId": "e", "acceptedIds": ["c", "e"], "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "הסגור של תכונה חייב להכיל את התכונה עצמה: A⁺ = {A,C,D,E}. אף אפשרות אינה מדויקת (ב-{CDE} חסר A), ולכן התשובה E — אך התקבלה גם C."
+    },
+    {
+      "num": 16, "part": "ד", "topic": "fd_norm", "contextId": "fd",
+      "question": "מי מבין ה-F הנתונים מקיים  $F^{+}=F1^{+}$ ?",
+      "options": [
+        { "id": "a", "type": "algebra", "value": "F = {A→C, B→A}" },
+        { "id": "b", "type": "algebra", "value": "F = {A→DE, B→C}" },
+        { "id": "c", "type": "algebra", "value": "F = {A→DE, B→C, A→B}" },
+        { "id": "d", "type": "algebra", "value": "F = {A→D, A→CE, B→A}" },
+        { "id": "e", "type": "text", "value": "אף אחת מהתשובות" }
+      ],
+      "correctId": "e", "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "בכל אחת מהאפשרויות יש תלות שאינה נובעת מ-F1 או שחסרה תלות של F1, ולכן אף אחת אינה שקולה ל-F1."
+    },
+    {
+      "num": 17, "part": "ד", "topic": "fd_norm", "contextId": "fd",
+      "question": "האם ב-F1 יש תכונה עודפת? אם כן מהי?",
+      "options": [
+        { "id": "a", "type": "text", "value": "לא, אין תכונה עודפת" },
+        { "id": "b", "type": "text", "value": "כן, E" },
+        { "id": "c", "type": "text", "value": "כן, D" },
+        { "id": "d", "type": "text", "value": "כן, A" },
+        { "id": "e", "type": "text", "value": "כן, C" }
+      ],
+      "correctId": "b", "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "E עודפת בתלות A→CE, כי A→C ו-C→DE גוררים A→E, וניתן להראות זאת לפי הכללים."
+    },
+    {
+      "num": 18, "part": "ד", "topic": "fd_norm", "contextId": "fd",
+      "question": "מי מהבאים אינו מפתח **על** של R בהינתן F1?",
+      "options": [
+        { "id": "a", "type": "text", "value": "{A}" },
+        { "id": "b", "type": "text", "value": "{B}" },
+        { "id": "c", "type": "text", "value": "{AB}" },
+        { "id": "d", "type": "text", "value": "{ABD}" },
+        { "id": "e", "type": "text", "value": "אף אחת מהתשובות" }
+      ],
+      "correctId": "a", "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "B אינה מופיעה בצד ימין ולכן חלק מכל מפתח, וסגורה הוא כל R. כל מפתח-על חייב להכיל את B, ולכן {A} אינו מפתח-על, וכל השאר כן (הם מכילים את B)."
+    },
+    {
+      "num": 20, "part": "ה", "topic": "nosql",
+      "question": "מי מהבאים יוצא דופן?",
+      "options": [
+        { "id": "a", "type": "text", "value": "AZURE" },
+        { "id": "b", "type": "text", "value": "AWS" },
+        { "id": "c", "type": "text", "value": "NoSQL" },
+        { "id": "d", "type": "text", "value": "GCP" },
+        { "id": "e", "type": "text", "value": "אף אחת מהתשובות" }
+      ],
+      "correctId": "c", "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "AZURE, AWS ו-GCP הם פלטפורמות ענן (שירותי אחסון/מחשוב), ואילו NoSQL הוא שם כולל לאוסף בסיסי נתונים לא-רלציוניים."
+    },
+    {
+      "num": 21, "part": "ה", "topic": "nosql",
+      "question": "מי מהמערכות הבאות הכי מתאימה לכלול NoSQL?",
+      "options": [
+        { "id": "a", "type": "text", "value": "מערכת ששומרת הימורים לכל לקוח, כמה כסף הוציא, כמה כסף זכה." },
+        { "id": "b", "type": "text", "value": "מערכת ששומרת כתובות וטלפונים של חברים, מה המספר שם וטלפון של החברים של כל אחד, וכל פעם שהם מדברים כמה זמן." },
+        { "id": "c", "type": "text", "value": "מערכת ששומרת קניות של אנשים בכל התחומים, מה אהבו בכל קניה מה הם ממליצים, ומה אמרו אנשים שלהם המליצו על הקנייה." },
+        { "id": "d", "type": "text", "value": "מערכת ששומרת לכל אדם את ההוצאות וההכנסות שלו לחודש ולפי אילו סעיפים הוא מסווג אותם." }
+      ],
+      "correctId": "c", "official": true, "answerSource": "solution-pdf", "confidence": "high",
+      "explanation": "C היא מערכת עם המלצות ותוכן חופשי (הכי פחות מספרים וסעיפים קבועים) — מתאימה למודל לא-רלציוני. התקבלו גם תשובות אחרות אם כללו הסבר רלוונטי."
+    }
+  ],
+  "askAdir": []
+}

@@ -1,0 +1,842 @@
+{
+  "examCode": "21B-A",
+  "examLabel": "2021 סמסטר ב׳ מועד א׳",
+  "year": 2021,
+  "examDate": "13.6.2021",
+  "course": "61303",
+  "answerSource": "solution-pdf",
+  "official": true,
+  "contexts": {
+    "erd": {
+      "kind": "image",
+      "title": "חלק א׳ — ERD: חברת סטארט-אפ ועובדים",
+      "image": "images/exams/21B-A-erd.png",
+      "caption": "השאלות הבאות מתייחסות ל-ERD הנתון (עובד, חברת סטארט-אפ, ותתי-הסוגים מתכנת / ראש צוות / מנכ\"ל)."
+    },
+    "q4erd": {
+      "kind": "image",
+      "title": "שאלה 4 — התרשים לאחר השינוי",
+      "image": "images/exams/21B-A-q4-erd.png",
+      "caption": "התרשים שונה כך שהקשר \"עובד ב\" מחובר בקו כפול (השתתפות מלאה) הן לישות עובד והן לחברת סטארט-אפ."
+    },
+    "sql": {
+      "kind": "schema",
+      "title": "חלק ב׳ — סכמת בסיס הנתונים (מועדון תחביבים)",
+      "intro": "נתונות תבניות/סכמות יחסים מתוך בסיס נתונים של מועדון המציע עיסוק בתחביבים. למועדון נרשמים אנשים המציינים באילו תחביבים הם רוצים לעסוק. בבסיס הנתונים יש מידע על מי יכול לעסוק באיזה תפקיד (על סמך אישורים רפואיים לדוגמא ושלילת מגבלות).",
+      "relations": [
+        {
+          "schema": "person([u]p-id[/u], p-name, p-city, p-age, p-gender)",
+          "meaning": "היחס מתאר פרטי אדם המחפש תחביב: מס' תעודת זהות, שם, עיר מגורים, גיל ומגדר."
+        },
+        {
+          "schema": "hobby([u]h-code[/u], h-name, h-type)",
+          "meaning": "היחס מתאר פרטי תחביב שהמועדון מציע: קוד מזהה (`h-code`), שם מילולי (`h-name`), סוג תחביב (`h-type`) כגון ספורט, מוזיקה, וכו'."
+        },
+        {
+          "schema": "capable([u]p-id[/u], [u]h-code[/u])",
+          "meaning": "יחס זה מתאר אדם שמסוגל לעסוק בתחביב."
+        },
+        {
+          "schema": "interested([u]p-id[/u], [u]h-code[/u])",
+          "meaning": "יחס זה מתאר אדם שרוצה (מעוניין) לעסוק בתחביב."
+        }
+      ]
+    },
+    "ra": {
+      "kind": "schema",
+      "title": "חלק ג׳ — נושא אלגברת היחסים (בחירות)",
+      "intro": "נתון בסיס הנתונים הבא, בנושא בחירות:",
+      "relations": [
+        {
+          "schema": "Citizen([u]AnonymousId[/u], Area, Age)",
+          "meaning": "אזרח: מזהה אנונימי, איזור מגורים, גיל."
+        },
+        {
+          "schema": "Elect(AnonymousId, partyElected)",
+          "meaning": "בחירה: מזהה אנונימי, מפלגה נבחרת. (בחלק מהשאלות ניתן להצביע כמה פעמים.)"
+        }
+      ]
+    },
+    "fd": {
+      "kind": "fd",
+      "title": "חלק ד׳ — תלויות ונרמול",
+      "algebra": [
+        "R = (A, B, C, D, E)",
+        "F = { A → BE, AE → C, C → D }"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "num": 1,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "איזו המרה של ראש-צוות היא הנכונה?",
+      "options": [
+        {
+          "id": "a",
+          "type": "schema",
+          "value": "ראש-צוות([u]מס עובד[/u], שכר, שם פרטי, שם משפחה)   משימה([u]מס עובד[/u], משימה)"
+        },
+        {
+          "id": "b",
+          "type": "schema",
+          "value": "ראש-צוות([u]מס עובד[/u], שכר, משימה, שם)"
+        },
+        {
+          "id": "c",
+          "type": "schema",
+          "value": "ראש-צוות([u]מס עובד[/u], מניות, שכר, שם פרטי, שם משפחה)"
+        },
+        {
+          "id": "d",
+          "type": "schema",
+          "value": "ראש-צוות([u]מס עובד[/u], מניות, ותק, שכר, שם)"
+        }
+      ],
+      "correctId": "a",
+      "confidence": "high",
+      "explanation": "\"משימה\" היא תכונה מרובת-ערכים ולכן דורשת טבלה משלה עם המזהה של הישות ראש-צוות; \"שם\" מורכב ומתפצל לשם פרטי/שם משפחה. מניות (מנכ\"ל) ו-ותק (מתכנת) אינם שייכים לראש-צוות.",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 2,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "איזה מההיגדים הבאים נכון?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "לחברת סטארט-אפ יתכנו כמה מנהלים."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "כל עובד חייב לעבוד בחברת סטארט-אפ אחת לפחות."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "מנכ\"ל הוא מנהל של לפחות חברת סטארט-אפ אחת."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "כל עובד יכול לעבוד בכמה חברות סטארט-אפ."
+        }
+      ],
+      "correctId": "c",
+      "confidence": "high",
+      "explanation": "לפי קשר \"מנהל\" והקרדינליות, מנכ\"ל הוא מנהל של לפחות חברת סטארט-אפ אחת.",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 3,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "האם יש בתרשים תכונה מרובת ערכים, אם כן, מהי?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "לא, אין."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "כן, התכונה \"מס עובד\"."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "כן, התכונה \"שם\"."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "כן, התכונה \"משימה\"."
+        }
+      ],
+      "correctId": "d",
+      "confidence": "high",
+      "explanation": "\"משימה\" מצוירת כאליפסה כפולה — תכונה מרובת-ערכים. (\"שם\" מורכבת, לא מרובת-ערכים.)",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 4,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "q4erd",
+      "question": "שינו את התרשים באופן הבא (ראו למעלה — הקשר \"עובד ב\" מחובר כעת בקו כפול לשתי הישויות). מה מהבאים נכון בעקבות השינוי?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "עובד יכול לעבוד בחברה אחת לכל היותר."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "עובד חייב לעבוד בחברת סטארט-אפ אחת לכל הפחות."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "חברת סטארט-אפ יכולה להכיל 0 עובדים."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "חברת סטארט-אפ יכולה להכיל מקסימום עובד אחד."
+        }
+      ],
+      "correctId": "b",
+      "confidence": "high",
+      "explanation": "הקו הכפול מציין השתתפות מלאה (טוטאלית) — כל עובד חייב להשתתף בקשר \"עובד ב\", כלומר לעבוד בחברת סטארט-אפ אחת לכל הפחות.",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 5,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "בפתרון המוצע עבור השאלה: \"הצג את שמות התחביבים בבסיס הנתונים שמספר הרוצים לעסוק בהם זהה למספר המסוגלים לעסוק בהם\", חסר הקטע המסומן __ (I) __. הפתרון מורכב משלוש שאילתות (`into inter2` / `into cap2` נותנים שם ליחס תוצאה, בדומה ל-`Create View`). מהו הקטע החסר __ (I) __?",
+      "code": "-- שאילתה 1:\nSelect hobby.h_code, hobby.h_name, count(p_id) as interest_num into inter2\nFrom interested JOIN hobby Using(h_code)\nGroup by hobby.h_code, hobby.h_name\n\n-- שאילתה 2:\nSelect hobby.h_code, hobby.h_name, count(p_id) as capable_num into cap2\nFrom capable JOIN hobby Using(h_code)\nGroup by hobby.h_code, hobby.h_name\n\n-- שאילתה 3:\nSelect inter2.h_name\nFrom inter2, cap2\nWhere __ (I) __",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "inter2. interest _num = cap2. capable_num"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "inter2.h_code=cap2.h_code and inter2.interest_num = cap2.capable_num"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "inter2.h_code=cap2. h_code and inter2.interest_num != cap2. capable_num"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "not exists (inter2. h_code = cap2. h_code and inter2. interest_num = cap2. capable_num)"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף תשובה לא נכונה."
+        }
+      ],
+      "correctId": "b",
+      "confidence": "high",
+      "explanation": "כיוון שאין שימוש ב-JOIN, יש לצרף את שתי הטבלאות על h_code (השוויון הראשון), וכן לבדוק שמספר הרוצים לעסוק שווה למספר המסוגלים (השוויון השני).",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 6,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "האם השאילתה הבאה עונה על הדרישה: \"הצג לכל קוד תחביב בבסיס הנתונים את מספר המתעניינים בתחביב, אך אינם ממוסגלים לעסוק בו\". מהי הטענה הנכונה:",
+      "code": "Select interested.h_code, count(intersted.p_id)\nFrom interested, capable\nWhere interested.p_id=capable.p_id and interested.h_code != capable.h_code\nGroup by interested.h_code",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "השאילתה נכונה ומדוייקת."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "השאילתה נכונה, אך ניתן היה לכתוב אותה עם JOIN בצורה אחרת."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "השאילתה נכונה, אבל מחזירה רק את מספר המתעניינים במידה והיה לפחות מתעניין אחד."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "השאילתה שגוייה"
+        }
+      ],
+      "correctId": "d",
+      "confidence": "high",
+      "explanation": "השאילתה שגויה — התנאי בודק p_id שווה ו-h_code שונה, ולכן סופרת התאמות ל-h_code אחר, ולא בודקת שהאדם אינו מסוגל לעסוק בתחביב הנבדק.",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 7,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "רוצים למצוא: \"מגדר עבורו ממוצע הגילאים של הנרשמים למועדון (person) הוא הגדול ביותר\". נתונה הצעת פתרון בה חסר החלק המסומן __ (II) __ (`INTO` פועל בדומה ל-`Create View`). מהו הקטע החסר __ (II) __?",
+      "code": "Select person.p_gender as gender, avg(person.p_age) as avg_age into average_age_per_gender\nFrom person\nGroup by person.p_gender\n\nSelect AG1.gender\nFrom average_age_per_gender as AG1, ___(II)___",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "Where AG1.avg_age> = max(avg(person.p_age))"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "average_age_per_gender as AG2  Where AG1.avg_age > AG2.avg_age"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "Where not exists(Select avg_age From average_age_per_gender as AG2 Where AG2. avg_age< AG1.avg_age)"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "אף תשובה לא נכונה."
+        }
+      ],
+      "correctId": "b",
+      "acceptedIds": [
+        "b",
+        "d"
+      ],
+      "confidence": "high",
+      "explanation": "פתרון B מצרף את הטבלה לעצמה ומחזיר את המגדר בעל הממוצע הגדול. אם יש רק שני מגדרים B יעבוד, אך התשובה אינה חד-משמעית ולכן ניתן ניקוד מלא גם על D. (פתרון C שגוי: בגלל NOT EXISTS הוא מחזיר את המינימלי ולא את המקסימלי.)",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 8,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "נתון פתרון מוצע עבור השאלה: \"הצג לכל קוד תחביב את שמות האנשים (person) המתעניינים בתחביב וגם מסוגלים לעסוק בו. קודי התחביבים יוצגו בסדר עולה, ושמות האנשים העונים על הדרישה יוצגו בסדר יורד\". בפתרון חסר הקטע המסומן __ (III) __. הקטע החסר __ (III) __ הוא:",
+      "code": "Select hobby.hobby_code, person.p_name\nFrom person, interested, capable\nWhere interested.p_id = person.p_id and interested.p_id = capable.p_id\n      and capable.h_code = interested.h_code\n____ (III) ____",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "הקטע ___ (III) ___ מיותר. אין צורך לרשום דבר."
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "Group by interested.h_code, person.p_name"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "Order by interested.h_code desc, person.p_name"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "Order by interested.h_code, person.p_name desc"
+        },
+        {
+          "id": "e",
+          "type": "code",
+          "value": "Order by person.p_name desc, interested.h_code"
+        }
+      ],
+      "correctId": "d",
+      "acceptedIds": [
+        "d",
+        "e"
+      ],
+      "confidence": "high",
+      "explanation": "קודי התחביב בסדר עולה ושמות האנשים בסדר יורד → Order by interested.h_code, person.p_name desc. התקבלה גם E, כיוון שלא צוין במפורש מה למיין קודם.",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 9,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "עבור השאלה: \"הצג שמות תחביבים מבסיס הנתונים אשר אף אדם (person) אינו מעוניין לעסוק בהם\", מוצעים הפתרונות הבאים. סמן את הטענה המתאימה:",
+      "code": "-- פתרון 1:\nSelect hobby.h_name From hobby\nWhere hobby.h_code NOT IN (select interested.h_code from interested)\n\n-- פתרון 2:\nSelect hobby.h_name From hobby, interested\nWhere hobby.h_code= interested.h_code and interested.h_code_id NOT IN\n      (Select hobby.h_code From hobby)",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "רק פתרון 1 נכון."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "רק פתרון 2 נכון."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "שני הפתרונות נכונים."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "שני הפתרונות שגויים."
+        }
+      ],
+      "correctId": "a",
+      "confidence": "high",
+      "explanation": "בפתרון 2 בדיקת ה-NOT IN היא מול כלל התחביבים (hobby) ולא מול אלו שמעוניינים בהם, ולכן הוא שגוי. רק פתרון 1 נכון.",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 10,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "נתונה השאילתה הבאה. סמן את השאלה (מנוסחת בשפה טבעית) המתאימה ביותר לשאילתה. (הערה: במהלך המבחן תוקנה טעות כתיב — `a_name`/`a_city` → `p_name`/`p_city`.)",
+      "code": "Select P1.p_name, P1.p_gender, P1.p_city\nFrom person as P1\nWhere not Exists (Select P2. p_age\n                  From person as P2\n                  Where P2.p_age < P1. P_age)",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "הצג שמות אנשים וערים בבסיס הנתונים, בהן יש אדם בעל גיל מינימלי ביחס לכל האנשים בבסיס הנתונים."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "הצג שמות אנשים בעלי הגיל המינימלי ביחס לכל המועמדים בבסיס הנתונים. ולכל אדם כזה, הצג את המגדר אליו שייך ואת שם העיר בה הוא גר."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "חשב את הערך הגדול ביותר של גילו של אדם, והצג את שמו, המגדר שלו ושם עיר מגוריו."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "השאילתה כתובה באופן שגוי, ולכן אי אפשר לנסח בשפה טבעית שאלה מתאימה."
+        }
+      ],
+      "correctId": "b",
+      "confidence": "medium",
+      "explanation": "NOT EXISTS על מישהו צעיר יותר → מחזירה את בעלי הגיל המינימלי, ולכל אחד את המגדר ועיר המגורים. (בעותק המקורי הופיעו a_name/a_city שתוקנו ל-p_name/p_city במהלך המבחן.)",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 11,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "נתונה השאילתה הבאה. סמן את השאלה (מנוסחת בשפה טבעית) המתאימה ביותר לשאילתה:",
+      "code": "Select H1.h_name\nFrom hobby as H1\nWhere NOT Exists (Select P1.p_id\n                  From person where P1.p_id NOT IN\n                      (Select C1. p_id From capable as C1 Where C1.h_code = H1. h_code) )",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "הציגו שם תחביב אתגרי, עבורו אין אדם (person) בבסיס הנתונים שמסוגל לעסוק בתחביב זה."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "הציגו שם תחביב לא פופולרי, עבורו אין אדם (person) בבסיס הנתונים שמעוניין לעסוק בתחביב זה."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "הציגו שם תחביב פופולרי במיוחד, עבורו אין אדם (person) בבסיס הנתונים שאינו מעוניין לעסוק בתחביב זה."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "השאילתה כתובה באופן שגוי, ולכן אי אפשר לנסח בשפה טבעית שאלה מתאימה."
+        }
+      ],
+      "correctId": "d",
+      "confidence": "high",
+      "explanation": "ב-P1 לא מוגדר יחס ב-FROM (השאילתה כתובה שגוי), וגם אף ניסוח אחר אינו מתאים. (הכוונה היתה לחילוק: תחביב שכל האנשים מסוגלים לעסוק בו.)",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 12,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "נתונות 3 הצעות פתרון עבור השאלה: \"הציגו את גילו המקסימלי של אדם מבסיס הנתונים, את שמו ואת המגדר אליו משתייך\". סמנו את הטענה הנכונה:",
+      "code": "-- פתרון 1:\nSelect p_age, p_name, p_gender\nFrom person\nWhere p_age >= all (Select p_age  From person)\n\n-- פתרון 2:\nSelect max(p_age), p_name, p_gender\nFrom person\n\n-- פתרון 3:\nSelect p_age, p_name, p_gender\nFrom person\nWhere p_age = any (Select max(p_age) From person)",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "פתרון 1 ופתרון 3 נכונים."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "פתרון 1 ופתרון 2 נכונים."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "כל שלושת הפתרונות נכונים."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "רק פתרון 2 נכון."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "רק פתרון 3 נכון."
+        }
+      ],
+      "correctId": "a",
+      "confidence": "high",
+      "explanation": "פתרונות 1 (>= all) ו-3 (= any (max)) נכונים. פתרון 2 שגוי — max ללא GROUP BY יחד עם עמודות נוספות (p_name, p_gender).",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 13,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "נתונה הצעת פתרון לשאלה: \"עבור כל זוג של עיר ותחביב, הצג את מספר האנשים מהעיר המסוגלים לעסוק בתחביב\". בפתרון חסר הקטע המסומן __ (V) __. החלק החסר __ (V) __ הוא:",
+      "code": "Select  p_city, h_code, count(p_id)\n____(V)___",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "אף תשובה אינה נכונה."
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "From person JOIN capable USING(p-id) Group by p_city, h_code"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "From person JOIN capable USING(p-id)  Group by p_city"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "From person JOIN capable USING(p-id) Order by p_city, h_code"
+        }
+      ],
+      "correctId": "b",
+      "confidence": "high",
+      "explanation": "לכל זוג (עיר, תחביב) יש לקבץ לפי שתי התכונות ולספור, ולכן Group by p_city, h_code.",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 14,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "ra",
+      "question": "מה עושה השאילתה הבאה?  $$Π_{E1.AnonymousId} σ_{E1.AnonymousId = E2.AnonymousId ∧ E1.partyElected != E2.partyElected} (ρ_{E1} Elect X ρ_{E2} Elect)$$",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "מוצאת מזהים אנונימיים שהצביעו בבחירות"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "מוצאת מזהים אנונימיים שלא הצביעו בבחירות"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "מוצאת מזהים אנונימיים שהצביעו בבחירות פעמיים או יותר"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "מוצאת למי הצביע כל מזהה אנונימי"
+        }
+      ],
+      "correctId": "c",
+      "confidence": "high",
+      "explanation": "התנאי מוצא אותו מזהה אנונימי המופיע עם מפלגות שונות — כלומר הצביע לפחות פעמיים (עם בחירה שונה).",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 15,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "ra",
+      "question": "מי מהשאילתות הבאות תחזיר את המזהה של המצביע עם הגיל המינימלי? (הערה: במבחן הודפס Elect במקום Citizen; ל-Elect אין Age, ולכן תוקן ל-Citizen.)",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "Π_{E1.AnonymousId} σ_{E1.age>E2.age} (ρ_{E1} Citizen X ρ_{E2} Citizen)"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "Π_{E2.AnonymousId} σ_{E1.age>E2.age} (ρ_{E1} Citizen X ρ_{E2} Citizen)"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "Π_{AnonymousId} σ_{Min(Age)} (Citizen X Citizen)"
+        },
+        {
+          "id": "d",
+          "type": "algebra",
+          "value": "Π_{AnonymousId} (Citizen) − Π_{E2.AnonymousId} σ_{E1.age>E2.age} (ρ_{E1} Citizen X ρ_{E2} Citizen)"
+        },
+        {
+          "id": "e",
+          "type": "algebra",
+          "value": "Π_{AnonymousId} (Citizen) − Π_{E1.AnonymousId} σ_{E1.age>E2.age} (ρ_{E1} Citizen X ρ_{E2} Citizen)"
+        }
+      ],
+      "correctId": "e",
+      "confidence": "medium",
+      "explanation": "מכל המזהים מחסירים את אלו שגדולים ממישהו (E1.age>E2.age → E1 אינו הצעיר), ומקבלים את בעל הגיל המינימלי. (בהתאם לתיקון Elect→Citizen; ראו askAdir.)",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 16,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "ra",
+      "question": "בהנחה שאפשר להצביע כמה פעמים שרוצים, מי מהשאילתות הבאות מחזירה את האנשים שהצביעו לכל המפלגות?",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "Π_{AnonymousId} (Elect X Citizen)"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "Π_{AnonymousId} (Elect ⊗ Citizen)"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "Π_{AnonymousId} (Citizen) ÷ Π_{partyElected} (Elect)"
+        },
+        {
+          "id": "d",
+          "type": "algebra",
+          "value": "Π_{AnonymousId,partyElected} (Elect ⊗ Citizen) ÷ Π_{partyElected} (Elect)"
+        }
+      ],
+      "correctId": "d",
+      "confidence": "high",
+      "explanation": "\"הצביעו לכל המפלגות\" הוא חילוק (÷): המחולק (AnonymousId, partyElected) חלקי כל המפלגות (partyElected). ב-C יש אי-התאמת סכמות. (הערה: הבחינה מסמנת חילוק בתו ':'.)",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 17,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "ra",
+      "question": "מי מהאמירות הבאות נכונה?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "באלגברת היחסים לא ניתן לכתוב שאילתה המחזירה מה גיל המצביע המקסימלי."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "באלגברת היחסים לא ניתן לכתוב שאילתה המחזירה מה מספר המצביעים בכלל המפלגות."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "באלגברת היחסים לא ניתן לכתוב שאילתה המחזירה מיהו האיזור עם המצביע הצעיר ביותר."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "באלגברת היחסים לא ניתן לחשב מיהם האיזורים בהם הצביע יותר ממצביע אחד."
+        }
+      ],
+      "correctId": "b",
+      "confidence": "high",
+      "explanation": "באלגברת היחסים אין ספירה (count), ולכן לא ניתן להחזיר את מספר המצביעים. את D (איזורים עם יותר ממצביע אחד) כן ניתן לחשב על ידי חיסור/צירוף עצמי.",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 18,
+      "part": "ד",
+      "topic": "fd_norm",
+      "contextId": "fd",
+      "question": "מי מהבאים הוא מפתח קביל ב-R ביחס ל-F הנתון?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "{A}"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "{B}"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "{AB}"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "{AE}"
+        }
+      ],
+      "correctId": "a",
+      "confidence": "high",
+      "explanation": "A⁺ = {A,B,E} (מ-A→BE), ואז AE→C נותן C, ו-C→D נותן D → A⁺ = R. לכן {A} מפתח-על מינימלי (קביל). {AB} ו-{AE} מכילים את {A} ולכן אינם מינימליים.",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 19,
+      "part": "ד",
+      "topic": "fd_norm",
+      "contextId": "fd",
+      "question": "האם ביחס הנתון יש תכונות עודפות בתלות השייכת ל-F?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "לא, אין תכונות עודפות."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "עודפת B ב-A→BE"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "עודפת E ב-A→BE"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "עודפת A ב-AE→C"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "עודפת E ב-AE→C"
+        }
+      ],
+      "correctId": "e",
+      "confidence": "high",
+      "explanation": "בתלות AE→C התכונה E עודפת: A⁺ (ביחס ל-F) כבר מכיל את C (A→BE ואז AE→C ואז C→D), כלומר A→C מתקיים, ולכן E מיותרת בצד שמאל.",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 20,
+      "part": "ד",
+      "topic": "fd_norm",
+      "contextId": "fd",
+      "question": "האם התלות EC→D נמצאת בסגור של F? אם כן, מדוע.",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "לא, התלות איננה בסגור של F"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "כן, בהיסק נשתמש ברפלקסיביות."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "כן, בהיסק נשתמש בפירוק"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "כן, בהיסק נשתמש בהכלה."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "לא ניתן לענות על השאלה עם הנתונים הקיימים."
+        }
+      ],
+      "correctId": "b",
+      "acceptedIds": [
+        "b",
+        "c",
+        "d"
+      ],
+      "confidence": "high",
+      "explanation": "EC→D נמצאת בסגור (נובעת מ-C→D). ניתן להראות זאת במגוון דרכים — התקבלו למלוא הניקוד התשובות B (רפלקסיביות), C (פירוק) ו-D (הכלה), או שילובים שלהן.",
+      "official": true,
+      "answerSource": "solution-pdf"
+    },
+    {
+      "num": 21,
+      "part": "ד",
+      "topic": "fd_norm",
+      "question": "נתון ש-E עודפת בתבנית היחסים $$R = (A, B, C, D, E)$$ עם אוסף התלויות $$F = { A → BC, AE → D }$$ מה מהבאים נכון?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "היחס נמצא בצורה נורמלית 3NF."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "היחס נמצא בצורה נורמלית BCNF."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "היחס מנורמל גם לפי 3NF וגם לפי BCNF."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "היחס אינו מנורמל לפי BCNF או 3NF."
+        }
+      ],
+      "correctId": "d",
+      "confidence": "high",
+      "explanation": "המפתח הקביל הוא AE. התלות A→BC מפרה BCNF (A אינו מפתח-על) וגם מפרה 3NF (BC אינן חלק ממפתח קביל), ולכן היחס אינו מנורמל לא ל-3NF ולא ל-BCNF.",
+      "official": true,
+      "answerSource": "solution-pdf"
+    }
+  ],
+  "askAdir": [
+    "Q10 (SQL): בעותק הבחינה הופיעו `P1.a_name`/`P1.a_city` (שגיאת כתיב). לפי הפתרון הרשמי הם תוקנו במהלך המבחן ל-`p_name`/`p_city`, והתשובה הרשמית היא B. הוצג הנוסח המתוקן.",
+    "Q15 (אלגברה): בעותק הבחינה כל האפשרויות השתמשו ב-Elect, אך ל-Elect אין Age; הפתרון הרשמי תיקן ל-Citizen והתשובה היא E (ה'). הוצג הנוסח המתוקן.",
+    "Q16 (אלגברה): הבחינה מסמנת את אופרטור החילוק בתו ':' (נקודתיים). כאן הוצג כ-÷ (חילוק תקני). התשובה D ודאית.",
+    "Q20 (תלויות): מפתח התשובות סימן B, C ו-D בצהוב וקיבלו מלוא הניקוד (רפלקסיביות / פירוק / הכלה). נקבע correctId=b עם acceptedIds=[b,c,d]."
+  ]
+}

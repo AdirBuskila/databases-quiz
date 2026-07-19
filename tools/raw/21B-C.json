@@ -1,0 +1,860 @@
+{
+  "examCode": "21B-C",
+  "examLabel": "2021 סמסטר ב׳ מועד ג׳",
+  "year": 2021,
+  "examDate": "31.8.2021",
+  "course": "61303",
+  "official": false,
+  "answerSource": "combined-pdf",
+  "contexts": {
+    "erd": {
+      "kind": "image",
+      "title": "חלק א׳ — ERD: חברת סטארט-אפ ועובדים",
+      "image": "images/exams/21B-C-erd.png",
+      "caption": "התייחסו לתרשים ה-ERD המתאר בסיס נתונים של חברת סטארט-אפ ועובדיה, וענו על השאלות."
+    },
+    "db": {
+      "kind": "schema",
+      "title": "חלקים ב׳ / ג׳ — סכמת בסיס הנתונים (רפת פרות)",
+      "intro": "נתונות תבניות/סכמות יחסים מתוך בסיס נתונים המתאר מצב של רפת פרות בחודש מסוים. הסכמה משמשת את חלק ב׳ (SQL) ואת חלק ג׳ (אלגברת יחסים).",
+      "relations": [
+        {
+          "schema": "mother_of([u]mom_id[/u], [u]daughter_id[/u])",
+          "meaning": "היחס מתאר קשר בין פרה אם (`mom_id`) ובתה (`daughter_id`)."
+        },
+        {
+          "schema": "cow(nickname, [u]cow_id[/u], age)",
+          "meaning": "פרטי פרה: קוד מזהה (`cow_id`), גיל הפרה בחודשים (`age`), ושם חיבה (`nickname`)."
+        },
+        {
+          "schema": "milk_product([u]cow_id[/u], amount)",
+          "meaning": "היחס מכיל מידע על כמות החלב (`amount`) שהפרה הניבה."
+        },
+        {
+          "schema": "place_of([u]cow_id[/u], block_id)",
+          "meaning": "היחס מתאר באיזה ביתן הפרה מתגוררת. `block_id` הוא קוד הביתן."
+        },
+        {
+          "schema": "food_of([u]cow_id[/u], [u]food_code[/u])",
+          "meaning": "היחס מתאר קשר בין פרה למזון שהיא אוכלת. פרה יכולה לאכול מספר מזונות (בעלי קודים שונים), ומזון בעל קוד מסוים יכול להינתן לפרות שונות. (נוסף לבסיס הנתונים עבור שאלות 14-15.)"
+        }
+      ]
+    },
+    "fd": {
+      "kind": "fd",
+      "title": "חלק ד׳ — תלויות ונרמול (שאלות 20-21)",
+      "algebra": [
+        "R = (A, B, C, D, E, F)",
+        "F = {F → AE,  BE → C,  C → AD}"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "num": 1,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "איזו המרה של הקשר \"מנהל\" היא הנכונה? שים לב למפתחות.",
+      "options": [
+        {
+          "id": "a",
+          "type": "schema",
+          "value": "מנהל([u]מנהל[/u], חברת סטארט אפ, מנכ\"ל)"
+        },
+        {
+          "id": "b",
+          "type": "schema",
+          "value": "מנהל([u]שם חברה[/u], מניות)"
+        },
+        {
+          "id": "c",
+          "type": "schema",
+          "value": "מנהל([u]שם חברה[/u], מס' עובד)"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "אף אחת מהאפשרויות לא נכונה"
+        }
+      ],
+      "correctId": "c",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "הקשר \"מנהל\" הוא בין מנכ\"ל (זוהה במס' עובד) לבין חברת סטארט-אפ (זוהתה בשם חברה); ההמרה כוללת את שני המפתחות: מנהל(שם חברה, מס' עובד). (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 2,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "איזה מההיגדים הבאים נכון?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "לכל עובד בחברה יש שכר ומניות."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "לכל עובד נשמר הותק שלו בחברה."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "מנכ\"ל יכול לנהל חברת סטארט-אפ אחת בלבד."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "לכל חברת סטארט-אפ יש מנכ\"ל אחד לפחות."
+        }
+      ],
+      "correctId": "d",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "\"מניות\" ו\"ותק\" הן תכונות של תת-ישויות מסוימות בלבד (מנכ\"ל / מתכנת), ולכן A ו-B שגויים. עקב השתתפות מלאה של החברה בקשר \"מנהל\", לכל חברת סטארט-אפ יש מנכ\"ל אחד לפחות → D. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 3,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "כמה קשרים חזקים יש בתרשים?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "3"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "2"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "1"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "0"
+        }
+      ],
+      "correctId": "b",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "בתרשים שני קשרים (\"עובד ב\" ו\"מנהל\"); היררכיית ה-Is A אינה קשר. אין ישויות חלשות, ולכן 2 קשרים חזקים. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 4,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "רוצים להוסיף לבסיס הנתונים את האפשרות של מנכ\"ל שמנהל חברה מסוימת לקבל חונך שהוא מנכ\"ל מנוסה, שיעזור לו בניהול. מי מהדיאגרמות הבאות היא הנכונה ביותר?",
+      "options": [
+        {
+          "id": "a",
+          "type": "image",
+          "value": "images/exams/21B-C-q4a.png"
+        },
+        {
+          "id": "b",
+          "type": "image",
+          "value": "images/exams/21B-C-q4b.png"
+        },
+        {
+          "id": "c",
+          "type": "image",
+          "value": "images/exams/21B-C-q4c.png"
+        },
+        {
+          "id": "d",
+          "type": "image",
+          "value": "images/exams/21B-C-q4d.png"
+        }
+      ],
+      "correctId": "a",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "הקשר \"חונך\" הוא בין שני מנכ\"לים (מנכ\"ל חונך מנכ\"ל מנוסה אחר) ולכן זהו קשר רקורסיבי על ישות אחת (מנכ\"ל) — דיאגרמה A. B מציגה קשר לא-רקורסיבי בין מנכ\"ל לחברה (החונך אינו מנכ\"ל), D מציגה את \"חונך\" כתכונה. חלופה אפשרית: C (רקורסיבי + חברת הסטארט-אפ) אם רוצים לקשור את החונכות לחברה מסוימת. הסטודנט סימן B ו-C. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 5,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "db",
+      "question": "הצג את כמות החלב המירבית שהניבה פרה ברפת, ואת קודי הפרות שהניבו כמות מירבית זו. בקוד הנתון חסר החלק המסומן __(1)__. **הערה:** `INTO` פועל בדומה ל-`Create View ViewName As`. להלן 4 פתרונות המוצעים להוות את הקטע החסר __(1)__ — סמן את הטענה המתאימה.",
+      "code": "-- קוד נתון (חסר בו הקטע __(1)__):\nSelect max(amount) as max_amount INTO max_milk_product\nFrom milk-product;\n__(1)__\n\n-- פתרון 1:\nSelect cow_id, max_milk_product.max_amount\nFrom milk_product, max_milk_product\nWhere milk_product.amount=max_milk_product.max_amount\n\n-- פתרון 2:\nSelect cow_id, amount\nFrom milk_product\nWhere amount >= all (select amount from milk_product)\n\n-- פתרון 3:\nSelect cow_id, amount\nFrom milk_product\nWhere amount = any (select max_amount from max_milk_product)\n\n-- פתרון 4:\nSelect cow_id, max(amount)\nFrom milk_product",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "רק פתרון 1 נכון."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "רק פתרון 2 ופתרון 3 נכונים."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "רק פתרון 1 ופתרון 4 נכונים."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "פתרון 1, 2 ו-3 נכונים."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אין אף פתרון נכון."
+        }
+      ],
+      "correctId": "d",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "פתרונות 1, 2 ו-3 מחזירים את הפרות בעלות כמות החלב המקסימלית (בדרכים שונות); פתרון 4 שגוי — `max(amount)` יחד עם `cow_id` ללא `GROUP BY`. לכן D. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 6,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "db",
+      "question": "הצג לכל קוד ביתן את כמות החלב המירבית שהניבה פרה המתגוררת בו. בקוד הנתון חסר החלק המסומן __(2)__. מהו הקטע החסר __(2)__?",
+      "code": "Select block_id, max(amount)\nFrom milk_product, place_of\n__(2)__",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "Group by block_id  Where milk_product.cow_id=place_of.cow_id"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "Where milk_product.cow_id=place_of.cow_id"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "Where milk_product.cow_id=place_of.cow_id  Group by block_id"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "Group by block_id  Having milk_product.cow_id=place_of.cow_id"
+        },
+        {
+          "id": "e",
+          "type": "code",
+          "value": "Where NOT Exists(milk_product.amount != max(amount))"
+        }
+      ],
+      "correctId": "c",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "נדרש קודם צירוף היחסים בתנאי `milk_product.cow_id=place_of.cow_id` ואז `Group by block_id` — הסדר התקין הוא WHERE ואז GROUP BY, כלומר C. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 7,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "db",
+      "question": "מי מהשאילתות הבאות עונה על הדרישה: \"הצג את קודי הביתנים בהם הגיל הממוצע של הפרות עולה על 10 חודשים\"? סמן את הטענה המתאימה.",
+      "code": "-- שאילתה 1:\nSelect block_id\nFrom cow Join place_of Using(cow_id)\nWHERE (avg(age) > 10)\nGroup by block_id\n\n-- שאילתה 2:\nSelect block_id\nFrom cow, place_of\nWhere cow.cow_id=place_of.cow_id\nGroup by block_id\nHaving (avg(age) > 10)\n\n-- שאילתה 3:\nSelect block_id, avg(age)\nFrom cow Join place_of Using(cow_id)\nGroup by block_id\nWhere (avg(age) > 10)",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "כל השאילתות נכונות."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "כל השאילתות שגויות."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "רק שאילתה 1 נכונה."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "רק שאילתה 2 נכונה."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "רק שאילתה 3 נכונה."
+        }
+      ],
+      "correctId": "d",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "שאילתות 1 ו-3 משתמשות ב-`avg(age)` בתוך `WHERE` (שגוי). רק שאילתה 2 מסננת קבוצות נכון עם `HAVING (avg(age) > 10)` → D. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 8,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "db",
+      "question": "שאלה משותפת ל-8 ו-9: הצג שלשות שמות פרות היוצרות שרשרת דורות באורך 3 (סבתא, אם, נכדה), כאשר בתוך כל שרשרת תנובת החלב עולה מדור לדור. בקוד הנתון חסרים שני חלקים המסומנים __(3)__ ו-__(4)__. מהו הקטע החסר __(3)__?",
+      "code": "Select c1.nickname, c2.nickname, c3.nickname\nFrom cow as c1, cow as c2, cow as c3, __(3)__,\n     milk_product as mp2, milk_product as mp3\nWhere m1.mom_id=c1.cow_id and m1.daughter_id=c2.cow_id\n__(4)__\nand m3.amount > m2.amount and m2.amount > m1.amount",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "milk_product as m1, milk_product as m2, milk_product as mp1"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "milk_product as mp1"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "mother_of as m1, mother_of as m2, milk_product as mp1"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "mother_of as m1, m2 JOIN milk_product as mp1"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "שום דבר לא חסר"
+        }
+      ],
+      "correctId": "c",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "ה-WHERE משתמש ב-`m1.mom_id`/`m1.daughter_id` (מ-mother_of) ובחסר את `mp1`, ולכן הקטע (3) הוא `mother_of as m1, mother_of as m2, milk_product as mp1` → C. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 9,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "db",
+      "question": "שאלה משותפת ל-8 ו-9: הצג שלשות שמות פרות היוצרות שרשרת דורות באורך 3 (סבתא, אם, נכדה), כאשר בתוך כל שרשרת תנובת החלב עולה מדור לדור. בקוד הנתון חסרים שני חלקים המסומנים __(3)__ ו-__(4)__. מהו הקטע החסר __(4)__?",
+      "code": "Select c1.nickname, c2.nickname, c3.nickname\nFrom cow as c1, cow as c2, cow as c3, __(3)__,\n     milk_product as mp2, milk_product as mp3\nWhere m1.mom_id=c1.cow_id and m1.daughter_id=c2.cow_id\n__(4)__\nand m3.amount > m2.amount and m2.amount > m1.amount",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "and m2.mom_id=c2.cow_id"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "and m1.mom_id=c2.cow_id and m1.daughter_id=c3.cow_id"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "and m2.daughter_id=c3.cow_id"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "and m2.mom_id=c2.cow_id and m2.daughter_id=c3.cow_id"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "שום דבר לא חסר"
+        }
+      ],
+      "correctId": "d",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "יש לקשר את הדור השני (c2, אם) לדור השלישי (c3, נכדה) דרך `m2`: `m2.mom_id=c2.cow_id and m2.daughter_id=c3.cow_id` → D. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 10,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "db",
+      "question": "שאלה משותפת ל-10 ו-11: \"מצא קודי הפרות אשר כמות החלב שלהן ייחודית\" (כלומר, אין שום פרה אחרת שהניבה אותה כמות חלב). נתונות שתי הצעות פתרון, שתיהן נכונות, ובכל אחת חסר קטע. מהו הקטע החסר __(5)__ בשאילתה 1?",
+      "code": "-- שאילתה 1:\nSelect mp.cow_id\nFrom milk_product as mp\nWhere __(5)__ (select *\n     From milk_product as mp2\n     Where mp.amount=mp2.amount\n     and mp.cow_id =! mp2.cow_id)\n\n-- שאילתה 2:\nSelect mp1.cow_id\nFrom milk_product as mp1\nWhere (select count(mp2.cow_id) from milk_product as mp2\n       Where mp1.amount=mp2.amount) __(6)__",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "mp.amount !="
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "IN"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "NOT IN"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "Exists"
+        },
+        {
+          "id": "e",
+          "type": "code",
+          "value": "NOT Exists"
+        }
+      ],
+      "correctId": "e",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "התנאי \"כמות ייחודית\" פירושו שלא קיימת פרה אחרת עם אותה כמות → `Where NOT Exists (...)` → E (אומת לוגית). הסטודנט סימן במקביל גם D בטעות. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 11,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "db",
+      "question": "שאלה משותפת ל-10 ו-11: \"מצא קודי הפרות אשר כמות החלב שלהן ייחודית\" (כלומר, אין שום פרה אחרת שהניבה אותה כמות חלב). נתונות שתי הצעות פתרון, שתיהן נכונות, ובכל אחת חסר קטע. מהו הקטע החסר __(6)__ בשאילתה 2?",
+      "code": "-- שאילתה 1:\nSelect mp.cow_id\nFrom milk_product as mp\nWhere __(5)__ (select *\n     From milk_product as mp2\n     Where mp.amount=mp2.amount\n     and mp.cow_id =! mp2.cow_id)\n\n-- שאילתה 2:\nSelect mp1.cow_id\nFrom milk_product as mp1\nWhere (select count(mp2.cow_id) from milk_product as mp2\n       Where mp1.amount=mp2.amount) __(6)__",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "Group by mp1.cow_id"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "=1"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "לא חסר כלום."
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": ";"
+        }
+      ],
+      "correctId": "b",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "תת-השאילתה סופרת כמה פרות בעלות אותה כמות חלב; לייחודיות הספירה חייבת להיות בדיוק 1 (רק הפרה עצמה) → `=1` → B. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 12,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "db",
+      "question": "נתונה השאילתה הבאה. סמנו את השאלה (מנוסחת בשפה טבעית) המתאימה ביותר לשאילתה הנתונה:",
+      "code": "Select c.cow_id\nFrom cow as c\nWhere not exists (select mother_of.mom_id\n     From mother_of\n     Where c.cow_id=mother_of.mom_id)",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "הציגו קודי פרות שאין להן בנות בבסיס הנתונים."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "הציגו קודי פרות שאין להן אימהות בבסיס הנתונים."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "הציגו קודי פרות שיש להן בת אחת בבסיס הנתונים."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "השאילתה כתובה באופן שגוי, ולכן אי אפשר לנסח בשפה טבעית שאלה מתאימה."
+        }
+      ],
+      "correctId": "a",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "`mother_of.mom_id = c.cow_id` מתקיים כאשר הפרה היא אם; `NOT EXISTS` בוחר פרות שאינן אם של אף פרה — כלומר פרות שאין להן בנות → A. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 13,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "db",
+      "question": "מי מהשאילתות הבאות שקולות לשאילתה הנתונה בשאלה 12?",
+      "code": "-- שאילתה 1:\nSelect cow_id\nFrom cow\nWhere cow_id not in (select mom_id From mother_of)\n\n-- שאילתה 2:\nSelect c.cow_id\nFrom cow as c\nWhere c.cow_id not in (select mother_of.mom_id\n     From mother_of\n     Where c.cow_id=mother_of.mom_id)",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "רק שאילתה 1 שקולה לשאילתה הנתונה."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "רק שאילתה 2 שקולה לשאילתה הנתונה."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "שתי השאילתות (כל אחת בנפרד) שקולות לשאילתה הנתונה."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "אין שאילתה השקולה לשאילתה הנתונה."
+        }
+      ],
+      "correctId": "c",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "שאילתה 12 מוצאת פרות שאינן אמהות. שאילתה 1 (`cow_id not in (select mom_id...)`) שקולה. שאילתה 2 עם `NOT IN` מתואם: תת-השאילתה מחזירה {c.cow_id} כשהפרה אמא (→ מסוננת) או קבוצה ריקה כשאינה אמא (→ נכללת), ולכן גם היא שקולה. שתי השאילתות שקולות → C. (הסטודנט סימן A מתוך חשש שנדרש NOT EXISTS, אך ה-NOT IN המתואם תקין כאן.) (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 14,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "db",
+      "question": "שאלה משותפת ל-14 ו-15: לבסיס הנתונים נוספה תבנית היחס `food_of(cow_id, food_code)` (קשר בין פרה למזון שהיא אוכלת). השאילתה מציגה מספר זהות של פרה אשר אוכלת את כל המזונות שאוכלת הפרה \"נחמה\". בשאילתה חסרים קטעי תיעוד (הסבר) המסומנים __(7)__ ו-__(8)__. מהו קטע התיעוד החסר __(7)__?",
+      "code": "SELECT distinct food1.cow_id\nFROM food_of as food1        -- שורה תורנית המתייחסת לפרה הנבדקת\nWhere not Exists ( Select food2.food_code\n     From cow, food_of as food2\n     Where cow.nickname = \"נחמה\" and cow.cow_id= food2.cow_id     -- __(7)__\n     and food2.food_code not IN\n          (SELECT distinct food3.food_code\n           FROM food_of as food3\n           WHERE food1.cow_id = food3.cow_id) )     -- __(8)__",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "בחירת קוד מזון של הפרה \"נחמה\"."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "בחירת קוד מזון של הפרה הנבדקת."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "בחירת קוד מזון של פרה כלשהי בבסיס הנתונים."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "לא ניתן לנסח תיאור מתאים לקטע החסר כיוון שיש שגיאה בקוד."
+        }
+      ],
+      "correctId": "a",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "השורה `cow.nickname = \"נחמה\" and cow.cow_id = food2.cow_id` בוחרת את קודי המזון של הפרה \"נחמה\" → A. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 15,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "db",
+      "question": "שאלה משותפת ל-14 ו-15: לבסיס הנתונים נוספה תבנית היחס `food_of(cow_id, food_code)` (קשר בין פרה למזון שהיא אוכלת). השאילתה מציגה מספר זהות של פרה אשר אוכלת את כל המזונות שאוכלת הפרה \"נחמה\". בשאילתה חסרים קטעי תיעוד (הסבר) המסומנים __(7)__ ו-__(8)__. מהו קטע התיעוד החסר __(8)__?",
+      "code": "SELECT distinct food1.cow_id\nFROM food_of as food1        -- שורה תורנית המתייחסת לפרה הנבדקת\nWhere not Exists ( Select food2.food_code\n     From cow, food_of as food2\n     Where cow.nickname = \"נחמה\" and cow.cow_id= food2.cow_id     -- __(7)__\n     and food2.food_code not IN\n          (SELECT distinct food3.food_code\n           FROM food_of as food3\n           WHERE food1.cow_id = food3.cow_id) )     -- __(8)__",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "מציאת קבוצת כל קודי המזון של הפרה \"נחמה\"."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "מציאת קבוצת כל קודי המזון של הפרה הנבדקת."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "מציאת קבוצת כל קודי המזון של פרה כלשהי בבסיס הנתונים."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "לא ניתן לנסח תיאור מתאים לקטע החסר כיוון שיש שגיאה בקוד."
+        }
+      ],
+      "correctId": "b",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "תת-השאילתה `WHERE food1.cow_id = food3.cow_id` אוספת את כל קודי המזון של הפרה הנבדקת (food1) → B. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 16,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "db",
+      "question": "מה ישלים את הקטע החסר __(9)__ כדי שהשאילתה תחזיר את מזהה הפרה עם הגיל המינימלי?\n$$Π_{cow_id}(cow) − Π_{C2.cow_id} \\_\\_(9)\\_\\_ (ρ_{c1} cow \\; X \\; ρ_{c2} cow)$$",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "σ_{c2.age>c1.age}"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "σ_{c1.age>c2.age}"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "Π_{c1.age>c2.age}"
+        },
+        {
+          "id": "d",
+          "type": "algebra",
+          "value": "Π_{c2.age>c1.age}"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "לא ניתן להשלים את השאילתה באלגברת היחסים"
+        }
+      ],
+      "correctId": "a",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "`Π_{C2.cow_id} σ_{c2.age>c1.age} (ρc1 cow X ρc2 cow)` מחזיר את כל הפרות שקיימת פרה צעירה מהן — כלומר כל הפרות פרט לצעירה ביותר. חיסור מכל הפרות משאיר את הפרה עם הגיל המינימלי → A. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 17,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "db",
+      "question": "מה תחזיר השאילתה הבאה?\n$$Π_{nickname} \\; σ_{age > block_id} \\; (cow ⊗ place_of)$$",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "את כל שמות החיבה של הפרות."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "את כל שמות החיבה של הפרות שיש להן מקום מגורים."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "את שמות החיבה של הפרות שגרות כולן באותו בלוק."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "את שמות החיבה של הפרות שגילם גדול ממספר בלוק המגורים שלהם."
+        }
+      ],
+      "correctId": "d",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "צירוף טבעי `cow ⊗ place_of`, בחירת השורות בהן `age > block_id`, והיטל על `nickname` → שמות החיבה של הפרות שגילן גדול ממספר בלוק המגורים שלהן → D. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 18,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "db",
+      "question": "תלמידים כתבו שאילתה להצגת כינויי הפרות שיש להן בת. מי מהשאילתות הבאות נכונה?\n**שאילתה 1:**\n$$Π_{nickname} (cow ⊗ mother_of)$$\n**שאילתה 2:**\n$$Π_{nickname} \\; σ_{cow.cow_id = cow.mother_id} \\; (cow \\; X \\; mother_of)$$",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "רק שאילתה 1 נכונה."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "רק שאילתה 2 נכונה."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "שתי השאילתות נכונות."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "אין שאילתה נכונה."
+        }
+      ],
+      "correctId": "b",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "שאילתה 1 (`cow ⊗ mother_of`) מבצעת צירוף טבעי ללא עמודה משותפת ולכן שגויה; שאילתה 2 (מכפלה קרטזית + בחירה על התאמת הפרה לרשומת האם) נכונה לפי הכוונה — התנאי המודפס `cow.mother_id` הוא שגיאת דפוס בבחינה. לכן B. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 19,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "db",
+      "question": "מי מהפעולות הבאות היא הפעולה העיקרית שהכי קרובה לענות על השאלה: מיהי הפרה שהיא אם (אמא של) כל הפרות הגרות בביתן 8?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "מכפלה קרטזית וחיסור"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "חילוק ובחירה"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "צירוף טבעי"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "חיסור וצירוף טבעי"
+        }
+      ],
+      "correctId": "b",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "\"אם של כל הפרות בביתן 8\" הוא כימות אוניברסלי → אופרטור החילוק (÷), יחד עם בחירה (σ) לסינון פרות ביתן 8 → B. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 20,
+      "part": "ד",
+      "topic": "fd_norm",
+      "contextId": "fd",
+      "question": "מי מהבאים הוא מפתח-על ביחס R בהינתן F הנתונה?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "{AB}"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "{BFE}"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "{CF}"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "{CFD}"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחד מהאפשרויות"
+        }
+      ],
+      "correctId": "b",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "‎{BFE}⁺: מ-F→AE מקבלים A,E; מ-BE→C מקבלים C; מ-C→AD מקבלים D. סה\"כ {A,B,C,D,E,F}=R, ולכן {BFE} מפתח-על. שאר האפשרויות אינן מכסות את כל R (למשל אינן כוללות את B) → B. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 21,
+      "part": "ד",
+      "topic": "fd_norm",
+      "contextId": "fd",
+      "question": "מי מהתלויות הבאות נמצאות בסגור של F?",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "F→A וגם B→C"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "B→C וגם C→D"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "F→A וגם E→C"
+        },
+        {
+          "id": "d",
+          "type": "algebra",
+          "value": "E→C וגם B→C"
+        },
+        {
+          "id": "e",
+          "type": "algebra",
+          "value": "F→A וגם F→E"
+        }
+      ],
+      "correctId": "e",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "מ-`F→AE` נובעות גם `F→A` וגם `F→E`, ולכן שתי התלויות שב-E נמצאות בסגור. בשאר האפשרויות מופיעה תלות שאינה נובעת מ-F (כגון B→C או E→C, הדורשות תכונה נוספת) → E. (התשובה מפתרון סטודנט — לא רשמית.)"
+    },
+    {
+      "num": 22,
+      "part": "ד",
+      "topic": "fd_norm",
+      "question": "בהינתן יחס אחר $R = (A, B, C, D)$ והתלויות $F = \\{AB → CD,\\; C → B\\}$, מה מהבאים נכון?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "היחס נמצא בצורה נורמלית 3NF."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "היחס נמצא בצורה נורמלית BCNF."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "היחס מנורמל גם לפי 3NF וגם לפי BCNF."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "היחס אינו מנורמל לפי BCNF או 3NF."
+        }
+      ],
+      "correctId": "a",
+      "official": false,
+      "answerSource": "combined-pdf",
+      "confidence": "low",
+      "explanation": "המפתחות הקבילים הם AB ו-AC (ולכן A, B, C תכונות מפתח, D תכונה שאינה מפתח). `AB→CD` — AB מפתח-על (תקין). `C→B` מפר BCNF (C אינו מפתח-על), אך B היא תכונת מפתח ולכן התלות מקיימת את תנאי 3NF. מסקנה: היחס ב-3NF אך לא ב-BCNF → A. (התשובה מפתרון סטודנט — לא רשמית.)"
+    }
+  ],
+  "askAdir": [
+    "כל הבחינה (21B-C) מבוססת על פתרון סטודנט לא-רשמי → כל השאלות official:false, confidence:low. נבדקו ואומתו לוגית ע\"י Claude: Q5=D, Q10=E, Q13=C (תוקן מ-A), Q18=B. Q4=A (מודל רקורסיבי; שיפוט — הסטודנט סימן B/C). מומלץ לאמת מול מפתח רשמי אם יימצא."
+  ]
+}

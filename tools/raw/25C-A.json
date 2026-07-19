@@ -1,0 +1,945 @@
+{
+  "examCode": "25C-A",
+  "examLabel": "2025 סמסטר ג׳ מועד א׳",
+  "year": 2025,
+  "examDate": "22.10.2025",
+  "course": "61303",
+  "contexts": {
+    "erd": {
+      "kind": "image",
+      "title": "חלק א׳ — תרשים ER",
+      "image": "images/exams/25C-A-erd.png",
+      "caption": "התייחסו לתרשים ה-ERD למעלה וענו על השאלות. (התרשים חולץ מהמבחן ועבר היפוך צבעים לשיפור הקריאוּת.)"
+    },
+    "sql": {
+      "kind": "schema",
+      "title": "חלק ב׳ — סכמות היחסים",
+      "intro": "נתונות תבניות/סכמות היחסים הבאות. הסעיפים מתייחסים לאוסף זה:",
+      "relations": [
+        {
+          "schema": "Users([u]user_id[/u], first_name, last_name, email, registration_year, country)",
+          "meaning": "המשתמשים הרשומים במערכת.\n`registration_year` — שנת ההרשמה; `country` — מדינת המשתמש."
+        },
+        {
+          "schema": "Courses([u]course_id[/u], course_title, category, level, hours)",
+          "meaning": "הקורסים הזמינים.\n`category` (למשל 'Data Science', 'AI', 'Programming');\n`level` (Beginner / Intermediate / Advanced); `hours` — שעות לימוד."
+        },
+        {
+          "schema": "Enrollments([u]enrollment_id[/u], user_id, course_id, enroll_date, progress, status)",
+          "meaning": "הרשמות של משתמשים לקורסים.\n`progress` — אחוז התקדמות (0–100); `status` ∈ (Active, Completed, Withdrawn)."
+        },
+        {
+          "schema": "Instructors([u]instructor_id[/u], full_name, expertise, email, hire_date)",
+          "meaning": "המדריכים.\n`expertise` — תחום התמחות (למשל 'AI', 'Programming'); `hire_date` — תאריך קליטה."
+        }
+      ]
+    },
+    "ra": {
+      "kind": "schema",
+      "title": "חלק ג׳ — סכמות היחסים (תלמידים, קורסים ומורים פרטיים)",
+      "intro": "ניתן להניח שבטבלאות אין ערכי Null / ערכים ריקים.",
+      "relations": [
+        {
+          "schema": "student([u]id[/u], name, age, city)",
+          "meaning": "פרטי תלמיד: מזהה, שם, גיל ועיר מגורים."
+        },
+        {
+          "schema": "teacher([u]id[/u], teach_grade, city, can_zoom)",
+          "meaning": "פרטי מורה: מזהה, ציון יכולת הוראה, עיר מגורים, והאם יכול ללמד בזום (`can_zoom`)."
+        },
+        {
+          "schema": "group_lesson([u]lesson_id[/u], lesson_name, teacher_id, details, is_zoom)",
+          "meaning": "שיעור קבוצתי: מזהה שיעור, שם, מזהה המורה המלמד, פרטים, והאם ניתן ללמוד בזום (`is_zoom`)."
+        },
+        {
+          "schema": "studies([u]student_id[/u], [u]lesson_id[/u])",
+          "meaning": "לימוד של תלמיד בשיעור (מזהה תלמיד, מזהה שיעור)."
+        },
+        {
+          "schema": "private_lesson([u]session_id[/u], lesson_id, student_id, teacher_id, is_zoom)",
+          "meaning": "שיעור פרטי: מזהה מפגש, מזהה השיעור הנלמד, מזהה תלמיד, מזהה מורה, והאם מתקיים בזום."
+        }
+      ],
+      "note": "**הערות:** תלמיד יכול גם להיות מורה. תלמיד יכול ללמוד בשיעור קבוצתי או בשיעור פרטי או בשניהם."
+    },
+    "fd": {
+      "kind": "fd",
+      "title": "חלק ד׳ — יחס ותלויות",
+      "algebra": [
+        "R = (A, B, C, D, E)",
+        "F1 = {A → B, C → BD, E → B, AB → E}"
+      ]
+    },
+    "q16": {
+      "kind": "relations",
+      "title": "שני יחסים R, S בעלי סכמה זהה",
+      "tables": [
+        {
+          "name": "R",
+          "columns": [
+            "A",
+            "B",
+            "C"
+          ],
+          "rows": [
+            [
+              2,
+              2,
+              3
+            ],
+            [
+              1,
+              2,
+              5
+            ],
+            [
+              3,
+              2,
+              7
+            ],
+            [
+              2,
+              5,
+              3
+            ],
+            [
+              2,
+              2,
+              5
+            ]
+          ]
+        },
+        {
+          "name": "S",
+          "columns": [
+            "A",
+            "B",
+            "C"
+          ],
+          "rows": [
+            [
+              1,
+              5,
+              7
+            ],
+            [
+              1,
+              2,
+              5
+            ],
+            [
+              3,
+              6,
+              5
+            ],
+            [
+              3,
+              2,
+              3
+            ],
+            [
+              2,
+              2,
+              2
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "questions": [
+    {
+      "num": 1,
+      "part": "א",
+      "topic": "erd",
+      "question": "לפי דיאגרמת ה-ERD הנתונה, מתקיים כי:",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "בטבלה של C2 יש 2 שדות המהווים מפתח."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "בטבלה של E יש 3 שדות המהווים מפתח."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "אין שתי רשומות שונות בטבלה של R2 עם אותו ערך שדה `KeyA`."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "לטבלה של R2 יש 3 שדות המהווים מפתח."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות."
+        }
+      ],
+      "correctId": "d",
+      "answerSource": "solution-pdf",
+      "explanation": "R2 מקשר את `C` עם קבוצת-העל (ההקבצה) `A-R1-B`. מפתח הטבלה שלו מורכב מהמפתח של C ומהמפתח של ההקבצה (`KeyA`, `KeyB`) — יחד 3 שדות מפתח.",
+      "confidence": "high",
+      "contextId": "erd"
+    },
+    {
+      "num": 2,
+      "part": "א",
+      "topic": "erd",
+      "question": "מה נדרש לשנות בדיאגרמה, על מנת שבטבלה המתארת את הקשר R2 לא תהיינה שתי רשומות שונות בעלות אותם ערכים עבור השדות `KeyA` ו-`KeyB` בהתאמה?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "יש להוסיף חץ המכוון מ-R2 ל-`C` וחץ נוסף המכוון מ-R2 לקבוצת ישויות-על (הקבצה) `A-R1-B`."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "יש להוסיף חץ המכוון מ-R2 ל-`C`."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "יש להוסיף חץ המכוון מ-R2 לקבוצת ישויות-על (הקבצה) `A-R1-B`."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "יש להוסיף חץ המכוון מ-R1 ל-`B` וחץ נוסף המכוון מ-R1 ל-`A`."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות."
+        }
+      ],
+      "correctId": "b",
+      "answerSource": "solution-pdf",
+      "explanation": "כדי שצירוף (`KeyA`, `KeyB`) לא יחזור בשתי רשומות שונות, צריך שכל מופע של קבוצת-העל `A-R1-B` יתחבר ל-C יחיד — כלומר חץ מכוון מ-R2 אל `C`.",
+      "confidence": "high",
+      "contextId": "erd"
+    },
+    {
+      "num": 3,
+      "part": "א",
+      "topic": "erd",
+      "question": "מה הסכמה של ההמרה הנכונה ביותר של קבוצת/טיפוס קשרים R3?",
+      "options": [
+        {
+          "id": "a",
+          "type": "schema",
+          "value": "([u]KeyC[/u], [u]KeyD[/u], PropC1_1, PropD_1)"
+        },
+        {
+          "id": "b",
+          "type": "schema",
+          "value": "([u]KeyC[/u], [u]KeyD[/u])"
+        },
+        {
+          "id": "c",
+          "type": "schema",
+          "value": "([u]KeyC[/u], PropC1_1, [u]KeyD[/u])"
+        },
+        {
+          "id": "d",
+          "type": "schema",
+          "value": "([u]KeyD[/u], PropC1_1, PropD_1)"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות."
+        }
+      ],
+      "correctId": "c",
+      "answerSource": "solution-pdf",
+      "explanation": "המרת טיפוס הקשרים R3 יוצרת טבלה שמפתחהּ מורכב מהמפתחות של הישויות המשתתפות (`KeyC`, `KeyD`), בתוספת תכונת הקשר `PropC1_1`.",
+      "confidence": "high",
+      "contextId": "erd"
+    },
+    {
+      "num": 4,
+      "part": "א",
+      "topic": "erd",
+      "question": "המר את קבוצת/טיפוס ישויות E לטבלה — מה יתקבל?",
+      "options": [
+        {
+          "id": "a",
+          "type": "schema",
+          "value": "E ([d]DiscE_1[/d], PropE_1, [u]KeyC[/u])"
+        },
+        {
+          "id": "b",
+          "type": "schema",
+          "value": "E ([d]DiscE_1[/d], PropE_1, PropC2_1)"
+        },
+        {
+          "id": "c",
+          "type": "schema",
+          "value": "E ([d]DiscE_1[/d], PropE_1, [u]KeyC[/u], PropC_1, PropC2_1)"
+        },
+        {
+          "id": "d",
+          "type": "schema",
+          "value": "E ([d]DiscE_1[/d], PropE_1)"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות."
+        }
+      ],
+      "correctId": "a",
+      "answerSource": "solution-pdf",
+      "explanation": "E היא ישות חלשה: המפתח המלא מורכב מהמבחין (`DiscE_1`, קו מקווקו) יחד עם מפתח הבעלים המזהה (`KeyC`). בנוסף נשמרת תכונת E עצמה `PropE_1`.",
+      "confidence": "high",
+      "contextId": "erd"
+    },
+    {
+      "num": 5,
+      "part": "ב",
+      "topic": "sql",
+      "question": "איזו מהשאילתות הבאות מציגה את שמות המשתמשים שנרשמו לקורסים מקטגוריית `'Data Science'` והתקדמותם בקורס פחותה מ-50%?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT first_name\nFROM Users U\nJOIN Enrollments E ON U.user_id = E.user_id\nJOIN Courses C ON E.course_id = C.course_id\nWHERE C.category = 'Data Science' AND E.progress < 50;",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT U.first_name\nFROM Courses C\nJOIN Enrollments E ON C.course_id = E.course_id\nJOIN Users U ON E.user_id = U.user_id\nWHERE C.category = 'Data Science' AND E.progress > 50;",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT first_name\nFROM Users\nWHERE user_id IN (\n  SELECT user_id\n  FROM Enrollments\n  WHERE progress < 50\n    AND course_id IN (\n      SELECT course_id FROM Courses WHERE category = 'Data Science'\n    )\n);",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT first_name\nFROM Users U\nJOIN Enrollments E ON U.user_id = E.user_id\nJOIN Courses C ON E.course_id = C.course_id\nWHERE E.progress <= 50 OR C.category = 'Data Science';",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות."
+        }
+      ],
+      "correctId": "a",
+      "answerSource": "solution-pdf",
+      "explanation": "שתי התשובות נכונות, כל אחת בדרכה. לא הייתה כאן דרישה מפורשת להופעת שם רק פעם אחת — שהרי בלי DISTINCT ייתכנו כאן כפילויות. (A מבצע JOIN עם progress < 50; C משיג זאת עם תת-שאילתות. B משתמש ב-> 50, ו-D ב-<= 50 עם OR — שגויים.)",
+      "confidence": "high",
+      "contextId": "sql",
+      "acceptedIds": [
+        "a",
+        "c"
+      ]
+    },
+    {
+      "num": 6,
+      "part": "ב",
+      "topic": "sql",
+      "question": "איזו שאילתה מציגה את מספר המשתמשים מכל מדינה שנרשמו בשנת 2023 ומקורם לא מישראל?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT country, COUNT(user_id)\nFROM Users\nWHERE country = 'Israel' AND registration_year = 2023\nGROUP BY country;",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT country, COUNT(user_id)\nFROM Users\nWHERE registration_year = 2023 OR country != 'Israel'\nGROUP BY country;",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT country, COUNT(*)\nFROM Users\nWHERE registration_year = 2023 AND country <> 'Israel'\nGROUP BY country;",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT country\nFROM Users\nGROUP BY registration_year = 2023 AND country != 'Israel';",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות."
+        }
+      ],
+      "correctId": "c",
+      "answerSource": "solution-pdf",
+      "explanation": "צריך סינון registration_year = 2023 וגם country <> 'Israel' (תנאי AND), וספירה לכל מדינה עם GROUP BY country. A מסנן דווקא Israel, B משתמש ב-OR, ו-D בעל GROUP BY שגוי.",
+      "confidence": "high",
+      "contextId": "sql"
+    },
+    {
+      "num": 7,
+      "part": "ב",
+      "topic": "sql",
+      "question": "איזו מהשאילתות מחזירה את שמות הקורסים שאליהם נרשמו משתמשים שלא התקדמו כלל (`progress = 0`)?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT course_title\nFROM Courses\nWHERE course_id IN (\n  SELECT course_id FROM Enrollments WHERE progress = 100\n);",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT course_title\nFROM Courses C\nJOIN Enrollments E ON C.course_id = E.course_id\nWHERE E.progress = 0;",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT course_title\nFROM Enrollments\nWHERE progress = 0;",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT course_title\nFROM Courses\nJOIN Enrollments ON course_id = enrollment_id\nWHERE progress = 0;",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות."
+        }
+      ],
+      "correctId": "b",
+      "answerSource": "solution-pdf",
+      "explanation": "מחברים Courses ל-Enrollments לפי course_id ומסננים progress = 0. A בודק progress = 100; C שולף course_title מ-Enrollments (עמודה שאינה קיימת שם); D מחבר לפי course_id = enrollment_id — שגוי.",
+      "confidence": "high",
+      "contextId": "sql"
+    },
+    {
+      "num": 8,
+      "part": "ב",
+      "topic": "sql",
+      "question": "איזו שאילתה מחזירה את שם המשתמש והקורס שבו ההרשמה בוטלה (`status = 'withdrawn'`)?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT course_title\nFROM Courses\nWHERE course_id IN (\n  SELECT enrollment_id FROM Enrollments WHERE status = 'withdrawn'\n);",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT first_name, course_title\nFROM Enrollments\nWHERE status = 'withdrawn';",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT U.first_name, C.course_title\nFROM Enrollments E\nJOIN Users U ON E.enrollment_id = U.user_id\nJOIN Courses C ON E.enrollment_id = C.course_id\nWHERE status = 'withdrawn';",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT U.first_name, C.course_title\nFROM Users U\nJOIN Enrollments E ON U.user_id = E.user_id\nJOIN Courses C ON E.course_id = C.course_id\nWHERE E.status = 'withdrawn';",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות."
+        }
+      ],
+      "correctId": "d",
+      "answerSource": "solution-pdf",
+      "explanation": "צריך לחבר Users↔Enrollments לפי user_id ו-Enrollments↔Courses לפי course_id, ולסנן status = 'withdrawn'. C מחבר לפי enrollment_id (שגוי); A ו-B אינם מחזירים גם שם וגם קורס נכונים.",
+      "confidence": "high",
+      "contextId": "sql"
+    },
+    {
+      "num": 9,
+      "part": "ב",
+      "topic": "sql",
+      "question": "איזו שאילתה יוצרת VIEW עם שם הקורס, שם המדריך והתאריך שבו המדריך התחיל ללמד? (**הערה:** הניחו כי קיימת קורלציה בין הערכים ב-`Courses.category` לבין הערכים ב-`Instructors.expertise`.)",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "CREATE VIEW course_instructor_view AS\nSELECT C.course_title, I.full_name, I.hire_date\nFROM Courses C\nJOIN Instructors I ON C.category = I.expertise;",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "CREATE VIEW course_instructor_view AS\nSELECT full_name, course_title, hire_date\nFROM Courses, Instructors\nWHERE Courses.level = Instructors.level;",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "CREATE VIEW course_instructor_view AS\nSELECT course_title, full_name, hire_date\nFROM Courses C\nJOIN Enrollments E ON C.course_id = E.course_id\nJOIN Instructors I ON C.category = I.email;",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "CREATE VIEW course_instructor_view AS\nSELECT course_title, full_name, hire_date\nFROM Courses JOIN Instructors USING(course_id);",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות."
+        }
+      ],
+      "correctId": "a",
+      "answerSource": "solution-pdf",
+      "explanation": "החיבור הנכון הוא לפי `Courses.category = Instructors.expertise` (כפי שרומז ההערה). B מחבר לפי level (שאינו קיים ב-Instructors); C לפי category = email; D לפי course_id ב-USING (שאינו קיים ב-Instructors).",
+      "confidence": "high",
+      "contextId": "sql"
+    },
+    {
+      "num": 10,
+      "part": "ב",
+      "topic": "sql",
+      "question": "איזו שאילתה מציגה את מספר המשתמשים שנרשמו לכל קורס, רק אם הקורס שייך לקטגוריה `'Programming'`?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT course_title\nFROM Courses\nJOIN Enrollments USING(course_id)\nGROUP BY course_title\nWHERE category = 'Programming';",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT C.course_title, COUNT(*) AS num_users\nFROM Courses C\nJOIN Enrollments E ON C.course_id = E.course_id\nWHERE C.category = 'Programming'\nGROUP BY C.course_title;",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT course_title, COUNT(*)\nFROM Enrollments\nWHERE category = 'Programming'\nGROUP BY course_title;",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT category, COUNT(user_id)\nFROM Courses\nWHERE category = 'Programming'\nGROUP BY course_title;",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות."
+        }
+      ],
+      "correctId": "b",
+      "answerSource": "solution-pdf",
+      "explanation": "מסננים category = 'Programming' ב-WHERE (לפני הקיבוץ), מקבצים לפי הקורס וסופרים COUNT(*). A שם WHERE אחרי GROUP BY (שגוי תחבירית); C מסנן category בטבלת Enrollments; D מחזיר category במקום ספירה נכונה לכל קורס.",
+      "confidence": "high",
+      "contextId": "sql"
+    },
+    {
+      "num": 11,
+      "part": "ב",
+      "topic": "sql",
+      "question": "איזו שאילתה מחזירה את שמות הקורסים שכל המשתמשים (מהטבלה `Users`) נרשמו אליהם?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT course_title\nFROM Courses\nJOIN Enrollments USING(course_id)\nWHERE user_id = ALL (SELECT user_id FROM Users);",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT course_title\nFROM Courses\nWHERE course_id IN (\n  SELECT course_id FROM Enrollments GROUP BY course_id HAVING COUNT(*) = 1\n);",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT course_title\nFROM Courses C\nWHERE EXISTS (\n  SELECT * FROM Enrollments E\n  WHERE C.course_id = E.course_id\n);",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT course_title\nFROM Courses C\nWHERE NOT EXISTS (\n  SELECT * FROM Users U\n  WHERE NOT EXISTS (\n    SELECT * FROM Enrollments E\n    WHERE E.user_id = U.user_id AND E.course_id = C.course_id\n  )\n);",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות."
+        }
+      ],
+      "correctId": "d",
+      "answerSource": "solution-pdf",
+      "explanation": "זוהי חלוקה (division): קורס שאין אף משתמש שלא נרשם אליו. התבנית הנכונה היא NOT EXISTS כפול — אין משתמש שעבורו לא קיימת הרשמה לקורס הזה.",
+      "confidence": "high",
+      "contextId": "sql"
+    },
+    {
+      "num": 12,
+      "part": "ב",
+      "topic": "sql",
+      "question": "איזו שאילתה מחזירה את שמות הקורסים שאין עליהם אף רישום של משתמשים?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT course_title\nFROM Courses C\nJOIN Enrollments E ON C.course_id = E.course_id\nWHERE E.user_id IS NULL;",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT course_title\nFROM Courses\nWHERE course_id IN (SELECT course_id FROM Enrollments WHERE user_id IS NULL);",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT course_title\nFROM Courses\nWHERE EXISTS (SELECT * FROM Enrollments WHERE course_id IS NULL);",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT course_title\nFROM Courses\nWHERE course_id NOT IN (SELECT course_id FROM Enrollments);",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל התשובות האחרות אינן נכונות."
+        }
+      ],
+      "correctId": "d",
+      "answerSource": "solution-pdf",
+      "explanation": "קורס ללא הרשמות = course_id שאינו מופיע כלל בטבלת Enrollments, כלומר `course_id NOT IN (SELECT course_id FROM Enrollments)`. חיבור פנימי (A) לא יחזיר קורסים ללא הרשמות כלל.",
+      "confidence": "high",
+      "contextId": "sql"
+    },
+    {
+      "num": 13,
+      "part": "ג",
+      "topic": "relalg",
+      "question": "מה עושה השאילתה הבאה? בחרו את התשובה הנכונה ביותר:\n$$Π_{student_id}(group_lesson ⊗ private_lesson)$$",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "מחזירה את מזהי התלמידים שלומדים גם שיעור קבוצתי וגם שיעור פרטי."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "מחזירה את מזהי התלמידים שלומדים שיעור קבוצתי בנושא מסוים ושיעור פרטי אצל אותו מורה, לא בהכרח באותו נושא."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "מחזירה את מזהי התלמידים שלומדים שיעור קבוצתי אצל מורה מסוים ולוקחים אצל אותו מורה שיעור פרטי באותו נושא, לא בהכרח באותו הערוץ (בזום או לא בזום)."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "מחזירה את מזהי התלמידים שלומדים שיעור קבוצתי אצל מורה מסוים ולוקחים אצל אותו מורה שיעור פרטי באותו נושא, וגם באותו הערוץ (בזום או לא בזום)."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "השאילתה אינה תקינה."
+        }
+      ],
+      "correctId": "d",
+      "answerSource": "solution-pdf",
+      "explanation": "החיבור הטבעי (⊗) בין `group_lesson` ל-`private_lesson` מתבצע על התכונות המשותפות: `lesson_id` (אותו נושא), `teacher_id` (אותו מורה) ו-`is_zoom` (אותו ערוץ). לכן מתקבלים תלמידים שלשיעור הפרטי שלהם אותם נושא, מורה וערוץ כמו שיעור קבוצתי קיים.",
+      "confidence": "high",
+      "contextId": "ra"
+    },
+    {
+      "num": 14,
+      "part": "ג",
+      "topic": "relalg",
+      "question": "מי מבין השאילתות הבאות תחזיר תשובה לשאלה: \"מה שם התלמיד שגר בחולון ולומד שיעור פרטי בזום ממורה שמתגורר בחולון\"?",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "Π_{name} σ_{student.city = \"חולון\" ∧ teacher.city = student.city ∧ is_zoom = True}(private_lesson X student X teacher)"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "Π_{name} σ_{student.city = \"חולון\" ∧ teacher.city = student.city ∧ is_zoom = True}(private_lesson X student ⊗ teacher)"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "Π_{name} σ_{student.city = \"חולון\" ∧ teacher.city = \"חולון\" ∧ is_zoom = True}(private_lesson X student X teacher)"
+        },
+        {
+          "id": "d",
+          "type": "algebra",
+          "value": "Π_{name} σ_{student.city = \"חולון\" ∧ teacher.city = student.city ∧ is_zoom = True ∧ student.id = student_id ∧ teacher.id = teacher_id}(private_lesson X student X teacher)"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהאפשרויות."
+        }
+      ],
+      "correctId": "d",
+      "answerSource": "solution-pdf",
+      "explanation": "כשמשתמשים במכפלה קרטזית (X) חייבים להוסיף בתנאי הבחירה את תנאֵי החיבור: `student.id = student_id` ו-`teacher.id = teacher_id` — אחרת מתקבלים צירופים שגויים. רק D כולל אותם.",
+      "confidence": "high",
+      "contextId": "ra"
+    },
+    {
+      "num": 15,
+      "part": "ג",
+      "topic": "relalg",
+      "question": "\"החזירו את כל המורים שמעולם לא לימדו את הסטודנטים מעיר מגוריהם\". השאלה דורשת:",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "הפרש"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "חיתוך"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "איחוד"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "חילוק"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "שינוי שם"
+        }
+      ],
+      "correctId": "a",
+      "answerSource": "solution-pdf",
+      "explanation": "\"כל המורים\" פחות \"מורים שכן לימדו תלמיד מעירם\" = פעולת הפרש (מינוס) בין שתי הקבוצות.",
+      "confidence": "high"
+    },
+    {
+      "num": 16,
+      "part": "ג",
+      "topic": "relalg",
+      "question": "נתונים שני יחסים R, S בעלי סכמה זהה (ראו טבלאות). נתונה השאילתה:\n$$Π_{A,B}(R) ÷ Π_{A}(S)$$\nכמה שורות וכמה עמודות תכיל תוצאת השאילתה?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "שורה 1 ועמודה 1."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "2 שורות ועמודה 1."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "שורה 1 ו-2 עמודות."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "2 שורות ו-2 עמודות."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות."
+        }
+      ],
+      "correctId": "a",
+      "answerSource": "solution-pdf",
+      "explanation": "‏Π(A,B)(R) = {(2,2),(1,2),(3,2),(2,5)} ו-Π(A)(S) = {1,2,3}. בחלוקה נשארות עמודות B בלבד; רק B=2 מופיע יחד עם כל ערכי A מהמחלק — לכן התוצאה היא {(2)}: שורה אחת ועמודה אחת.",
+      "confidence": "high",
+      "contextId": "q16"
+    },
+    {
+      "num": 17,
+      "part": "ד",
+      "topic": "fd_norm",
+      "question": "מי מבין התלויות הבאות **אינה** נמצאת ב-$F1^{+}$?",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "C → D"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "A → E"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "CE → B"
+        },
+        {
+          "id": "d",
+          "type": "algebra",
+          "value": "B → E"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות."
+        }
+      ],
+      "correctId": "d",
+      "answerSource": "solution-pdf",
+      "explanation": "‏B⁺ = {B} (‏B אינו צד-שמאל של אף תלות ב-F1), ולכן B → E אינה נובעת. לעומת זאת C → D נובעת מ-C → BD; A → E מ-A → B ואז AB → E; ו-CE → B מ-E → B.",
+      "confidence": "high",
+      "contextId": "fd"
+    },
+    {
+      "num": 18,
+      "part": "ד",
+      "topic": "fd_norm",
+      "question": "האם ב-F1 יש תכונה עודפת (extraneous)? אם כן — מהי?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "לא, אין תכונה עודפת."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "כן, `A`"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "כן, `B`"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "כן, `C`"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כן, `D`"
+        }
+      ],
+      "correctId": "c",
+      "answerSource": "solution-pdf",
+      "explanation": "בתלות AB → E התכונה `B` עודפת: כבר A⁺ = {A, B, E} (כי A → B ואז AB → E), ולכן A → E מתקיימת בלי B בצד שמאל.",
+      "confidence": "high",
+      "contextId": "fd"
+    },
+    {
+      "num": 19,
+      "part": "ד",
+      "topic": "fd_norm",
+      "question": "נתון היחס $R = (A, B, C)$ — מהו המספר המקסימלי האפשרי של מפתחות מועמדים (candidate keys)?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "3"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "2"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "1"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "4"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות."
+        }
+      ],
+      "correctId": "a",
+      "answerSource": "solution-pdf",
+      "explanation": "עבור 3 תכונות, המספר המקסימלי של מפתחות מועמדים הוא C(3,1) = 3 (למשל עם A → B, B → C, C → A כל תכונה בודדת היא מפתח).",
+      "confidence": "high"
+    },
+    {
+      "num": 20,
+      "part": "ד",
+      "topic": "fd_norm",
+      "question": "נתונה הסכמה $R = (A, B, C, D)$ וקבוצת התלויות $F = {AB → C, AB → D, C → A}$. יש לבחור את הטענה הנכונה מבין הבאות:",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "‏R לא נמצאת ב-BCNF אבל נמצאת ב-3NF."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "‏R לא נמצאת ב-BCNF ולא נמצאת ב-3NF."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "‏R נמצאת ב-BCNF ונמצאת ב-3NF."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "‏R נמצאת ב-BCNF אבל לא נמצאת ב-3NF."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "לא ניתן לדעת כי אין מספיק נתונים."
+        }
+      ],
+      "correctId": "a",
+      "answerSource": "solution-pdf",
+      "explanation": "המפתחות המועמדים הם AB ו-BC, ולכן A,B,C ראשוניים ו-D לא-ראשוני. התלות C → A מפרה BCNF (C אינו על-מפתח), אך מקיימת 3NF כי A ראשוני. לכן R ב-3NF אך לא ב-BCNF.",
+      "confidence": "high"
+    }
+  ]
+}

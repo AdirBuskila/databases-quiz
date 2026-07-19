@@ -1,0 +1,765 @@
+{
+  "examCode": "23B-A",
+  "examLabel": "2023 סמסטר ב׳ מועד א׳",
+  "year": 2023,
+  "examDate": "19.6.2023",
+  "course": "61303",
+  "contexts": {
+    "erd": {
+      "kind": "image",
+      "title": "חלק א׳ — תרשים ER (אתר גלישת סקי)",
+      "image": "images/exams/23B-A-erd.png",
+      "caption": "התייחסו לתרשים ה-ERD המתאר בסיס נתונים של אתר גלישת סקי וענו על השאלות. (התרשים חולץ מהמבחן.)"
+    },
+    "sql": {
+      "kind": "schema",
+      "title": "חלק ב׳/ג׳ — סכמות היחסים (תחרות שירה דומה לאירוויזיון)",
+      "intro": "נתונות תבניות/סכמות היחסים הבאות מתוך בסיס נתונים של תחרות שירה דומה לאירוויזיון. הסעיפים של חלק ב׳ (SQL) וחלק ג׳ (אלגברת היחסים) מתייחסים לאוסף זה:",
+      "relations": [
+        {
+          "schema": "Performer([u]p_name[/u], age, gender, height, country_name)",
+          "meaning": "היחס מתאר את המבצעים — פרטי האנשים המופיעים: שם, גיל, מין (זכר, נקבה, לא מזדהה), גובה, והמדינה בה מתגורר."
+        },
+        {
+          "schema": "Band([u]b_name[/u], [u]p_name[/u], serial_number)",
+          "meaning": "היחס מתאר פרטי להקה ומי משתתף בה, ובאיזה כלי (`serial_number`) הוא השתמש — יתכן שיהיה `NULL` (ריק). תתכן להקה של אדם אחד."
+        },
+        {
+          "schema": "Instrument([u]serial_number[/u], type, category, height, width, length)",
+          "meaning": "היחס מתאר כלי נגינה או עזרים למופע: מספר סדרתי, סוג הכלי (`type` — גיטרה, תופים, עמוד, כסא), קטגוריה (`category` — פריטה, נשיפה, קלידים), ומידות רוחב/אורך/גובה לאחסון והובלה."
+        },
+        {
+          "schema": "Represent([u]b_name[/u], [u]country_name[/u], [u]year[/u])",
+          "meaning": "היחס מתאר את הלהקות המייצגות מדינה מסוימת בשנה מסוימת. אדם יכול להופיע בשנים שונות עם מדינות שונות, וגם באותה שנה בלהקות שונות. אם אדם מופיע לבדו — הוא יופיע כלהקה של אדם אחד."
+        },
+        {
+          "schema": "Score([u]from_coutry[/u], [u]to_country[/u], num_points, [u]year[/u])",
+          "meaning": "ניקוד הניתן ממדינה למדינה — מספר נקודות (`num_points`) בשנה מסוימת. ב-`from_country` וב-`to_country` יש התאמה ל-`country_name` מטבלאות Represent ו-Performer. מדינה שלא קיבלה ניקוד כלל לא תופיע כאן. (שימו לב: בכותרת הסכמה השדה נכתב `from_coutry`.)"
+        }
+      ]
+    },
+    "q17": {
+      "kind": "relations",
+      "title": "מופע חוקי של היחס R = (P1, P2, P3)",
+      "tables": [
+        {
+          "name": "R",
+          "columns": [
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "rows": [
+            [
+              "a",
+              50,
+              "T"
+            ],
+            [
+              "a",
+              10,
+              "F"
+            ],
+            [
+              "b",
+              80,
+              "T"
+            ],
+            [
+              "c",
+              80,
+              "T"
+            ],
+            [
+              "b",
+              50,
+              "T"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "questions": [
+    {
+      "num": 1,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "איזו המרה של מדריכת גלישה היא הנכונה ומכילה את כל התכונות שלה?",
+      "options": [
+        {
+          "id": "a",
+          "type": "schema",
+          "value": "מדריכת_גלישה ([u]סגנון גלישה[/u])."
+        },
+        {
+          "id": "b",
+          "type": "schema",
+          "value": "סגנון מדריכה (סגנון גלישה, [u]מספר זהות[/u])."
+        },
+        {
+          "id": "c",
+          "type": "schema",
+          "value": "מדריכת_גלישה ([u]מספר זהות[/u], עובד מתאריך, שכר, שם מלא)."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "B + C"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "A + C"
+        }
+      ],
+      "correctId": "d",
+      "answerSource": "solution-pdf",
+      "explanation": "‏'סגנון גלישה' היא תכונה מרובת-ערכים של תת-הישות מדריכת גלישה. C מכיל את כל התכונות הנובעות דרך ה-ISA (`מספר זהות`, `עובד מתאריך`, `שכר`, `שם מלא`), ו-B מייצג את התכונה מרובת-הערכים כטבלה נפרדת. לכן נדרשים גם B וגם C.",
+      "confidence": "high"
+    },
+    {
+      "num": 2,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "איזה מההיגדים הבאים נכון?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "מפעיל רכבל מפעיל מספר מסלולים בו זמנית."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "בחנות ניתן למכור מוצר אחד בלבד."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "מוצר יכול להימכר בחנות, אבל לא חייב."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "מוכר עובד בחנות אחת בלבד."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף תשובה אינה נכונה."
+        }
+      ],
+      "correctId": "d",
+      "answerSource": "solution-pdf",
+      "explanation": "בתרשים, הקשר 'מוכר ב' מכיל חץ המכוון אל 'חנות' — כלומר לכל מוכר משויכת חנות אחת ויחידה. שאר ההיגדים אינם נובעים מהתרשים.",
+      "confidence": "high"
+    },
+    {
+      "num": 3,
+      "part": "א",
+      "topic": "erd",
+      "contextId": "erd",
+      "question": "האם יש בתרשים שגיאת סינטקס?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "כן, יש שני עיגולים כפולים (רמת קושי, סגנון גלישה), ורק אחד תקין."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "כן, יש שני מיקומים של קווים עבים (מיקום מסלול גלישה, מוצר נמכר ב), ורק אחד תקין."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "כן, יש תכונות שמחוברות לתכונה (מיקום מפעיל רכבל), וזה לא תקין."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "כן, למשולש IS A מחוברים שלושה ריבועים למטה, ומותר רק שניים."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "הדיאגרמה תקינה לחלוטין."
+        }
+      ],
+      "correctId": "b",
+      "answerSource": "solution-pdf",
+      "explanation": "על-פי המחוון התשובה היא B: בתרשים שני מקומות עם קווים עבים (ב'מיקום מסלול גלישה' וב'מוצר נמכר ב'), ורק אחד מהם שימוש תקין — ולכן קיימת שגיאת סינטקס.",
+      "confidence": "high"
+    },
+    {
+      "num": 5,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "מיהם המבצעים שהופיעו באירוויזיון יותר מפעם אחת (הכוונה ביותר משנה אחת)?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT DISTINCT p_name\nFROM Represent JOIN Band USING(b_name)\nGROUP BY p_name\nHAVING count(year) > 1"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT p_name, COUNT(year)\nFROM Represent JOIN Band USING(b_name)\nWHERE COUNT(year) > 1"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT DISTINCT p_name\nFROM Represent JOIN Band USING (b_name)\nGROUP BY p_name\nHAVING count(distinct year) > 1"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT p_name\nFROM Represent\nHAVING year > 1"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "c",
+      "answerSource": "solution-pdf",
+      "explanation": "צריך לספור שנים *שונות*: `count(distinct year) > 1`. מסיח A סופר `count(year)` ועלול לספור אותה שנה פעמיים (לכן ירדו עליו נקודות); B משתמש ב-COUNT בתוך WHERE (לא חוקי); D מפעיל HAVING ללא GROUP BY. לכן C.",
+      "confidence": "high"
+    },
+    {
+      "num": 6,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "מה ממוצע הגילאים של המתופפים באירוזיון?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT AVG(age)\nFROM Performer, Instrument\nWHERE type = 'Drum'"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "lang": "sql",
+          "value": "p_name = (SELECT AVG(age)\nFROM Performer JOIN Instrument USING Instrument.p_name\nWHERE Instrument.type = 'Drum'"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT AVG(Performer.age)\nFROM Performer JOIN Instrument ON Performer.p_name = Instrument.p_name\nWHERE Instrument.type LIKE '%Drum%'"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT p_name, AVG(age)\nFROM Band\nWHERE b_name IN (SELECT b_name FROM Instrument WHERE type = 'Drum')"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "e",
+      "answerSource": "solution-pdf",
+      "explanation": "ב-A יש מכפלה קרטזית (Performer, Instrument ללא תנאי חיבור) שהופכת את התוצאה ללא נכונה; B מכיל שגיאת תחביר גסה; C מחבר על `Instrument.p_name` שאינו קיים ומשתמש ב-LIKE שלא לצורך; D מחזיר גם שם וגם ממוצע שלא נדרש. לכן אף תשובה אינה נכונה.",
+      "confidence": "high"
+    },
+    {
+      "num": 7,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "מה ממוצע הפרש הגילאים של המופיעים כל שנה (כלומר בכל שנה יש הפרש בין הגיל המקסימלי באותה שנה לגיל המינימלי באותה שנה — מה הממוצע של ההפרשים הללו), למופיעים בין השנים 2023 לבין 2003?\n**אפשר להשתמש ב-view הבא, אך לא חובה:**\n`CREATE VIEW temp_view AS (SELECT * FROM Performer JOIN Band USING(p_name) JOIN Represent USING(b_name)`",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT AVG(age)\nFROM temp_view\nWHERE year BETWEEN 2003 AND 2023"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT (MAX(age) - MIN(age)) / COUNT(*)\nFROM Performer JOIN Band ON Performer.p_name = Band.p_name JOIN Represent USING(b_name)\nWHERE year BETWEEN 2003 AND 2023"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT AVG(p)\nFROM (SELECT Represent.year, (MAX(Performer.age) - MIN(Performer.age)) As p\n      FROM temp_view\n      WHERE Represent.year BETWEEN 2003 AND 2023\n      GROUP BY Represent.year) As funnyQ"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT AVG(p)\nFROM (SELECT Represent.year, (MAX(Performer.age) - MIN(Performer.age)) As p\n      FROM temp_view\n      GROUP BY year) As funnyQ\nHAVING Represent.year BETWEEN 2003 AND 2023"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "c",
+      "answerSource": "solution-pdf",
+      "explanation": "יש לחשב לכל שנה את `MAX(age) - MIN(age)` (עם GROUP BY year בתת-שאילתה, שחייבת לקבל שם — funnyQ), ומעליה AVG. A מחשב ממוצע גילאים ולא הפרשים; B מחלק ב-COUNT(*) במקום ממוצע לפי שנה; ל-D יש תנאי לא-קבוצתי ב-HAVING. לכן C.",
+      "confidence": "high"
+    },
+    {
+      "num": 8,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "מיהן המדינות שאנשים המתגוררים בהן הופיעו באירוויזיון, אך לא כחלק מלהקה (כלומר רק כלהקה של אדם אחד)?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT country_name\nFROM Performer\nWHERE p_name NOT IN (SELECT p_name FROM Band GROUP BY country_name HAVING COUNT(p_name) = 1)"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT country_name\nFROM Performer\nWHERE p_name NOT IN (SELECT p_name FROM Band GROUP BY p_name HAVING COUNT(p_name) > 1)"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT country_name\nFROM Performer LEFT JOIN Band ON Performer.p_name = Band.p_name\nWHERE Band.b_name IS NULL"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT country_name\nFROM Performer\nWHERE p_name NOT IN (SELECT p_name FROM Band WHERE COUNT(p_name) > 1 GROUP BY p_name)"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה."
+        }
+      ],
+      "correctId": "e",
+      "acceptedIds": [
+        "e",
+        "b"
+      ],
+      "answerSource": "solution-pdf",
+      "explanation": "בשאלה מספר שגיאות מכוונות: A מקבץ ב-GROUP BY country_name (עמודה שאינה בטבלת Band); B מקבץ לפי p_name במקום b_name; C (LEFT JOIN ... IS NULL) מחזיר מי שאינו בלהקה כלל ולא 'להקה של אדם אחד'; D משתמש ב-COUNT בתוך WHERE (לא חוקי). לכן התשובה E. הערה: על-פי המחוון קיבלו גם את מסיח B.",
+      "confidence": "high"
+    },
+    {
+      "num": 9,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "באיזו שנה הופיעה הלהקה הגדולה ביותר (הכי הרבה מופיעים)?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT year\nFROM Represent\nWHERE b_name IN (SELECT b_name FROM Band GROUP BY b_name HAVING COUNT(p_name) = (SELECT MAX(COUNT(p_name)) FROM Band GROUP BY b_name))"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT year\nFROM Represent\nWHERE b_name IN (SELECT b_name FROM Band GROUP BY b_name HAVING COUNT(p_name) = MAX(p_name))"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT MAX(year)\nFROM Represent r JOIN Band b ON r.b_name = b.b_name\nGROUP BY b.b_name\nHAVING COUNT() = ANY (SELECT MAX(COUNT()) FROM Band GROUP BY b_name)"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT r.year\nFROM Represent r, Band b\nWHERE r.b_name = b.b_name\nGROUP BY b.b_name, r.year\nHAVING COUNT(b.p_name) >= ALL (SELECT COUNT(p_name) FROM Band GROUP BY b_name)"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה."
+        }
+      ],
+      "correctId": "d",
+      "answerSource": "solution-pdf",
+      "explanation": "שאלת MAX ברמת קושי גבוהה. A משרשר `MAX(COUNT(...))` באופן לא חוקי; B שגוי תחבירית (`COUNT = MAX(p_name)`); C מחזיר שנה מקסימלית ולא את השנה של הלהקה הגדולה. D מוצא את הלהקה עם מספר המבצעים הגדול ביותר (`COUNT(b.p_name) >= ALL ...`). לכן D.",
+      "confidence": "high"
+    },
+    {
+      "num": 10,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "כתוב שאילתה שמחזירה לכל מדינה כמה פעמים היא קיבלה 12 נקודות ממדינות אחרות. בחרו את התשובה הנכונה ביותר.",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT to_country, COUNT(*) as times_received_12_points\nFROM Score\nWHERE num_points = 12\nGROUP BY to_country"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT from_country, COUNT(*) as times_received_12_points\nFROM Score\nWHERE num_points = 12\nGROUP BY from_country"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT to_country, COUNT(*) as times_received_12_points\nFROM (SELECT to_county, num_points FROM Score WHERE num_points = 12) As temp\nGROUP BY to_country"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT COUNT(*) as times_received_12_points\nFROM (SELECT to_county, num_points FROM Score WHERE num_points = 12 GROUP BY to_country) As temp"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "a",
+      "answerSource": "solution-pdf",
+      "explanation": "המדינה המקבלת היא `to_country`; מסננים `num_points = 12` ומקבצים לפי `to_country` עם COUNT(*). A היא התשובה הנכונה והתמציתית ביותר. C מגיע לתוצאה דומה דרך תת-שאילתה מיותרת (וקיבל ניקוד חלקי בלבד), ואילו B מקבץ לפי `from_country` ו-D מחזיר מספר יחיד ללא פירוט למדינה.",
+      "confidence": "high"
+    },
+    {
+      "num": 11,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "מצאו מדינות שקיבלו מעל 4 נקודות מכל המדינות שהשתתפו בין השנים 2012 עד 2022.",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT DISTINCT s1.to_country\nFROM Score AS s1\nWHERE s1.year BETWEEN 2012 AND 2022 AND NOT EXISTS (SELECT r.country_name FROM Represent r WHERE r.year BETWEEN 2012 AND 2022 AND r.country_name NOT IN (SELECT s2.from_country FROM SCORE AS s2 WHERE s2.to_country = s1.to_country AND s2.num_points > 4))"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT DISTINCT s1.to_country\nFROM Score AS s1\nWHERE NOT EXISTS (SELECT s2.from_country FROM Score As S2 WHERE s2.year BETWEEN 2012 AND 2022 AND s2.score > 4 AND s2.country_name NOT IN (SELECT s3.from_country FROM Score As S3 WHERE S2.to_country = s3.to_country AND s3.year BETWEEN 2012 AND 2022))"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT DISTINCT s1.to_country\nFROM Score AS s1\nWHERE s1.score > 4 AND NOT EXISTS (SELECT r.country_name FROM Represent r WHERE r.year BETWEEN 2012 AND 2022 SCORE AS s2 WHERE AND r.country_name NOT IN (SELECT s2.from_country FROM s2.year BETWEEN 2012 AND 2022))"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "lang": "sql",
+          "value": "SELECT DISTINCT s1.to_country\nFROM Score AS s1\nWHERE NOT EXISTS (SELECT s2.from_country FROM Score As S2 WHERE s2.year BETWEEN 2012 AND 2022 AND s2.country_name NOT IN (SELECT s3.from_country FROM Score As S3 WHERE S2.to_country = s3.to_country AND s3.score > 4))"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "a",
+      "answerSource": "solution-pdf",
+      "explanation": "שאלת חילוק ברמת קושי גבוהה, שנפתרת בשלילה כפולה: מדינה `to_country` שאין מדינה משתתפת (בין 2012–2022) שלא נתנה לה מעל 4 נקודות. רק A מנוסח נכון; במסיחים B, C, D יש שגיאות (למשל שימוש בעמודות `score`/`country_name` שאינן קיימות ב-Score, וסדר סעיפים משובש ב-C). לכן A.",
+      "confidence": "med"
+    },
+    {
+      "num": 12,
+      "part": "ב",
+      "topic": "sql",
+      "contextId": "sql",
+      "question": "החזירו את כל המדינות שכל פעם לא חילקו נקודות למדינת ישראל. השאלה דורשת:",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "השאלה דורשת חיתוך"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "השאלה דורשת איחוד"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "השאלה דורשת הפרש"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "השאלה דורשת חילוק"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "c",
+      "answerSource": "solution-pdf",
+      "explanation": "המילה 'כל' מבלבלת ונראית כמו חילוק, אך אין כאן קבוצת-מחלק. 'שכל פעם לא חילקו' שקול ל'שאף פעם לא חילקו' — כלומר כל המדינות פחות אלה שחילקו נקודות לישראל, שזו פעולת הפרש.",
+      "confidence": "high"
+    },
+    {
+      "num": 14,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "sql",
+      "question": "מה עונה על השאילתה \"מה שמות המוזיקאים שמנגנים בכל כלי הפריטה (string)\"?",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "Π_{p_name} σ_{category='string'} (Band X Instrument)"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "Π_{p_name} σ_{category='string'} (Band ⊗ Instrument)"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "Π_{p_name, serial_number}(Band) ÷ Π_{serial_number} σ_{category='string'} (Instrument)"
+        },
+        {
+          "id": "d",
+          "type": "algebra",
+          "value": "Π_{p_name} (Band) ∩ Π_{p_name} σ_{category='string'} (Band X Instrument)"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "c",
+      "answerSource": "solution-pdf",
+      "explanation": "\"בכל כלי הפריטה\" דורש חילוק (division): מוזיקאי המשויך (דרך Band) לכל הכלים מקטגוריית 'string'. תשובה C מבצעת חילוק בין הזוגות (p_name, serial_number) של Band לבין ה-serial_number של כלי הפריטה.",
+      "confidence": "high"
+    },
+    {
+      "num": 15,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "sql",
+      "question": "מי מהתשובות הבאות מתאימה לשאלה: \"שמות המבצעים שמעולם לא ייצגו את המדינה בה הם גרים\"?",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "Π_{p_name} (Represent) − Π_{p_name} (Performer ⊗ Represent)"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "Π_{P.p_name} (σ_{(P.p_name = R.p_name) ∧ (P.country_name <> R.country_name)} (ρ_{P} Performer X ρ_{R} Represent))"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "Π_{P.p_name} (σ_{(P.country_name <> R.country_name)} (ρ_{P} Performer ⊗ ρ_{R} Represent))"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "יותר מתשובה אחת עונה על השאלה"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף תשובה לא עונה על השאלה"
+        }
+      ],
+      "correctId": "e",
+      "answerSource": "solution-pdf",
+      "explanation": "השאלה דורשת חיסור (הפרש), אך החיסור המוצע במסיח A שגוי כי ל-Represent אין `p_name` (לא ניתן להקרין `p_name` מ-Represent); גם B ו-C מניחים חיבור/עמודה שגויים. לכן אף תשובה אינה עונה על השאלה.",
+      "confidence": "high"
+    },
+    {
+      "num": 16,
+      "part": "ג",
+      "topic": "relalg",
+      "contextId": "sql",
+      "question": "מה מחזירה השאילתה הבאה?\n**הערה:** לא כל מדינה חייבת לתת נקודות או לקבל נקודות ממדינה אחרת.\n$$Π_{S1.from_country} (σ_{(S1.from_country = S2.to_country) ∧ (S1.to_country <> S2.from_country)} (ρ_{S1} Score X ρ_{S2} Score))$$",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "שמות המדינות הבאות: מדינה שהצביעה אך ורק למדינות שלא הצביעו לה."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "שמות המדינות הבאות: מדינה שהצביעה ללפחות מדינה אחת שהצביעה לה."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "שמות המדינות הבאות: מדינה שהצביעה לכל אחת מהמדינות שהצביעו לה."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "שמות המדינות הבאות: מדינה שהצביעה ליותר משתי מדינות שהצביעו לה."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "e",
+      "answerSource": "solution-pdf",
+      "explanation": "הביטוי מחזיר מדינה שהצביעה למדינה אחת לפחות, ומדינה שלישית כלשהי הצביעה לה. כיוון שאין חיסור, אין מניעה שיתקיימו גם מקרים נוספים (למשל שהצביעה גם למדינות שלא הצביעו לה) — ולכן אף אחד מהניסוחים אינו מדויק. מסיח A קרוב (וקיבל ניקוד חלקי), אך אינו שקול. לכן E.",
+      "confidence": "med"
+    },
+    {
+      "num": 17,
+      "part": "ד",
+      "topic": "fd_norm",
+      "contextId": "q17",
+      "question": "נתון מסד נתונים חוקי מעל סכמה $R = (P1, P2, P3)$ (ראו המופע למעלה), ותהי F קבוצת התלויות הפונקציונליות מעל R. קבעו האם יתכן ש:\n(1) התלות $P1\\;P3 → P2$ היא תלות ב-F.\n(2) התלות $P2 → P3$ אינה תלות ב-F.",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "(1) יתכן, (2) יתכן"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "(1) לא יתכן, (2) לא יתכן"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "(1) יתכן, (2) לא יתכן"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "(1) לא יתכן, (2) יתכן"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "d",
+      "acceptedIds": [
+        "d",
+        "b"
+      ],
+      "answerSource": "solution-pdf",
+      "explanation": "מופע חוקי חייב לקיים כל תלות ב-F. (1) התלות $P1\\;P3 → P2$ מופרת ע\"י שורות 3 ו-5: `(b,80,T)` ו-`(b,50,T)` — זהות ב-P1,P3 אך שונות ב-P2 — ולכן אינה יכולה להיות ב-F ⇒ 'לא יתכן'. (2) המופע מקיים את $P2 → P3$, כך שנדמה שהיא חייבת להיות ב-F, אך F אינו חייב לכלול כל תלות שהמופע מקיים (ומופעים עתידיים עשויים להפר אותה) ⇒ 'יתכן' שאינה ב-F. לכן D. הערה: על-פי המחוון קיבלו גם את מסיח B.",
+      "confidence": "high"
+    },
+    {
+      "num": 18,
+      "part": "ד",
+      "topic": "fd_norm",
+      "question": "נתון יחס $R(A, B, C, D, E, F)$ ותלויות פונקציונליות $F(AB → EF, C → AEF, D → B, E → D)$. קבעו מי מהבאים מפתח קביל:",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "{ABC}"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "{BC}"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "{CD}"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "{AB}"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהם"
+        }
+      ],
+      "correctId": "e",
+      "answerSource": "solution-pdf",
+      "explanation": "‏C מופיע רק בצד שמאל, ולכן חייב להיות בכל מפתח. סגור C: `C → AEF`, `E → D`, `D → B` ⇒ C⁺ = {A,B,C,D,E,F}, כלומר {C} לבדו הוא המפתח היחיד (המינימלי). כל האפשרויות הן על-מפתחות ולא מפתחות קבילים (מינימליים). לכן E.",
+      "confidence": "high"
+    },
+    {
+      "num": 19,
+      "part": "ד",
+      "topic": "fd_norm",
+      "question": "נתון יחס $R(A, B, C)$ והפירוק (decomposition) $R1(A, B)$ ו-$R2(B, C)$, ואוסף התלויות הפונקציונליות $F(A → BC, C → B, AB → B)$. קבעו האם הפירוק משמר מידע, משמר תלויות, וכן הלאה.",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "הפירוק משמר מידע בלבד"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "הפירוק משמר תלויות בלבד"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "הפירוק משמר מידע ומשמר תלויות"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "הפירוק אינו משמר מידע ואינו משמר תלויות"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "ההצעה לפירוק אינה פירוק תקין של היחס R"
+        }
+      ],
+      "correctId": "d",
+      "answerSource": "solution-pdf",
+      "explanation": "החיתוך R1∩R2 = {B}, ו-B אינו מפתח של R1 ולא של R2 (B⁺ = {B}) — ולכן אין שימור מידע (הצירוף אינו lossless). ההיטלים על R1, R2 נותנים רק `A → B` ו-`C → B`, שמהם לא ניתן להסיק את `A → C` — ולכן גם אין שימור תלויות. לכן D.",
+      "confidence": "high"
+    }
+  ]
+}

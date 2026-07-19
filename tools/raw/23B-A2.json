@@ -1,0 +1,1045 @@
+{
+  "meta": {
+    "examCode": "23B-A2",
+    "examLabel": "2023 סמסטר ב׳ מועד א׳",
+    "year": 2023,
+    "examDate": "17.7.2023",
+    "course": "61303"
+  },
+  "contexts": {
+    "erd": {
+      "kind": "image",
+      "title": "חלק א׳ — תרשים ER",
+      "image": "images/exams/23B-A2-erd.png",
+      "caption": "התרשים מתאר בסיס נתונים של חברות הפקה, מופעים, שחקנים/ות, פרסים ומדינות. (התרשים חולץ מהמבחן ועבר היפוך צבעים לשיפור הקריאוּת.)"
+    },
+    "sql": {
+      "kind": "schema",
+      "title": "חלקים ב׳ ו-ג׳ — סכמות היחסים (תחרות שירה דומה לאירוויזיון)",
+      "intro": "נתונות תבניות/סכמות היחסים הבאות, מתוך בסיס נתונים של תחרות שירה דומה לאירוויזיון. הסעיפים בחלק ב׳ (SQL) ובחלק ג׳ (אלגברת יחסים) מתייחסים לאוסף זה:",
+      "relations": [
+        {
+          "schema": "Performer([u]p_name[/u], age, gender, height, country_name)",
+          "meaning": "היחס מתאר את המבצעים — פרטי האנשים המופיעים: שם, גיל, מין (זכר, נקבה, לא מזדהה), גובה, והמדינה בה מתגורר."
+        },
+        {
+          "schema": "Band([u]b_name[/u], [u]p_name[/u], serial_number)",
+          "meaning": "היחס מתאר פרטי להקה, מי משתתף בה ובאיזה כלי הוא השתמש. ייתכן שהכלי יהיה `NULL` (ריק). תיתכן להקה של אדם אחד."
+        },
+        {
+          "schema": "Instrument([u]serial_number[/u], type, category, height, width, length)",
+          "meaning": "היחס מתאר כלי נגינה או עזרים למופע: מספר סדרתי, סוג הכלי (גיטרה, תופים, עמוד, כסא), קטגוריה (פריטה, נשיפה, קלידים), ומידות רוחב אורך וגובה לאחסון והובלה."
+        },
+        {
+          "schema": "Represent([u]b_name[/u], country_name, [u]year[/u])",
+          "meaning": "היחס מתאר את הלהקות שמייצגות מדינה מסוימת בשנה מסוימת. אדם יכול להופיע בשנים שונות עם מדינות שונות, וגם באותה שנה בלהקות שונות. גם אם מופיע אדם אחד — הוא יופיע כלהקה של אדם אחד."
+        },
+        {
+          "schema": "Score([u]from_country[/u], [u]to_country[/u], num_points, [u]year[/u])",
+          "meaning": "ניקוד ניתן ממדינה למדינה, עם מספר נקודות בשנה מסוימת. ב-`from_country` וב-`to_country` יש התאמה ל-`country_name` מטבלת `Performer`/`Represent`. מדינה שלא קיבלה ניקוד כלל לא תופיע כאן."
+        }
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "23B-A2-Q1",
+      "num": 1,
+      "examCode": "23B-A2",
+      "part": "א",
+      "topic": "erd",
+      "topicLabel": "חלק א׳ — מודל ישויות-קשרים (ERD)",
+      "question": "איזה מההיגדים הבאים נכון?",
+      "contextId": "erd",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "במדינה מסוימת יכולים להיוולד מספר שחקנים."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "שחקן יכול לשחק בכמה הצגות שהוא רואה לנכון."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "חברת הפקות יכולה להפיק מופע אחד בלבד."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "פרס חייב להינתן (זוכה בו) למופע אחד לפחות."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף תשובה אינה נכונה"
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "בקשר `נולד/ה ב` יש חץ מ-`שחקן/ית` אל `מדינה`, כלומר כל שחקן נולד במדינה אחת — ולכן במדינה מסוימת יכולים להיוולד מספר שחקנים. שאר ההיגדים אינם נובעים מהתרשים.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q2",
+      "num": 2,
+      "examCode": "23B-A2",
+      "part": "א",
+      "topic": "erd",
+      "topicLabel": "חלק א׳ — מודל ישויות-קשרים (ERD)",
+      "question": "איזה מההיגדים הבאים נכון?",
+      "contextId": "erd",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "שחקן יכול לזכות בהמון פרסים."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "בפרס מסוים חייב שיהיה לפחות זוכה אחד."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "במופע מסוים יכול לשחק שחקן יחיד בלבד."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "שחקן חייב לזכות בפרס אחד לפחות."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף תשובה אינה נכונה."
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "לישות `פרס` יש השתתפות מלאה (קו כפול) בקשר `זוכה ב`, ולכן כל פרס חייב שיהיה לו לפחות זוכה אחד. אין חובת השתתפות מלאה על השחקן.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q3",
+      "num": 3,
+      "examCode": "23B-A2",
+      "part": "א",
+      "topic": "erd",
+      "topicLabel": "חלק א׳ — מודל ישויות-קשרים (ERD)",
+      "question": "איזה מההיגדים הבאים נכון?",
+      "contextId": "erd",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "בדיאגרמה יש תכונה מרובת ערכים."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "בכל המרה לטבלאות חייבת להיות טבלה עבור הישות פרס."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "בדיאגרמה יש טעות סינטקס."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "בדיאגרמה יש מקום בו ניתן להחליף תכונה(ות) בתכונה מורכבת."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף תשובה אינה נכונה."
+        }
+      ],
+      "correctId": "d",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "אפשר לאחד תכונות פשוטות לתכונה מורכבת — למשל `שם פרטי` ו-`שם משפחה` של שחקן/ית לתכונה מורכבת `שם`. אין בתרשים תכונה מרובת-ערכים ואין טעות תחביר.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q5",
+      "num": 5,
+      "examCode": "23B-A2",
+      "part": "ב",
+      "topic": "sql",
+      "topicLabel": "חלק ב׳ — SQL",
+      "question": "מהם המספרים הסידוריים של כלי הנגינה שמספרם מסתיים ב-584?",
+      "contextId": "sql",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT serial_number FROM Band WHERE serial_number = \"%584\"",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT serial_number FROM Band WHERE serial_number LIKE \"%584\"",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT serial_number FROM Band WHERE serial_number = \"%584%\"",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT serial_number FROM Band WHERE serial_number LIKE \"%584%\"",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "כדי לתפוס מספר שמסתיים ב-584 יש להשתמש ב-`LIKE \"%584\"` (התו `%` בתחילת התבנית). `=` דורש התאמה מדויקת (ולא תבנית), ו-`\"%584%\"` תופס גם מספרים שה-584 מופיע בהם באמצע.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q6",
+      "num": 6,
+      "examCode": "23B-A2",
+      "part": "ב",
+      "topic": "sql",
+      "topicLabel": "חלק ב׳ — SQL",
+      "question": "מיהם המדינות שהמבצעים ששלחו לייצג אותם הם כולם בגובה 1.80 ומעלה?",
+      "contextId": "sql",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT country_name FROM Represent JOIN Performer ON p_name=b_name\nWHERE height >= 1.80",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT country_name FROM Represent JOIN Band USING(b_name)\nJOIN Performer USING(p_name) WHERE height >= 1.80",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT country_name FROM Represent WHERE b_name NOT IN (SELECT b_name FROM Band JOIN Performer USING(p_name) WHERE height < 1.80)",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT country_name FROM Represent As R1 WHERE NOT EXISTS (SELECT p_name FROM Band As B1 WHERE b_name NOT IN (SELECT b_name FROM Performer JOIN Band As B2 USING(p_name) WHERE height < 1.80 and B1.b_name = R1.p_name))",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "c",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "\"כולם בגובה ≥ 1.80\" = אין אף חבר נמוך מ-1.80. C בוחר מדינות שהלהקה המייצגת אותן אינה נמצאת בין הלהקות שיש בהן מבצע בגובה קטן מ-1.80 (`NOT IN`). A ו-B מחזירים מדינות שיש בהן ולו מבצע אחד גבוה, ו-D שגוי לוגית ותחבירית.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q7",
+      "num": 7,
+      "examCode": "23B-A2",
+      "part": "ב",
+      "topic": "sql",
+      "topicLabel": "חלק ב׳ — SQL",
+      "question": "סטודנטים ענו על השאלה: מה שמות הלהקות שקיבלו 12 נקודות בשנים בהם השתתפו, ובאילו שנים קיבלו 12 נקודות? מי מהתשובות הבאות נכונה:",
+      "contextId": "sql",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT B.b_name, B.year FROM Represent As B , Score As S\nWHERE B.country_name = S.to_country AND S.num_points = 12",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT b_name, year FROM Represent, Score\nWHERE Represent.country_name = Score.to_country AND num_points = 12",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT b_name, year FROM Represent JOIN Score USING(year)\nWHERE Represent.country_name = Score.to_country and num_points = 12",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT b_name, year FROM Represent JOIN Score USING(year, country)\nWHERE num_points = 12",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "code",
+          "value": "SELECT b_name FROM Score WHERE num_points = 12",
+          "lang": "sql"
+        }
+      ],
+      "correctId": "c",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "צריך לחבר את `Represent` ל-`Score` לפי אותה שנה (`USING(year)`) ולסנן `country_name = to_country AND num_points = 12`. A ו-B מבצעים מכפלה ללא חיבור על השנה (`Score` מכיל `year` נפרד → צימוד שנים שגוי), D מחבר לפי עמודה לא קיימת `country`, ו-E אינו מחזיר את שם הלהקה כלל.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q8",
+      "num": 8,
+      "examCode": "23B-A2",
+      "part": "ב",
+      "topic": "sql",
+      "topicLabel": "חלק ב׳ — SQL",
+      "question": "מיהם המדינות שקיבלו את סך כל הנקודות הגבוה ביותר ובאיזו שנה? (כלומר, בשנה מסוימת נסכום את כל הניקוד שקיבלה כל מדינה, ונבדוק מהו הניקוד הגבוה ביותר שהגיעו אליו בשנה כלשהי, מיהי המדינה ומהי השנה. ייתכן שיש יותר ממדינה אחת שהגיעה לניקוד זה.)",
+      "contextId": "sql",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT to_country, year FROM Score GROUP BY to_country, year\nHAVING sum(num_points) >= ALL (SELECT sum(num_points) FROM Score\nGROUP BY to_country, year)",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT to_country, year FROM Score GROUP BY to_country, year\nHAVING sum(num_points) IN (SELECT max(num_points)FROM Score\nGROUP BY to_country, year)",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT to_country, max(sum(num_points)), year FROM Score Group BY to_country",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT to_country, year FROM Score Group BY to_country\nHAVING max(sum(num_points)) = num_points",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "מקבצים לפי (`to_country`, `year`), וב-`HAVING` דורשים שסכום הנקודות של הקבוצה יהיה גדול-או-שווה לכל הסכומים של כל קבוצה אחרת (`>= ALL`). B משווה סכום ל-`max` של ניקוד בודד, ו-C, D בעלי קיבוץ/צירוף אגרגציה שגויים.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q9",
+      "num": 9,
+      "examCode": "23B-A2",
+      "part": "ב",
+      "topic": "sql",
+      "topicLabel": "חלק ב׳ — SQL",
+      "question": "לכל תזמורת מעוניינים להשכיר מכולה שבה הכלים יהיו בקופסאות בגודל המתאים להם, אך יעמדו אך ורק קופסא על גבי קופסא. מה גובה ה-`height` של המכולה לכל תזמורת? השלם את `(1)`:\n`SELECT ____(1)____ FROM Band JOIN Instrument USING(serial_number) GROUP BY b_name`",
+      "contextId": "sql",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "b_name, sum(height)",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "b_name, count(height)",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "b_name, count(*)",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "b_name, sum(height)*count(*)",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה."
+        }
+      ],
+      "correctId": "a",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "אם הקופסאות מונחות זו על גבי זו, גובה המכולה הוא סכום גובהי הכלים של הלהקה — `sum(height)` בקיבוץ לפי `b_name`. `count` סופר פריטים, ולא מחשב גובה מצטבר.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q10",
+      "num": 10,
+      "examCode": "23B-A2",
+      "part": "ב",
+      "topic": "sql",
+      "topicLabel": "חלק ב׳ — SQL",
+      "question": "מיהם המדינות שמעולם לא נתנו 12 נקודות למדינה אחרת.",
+      "contextId": "sql",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT DISTINCT from_country FROM Score WHERE num_points != 12",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT DISTINCT to_country FROM Score WHERE num_points != 12",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT DISTINCT from_country FROM Score WHERE from_country NOT IN (SELECT from_country FROM Score WHERE num_points = 12)",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT DISTINCT to_country FROM Score WHERE to_country NOT IN (SELECT from_country FROM Score WHERE num_points = 12)",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "c",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "המדינה הנותנת היא `from_country`. \"מעולם לא נתנה 12\" = `from_country` שאינו מופיע באף שורה עם `num_points = 12` (`NOT IN`). A מחזיר מדינות שנתנו ניקוד השונה מ-12 ולו פעם אחת (גם אם נתנו 12 בפעם אחרת); B, D משתמשים ב-`to_country` (המדינה המקבלת).",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q11",
+      "num": 11,
+      "examCode": "23B-A2",
+      "part": "ב",
+      "topic": "sql",
+      "topicLabel": "חלק ב׳ — SQL",
+      "question": "מה שמות הלהקות בהם יש יצוג לכל אחת מקטגוריות כלי הנגינה?",
+      "contextId": "sql",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "SELECT b_name FROM Band JOIN Instrument GROUP BY b_name HAVING COUNT(DISTINCT category) = (SELECT COUNT(DISTINCT category) FROM Instrument)",
+          "lang": "sql"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "SELECT B1.b_name FROM Band As B1 WHERE NOT EXISTS (SELECT category FROM Instrument WHERE category NOT IN (SELECT category FROM Instrument JOIN Band USING (serial_number) WHERE B1.b_name = Band.b_name))",
+          "lang": "sql"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "SELECT B1.b_name FROM Band As B1 WHERE NOT EXISTS (SELECT category FROM Instrument WHERE B1.serial_number = Instrument.serial_number AND category NOT IN (SELECT category FROM Instrument INNER JOIN Band USING (serial_number)))",
+          "lang": "sql"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "SELECT b_name FROM Band INNER JOIN Instrument ON Band.serial_number = Instrument.serial_number GROUP BY b_name",
+          "lang": "sql"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "זוהי שאלת חלוקה: להקה שאין קטגוריה שאין לה יצוג בה. התבנית `NOT EXISTS`-כפול של B בודקת שאין קטגוריה שאינה מיוצגת בכלים של אותה להקה. A משתמש ב-`JOIN` ללא תנאי חיבור (`serial_number`), ולכן הספירה שגויה.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q12",
+      "num": 12,
+      "examCode": "23B-A2",
+      "part": "ב",
+      "topic": "sql",
+      "topicLabel": "חלק ב׳ — SQL",
+      "question": "מה מהבאים נכון?",
+      "contextId": "sql",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "בשאלות של חילוק, יש קבוצת ערכים שחייבת לקבל את אותו ערך בתכונה מסוימת."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "שאלות של חילוק לא ניתן להמיר לשאלות של ספירת שורות, הן תמיד דורשות `NOT IN`."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "שאלות של חילוק אפשר לפתור על ידי הכלה, תוך שימוש ב-`CONTAINS`, אם כי לא בכל השפות שממשות `SQL`."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "שאלות של חילוק הן הפוכות לשאלות של מכפלה קרטזית, אבל תיתכן שארית."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "c",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "חלוקה ניתנת לביטוי כהכלת קבוצות, ובחלק מהדיאלקטים אף באמצעות `CONTAINS`, אך לא כל מימוש של `SQL` תומך בכך. חילוק ניתן גם להמיר לספירת שורות (ולכן B שגוי), ואינו הפעולה ההופכית למכפלה קרטזית באופן שמוזכר ב-D.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q13",
+      "num": 13,
+      "examCode": "23B-A2",
+      "part": "ג",
+      "topic": "relalg",
+      "topicLabel": "חלק ג׳ — אלגברת יחסים",
+      "question": "מי מהתשובות הבאות מתאימה לשאלה: \"שמות המבצעים שניגנו גם בגיטרה וגם בתופים\"?",
+      "contextId": "sql",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "Π_{B.p_name} (σ_{I.type=\"guitar\" ∧ I.type=\"drums\"} (ρ_{B} Band ⊗ ρ_{I} Instrument))"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "Π_{p_name} (Π_{serial_number} (σ_{type=\"guitar\"} (Instrument)) ⊗ Band) ∩ Π_{p_name} (Π_{serial_number} (σ_{type=\"drums\"} (Instrument)) ⊗ Band)"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "Π_{p_name}(Band) − Π_{p_name} (σ_{I.type<>\"guitar\" ∧ I.type<>\"drums\"} (ρ_{B} Band ⊗ ρ_{I} Instrument))"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "יותר מתשובה אחת עונה על השאלה"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף תשובה אינה נכונה"
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "\"גם וגם\" = חיתוך: המבצעים שניגנו בגיטרה ∩ המבצעים שניגנו בתופים. A שגוי כי `type=\"guitar\" ∧ type=\"drums\"` על אותה שורה אף פעם אינו מתקיים, ו-C נותן את מי שניגן בגיטרה או בתופים (משלים ה\"אף אחד מהם\"), ולא \"גם וגם\".",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q14",
+      "num": 14,
+      "examCode": "23B-A2",
+      "part": "ג",
+      "topic": "relalg",
+      "topicLabel": "חלק ג׳ — אלגברת יחסים",
+      "question": "מה עונה על השאילתה \"מה שמות המדינות שבמהלך כל שנות התחרות קיבלו 12 נקודות מכל המדינות\"?",
+      "contextId": "sql",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "Π_{from_country} (Score) − Π_{S1.to_country} σ_{S1.from_country=S2.from_country ∧ (S1.to_country<>S2.to_country) S2.num_points=12} (ρ_{S1} Score X ρ_{S2} Score)"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "Π_{to_country, from_country} σ_{num_points=12} (Score) ÷ Π_{from_country} (Score)"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "Π_{to_country} σ_{num_points=12} (Score) ÷ Π_{from_country} (Score)"
+        },
+        {
+          "id": "d",
+          "type": "algebra",
+          "value": "Π_{from_country} σ_{num_points=12} (Score) ∩ Π_{to_country} σ_{num_points=12} (Score)"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "זוהי חלוקה: מחלקים את הזוגות (`to_country`, `from_country`) שבהם ניתנו 12 נקודות בקבוצת כל המדינות הנותנות (`Π_{from_country} Score`). התוצאה = המדינות שקיבלו 12 מכל מדינה. ב-C המחולק בעל תכונה יחידה ואינו מכיל את סכמת המחלק, ולכן החלוקה אינה תקינה.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q15",
+      "num": 15,
+      "examCode": "23B-A2",
+      "part": "ג",
+      "topic": "relalg",
+      "topicLabel": "חלק ג׳ — אלגברת יחסים",
+      "question": "מי מהתשובות הבאות מתאימה לשאלה: \"שמות המבצעים שייצגו רק את המדינה בה הם גרים\"? הנחה: טבלת המבצעים `performers` מכילה רק פרטי האנשים המופיעים, שהופיעו לפחות פעם אחת.",
+      "contextId": "sql",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "Π_{p_name} (Performer) − Π_{P.p_name} (σ_{(P.country_name <> R.country_name) ∧ (B.b_name = R.b_name)} ((ρ_{P} Performer ⊗ ρ_{B} Band) X ρ_{R} Represent))"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "Π_{P.p_name} (σ_{P.country_name = R.country_name} (ρ_{P} Performer ⊗ ρ_{B} Band X ρ_{R} Represent))"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "Π_{P.p_name} (ρ_{P} Performer ⊗ ρ_{B} Band ⊗ ρ_{R} Represent) − Π_{P.p_name} (σ_{(P.country_name <> R.country_name) ∧ (B.b_name = R.b_name)} ((ρ_{P} Performer ⊗ ρ_{B} Band) X ρ_{R} Represent))"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "יותר מתשובה אחת עונה על השאלה"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף תשובה לא עונה על השאלה"
+        }
+      ],
+      "correctId": "d",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "\"ייצגו רק את מדינת מגוריהם\" = כל המבצעים, פחות מי שייצג ולו פעם אחת מדינה השונה ממדינת מגוריו. גם A וגם C מבטאים נכון את ההפרש (\"כל המבצעים פחות מי שייצג מדינה זרה\"), ולכן יותר מתשובה אחת עונה על השאלה.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q16",
+      "num": 16,
+      "examCode": "23B-A2",
+      "part": "ג",
+      "topic": "relalg",
+      "topicLabel": "חלק ג׳ — אלגברת יחסים",
+      "question": "מה מחזירה השאילתה הבאה?\n$$Π_{R1.b_name} (σ_{(R1.b_name = R2.b_name) ∧ (R1.year <> R2.year)} (ρ_{R1} Represent X ρ_{R2} Represent))$$",
+      "contextId": "sql",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "שמות כל הלהקות שהשתתפו בתחרות לפחות פעם אחת."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "שמות כל הלהקות שהשתתפו בתחרות יותר מפעם אחת."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "שמות כל הלהקות שהשתתפו אי-פעם בתחרות."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "יותר מתשובה אחת נכונה."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה."
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "השאילתה מזווגת את `Represent` עם עצמו ומחפשת אותה להקה (`R1.b_name = R2.b_name`) בשתי שנים שונות (`R1.year <> R2.year`) — כלומר להקות שהשתתפו ביותר משנה/תחרות אחת.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q17",
+      "num": 17,
+      "examCode": "23B-A2",
+      "part": "ד",
+      "topic": "fd_norm",
+      "topicLabel": "חלק ד׳ — תלויות פונקציונליות ושימור מידע",
+      "question": "נתונה קבוצת תלויות פונקציונליות $F = {Q → U, U → V, PQ → WST, SU → TR, VT → RW, R → W}$. קבעו האם אחת מהתלויות הבאות נובעת מ-F:",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "QU → R"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "SQ → W"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "PQ → R"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "יותר מתשובה אחת נכונה."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה."
+        }
+      ],
+      "correctId": "d",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "‏(SQ)⁺: מ-Q→U, U→V מקבלים U,V; מ-SU→TR מקבלים T,R; ולכן R→W → יש W, אז SQ→W נובעת. ‏(PQ)⁺: PQ→WST נותן W,S,T; ואז SU→TR נותן R, ולכן PQ→R נובעת. לעומת זאת (QU)⁺={Q,U,V} בלבד, כך ש-QU→R אינה נובעת. שתי תלויות נובעות → תשובה D.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q18",
+      "num": 18,
+      "examCode": "23B-A2",
+      "part": "ד",
+      "topic": "fd_norm",
+      "topicLabel": "חלק ד׳ — תלויות פונקציונליות ושימור מידע",
+      "question": "נתון יחס $R(A, B, C, D, E, F)$ ותלויות פונקציונליות $F(AB → EF, C → AEF, D → B, E → D)$. קבעו מי מהבאים מפתח-על:",
+      "options": [
+        {
+          "id": "a",
+          "type": "algebra",
+          "value": "{ABC}"
+        },
+        {
+          "id": "b",
+          "type": "algebra",
+          "value": "{BC}"
+        },
+        {
+          "id": "c",
+          "type": "algebra",
+          "value": "{C}"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "יותר מאחד המפתחות הפוטנציאליים הוא מפתח-על"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "כל ההמפתחות הם מפתחות על."
+        }
+      ],
+      "correctId": "e",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "‏(C)⁺: מ-C→AEF מקבלים A,E,F; מ-E→D מקבלים D; מ-D→B מקבלים B — כלומר C לבדו קובע את כל התכונות ולכן {C} הוא מפתח-על (וגם מפתח מועמד). מכאן ש-{BC} ו-{ABC} (המכילים את C) הם אף הם מפתחות-על — כל המפתחות המנויים הם מפתחות-על.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q19",
+      "num": 19,
+      "examCode": "23B-A2",
+      "part": "ד",
+      "topic": "fd_norm",
+      "topicLabel": "חלק ד׳ — תלויות פונקציונליות ושימור מידע",
+      "question": "נתון יחס $R = (A, B, C, D, E)$ והפירוק $R1(A, B, C)$ ו-$R2(C, D, E)$, ואוסף התלויות הפונקציונליות $F(AB → C, C → B, DE → C)$. קבעו האם הפירוק משמר מידע, משמר תלויות וכן הלאה.",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "הפירוק משמר מידע בלבד"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "הפירוק משמר תלויות בלבד"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "הפירוק משמר מידע ומשמר תלויות"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "הפירוק אינו משמר מידע ואינו משמר תלויות"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "ההצעה לפירוק אינה פירוק תקין של היחס R"
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "‏R1 ∩ R2 = {C}, ו-C⁺={C,B} אינו מפתח של R1 ולא של R2 — לכן הפירוק אינו משמר מידע (חיבור מפסיד). לעומת זאת כל התלויות נשמרות: `AB→C` ו-`C→B` בתוך R1, ו-`DE→C` בתוך R2. לכן הפירוק משמר תלויות בלבד.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q20",
+      "num": 20,
+      "examCode": "23B-A2",
+      "part": "ה",
+      "topic": "nosql",
+      "topicLabel": "חלק ה׳ — NoSQL ו-MongoDB",
+      "question": "מי מהמערכות הבאות **הכי** מתאימה ל-SQL?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "מערכת ששומרת הימורים לכל לקוח, במשחקים שונים, כמה כסף הוציא, ומה היו ההימורים שעשה בכל יום."
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "מערכת ששומרת כתובות וטלפונים של חברים ואת תוכני השיחות, ואת החברים של החברים שדיברו איתם, ומאפשרת לבדוק האם תוכני השיחות דומים."
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "מערכת ששומרת קניות של אנשים בכל מיני התחומים, מה אהבו בכל קנייה, מה הם ממליצים, ומה אמרו אנשים שלהם המליצו על הקנייה."
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "מערכת ששומרת לכל אדם את ההוצאות וההכנסות שלו לחודש, ולפי אילו סעיפים הוא מסווג אותם, וההערות שיש לו על כל אחד מסעיפי ההוצאות ואם סעיף קשור לסעיף אחר."
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהמערכות"
+        }
+      ],
+      "correctId": "a",
+      "acceptedIds": [
+        "a",
+        "d"
+      ],
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "בפתרון סומנו כנכונות גם A וגם D — שתיהן נתונים מובְנים, טבלאיים ובעלי יחסים ברורים (רשומות מובנות; מערכת הוצאות עם סעיפים והפניה עצמית), ולכן מתאימות ל-SQL. B ו-C הם נתונים גרפיים/לא-מובנים (רשת חברתית, המלצות) המתאימים יותר ל-NoSQL.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q21",
+      "num": 21,
+      "examCode": "23B-A2",
+      "part": "ה",
+      "topic": "nosql",
+      "topicLabel": "חלק ה׳ — NoSQL ו-MongoDB",
+      "question": "מי מהבאים יוצא דופן?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "AZURE"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "AWS"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "NoSQL"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "GCP"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות"
+        }
+      ],
+      "correctId": "c",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "‏AZURE, AWS ו-GCP הם ספקי ענן; `NoSQL` הוא קטגוריה של בסיסי נתונים ולא ספק ענן — ולכן היוצא דופן.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q22",
+      "num": 22,
+      "examCode": "23B-A2",
+      "part": "ה",
+      "topic": "nosql",
+      "topicLabel": "חלק ה׳ — NoSQL ו-MongoDB",
+      "question": "באיזו מהפקודות הבאות ב-MongoDB תשתמשו כדי למצוא את כל המסמכים באוסף `Users` בהם השדה גיל `age` גדול מ-30?",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "db.users.find({ \"age\": $gt: 30 })",
+          "lang": "js"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "db.users.find( \"age\": { $gt: 30 } )",
+          "lang": "js"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "db.users.find({ age > 30 })",
+          "lang": "js"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "db.users.find({ \"age\": { $gt: 30 } })",
+          "lang": "js"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה"
+        }
+      ],
+      "correctId": "d",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "התחביר התקין ב-MongoDB הוא `db.users.find({ \"age\": { $gt: 30 } })` — מסמך שאילתה שבו הערך של השדה הוא אובייקט אופרטור `{ $gt: 30 }`. שאר האפשרויות בעלות סוגריים/מבנה שגויים או משתמשות ב-`>` שאינו נתמך.",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q23",
+      "num": 23,
+      "examCode": "23B-A2",
+      "part": "ה",
+      "topic": "nosql",
+      "topicLabel": "חלק ה׳ — NoSQL ו-MongoDB",
+      "question": "במונגו (MongoDB) נתון אוסף (collection) של מכירות עם השדות: פריט, מחיר, כמות, תאריך (item, price, quantity, date). מהו ה-pipeline שיחשב נכון את סך ההכנסות (total revenue) עבור כל פריט (item)? (ההכנסה היא סך כל הכמות שנמכרה כפול המחיר שבו נמכר הפריט.)",
+      "options": [
+        {
+          "id": "a",
+          "type": "code",
+          "value": "{$group: {_id: \"$item\", totalRevenue: $multiply {$sum: \"$price\"}}}",
+          "lang": "js"
+        },
+        {
+          "id": "b",
+          "type": "code",
+          "value": "{$group: {_id: \"$item\", totalRevenue: {$sum: { $multiply: [\"$price\", \"$quantity\"]}}}}",
+          "lang": "js"
+        },
+        {
+          "id": "c",
+          "type": "code",
+          "value": "{$group: {_id: \"$item\", totalRevenue: {$sum: \"$price\"}}}",
+          "lang": "js"
+        },
+        {
+          "id": "d",
+          "type": "code",
+          "value": "{$group: {_id: \"$item\", totalRevenue: $add {$sum: \"$price\"}}}",
+          "lang": "js"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה נכונה."
+        }
+      ],
+      "correctId": "b",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "ההכנסה לפריט = סכום (מחיר × כמות) לכל מכירה: `$sum` על `$multiply: [\"$price\", \"$quantity\"]`, בקיבוץ לפי `$item`. C סוכם רק את המחיר, ו-A, D בעלי תחביר אופרטורים שגוי (`$multiply`/`$add` ללא מערך ארגומנטים).",
+      "confidence": "high"
+    },
+    {
+      "id": "23B-A2-Q24",
+      "num": 24,
+      "examCode": "23B-A2",
+      "part": "ה",
+      "topic": "nosql",
+      "topicLabel": "חלק ה׳ — NoSQL ו-MongoDB",
+      "question": "מה מהבאים מדבר על היכולת לדרוש זמינות נתונים (availability) על פני תכונות אחרות של מערכת בסיס נתונים?",
+      "options": [
+        {
+          "id": "a",
+          "type": "text",
+          "value": "ACID"
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "value": "BASE"
+        },
+        {
+          "id": "c",
+          "type": "text",
+          "value": "CAP"
+        },
+        {
+          "id": "d",
+          "type": "text",
+          "value": "AZURE"
+        },
+        {
+          "id": "e",
+          "type": "text",
+          "value": "אף אחת מהתשובות אינה קשורה לגישה לנתונים."
+        }
+      ],
+      "correctId": "c",
+      "official": true,
+      "answerSource": "solution-pdf",
+      "explanation": "משפט `CAP` (Consistency, Availability, Partition tolerance) עוסק בפשרה שבין עקביות, זמינות ועמידות לפיצול — כלומר בבחירה לתעדף זמינות (availability) על פני תכונות אחרות.",
+      "confidence": "high"
+    }
+  ]
+}

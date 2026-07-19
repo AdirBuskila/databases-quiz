@@ -1,0 +1,12 @@
+tools/node_modules/
+
+# Source exam scans — large (196M) rendered PDF pages, only needed while
+# transcribing. The transcriptions themselves (tools/raw/*.json) are tracked.
+tools/raw/**/*.png
+tools/raw/*.png
+*.pdf
+
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
