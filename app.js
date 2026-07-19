@@ -251,7 +251,7 @@ function initStart(){
   $("#officialOnly").onchange = ()=>{ renderPartFilter(); renderTopicGrid(); updatePoolInfo(); };
   $("#mistakesOnly").onchange = ()=>{ renderPartFilter(); renderTopicGrid(); updatePoolInfo(); };
   $("#startBtn").onclick = startSession;
-  $("#datasetInfo").textContent = `${QS.length} שאלות · מבחני 2019–2025`;
+  $("#datasetInfo").textContent = `${QS.length} שאלות · מבחני 2021–2025`;
 }
 
 /* ---------- session ---------- */

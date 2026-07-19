@@ -54,6 +54,6 @@ Note: the rendered exam pages under `tools/raw/<CODE>/` are not committed (196M 
 source scans). The transcriptions `tools/raw/*.json` are, so the build is reproducible.
 
 ## Sources & disclaimer
-Built from the course's 2019+ exams with matching solution files. Answers come from real
+Built from the course's 2021–2025 exams with matching solution files. Answers come from real
 פתרון/פתרונות files (no "טופס 0" rule); questions without a key are flagged. Answers marked
 "לא רשמי" were derived from course material — verify against the source.
