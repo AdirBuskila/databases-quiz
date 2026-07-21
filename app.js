@@ -209,12 +209,27 @@ function selectedExam(){ const el=$("#examPick"); return (S.mode==="exam" && el)
 function examQuestions(code){ return QS.filter(q=>q.examCode===code); }
 function qNum(q){ const m=String(q.id).match(/-Q(\d+)$/); return m?parseInt(m[1],10):0; }
 function examLabelOf(q){ return q.examLabel || q.sourceLabel || q.examCode || ""; }
+/* Exam-picker order: sample/practice papers first — they carry no year, so they have no
+   place in the chronology — then real exams oldest→newest, newest at the bottom.
+   (This bank is all dated exams today; the rule is here so the three apps agree.) */
+function examOrder(code){
+  const c=String(code);
+  const practice=/^PRAC/.test(c);
+  const sample=/^(SAMP|SP)/.test(c) || /-EX$/.test(c);
+  if(sample||practice) return [0, practice?1:0, c];
+  const m=c.match(/^(\d{2})/);
+  return [1, m?2000+parseInt(m[1],10):9999, c];
+}
+function byExamOrder(a,b){
+  const x=examOrder(a), y=examOrder(b);
+  return (x[0]-y[0]) || (x[1]-y[1]) || String(x[2]).localeCompare(String(y[2]));
+}
 function populateExamPick(){
   const sel=$("#examPick"); if(!sel) return;
   const seen=new Map();
   QS.forEach(q=>{ if(q.examCode && !seen.has(q.examCode)) seen.set(q.examCode, examLabelOf(q)); });
   sel.innerHTML = `<option value="">אקראי (כל המאגר)</option>` +
-    [...seen.entries()].sort((a,b)=>String(a[0]).localeCompare(String(b[0])))
+    [...seen.entries()].sort((a,b)=>byExamOrder(a[0],b[0]))
       .map(([code,label])=>`<option value="${code}">${escapeHtml(label)} (${examQuestions(code).length})</option>`).join("");
   sel.onchange=()=>{ syncExamOpts(); updatePoolInfo(); };
 }
