@@ -26,6 +26,17 @@ TOOLS = pathlib.Path(__file__).parent
 RAW = TOOLS / "raw"
 OUT = TOOLS.parent
 
+# Options like "תשובות ב' וג' נכונות" point at their SIBLINGS by printed letter. The app
+# shuffles options, which would make that reference land on whatever happens to fall in
+# those slots. Such questions keep the source's printed order instead (app.js honours
+# the lockOrder flag).
+LETTER_REF = re.compile(r"(תשובות|תשובה|סעיפים|סעיף)\s+[אבגדה]['׳]?\s*[,ו]")
+
+
+def locks_order(options):
+    vals = [o.get("value", "") if isinstance(o, dict) else o for o in options]
+    return any(LETTER_REF.search(str(v)) for v in vals)
+
 TOPIC_LABEL = {
     "erd": "מודל ERD",
     "sql": "SQL",
@@ -102,6 +113,8 @@ def main():
             q["source"] = "exam"
             q["topicLabel"] = TOPIC_LABEL[q["topic"]]
             q["official"] = q.get("answerSource") in OFFICIAL_SOURCES
+            if locks_order(q.get("options", [])):
+                q["lockOrder"] = True
             if q.get("contextId"):
                 q["contextId"] = cmap.get(q["contextId"], q["contextId"])
             q.pop("num", None)

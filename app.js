@@ -280,7 +280,10 @@ function startSession(){
 }
 
 function makeView(q){
-  const order = shuffle((q.options||[]).map(o=>o.id));  // shuffle by stable option id
+  // shuffle by stable option id; skipped when an option cites its siblings by printed
+  // letter ("תשובות ב' וג' נכונות") — shuffling would make that reference nonsense.
+  const ids = (q.options||[]).map(o=>o.id);
+  const order = q.lockOrder ? ids : shuffle(ids);
   const correctSet = new Set(order.map((id,i)=>isAccepted(q,id)?i:-1).filter(i=>i>=0));
   return { q, order, correctDisplay: order.indexOf(q.correctId), correctSet, answered:false, chosen:null };
 }
