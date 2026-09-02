@@ -18,7 +18,9 @@ For screenshots/verify scripts it's easier to serve it:
 - `sql-highlight.js` — self-contained SQL syntax highlighter (no deps, offline, lossless)
 - `katex/` — vendored KaTeX (min JS/CSS + woff2 fonts) for relational-algebra math
 - `questions.js` / `questions.json` — `{ meta, contexts, questions }` (generated)
-- `learn.js` — learn-mode content (generated; empty until M3)
+- `learn.js` — learn-mode theory chapters 1–5 (course cheat-sheet material)
+- `learn-briefs.js` — learn-mode chapters 6–12: exam-technique briefs, generated
+  from the Obsidian "Practice by Subject" notes; appends onto `window.LEARN`
 - `images/exams/` — cropped ERD diagrams, tables, and image-based options
 - `tools/` — Python + Node pipeline
 
@@ -38,6 +40,7 @@ python tools/render_pdf.py "<exam.pdf>" <CODE>      # PDF -> tools/raw/<CODE>/pa
 python tools/crop.py <page.png> <name> --box L T R B # crop ERD/tables/image-options
 python tools/validate.py                            # sanity-check raw/*.json
 python tools/build_questions.py                     # -> questions.json / questions.js / build_report.md
+python tools/build_learn_briefs.py                  # Obsidian briefs -> learn-briefs.js
 node tools/smoke.js                                 # integrity + id-shuffle scoring invariant
 node tools/shoot.js                                 # screenshots (desktop/mobile/light/dark)
 ```
@@ -46,6 +49,8 @@ node tools/shoot.js                                 # screenshots (desktop/mobil
 **Shipped** — live at https://adirbuskila.github.io/databases-quiz/
 
 206 questions across 10 exams (2021–2025), 36 shared context blocks.
+Learn mode ships 12 chapters: 1–5 theory, 6–12 exam-technique briefs (every one of the
+212 questions is mapped to a pattern in chapters 7–10).
 By topic: SQL 81 · ERD 40 · אלגברה רלציונית 40 · תלויות ונרמול 38 · NoSQL 7.
 Answer provenance: 186 from official keys, 20 derived. See `tools/build_report.md`
 for the full breakdown and `docs/build_plan.md` for the build history.

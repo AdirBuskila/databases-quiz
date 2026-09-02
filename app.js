@@ -570,6 +570,8 @@ function bindGlobal(){
   backdrop.onclick=closeDrawer;
 
   content.addEventListener("click", e=>{
+    const jump=e.target.closest("[data-learn-goto]");
+    if(jump){ e.preventDefault(); go(+jump.dataset.learnGoto); return; }
     const img=e.target.closest(".learn-fig img"); if(!img) return;
     lbImg.src=img.src; lbImg.alt=img.alt||""; lb.classList.remove("hidden");
   });

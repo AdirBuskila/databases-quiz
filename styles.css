@@ -496,6 +496,31 @@ main{max-width:860px;margin:1.6rem auto;padding:0 1rem}
 .learn-content thead th{background:var(--card2);color:var(--ink);font-weight:800}
 .learn-content tbody tr:nth-child(even){background:var(--card2)}
 
+/* --- exam-technique briefs (learn-briefs.js) --- */
+.learn-content h4{font-size:.98rem;color:var(--ink);font-weight:800;margin:1.1rem 0 .4rem}
+.learn-content h5{font-size:.92rem;color:var(--muted);font-weight:800;margin:.9rem 0 .35rem}
+.learn-note{
+  margin:.9rem 0;padding:.7rem .95rem;background:var(--card2);
+  border:1px solid var(--line);border-inline-start:3px solid var(--brand);
+  border-radius:var(--radius-xs)
+}
+.learn-note>:first-child{margin-top:0}
+.learn-note>:last-child{margin-bottom:0}
+.learn-note h3,.learn-note h4,.learn-note h5{margin-top:.2rem}
+.learn-note table{font-size:.82rem}
+.learn-math{margin:.9rem 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+.learn-content ul.learn-check{padding-inline-start:.2rem;list-style:none;gap:.42rem}
+.learn-content ul.learn-check li{
+  position:relative;padding-inline-start:1.5rem;line-height:1.55;color:var(--ink)
+}
+.learn-content ul.learn-check li::before{
+  content:"☐";position:absolute;inset-inline-start:0;top:-.05em;
+  color:var(--brand);font-size:1.05em
+}
+.learn-tablewrap{overflow-x:auto;margin:1rem 0}
+.learn-tablewrap>table{margin:0;min-width:100%}
+.learn-content .katex-display{overflow-x:auto;overflow-y:hidden;padding-bottom:.25rem}
+
 .learn-figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.9rem;margin-top:1.4rem}
 .learn-fig{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card2);
   display:flex;flex-direction:column}
