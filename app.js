@@ -300,11 +300,22 @@ function startSession(){
   renderQuestion();
 }
 
+/* Text that cites an option by letter stores it as {opt:<id>} (e.g. "{opt:b} + {opt:c}",
+   "לכן {opt:d}."), rendered as the letter that option shows in this view's shuffle. */
+const OPT_REF = /\{opt:([a-z])\}/g;
+const citesOptions = s => typeof s==="string" && s.includes("{opt:");
+function cite(v, s){
+  if(!citesOptions(s)) return s;
+  return s.replace(OPT_REF, (m,id)=>{ const i=v.order.indexOf(id); return i<0 ? m : (HE_KEYS[i]||String(i+1)); });
+}
+function citedOption(v, o){ return o && citesOptions(o.value) ? Object.assign({}, o, {value: cite(v, o.value)}) : o; }
+
 function makeView(q){
-  // shuffle by stable option id; skipped when an option cites its siblings by printed
-  // letter ("תשובות ב' וג' נכונות") — shuffling would make that reference nonsense.
+  // shuffle by stable option id. Options that cite siblings ("ב + ג", "תשובות א' וג' נכונות")
+  // are shuffled among themselves below the rest, so they still read as combinations.
   const ids = (q.options||[]).map(o=>o.id);
-  const order = q.lockOrder ? ids : shuffle(ids);
+  const dep = new Set((q.options||[]).filter(o=>citesOptions(o.value)).map(o=>o.id));
+  const order = q.lockOrder ? ids : shuffle(ids.filter(id=>!dep.has(id))).concat(shuffle(ids.filter(id=>dep.has(id))));
   const correctSet = new Set(order.map((id,i)=>isAccepted(q,id)?i:-1).filter(i=>i>=0));
   return { q, order, correctDisplay: order.indexOf(q.correctId), correctSet, answered:false, chosen:null };
 }
@@ -331,13 +342,13 @@ function renderQuestion(){
   badge.className = "chip " + (q.official?"official":"unofficial");
 
   $("#qContext").innerHTML = q.contextId ? contextHtml(CTX[q.contextId]) : "";
-  $("#questionText").innerHTML = richText(q.question);
+  $("#questionText").innerHTML = richText(cite(v, q.question));
   $("#qExtras").innerHTML = extrasHtml(q);
 
   $("#optionsList").innerHTML = v.order.map((oid,disp)=>
     `<button class="opt" data-disp="${disp}">
        <span class="key">${HE_KEYS[disp]||disp+1}</span>
-       <span class="txt">${optionHtml(optById(q,oid))}</span>
+       <span class="txt">${optionHtml(citedOption(v, optById(q,oid)))}</span>
      </button>`).join("");
   document.querySelectorAll(".opt").forEach(b=> b.onclick=()=>choose(parseInt(b.dataset.disp,10)));
 
@@ -400,7 +411,7 @@ function paintAnswered(v){
   fb.className = "feedback " + (correct?"good":"bad");
   const srcNote = SRC_NOTE[q.answerSource] || (q.official?"":SRC_NOTE.derived);
   fb.innerHTML = `<div class="verdict">${correct?"✓ נכון":"✗ לא נכון"}</div>`+
-    `<div class="expl">${richText(q.explanation||"")}</div>`+
+    `<div class="expl">${richText(cite(v, q.explanation||""))}</div>`+
     (q.official||q.answerSource==="derived"||!q.answerSource?"":`<span class="note">⚠ תשובה לא רשמית.</span>`)+
     (srcNote?`<span class="note">${escapeHtml(srcNote)}</span>`:"")+
     `<span class="note">מקור: ${escapeHtml(examLabelOf(q))}</span>`;
@@ -475,17 +486,19 @@ function renderResults(correct, byTopic, byPart, review){
     return `<div class="tline"><span>${lbl}</span><span class="tbar"><i style="width:${p}%"></i></span><span>${o.c}/${o.n}</span></div>`;
   }).join("");
   $("#resultsReview").innerHTML = review.map(r=>{
-    const v=r.q;
-    const chosenTxt = r.chosen!=null ? optionHtml(optById(v,r.chosen)) : "— לא נענתה —";
+    const v=r.q, view=S._views?.[v.id] || {order:(v.options||[]).map(o=>o.id)};
+    // the letter the option had in the exam, so explanations citing letters line up
+    const optTxt = id => { const i=view.order.indexOf(id); return (i<0?"":`<span class="rkey">${HE_KEYS[i]||i+1}.</span> `)+optionHtml(citedOption(view, optById(v,id))); };
+    const chosenTxt = r.chosen!=null ? optTxt(r.chosen) : "— לא נענתה —";
     const acc = acceptedIdsOf(v);
-    const correctTxt = acc.map(id=>optionHtml(optById(v,id))).join(`<span class="or">או</span>`);
+    const correctTxt = acc.map(optTxt).join(`<span class="or">או</span>`);
     return `<div class="rev ${r.ok?"ok":"bad"}">
-      <div class="rq">${richText(v.question)}</div>
+      <div class="rq">${richText(cite(view, v.question))}</div>
       ${v.contextId?contextHtml(CTX[v.contextId]):""}
       ${extrasHtml(v)}
       <div class="ra"><span class="${r.ok?"good":"miss"}">תשובתך: ${chosenTxt}</span>`+
       (r.ok?"":` · <span class="good">${acc.length>1?"נכונות":"הנכונה"}: ${correctTxt}</span>`)+
-      `<br>${richText(v.explanation||"")}${v.official?"":" (לא רשמי)"}</div></div>`;
+      `<br>${richText(cite(view, v.explanation||""))}${v.official?"":" (לא רשמי)"}</div></div>`;
   }).join("");
 }
 

@@ -280,7 +280,7 @@
       "official": true,
       "answerSource": "combined-pdf",
       "confidence": "high",
-      "explanation": "יש להשוות את המשכורת ל-min(salary) של כל הלקוחות ולצרף ל-Purchases כדי לוודא שרכשו דירה. תשובות א/ב מחזירות עמודות שגויות ותשובה ד אינה מסננת למינימום."
+      "explanation": "יש להשוות את המשכורת ל-min(salary) של כל הלקוחות ולצרף ל-Purchases כדי לוודא שרכשו דירה. תשובות {opt:a}/{opt:b} מחזירות עמודות שגויות ותשובה {opt:d} אינה מסננת למינימום."
     },
     {
       "num": 8,
@@ -342,7 +342,7 @@
         {
           "id": "d",
           "type": "text",
-          "value": "תשובות ב' וג' נכונות."
+          "value": "תשובות {opt:b} ו{opt:c} נכונות."
         }
       ],
       "correctId": "b",
@@ -371,7 +371,7 @@
         {
           "id": "c",
           "type": "text",
-          "value": "תשובות א' וב' עושות אותו דבר"
+          "value": "תשובות {opt:a} ו{opt:b} עושות אותו דבר"
         },
         {
           "id": "d",
@@ -383,7 +383,7 @@
       "official": true,
       "answerSource": "combined-pdf",
       "confidence": "high",
-      "explanation": "רק תשובה ב מצרפת נכון: לקוח→רכישה→דירה (c.city=a.city) וגם קבלן (b.city=a.city). בתשובה א חסר תנאי ה-join עם הקבלן."
+      "explanation": "רק תשובה {opt:b} מצרפת נכון: לקוח→רכישה→דירה (c.city=a.city) וגם קבלן (b.city=a.city). בתשובה {opt:a} חסר תנאי ה-join עם הקבלן."
     },
     {
       "num": 11,
@@ -452,7 +452,7 @@
       "official": true,
       "answerSource": "combined-pdf",
       "confidence": "high",
-      "explanation": "יש לצרף Purchases→Apartment→customer ולסנן `name like \"%a%\" AND age>39`. תשובה א משתמשת ב-`OR`, תשובה ג חסרה את הצירוף ל-Apartment, ותשובה ד מבצעת מכפלה קרטזית ללא תנאי צירוף."
+      "explanation": "יש לצרף Purchases→Apartment→customer ולסנן `name like \"%a%\" AND age>39`. תשובה {opt:a} משתמשת ב-`OR`, תשובה {opt:c} חסרה את הצירוף ל-Apartment, ותשובה {opt:d} מבצעת מכפלה קרטזית ללא תנאי צירוף."
     },
     {
       "num": 13,
@@ -486,7 +486,7 @@
       "official": true,
       "answerSource": "combined-pdf",
       "confidence": "high",
-      "explanation": "כדי שקבלן מכר את כל דירותיו, קבוצת הדירות שנקנו (Purchases) חייבת להכיל (CONTAINS) את קבוצת הדירות שהוא בנה (Apartments של אותו קבלן) — כפי שבתשובה ד."
+      "explanation": "כדי שקבלן מכר את כל דירותיו, קבוצת הדירות שנקנו (Purchases) חייבת להכיל (CONTAINS) את קבוצת הדירות שהוא בנה (Apartments של אותו קבלן) — כפי שבתשובה {opt:d}."
     },
     {
       "num": 14,
@@ -520,7 +520,7 @@
       "official": true,
       "answerSource": "combined-pdf",
       "confidence": "high",
-      "explanation": "\"גם וגם\" בשתי שורות נפרדות של אותו לקוח מחייב חיתוך (∩) של שמות הלקוחות מכל עיר. תנאי σ יחיד עם $city=A ∧ city=B$ (תשובה א) לעולם ריק."
+      "explanation": "\"גם וגם\" בשתי שורות נפרדות של אותו לקוח מחייב חיתוך (∩) של שמות הלקוחות מכל עיר. תנאי σ יחיד עם $city=A ∧ city=B$ (תשובה {opt:a}) לעולם ריק."
     },
     {
       "num": 15,
@@ -547,7 +547,7 @@
         {
           "id": "d",
           "type": "text",
-          "value": "תשובות א ו-ג נכונות."
+          "value": "תשובות {opt:a} ו-{opt:c} נכונות."
         }
       ],
       "correctId": "b",
@@ -689,7 +689,7 @@
       "official": true,
       "answerSource": "combined-pdf",
       "confidence": "high",
-      "explanation": "שמות כל הקבלנים פחות שמות הקבלנים שכן בנו דירה → תשובה א. תשובה ב מחזירה קבוצה ריקה, תשובה ג מחזירה את כל הקבלנים, ולכן ד (\"כל התשובות נכונות\") אינה יכולה להיות נכונה. בעותק הבחינה סומנו גם א וגם ד — ככל הנראה טעות סימון; לוגית א היא התשובה היחידה."
+      "explanation": "שמות כל הקבלנים פחות שמות הקבלנים שכן בנו דירה → תשובה {opt:a}. תשובה {opt:b} מחזירה קבוצה ריקה, תשובה {opt:c} מחזירה את כל הקבלנים, ולכן {opt:d} (\"כל התשובות נכונות\") אינה יכולה להיות נכונה. בעותק הבחינה סומנו גם {opt:a} וגם {opt:d} — ככל הנראה טעות סימון; לוגית {opt:a} היא התשובה היחידה."
     },
     {
       "num": 20,

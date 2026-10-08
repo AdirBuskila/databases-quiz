@@ -224,7 +224,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "פתרונות 1, 2 ו-3 מחזירים את הפרות בעלות כמות החלב המקסימלית (בדרכים שונות); פתרון 4 שגוי — `max(amount)` יחד עם `cow_id` ללא `GROUP BY`. לכן D. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "פתרונות 1, 2 ו-3 מחזירים את הפרות בעלות כמות החלב המקסימלית (בדרכים שונות); פתרון 4 שגוי — `max(amount)` יחד עם `cow_id` ללא `GROUP BY`. לכן {opt:d}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 6,
@@ -264,7 +264,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "נדרש קודם צירוף היחסים בתנאי `milk_product.cow_id=place_of.cow_id` ואז `Group by block_id` — הסדר התקין הוא WHERE ואז GROUP BY, כלומר C. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "נדרש קודם צירוף היחסים בתנאי `milk_product.cow_id=place_of.cow_id` ואז `Group by block_id` — הסדר התקין הוא WHERE ואז GROUP BY, כלומר {opt:c}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 7,
@@ -304,7 +304,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "שאילתות 1 ו-3 משתמשות ב-`avg(age)` בתוך `WHERE` (שגוי). רק שאילתה 2 מסננת קבוצות נכון עם `HAVING (avg(age) > 10)` → D. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "שאילתות 1 ו-3 משתמשות ב-`avg(age)` בתוך `WHERE` (שגוי). רק שאילתה 2 מסננת קבוצות נכון עם `HAVING (avg(age) > 10)` → {opt:d}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 8,
@@ -344,7 +344,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "ה-WHERE משתמש ב-`m1.mom_id`/`m1.daughter_id` (מ-mother_of) ובחסר את `mp1`, ולכן הקטע (3) הוא `mother_of as m1, mother_of as m2, milk_product as mp1` → C. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "ה-WHERE משתמש ב-`m1.mom_id`/`m1.daughter_id` (מ-mother_of) ובחסר את `mp1`, ולכן הקטע (3) הוא `mother_of as m1, mother_of as m2, milk_product as mp1` → {opt:c}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 9,
@@ -384,7 +384,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "יש לקשר את הדור השני (c2, אם) לדור השלישי (c3, נכדה) דרך `m2`: `m2.mom_id=c2.cow_id and m2.daughter_id=c3.cow_id` → D. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "יש לקשר את הדור השני (c2, אם) לדור השלישי (c3, נכדה) דרך `m2`: `m2.mom_id=c2.cow_id and m2.daughter_id=c3.cow_id` → {opt:d}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 10,
@@ -424,7 +424,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "התנאי \"כמות ייחודית\" פירושו שלא קיימת פרה אחרת עם אותה כמות → `Where NOT Exists (...)` → E (אומת לוגית). הסטודנט סימן במקביל גם D בטעות. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "התנאי \"כמות ייחודית\" פירושו שלא קיימת פרה אחרת עם אותה כמות → `Where NOT Exists (...)` → {opt:e} (אומת לוגית). הסטודנט סימן במקביל גם {opt:d} בטעות. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 11,
@@ -459,7 +459,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "תת-השאילתה סופרת כמה פרות בעלות אותה כמות חלב; לייחודיות הספירה חייבת להיות בדיוק 1 (רק הפרה עצמה) → `=1` → B. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "תת-השאילתה סופרת כמה פרות בעלות אותה כמות חלב; לייחודיות הספירה חייבת להיות בדיוק 1 (רק הפרה עצמה) → `=1` → {opt:b}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 12,
@@ -494,7 +494,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "`mother_of.mom_id = c.cow_id` מתקיים כאשר הפרה היא אם; `NOT EXISTS` בוחר פרות שאינן אם של אף פרה — כלומר פרות שאין להן בנות → A. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "`mother_of.mom_id = c.cow_id` מתקיים כאשר הפרה היא אם; `NOT EXISTS` בוחר פרות שאינן אם של אף פרה — כלומר פרות שאין להן בנות → {opt:a}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 13,
@@ -529,7 +529,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "שאילתה 12 מוצאת פרות שאינן אמהות. שאילתה 1 (`cow_id not in (select mom_id...)`) שקולה. שאילתה 2 עם `NOT IN` מתואם: תת-השאילתה מחזירה {c.cow_id} כשהפרה אמא (→ מסוננת) או קבוצה ריקה כשאינה אמא (→ נכללת), ולכן גם היא שקולה. שתי השאילתות שקולות → C. (הסטודנט סימן A מתוך חשש שנדרש NOT EXISTS, אך ה-NOT IN המתואם תקין כאן.) (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "שאילתה 12 מוצאת פרות שאינן אמהות. שאילתה 1 (`cow_id not in (select mom_id...)`) שקולה. שאילתה 2 עם `NOT IN` מתואם: תת-השאילתה מחזירה {c.cow_id} כשהפרה אמא (→ מסוננת) או קבוצה ריקה כשאינה אמא (→ נכללת), ולכן גם היא שקולה. שתי השאילתות שקולות → {opt:c}. (הסטודנט סימן {opt:a} מתוך חשש שנדרש NOT EXISTS, אך ה-NOT IN המתואם תקין כאן.) (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 14,
@@ -564,7 +564,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "השורה `cow.nickname = \"נחמה\" and cow.cow_id = food2.cow_id` בוחרת את קודי המזון של הפרה \"נחמה\" → A. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "השורה `cow.nickname = \"נחמה\" and cow.cow_id = food2.cow_id` בוחרת את קודי המזון של הפרה \"נחמה\" → {opt:a}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 15,
@@ -599,7 +599,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "תת-השאילתה `WHERE food1.cow_id = food3.cow_id` אוספת את כל קודי המזון של הפרה הנבדקת (food1) → B. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "תת-השאילתה `WHERE food1.cow_id = food3.cow_id` אוספת את כל קודי המזון של הפרה הנבדקת (food1) → {opt:b}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 16,
@@ -638,7 +638,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "$Π_{C2.cow_id} σ_{c2.age>c1.age} (ρ_{c1} cow X ρ_{c2} cow)$ מחזיר את כל הפרות שקיימת פרה צעירה מהן — כלומר כל הפרות פרט לצעירה ביותר. חיסור מכל הפרות משאיר את הפרה עם הגיל המינימלי → A. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "$Π_{C2.cow_id} σ_{c2.age>c1.age} (ρ_{c1} cow X ρ_{c2} cow)$ מחזיר את כל הפרות שקיימת פרה צעירה מהן — כלומר כל הפרות פרט לצעירה ביותר. חיסור מכל הפרות משאיר את הפרה עם הגיל המינימלי → {opt:a}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 17,
@@ -672,7 +672,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "צירוף טבעי `cow ⊗ place_of`, בחירת השורות בהן `age > block_id`, והיטל על `nickname` → שמות החיבה של הפרות שגילן גדול ממספר בלוק המגורים שלהן → D. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "צירוף טבעי `cow ⊗ place_of`, בחירת השורות בהן `age > block_id`, והיטל על `nickname` → שמות החיבה של הפרות שגילן גדול ממספר בלוק המגורים שלהן → {opt:d}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 18,
@@ -706,7 +706,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "שאילתה 1 (`cow ⊗ mother_of`) מבצעת צירוף טבעי ללא עמודה משותפת ולכן שגויה; שאילתה 2 (מכפלה קרטזית + בחירה על התאמת הפרה לרשומת האם) נכונה לפי הכוונה — התנאי המודפס `cow.mother_id` הוא שגיאת דפוס בבחינה. לכן B. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "שאילתה 1 (`cow ⊗ mother_of`) מבצעת צירוף טבעי ללא עמודה משותפת ולכן שגויה; שאילתה 2 (מכפלה קרטזית + בחירה על התאמת הפרה לרשומת האם) נכונה לפי הכוונה — התנאי המודפס `cow.mother_id` הוא שגיאת דפוס בבחינה. לכן {opt:b}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 19,
@@ -740,7 +740,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "\"אם של כל הפרות בביתן 8\" הוא כימות אוניברסלי → אופרטור החילוק (÷), יחד עם בחירה (σ) לסינון פרות ביתן 8 → B. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "\"אם של כל הפרות בביתן 8\" הוא כימות אוניברסלי → אופרטור החילוק (÷), יחד עם בחירה (σ) לסינון פרות ביתן 8 → {opt:b}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 20,
@@ -779,7 +779,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "${BFE}^{+}$: מ-F→AE מקבלים A,E; מ-BE→C מקבלים C; מ-C→AD מקבלים D. סה\"כ {A,B,C,D,E,F}=R, ולכן {BFE} מפתח-על. שאר האפשרויות אינן מכסות את כל R (למשל אינן כוללות את B) → B. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "${BFE}^{+}$: מ-F→AE מקבלים A,E; מ-BE→C מקבלים C; מ-C→AD מקבלים D. סה\"כ {A,B,C,D,E,F}=R, ולכן {BFE} מפתח-על. שאר האפשרויות אינן מכסות את כל R (למשל אינן כוללות את B) → {opt:b}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 21,
@@ -818,7 +818,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "מ-`F→AE` נובעות גם `F→A` וגם `F→E`, ולכן שתי התלויות שב-E נמצאות בסגור. בשאר האפשרויות מופיעה תלות שאינה נובעת מ-F (כגון B→C או E→C, הדורשות תכונה נוספת) → E. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "מ-`F→AE` נובעות גם `F→A` וגם `F→E`, ולכן שתי התלויות שב-{opt:e} נמצאות בסגור. בשאר האפשרויות מופיעה תלות שאינה נובעת מ-F (כגון B→C או E→C, הדורשות תכונה נוספת) → {opt:e}. (התשובה מפתרון סטודנט — לא רשמית.)"
     },
     {
       "num": 22,
@@ -851,7 +851,7 @@
       "official": false,
       "answerSource": "combined-pdf",
       "confidence": "low",
-      "explanation": "המפתחות הקבילים הם AB ו-AC (ולכן A, B, C תכונות מפתח, D תכונה שאינה מפתח). `AB→CD` — AB מפתח-על (תקין). `C→B` מפר BCNF (C אינו מפתח-על), אך B היא תכונת מפתח ולכן התלות מקיימת את תנאי 3NF. מסקנה: היחס ב-3NF אך לא ב-BCNF → A. (התשובה מפתרון סטודנט — לא רשמית.)"
+      "explanation": "המפתחות הקבילים הם AB ו-AC (ולכן A, B, C תכונות מפתח, D תכונה שאינה מפתח). `AB→CD` — AB מפתח-על (תקין). `C→B` מפר BCNF (C אינו מפתח-על), אך B היא תכונת מפתח ולכן התלות מקיימת את תנאי 3NF. מסקנה: היחס ב-3NF אך לא ב-BCNF → {opt:a}. (התשובה מפתרון סטודנט — לא רשמית.)"
     }
   ],
   "askAdir": [

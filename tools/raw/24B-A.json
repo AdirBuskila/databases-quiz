@@ -316,7 +316,7 @@
       "official": true,
       "answerSource": "accepted-answers-docx",
       "confidence": "high",
-      "explanation": "יש לצרף Passenger→Booking→Schedule→Flight→Airline. בתשובה ב חלה שגיאה (`Schedule` לא הוגדר `AS s`), ולכן התקבלו א או ה."
+      "explanation": "יש לצרף Passenger→Booking→Schedule→Flight→Airline. בתשובה {opt:b} חלה שגיאה (`Schedule` לא הוגדר `AS s`), ולכן התקבלו {opt:a} או {opt:e}."
     },
     {
       "num": 7,
@@ -359,7 +359,7 @@
       "official": true,
       "answerSource": "accepted-answers-docx",
       "confidence": "high",
-      "explanation": "יש לצרף Airline ל-Flight, לקבץ לפי שם החברה ולספור. התקבלו א וגם ה."
+      "explanation": "יש לצרף Airline ל-Flight, לקבץ לפי שם החברה ולספור. התקבלו {opt:a} וגם {opt:e}."
     },
     {
       "num": 8,
@@ -442,7 +442,7 @@
       "official": true,
       "answerSource": "accepted-answers-docx",
       "confidence": "medium",
-      "explanation": "התקבלו א או ה. בתשובה א מופיע `f` במקום `f1` (אי-דיוק קל), ולכן התקבלה גם ה."
+      "explanation": "התקבלו {opt:a} או {opt:e}. בתשובה {opt:a} מופיע `f` במקום `f1` (אי-דיוק קל), ולכן התקבלה גם {opt:e}."
     },
     {
       "num": 10,
@@ -644,7 +644,7 @@
       "official": true,
       "answerSource": "accepted-answers-docx",
       "confidence": "high",
-      "explanation": "בעותק הבחינה המודפס אפשרות א׳ הודפסה חלקית ושגויה (סימן ∩ תלוי ללא אגף שמאלי, וחסר החלק של Martin); ב׳ מתייחסת רק ל-Martin; ג׳ דורשת שלאותו ספר יהיו שני מחברים (בלתי אפשרי בסכמה); ד׳ מחשבת \"או\" במקום \"וגם\". לכן אף אפשרות מודפסת אינה נכונה — התשובה הרשמית היא ו׳."
+      "explanation": "בעותק הבחינה המודפס אפשרות {opt:a} הודפסה חלקית ושגויה (סימן ∩ תלוי ללא אגף שמאלי, וחסר החלק של Martin); {opt:b} מתייחסת רק ל-Martin; {opt:c} דורשת שלאותו ספר יהיו שני מחברים (בלתי אפשרי בסכמה); {opt:d} מחשבת \"או\" במקום \"וגם\". לכן אף אפשרות מודפסת אינה נכונה — התשובה הרשמית היא {opt:f}."
     },
     {
       "num": 15,
@@ -683,7 +683,7 @@
       "official": true,
       "answerSource": "accepted-answers-docx",
       "confidence": "high",
-      "explanation": "חילוק: זוגות (מחבר, ז׳אנר) של ספרי מחברים איטלקים ÷ כל הז׳אנרים. בהדפסת הבחינה נפלה טעות בסדר אופרנדי החילוק שתוקנה במהלך הבחינה; לאחר התיקון התשובה הנכונה היא א׳."
+      "explanation": "חילוק: זוגות (מחבר, ז׳אנר) של ספרי מחברים איטלקים ÷ כל הז׳אנרים. בהדפסת הבחינה נפלה טעות בסדר אופרנדי החילוק שתוקנה במהלך הבחינה; לאחר התיקון התשובה הנכונה היא {opt:a}."
     },
     {
       "num": 16,
@@ -726,7 +726,7 @@
       "official": true,
       "answerSource": "accepted-answers-docx",
       "confidence": "high",
-      "explanation": "התקבלו שתי תשובות: \"כל התשובות האחרות אינן נכונות\" (ה' בבחינה) וגם \"מזהי חברי הספרייה, שלא השאילו את אותו הספר יותר מפעם אחת, כולל שלא השאילו ספרים כלל\" (א' בבחינה)."
+      "explanation": "התקבלו שתי תשובות: \"כל התשובות האחרות אינן נכונות\" ({opt:e}) וגם \"מזהי חברי הספרייה, שלא השאילו את אותו הספר יותר מפעם אחת, כולל שלא השאילו ספרים כלל\" ({opt:a})."
     },
     {
       "num": 17,
@@ -807,7 +807,7 @@
       "official": true,
       "answerSource": "accepted-answers-docx",
       "confidence": "medium",
-      "explanation": "התשובה שהתבקשה היא א' (2 טענות נכונות); אך מאחר וטענה 4 נוסחה בדיוק כמו טענה 2, גם תשובה ג' (3) התקבלה."
+      "explanation": "התשובה שהתבקשה היא {opt:a} (2 טענות נכונות); אך מאחר וטענה 4 נוסחה בדיוק כמו טענה 2, גם תשובה {opt:c} (3) התקבלה."
     },
     {
       "num": 19,

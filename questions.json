@@ -1049,8 +1049,7 @@
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "מודל ERD",
-   "lockOrder": true
+   "topicLabel": "מודל ERD"
   },
   {
    "part": "א",
@@ -1476,18 +1475,17 @@
     {
      "id": "d",
      "type": "text",
-     "value": "ב + ג"
+     "value": "{opt:b} + {opt:c}"
     },
     {
      "id": "e",
      "type": "text",
-     "value": "א + ג"
+     "value": "{opt:a} + {opt:c}"
     }
    ],
-   "lockOrder": true,
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "‏'סגנון גלישה' היא תכונה מרובת-ערכים של תת-הישות מדריכת גלישה. חלופה ג מכילה את כל התכונות הנובעות דרך ה-ISA ('מספר זהות', 'עובד מתאריך', 'שכר', 'שם מלא'), וחלופה ב מייצגת את התכונה מרובת-הערכים כטבלה נפרדת. לכן נדרשות גם ב וגם ג.",
+   "explanation": "‏'סגנון גלישה' היא תכונה מרובת-ערכים של תת-הישות מדריכת גלישה. חלופה {opt:c} מכילה את כל התכונות הנובעות דרך ה-ISA ('מספר זהות', 'עובד מתאריך', 'שכר', 'שם מלא'), וחלופה {opt:b} מייצגת את התכונה מרובת-הערכים כטבלה נפרדת. לכן נדרשות גם {opt:b} וגם {opt:c}.",
    "confidence": "high",
    "id": "23B-A-Q1",
    "examCode": "23B-A",
@@ -1539,8 +1537,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "א",
@@ -1584,8 +1581,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "id": "23B-A2-Q1",
@@ -2149,8 +2145,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "א",
@@ -2194,8 +2189,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "א",
@@ -2283,8 +2277,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "א",
@@ -2508,8 +2501,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "א",
@@ -2553,8 +2545,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "א",
@@ -2598,8 +2589,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "א",
@@ -2682,8 +2672,7 @@
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -2727,8 +2716,7 @@
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -2769,7 +2757,7 @@
     "d"
    ],
    "confidence": "high",
-   "explanation": "EC→D נמצאת בסגור (נובעת מ-C→D). ניתן להראות זאת במגוון דרכים — התקבלו למלוא הניקוד התשובות B (רפלקסיביות), C (פירוק) ו-D (הכלה), או שילובים שלהן.",
+   "explanation": "EC→D נמצאת בסגור (נובעת מ-C→D). ניתן להראות זאת במגוון דרכים — התקבלו למלוא הניקוד התשובות {opt:b} (רפלקסיביות), {opt:c} (פירוק) ו-{opt:d} (הכלה), או שילובים שלהן.",
    "official": true,
    "answerSource": "solution-pdf",
    "id": "21B-A-Q20",
@@ -2777,8 +2765,7 @@
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -2816,8 +2803,7 @@
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -2855,14 +2841,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "${BFE}^{+}$: מ-F→AE מקבלים A,E; מ-BE→C מקבלים C; מ-C→AD מקבלים D. סה\"כ {A,B,C,D,E,F}=R, ולכן {BFE} מפתח-על. שאר האפשרויות אינן מכסות את כל R (למשל אינן כוללות את B) → B. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "${BFE}^{+}$: מ-F→AE מקבלים A,E; מ-BE→C מקבלים C; מ-C→AD מקבלים D. סה\"כ {A,B,C,D,E,F}=R, ולכן {BFE} מפתח-על. שאר האפשרויות אינן מכסות את כל R (למשל אינן כוללות את B) → {opt:b}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q20",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -2900,14 +2885,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "מ-`F→AE` נובעות גם `F→A` וגם `F→E`, ולכן שתי התלויות שב-E נמצאות בסגור. בשאר האפשרויות מופיעה תלות שאינה נובעת מ-F (כגון B→C או E→C, הדורשות תכונה נוספת) → E. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "מ-`F→AE` נובעות גם `F→A` וגם `F→E`, ולכן שתי התלויות שב-{opt:e} נמצאות בסגור. בשאר האפשרויות מופיעה תלות שאינה נובעת מ-F (כגון B→C או E→C, הדורשות תכונה נוספת) → {opt:e}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q21",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -2939,14 +2923,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "המפתחות הקבילים הם AB ו-AC (ולכן A, B, C תכונות מפתח, D תכונה שאינה מפתח). `AB→CD` — AB מפתח-על (תקין). `C→B` מפר BCNF (C אינו מפתח-על), אך B היא תכונת מפתח ולכן התלות מקיימת את תנאי 3NF. מסקנה: היחס ב-3NF אך לא ב-BCNF → A. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "המפתחות הקבילים הם AB ו-AC (ולכן A, B, C תכונות מפתח, D תכונה שאינה מפתח). `AB→CD` — AB מפתח-על (תקין). `C→B` מפר BCNF (C אינו מפתח-על), אך B היא תכונת מפתח ולכן התלות מקיימת את תנאי 3NF. מסקנה: היחס ב-3NF אך לא ב-BCNF → {opt:a}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q22",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -2994,8 +2977,7 @@
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -3034,8 +3016,7 @@
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -3074,8 +3055,7 @@
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -3153,8 +3133,7 @@
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -3235,14 +3214,13 @@
    "official": true,
    "answerSource": "solution-pdf",
    "confidence": "high",
-   "explanation": "הסגור של תכונה חייב להכיל את התכונה עצמה: A⁺ = {A,C,D,E}. אף אפשרות אינה מדויקת (ב-{CDE} חסר A), ולכן התשובה E — אך התקבלה גם C.",
+   "explanation": "הסגור של תכונה חייב להכיל את התכונה עצמה: A⁺ = {A,C,D,E}. אף אפשרות אינה מדויקת (ב-{CDE} חסר A), ולכן התשובה {opt:e} — אך התקבלה גם {opt:c}.",
    "id": "22B-A-Q15",
    "examCode": "22B-A",
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -3330,8 +3308,7 @@
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -3375,8 +3352,7 @@
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -3416,7 +3392,7 @@
     "b"
    ],
    "answerSource": "solution-pdf",
-   "explanation": "מופע חוקי חייב לקיים כל תלות ב-F. (1) התלות $P1 P3 → P2$ מופרת ע\"י שורות 3 ו-5: `(b,80,T)` ו-`(b,50,T)` — זהות ב-P1,P3 אך שונות ב-P2 — ולכן אינה יכולה להיות ב-F ⇒ 'לא יתכן'. (2) המופע מקיים את $P2 → P3$, כך שנדמה שהיא חייבת להיות ב-F, אך F אינו חייב לכלול כל תלות שהמופע מקיים (ומופעים עתידיים עשויים להפר אותה) ⇒ 'יתכן' שאינה ב-F. לכן D. הערה: על-פי המחוון קיבלו גם את מסיח B.",
+   "explanation": "מופע חוקי חייב לקיים כל תלות ב-F. (1) התלות $P1 P3 → P2$ מופרת ע\"י שורות 3 ו-5: `(b,80,T)` ו-`(b,50,T)` — זהות ב-P1,P3 אך שונות ב-P2 — ולכן אינה יכולה להיות ב-F ⇒ 'לא יתכן'. (2) המופע מקיים את $P2 → P3$, כך שנדמה שהיא חייבת להיות ב-F, אך F אינו חייב לכלול כל תלות שהמופע מקיים (ומופעים עתידיים עשויים להפר אותה) ⇒ 'יתכן' שאינה ב-F. לכן {opt:d}. הערה: על-פי המחוון קיבלו גם את מסיח {opt:b}.",
    "confidence": "high",
    "id": "23B-A-Q17",
    "examCode": "23B-A",
@@ -3424,8 +3400,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ד",
@@ -3460,7 +3435,7 @@
    ],
    "correctId": "e",
    "answerSource": "solution-pdf",
-   "explanation": "‏C מופיע רק בצד שמאל, ולכן חייב להיות בכל מפתח. סגור C: `C → AEF`, `E → D`, `D → B` ⇒ C⁺ = {A,B,C,D,E,F}, כלומר {C} לבדו הוא המפתח היחיד (המינימלי). כל האפשרויות הן על-מפתחות ולא מפתחות קבילים (מינימליים). לכן E.",
+   "explanation": "‏C מופיע רק בצד שמאל, ולכן חייב להיות בכל מפתח. סגור C: `C → AEF`, `E → D`, `D → B` ⇒ C⁺ = {A,B,C,D,E,F}, כלומר {C} לבדו הוא המפתח היחיד (המינימלי). כל האפשרויות הן על-מפתחות ולא מפתחות קבילים (מינימליים). לכן {opt:e}.",
    "confidence": "high",
    "id": "23B-A-Q18",
    "examCode": "23B-A",
@@ -3468,8 +3443,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ד",
@@ -3504,7 +3478,7 @@
    ],
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "החיתוך R1∩R2 = {B}, ו-B אינו מפתח של R1 ולא של R2 ($B^{+} = {B}$) — ולכן אין שימור מידע (הצירוף אינו lossless). ההיטלים על R1, R2 נותנים רק `A → B` ו-`C → B`, שמהם לא ניתן להסיק את `A → C` — ולכן גם אין שימור תלויות. לכן D.",
+   "explanation": "החיתוך R1∩R2 = {B}, ו-B אינו מפתח של R1 ולא של R2 ($B^{+} = {B}$) — ולכן אין שימור מידע (הצירוף אינו lossless). ההיטלים על R1, R2 נותנים רק `A → B` ו-`C → B`, שמהם לא ניתן להסיק את `A → C` — ולכן גם אין שימור תלויות. לכן {opt:d}.",
    "confidence": "high",
    "id": "23B-A-Q19",
    "examCode": "23B-A",
@@ -3512,8 +3486,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "id": "23B-A2-Q17",
@@ -3552,12 +3525,11 @@
    "correctId": "d",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "‏$(SQ)^{+}$: מ-Q→U, U→V מקבלים U,V; מ-SU→TR מקבלים T,R; ולכן R→W → יש W, אז SQ→W נובעת. ‏$(PQ)^{+}$: PQ→WST נותן W,S,T; ואז SU→TR נותן R, ולכן PQ→R נובעת. לעומת זאת $(QU)^{+}={Q,U,V}$ בלבד, כך ש-QU→R אינה נובעת. שתי תלויות נובעות → תשובה D.",
+   "explanation": "‏$(SQ)^{+}$: מ-Q→U, U→V מקבלים U,V; מ-SU→TR מקבלים T,R; ולכן R→W → יש W, אז SQ→W נובעת. ‏$(PQ)^{+}$: PQ→WST נותן W,S,T; ואז SU→TR נותן R, ולכן PQ→R נובעת. לעומת זאת $(QU)^{+}={Q,U,V}$ בלבד, כך ש-QU→R אינה נובעת. שתי תלויות נובעות → תשובה {opt:d}.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam",
-   "lockOrder": true
+   "source": "exam"
   },
   {
    "id": "23B-A2-Q18",
@@ -3600,8 +3572,7 @@
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam",
-   "lockOrder": true
+   "source": "exam"
   },
   {
    "id": "23B-A2-Q19",
@@ -3644,8 +3615,7 @@
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam",
-   "lockOrder": true
+   "source": "exam"
   },
   {
    "part": "ד",
@@ -3686,14 +3656,13 @@
    "official": true,
    "answerSource": "accepted-answers-docx",
    "confidence": "medium",
-   "explanation": "התשובה שהתבקשה היא א' (2 טענות נכונות); אך מאחר וטענה 4 נוסחה בדיוק כמו טענה 2, גם תשובה ג' (3) התקבלה.",
+   "explanation": "התשובה שהתבקשה היא {opt:a} (2 טענות נכונות); אך מאחר וטענה 4 נוסחה בדיוק כמו טענה 2, גם תשובה {opt:c} (3) התקבלה.",
    "id": "24B-A-Q18",
    "examCode": "24B-A",
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
    "year": 2024,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול",
-   "lockOrder": true
+   "topicLabel": "תלויות ונרמול"
   },
   {
    "part": "ד",
@@ -3823,8 +3792,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ד",
@@ -3868,8 +3836,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ד",
@@ -3912,8 +3879,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ד",
@@ -3956,8 +3922,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ד",
@@ -4001,8 +3966,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ד",
@@ -4046,8 +4010,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ד",
@@ -4090,8 +4053,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ד",
@@ -4134,8 +4096,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ד",
@@ -4178,8 +4139,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": false,
-   "lockOrder": true
+   "official": false
   },
   {
    "part": "ד",
@@ -4302,7 +4262,7 @@
     "c",
     "d"
    ],
-   "explanation": "לפי טבלת התשובות הרשמית התקבלו כאן **שתי תשובות** — C וגם D (שתיהן קובעות שהפירוק אינו משמר תלויות; הן נחלקות בשאלת חוסר-אובדן המידע).",
+   "explanation": "לפי טבלת התשובות הרשמית התקבלו כאן **שתי תשובות** — {opt:c} וגם {opt:d} (שתיהן קובעות שהפירוק אינו משמר תלויות; הן נחלקות בשאלת חוסר-אובדן המידע).",
    "confidence": "high",
    "id": "25S-B-Q20",
    "examCode": "25S-B",
@@ -4310,8 +4270,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": false,
-   "lockOrder": true
+   "official": false
   },
   {
    "part": "ד",
@@ -4355,8 +4314,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ד",
@@ -4400,8 +4358,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ד",
@@ -4445,8 +4402,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ד",
@@ -4490,8 +4446,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ה",
@@ -4566,14 +4521,13 @@
    "official": true,
    "answerSource": "solution-pdf",
    "confidence": "high",
-   "explanation": "C היא מערכת עם המלצות ותוכן חופשי (הכי פחות מספרים וסעיפים קבועים) — מתאימה למודל לא-רלציוני. התקבלו גם תשובות אחרות אם כללו הסבר רלוונטי.",
+   "explanation": "{opt:c} היא מערכת עם המלצות ותוכן חופשי (הכי פחות מספרים וסעיפים קבועים) — מתאימה למודל לא-רלציוני. התקבלו גם תשובות אחרות אם כללו הסבר רלוונטי.",
    "id": "22B-A-Q21",
    "examCode": "22B-A",
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "NoSQL",
-   "lockOrder": true
+   "topicLabel": "NoSQL"
   },
   {
    "part": "ה",
@@ -4612,7 +4566,7 @@
     "e"
    ],
    "answerSource": "solution-pdf",
-   "explanation": "‏בפתרון נכתב: \"תשובה: C, נכונה כי מדובר על נתונים מבניים גדולים (כלומר שכל נתון הוא נתון גדול מאוד) מהירים ומשתנים, מכוון ל-NO SQL\".‏ A שגויה — קיימים מסדי NoSQL עם שפות שאילתה דמויות-SQL;‏ B שגויה — NoSQL אינו מחייב מבנה טבלאי; D שגויה — NoSQL אינו מחליף SQL בכל המקרים. בפתרון גם צוין שמכיוון שהניסוח \"מבניים\" בלבל, התקבלה גם תשובה E.",
+   "explanation": "‏בפתרון נכתב: \"תשובה: {opt:c}, נכונה כי מדובר על נתונים מבניים גדולים (כלומר שכל נתון הוא נתון גדול מאוד) מהירים ומשתנים, מכוון ל-NO SQL\".‏ {opt:a} שגויה — קיימים מסדי NoSQL עם שפות שאילתה דמויות-SQL;‏ {opt:b} שגויה — NoSQL אינו מחייב מבנה טבלאי; {opt:d} שגויה — NoSQL אינו מחליף SQL בכל המקרים. בפתרון גם צוין שמכיוון שהניסוח \"מבניים\" בלבל, התקבלה גם תשובה {opt:e}.",
    "confidence": "high",
    "id": "23B-A-Q20",
    "examCode": "23B-A",
@@ -4620,8 +4574,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "NoSQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ה",
@@ -4656,7 +4609,7 @@
    ],
    "correctId": "b",
    "answerSource": "solution-pdf",
-   "explanation": "‏בפתרון נכתב: \"תשובה: B, נתונים יחסיים, רלציונים, לא נכון לשמור ב-Neo4J\". ‏Neo4j הוא מסד נתונים גרפי, ולכן דווקא המשפט הזה אינו נכון לגביו. A, C ו-D נכונים: ניהול מסד נתונים גרפי, שפת השאילתות Cypher, ומעבר (traversal) יעיל על קשרים מורכבים ועמוקים.",
+   "explanation": "‏בפתרון נכתב: \"תשובה: {opt:b}, נתונים יחסיים, רלציונים, לא נכון לשמור ב-Neo4J\". ‏Neo4j הוא מסד נתונים גרפי, ולכן דווקא המשפט הזה אינו נכון לגביו. {opt:a}, {opt:c} ו-{opt:d} נכונים: ניהול מסד נתונים גרפי, שפת השאילתות Cypher, ומעבר (traversal) יעיל על קשרים מורכבים ועמוקים.",
    "confidence": "high",
    "id": "23B-A-Q21",
    "examCode": "23B-A",
@@ -4664,8 +4617,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "NoSQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ה",
@@ -4700,7 +4652,7 @@
    ],
    "correctId": "b",
    "answerSource": "solution-pdf",
-   "explanation": "‏בפתרון נכתב: \"תשובה: B, חיבור התנאים אם או\". ‏`find` היא פעולת אחזור בלבד — ולכן C (עדכון) ו-D (מחיקה) נפסלות. האופרטור `$or` מחזיר כל מסמך שמקיים לפחות אחד מהתנאים, כלומר כמות קטנה מ-20 **או** מחיר גדול מ-100; A מתארת חיבור ב-`$and` ולכן שגויה.",
+   "explanation": "‏בפתרון נכתב: \"תשובה: {opt:b}, חיבור התנאים אם או\". ‏`find` היא פעולת אחזור בלבד — ולכן {opt:c} (עדכון) ו-{opt:d} (מחיקה) נפסלות. האופרטור `$or` מחזיר כל מסמך שמקיים לפחות אחד מהתנאים, כלומר כמות קטנה מ-20 **או** מחיר גדול מ-100; {opt:a} מתארת חיבור ב-`$and` ולכן שגויה.",
    "confidence": "high",
    "id": "23B-A-Q22",
    "examCode": "23B-A",
@@ -4708,8 +4660,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "NoSQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ה",
@@ -4744,7 +4695,7 @@
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "‏בפתרון נכתב: \"תשובה: A, נתונים מובנים ועסקאות transactions מורכבות מתאימות ל-SQL.‏ C ו-B מדברות על ללא סכמה ונתונים לא מובנים, D non structured מדבר גם כן על נתונים לא מובנים\". כלומר B, C ו-D הם תרחישים מובהקים ל-NoSQL, ורק A שייך לעולם הרלציוני.",
+   "explanation": "‏בפתרון נכתב: \"תשובה: {opt:a}, נתונים מובנים ועסקאות transactions מורכבות מתאימות ל-SQL.‏ {opt:c} ו-{opt:b} מדברות על ללא סכמה ונתונים לא מובנים, {opt:d} non structured מדבר גם כן על נתונים לא מובנים\". כלומר {opt:b}, {opt:c} ו-{opt:d} הם תרחישים מובהקים ל-NoSQL, ורק {opt:a} שייך לעולם הרלציוני.",
    "confidence": "high",
    "id": "23B-A-Q23",
    "examCode": "23B-A",
@@ -4752,8 +4703,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "NoSQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ה",
@@ -4788,7 +4738,7 @@
    ],
    "correctId": "b",
    "answerSource": "solution-pdf",
-   "explanation": "‏בפתרון נכתב: \"תשובה: B, בפירוק אין בעקרון שכפול, אלה הפרדה של הנתונים על פני מספר שרתים, בכל השאר יש שכפול לקובץ, או בין שרתים\". ‏Sharding מחלק את הנתונים בין שרתים כך שכל רסיס יושב במקום אחד, ואילו רפליקציה, גיבוי וייצוא כולם יוצרים עותק נוסף של הנתונים.",
+   "explanation": "‏בפתרון נכתב: \"תשובה: {opt:b}, בפירוק אין בעקרון שכפול, אלה הפרדה של הנתונים על פני מספר שרתים, בכל השאר יש שכפול לקובץ, או בין שרתים\". ‏Sharding מחלק את הנתונים בין שרתים כך שכל רסיס יושב במקום אחד, ואילו רפליקציה, גיבוי וייצוא כולם יוצרים עותק נוסף של הנתונים.",
    "confidence": "high",
    "id": "23B-A-Q24",
    "examCode": "23B-A",
@@ -4796,8 +4746,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "NoSQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "id": "23B-A2-Q20",
@@ -4840,12 +4789,11 @@
    ],
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "בפתרון סומנו כנכונות גם A וגם D — שתיהן נתונים מובְנים, טבלאיים ובעלי יחסים ברורים (רשומות מובנות; מערכת הוצאות עם סעיפים והפניה עצמית), ולכן מתאימות ל-SQL.‏ B ו-C הם נתונים גרפיים/לא-מובנים (רשת חברתית, המלצות) המתאימים יותר ל-NoSQL.",
+   "explanation": "בפתרון סומנו כנכונות גם {opt:a} וגם {opt:d} —שתיהן נתונים מובְנים, טבלאיים ובעלי יחסים ברורים (רשומות מובנות; מערכת הוצאות עם סעיפים והפניה עצמית), ולכן מתאימות ל-SQL.‏ {opt:b} ו-{opt:c} הם נתונים גרפיים/לא-מובנים (רשת חברתית, המלצות) המתאימים יותר ל-NoSQL.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam",
-   "lockOrder": true
+   "source": "exam"
   },
   {
    "id": "23B-A2-Q21",
@@ -4978,12 +4926,11 @@
    "correctId": "b",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "ההכנסה לפריט = סכום (מחיר × כמות) לכל מכירה: `$sum` על `$multiply: [\"$price\", \"$quantity\"]`, בקיבוץ לפי `$item`. C סוכם רק את המחיר, ו-A, D בעלי תחביר אופרטורים שגוי (`$multiply`/`$add` ללא מערך ארגומנטים).",
+   "explanation": "ההכנסה לפריט = סכום (מחיר × כמות) לכל מכירה: `$sum` על `$multiply: [\"$price\", \"$quantity\"]`, בקיבוץ לפי `$item`. {opt:c} סוכם רק את המחיר, ו-{opt:a}, {opt:d} בעלי תחביר אופרטורים שגוי (`$multiply`/`$add` ללא מערך ארגומנטים).",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam",
-   "lockOrder": true
+   "source": "exam"
   },
   {
    "id": "23B-A2-Q24",
@@ -5140,7 +5087,7 @@
    ],
    "correctId": "d",
    "confidence": "high",
-   "explanation": "\"הצביעו לכל המפלגות\" הוא חילוק (÷): המחולק (AnonymousId, partyElected) חלקי כל המפלגות (partyElected). ב-C יש אי-התאמת סכמות. (הערה: הבחינה מסמנת חילוק בתו ':'.)",
+   "explanation": "\"הצביעו לכל המפלגות\" הוא חילוק (÷): המחולק (AnonymousId, partyElected) חלקי כל המפלגות (partyElected). ב-{opt:c} יש אי-התאמת סכמות. (הערה: הבחינה מסמנת חילוק בתו ':'.)",
    "official": true,
    "answerSource": "solution-pdf",
    "id": "21B-A-Q16",
@@ -5148,8 +5095,7 @@
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית",
-   "lockOrder": true
+   "topicLabel": "אלגברה רלציונית"
   },
   {
    "part": "ג",
@@ -5180,7 +5126,7 @@
    ],
    "correctId": "b",
    "confidence": "high",
-   "explanation": "באלגברת היחסים אין ספירה (count), ולכן לא ניתן להחזיר את מספר המצביעים. את D (איזורים עם יותר ממצביע אחד) כן ניתן לחשב על ידי חיסור/צירוף עצמי.",
+   "explanation": "באלגברת היחסים אין ספירה (count), ולכן לא ניתן להחזיר את מספר המצביעים. את {opt:d} (איזורים עם יותר ממצביע אחד) כן ניתן לחשב על ידי חיסור/צירוף עצמי.",
    "official": true,
    "answerSource": "solution-pdf",
    "id": "21B-A-Q17",
@@ -5188,8 +5134,7 @@
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית",
-   "lockOrder": true
+   "topicLabel": "אלגברה רלציונית"
   },
   {
    "part": "ג",
@@ -5227,14 +5172,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "$Π_{C2.cow_id} σ_{c2.age>c1.age} (ρ_{c1} cow X ρ_{c2} cow)$ מחזיר את כל הפרות שקיימת פרה צעירה מהן — כלומר כל הפרות פרט לצעירה ביותר. חיסור מכל הפרות משאיר את הפרה עם הגיל המינימלי → A. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "$Π_{C2.cow_id} σ_{c2.age>c1.age} (ρ_{c1} cow X ρ_{c2} cow)$ מחזיר את כל הפרות שקיימת פרה צעירה מהן — כלומר כל הפרות פרט לצעירה ביותר. חיסור מכל הפרות משאיר את הפרה עם הגיל המינימלי → {opt:a}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q16",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית",
-   "lockOrder": true
+   "topicLabel": "אלגברה רלציונית"
   },
   {
    "part": "ג",
@@ -5267,14 +5211,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "צירוף טבעי `cow ⊗ place_of`, בחירת השורות בהן `age > block_id`, והיטל על `nickname` → שמות החיבה של הפרות שגילן גדול ממספר בלוק המגורים שלהן → D. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "צירוף טבעי `cow ⊗ place_of`, בחירת השורות בהן `age > block_id`, והיטל על `nickname` → שמות החיבה של הפרות שגילן גדול ממספר בלוק המגורים שלהן → {opt:d}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q17",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית",
-   "lockOrder": true
+   "topicLabel": "אלגברה רלציונית"
   },
   {
    "part": "ג",
@@ -5307,14 +5250,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "שאילתה 1 (`cow ⊗ mother_of`) מבצעת צירוף טבעי ללא עמודה משותפת ולכן שגויה; שאילתה 2 (מכפלה קרטזית + בחירה על התאמת הפרה לרשומת האם) נכונה לפי הכוונה — התנאי המודפס `cow.mother_id` הוא שגיאת דפוס בבחינה. לכן B. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "שאילתה 1 (`cow ⊗ mother_of`) מבצעת צירוף טבעי ללא עמודה משותפת ולכן שגויה; שאילתה 2 (מכפלה קרטזית + בחירה על התאמת הפרה לרשומת האם) נכונה לפי הכוונה — התנאי המודפס `cow.mother_id` הוא שגיאת דפוס בבחינה. לכן {opt:b}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q18",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית",
-   "lockOrder": true
+   "topicLabel": "אלגברה רלציונית"
   },
   {
    "part": "ג",
@@ -5347,14 +5289,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "\"אם של כל הפרות בביתן 8\" הוא כימות אוניברסלי → אופרטור החילוק (÷), יחד עם בחירה (σ) לסינון פרות ביתן 8 → B. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "\"אם של כל הפרות בביתן 8\" הוא כימות אוניברסלי → אופרטור החילוק (÷), יחד עם בחירה (σ) לסינון פרות ביתן 8 → {opt:b}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q19",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית",
-   "lockOrder": true
+   "topicLabel": "אלגברה רלציונית"
   },
   {
    "part": "ג",
@@ -5387,14 +5328,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "high",
-   "explanation": "\"גם וגם\" בשתי שורות נפרדות של אותו לקוח מחייב חיתוך (∩) של שמות הלקוחות מכל עיר. תנאי σ יחיד עם $city=A ∧ city=B$ (תשובה א) לעולם ריק.",
+   "explanation": "\"גם וגם\" בשתי שורות נפרדות של אותו לקוח מחייב חיתוך (∩) של שמות הלקוחות מכל עיר. תנאי σ יחיד עם $city=A ∧ city=B$ (תשובה {opt:a}) לעולם ריק.",
    "id": "21S-B-Q14",
    "examCode": "21S-B",
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית",
-   "lockOrder": true
+   "topicLabel": "אלגברה רלציונית"
   },
   {
    "part": "ג",
@@ -5420,7 +5360,7 @@
     {
      "id": "d",
      "type": "text",
-     "value": "תשובות א ו-ג נכונות."
+     "value": "תשובות {opt:a} ו-{opt:c} נכונות."
     }
    ],
    "correctId": "b",
@@ -5433,8 +5373,7 @@
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית",
-   "lockOrder": true
+   "topicLabel": "אלגברה רלציונית"
   },
   {
    "part": "ג",
@@ -5583,14 +5522,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "high",
-   "explanation": "שמות כל הקבלנים פחות שמות הקבלנים שכן בנו דירה → תשובה א. תשובה ב מחזירה קבוצה ריקה, תשובה ג מחזירה את כל הקבלנים, ולכן ד (\"כל התשובות נכונות\") אינה יכולה להיות נכונה. בעותק הבחינה סומנו גם א וגם ד — ככל הנראה טעות סימון; לוגית א היא התשובה היחידה.",
+   "explanation": "שמות כל הקבלנים פחות שמות הקבלנים שכן בנו דירה → תשובה {opt:a}. תשובה {opt:b} מחזירה קבוצה ריקה, תשובה {opt:c} מחזירה את כל הקבלנים, ולכן {opt:d} (\"כל התשובות נכונות\") אינה יכולה להיות נכונה. בעותק הבחינה סומנו גם {opt:a} וגם {opt:d} — ככל הנראה טעות סימון; לוגית {opt:a} היא התשובה היחידה.",
    "id": "21S-B-Q19",
    "examCode": "21S-B",
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית",
-   "lockOrder": true
+   "topicLabel": "אלגברה רלציונית"
   },
   {
    "part": "ג",
@@ -5672,14 +5610,13 @@
    "official": true,
    "answerSource": "solution-pdf",
    "confidence": "high",
-   "explanation": "\"מנגנים בכל כלי הפריטה\" הוא כימות אוניברסלי ← אופרטור החילוק (÷). (על D ניתנו חצי מהנקודות.)",
+   "explanation": "\"מנגנים בכל כלי הפריטה\" הוא כימות אוניברסלי ← אופרטור החילוק (÷). (על {opt:d} ניתנו חצי מהנקודות.)",
    "id": "22B-A-Q12",
    "examCode": "22B-A",
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית",
-   "lockOrder": true
+   "topicLabel": "אלגברה רלציונית"
   },
   {
    "part": "ג",
@@ -5717,14 +5654,13 @@
    "official": true,
    "answerSource": "solution-pdf",
    "confidence": "high",
-   "explanation": "ב-B2 אין m_id, ולכן השאילתה אינה נכונה; אם היינו רוצים שהיא תעבוד היה צריך צירוף טבעי עם musician שחסר. (על C ניתנו חצי מהנקודות.)",
+   "explanation": "ב-B2 אין m_id, ולכן השאילתה אינה נכונה; אם היינו רוצים שהיא תעבוד היה צריך צירוף טבעי עם musician שחסר. (על {opt:c} ניתנו חצי מהנקודות.)",
    "id": "22B-A-Q13",
    "examCode": "22B-A",
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית",
-   "lockOrder": true
+   "topicLabel": "אלגברה רלציונית"
   },
   {
    "part": "ג",
@@ -5760,7 +5696,7 @@
    ],
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "‏בפתרון נכתב במפורש: \"התשובה הנכונה היא D\" — כלומר אף אחת מ-A, B, C אינה עונה על השאלה. הסיבה שניתנה שם: נפלה טעות בניסוח, שכן `p_name` אינו קיים בטבלת `Instrument`, ולכן כל שלוש השאילתות אינן חוקיות (ובנוסף C סותרת את עצמה — `type=\"guitar\" ∧ type=\"drums\"` על אותה שורה אינו יכול להתקיים). בשל התקלה נכתב בפתרון שהוחלט להוריד את השאלה מהמבחן, וסך הניקוד ירד מ-108 ל-103 — היא מובאת כאן לתרגול בלבד.",
+   "explanation": "‏בפתרון נכתב במפורש: \"התשובה הנכונה היא {opt:d}\" — כלומר אף אחת מ-{opt:a}, {opt:b}, {opt:c} אינה עונה על השאלה. הסיבה שניתנה שם: נפלה טעות בניסוח, שכן `p_name` אינו קיים בטבלת `Instrument`, ולכן כל שלוש השאילתות אינן חוקיות (ובנוסף {opt:c} סותרת את עצמה — `type=\"guitar\" ∧ type=\"drums\"` על אותה שורה אינו יכול להתקיים). בשל התקלה נכתב בפתרון שהוחלט להוריד את השאלה מהמבחן, וסך הניקוד ירד מ-108 ל-103 — היא מובאת כאן לתרגול בלבד.",
    "confidence": "high",
    "id": "23B-A-Q13",
    "examCode": "23B-A",
@@ -5768,8 +5704,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ג",
@@ -5805,7 +5740,7 @@
    ],
    "correctId": "c",
    "answerSource": "solution-pdf",
-   "explanation": "\"בכל כלי הפריטה\" דורש חילוק (division): מוזיקאי המשויך (דרך Band) לכל הכלים מקטגוריית 'string'. תשובה C מבצעת חילוק בין הזוגות (p_name, serial_number) של Band לבין ה-serial_number של כלי הפריטה.",
+   "explanation": "\"בכל כלי הפריטה\" דורש חילוק (division): מוזיקאי המשויך (דרך Band) לכל הכלים מקטגוריית 'string'. תשובה {opt:c} מבצעת חילוק בין הזוגות (p_name, serial_number) של Band לבין ה-serial_number של כלי הפריטה.",
    "confidence": "high",
    "id": "23B-A-Q14",
    "examCode": "23B-A",
@@ -5813,8 +5748,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ג",
@@ -5850,7 +5784,7 @@
    ],
    "correctId": "e",
    "answerSource": "solution-pdf",
-   "explanation": "השאלה דורשת חיסור (הפרש), אך החיסור המוצע במסיח A שגוי כי ל-Represent אין `p_name` (לא ניתן להקרין `p_name` מ-Represent); גם B ו-C מניחים חיבור/עמודה שגויים. לכן אף תשובה אינה עונה על השאלה.",
+   "explanation": "השאלה דורשת חיסור (הפרש), אך החיסור המוצע במסיח {opt:a} שגוי כי ל-Represent אין `p_name` (לא ניתן להקרין `p_name` מ-Represent); גם {opt:b} ו-{opt:c} מניחים חיבור/עמודה שגויים. לכן אף תשובה אינה עונה על השאלה.",
    "confidence": "high",
    "id": "23B-A-Q15",
    "examCode": "23B-A",
@@ -5858,8 +5792,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ג",
@@ -5895,7 +5828,7 @@
    ],
    "correctId": "e",
    "answerSource": "solution-pdf",
-   "explanation": "הביטוי מחזיר מדינה שהצביעה למדינה אחת לפחות, ומדינה שלישית כלשהי הצביעה לה. כיוון שאין חיסור, אין מניעה שיתקיימו גם מקרים נוספים (למשל שהצביעה גם למדינות שלא הצביעו לה) — ולכן אף אחד מהניסוחים אינו מדויק. מסיח A קרוב (וקיבל ניקוד חלקי), אך אינו שקול. לכן E.",
+   "explanation": "הביטוי מחזיר מדינה שהצביעה למדינה אחת לפחות, ומדינה שלישית כלשהי הצביעה לה. כיוון שאין חיסור, אין מניעה שיתקיימו גם מקרים נוספים (למשל שהצביעה גם למדינות שלא הצביעו לה) — ולכן אף אחד מהניסוחים אינו מדויק. מסיח {opt:a} קרוב (וקיבל ניקוד חלקי), אך אינו שקול. לכן {opt:e}.",
    "confidence": "med",
    "id": "23B-A-Q16",
    "examCode": "23B-A",
@@ -5903,8 +5836,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "id": "23B-A2-Q13",
@@ -5944,12 +5876,11 @@
    "correctId": "b",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "\"גם וגם\" = חיתוך: המבצעים שניגנו בגיטרה ∩ המבצעים שניגנו בתופים. A שגוי כי `type=\"guitar\" ∧ type=\"drums\"` על אותה שורה אף פעם אינו מתקיים, ו-C נותן את מי שניגן בגיטרה או בתופים (משלים ה\"אף אחד מהם\"), ולא \"גם וגם\".",
+   "explanation": "\"גם וגם\" = חיתוך: המבצעים שניגנו בגיטרה ∩ המבצעים שניגנו בתופים. {opt:a} שגוי כי `type=\"guitar\" ∧ type=\"drums\"` על אותה שורה אף פעם אינו מתקיים, ו-{opt:c} נותן את מי שניגן בגיטרה או בתופים (משלים ה\"אף אחד מהם\"), ולא \"גם וגם\".",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam",
-   "lockOrder": true
+   "source": "exam"
   },
   {
    "id": "23B-A2-Q14",
@@ -5989,12 +5920,11 @@
    "correctId": "b",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "זוהי חלוקה: מחלקים את הזוגות (`to_country`, `from_country`) שבהם ניתנו 12 נקודות בקבוצת כל המדינות הנותנות ($Π_{from_country} Score$). התוצאה = המדינות שקיבלו 12 מכל מדינה. ב-C המחולק בעל תכונה יחידה ואינו מכיל את סכמת המחלק, ולכן החלוקה אינה תקינה.",
+   "explanation": "זוהי חלוקה: מחלקים את הזוגות (`to_country`, `from_country`) שבהם ניתנו 12 נקודות בקבוצת כל המדינות הנותנות ($Π_{from_country} Score$). התוצאה = המדינות שקיבלו 12 מכל מדינה. ב-{opt:c} המחולק בעל תכונה יחידה ואינו מכיל את סכמת המחלק, ולכן החלוקה אינה תקינה.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam",
-   "lockOrder": true
+   "source": "exam"
   },
   {
    "id": "23B-A2-Q15",
@@ -6034,12 +5964,11 @@
    "correctId": "d",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "\"ייצגו רק את מדינת מגוריהם\" = כל המבצעים, פחות מי שייצג ולו פעם אחת מדינה השונה ממדינת מגוריו. גם A וגם C מבטאים נכון את ההפרש (\"כל המבצעים פחות מי שייצג מדינה זרה\"), ולכן יותר מתשובה אחת עונה על השאלה.",
+   "explanation": "\"ייצגו רק את מדינת מגוריהם\" = כל המבצעים, פחות מי שייצג ולו פעם אחת מדינה השונה ממדינת מגוריו. גם {opt:a} וגם {opt:c} מבטאים נכון את ההפרש (\"כל המבצעים פחות מי שייצג מדינה זרה\"), ולכן יותר מתשובה אחת עונה על השאלה.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam",
-   "lockOrder": true
+   "source": "exam"
   },
   {
    "id": "23B-A2-Q16",
@@ -6126,14 +6055,13 @@
    "official": true,
    "answerSource": "accepted-answers-docx",
    "confidence": "high",
-   "explanation": "בעותק הבחינה המודפס אפשרות א׳ הודפסה חלקית ושגויה (סימן ∩ תלוי ללא אגף שמאלי, וחסר החלק של Martin); ב׳ מתייחסת רק ל-Martin; ג׳ דורשת שלאותו ספר יהיו שני מחברים (בלתי אפשרי בסכמה); ד׳ מחשבת \"או\" במקום \"וגם\". לכן אף אפשרות מודפסת אינה נכונה — התשובה הרשמית היא ו׳.",
+   "explanation": "בעותק הבחינה המודפס אפשרות {opt:a} הודפסה חלקית ושגויה (סימן ∩ תלוי ללא אגף שמאלי, וחסר החלק של Martin); {opt:b} מתייחסת רק ל-Martin; {opt:c} דורשת שלאותו ספר יהיו שני מחברים (בלתי אפשרי בסכמה); {opt:d} מחשבת \"או\" במקום \"וגם\". לכן אף אפשרות מודפסת אינה נכונה — התשובה הרשמית היא {opt:f}.",
    "id": "24B-A-Q14",
    "examCode": "24B-A",
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
    "year": 2024,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית",
-   "lockOrder": true
+   "topicLabel": "אלגברה רלציונית"
   },
   {
    "part": "ג",
@@ -6171,14 +6099,13 @@
    "official": true,
    "answerSource": "accepted-answers-docx",
    "confidence": "high",
-   "explanation": "חילוק: זוגות (מחבר, ז׳אנר) של ספרי מחברים איטלקים ÷ כל הז׳אנרים. בהדפסת הבחינה נפלה טעות בסדר אופרנדי החילוק שתוקנה במהלך הבחינה; לאחר התיקון התשובה הנכונה היא א׳.",
+   "explanation": "חילוק: זוגות (מחבר, ז׳אנר) של ספרי מחברים איטלקים ÷ כל הז׳אנרים. בהדפסת הבחינה נפלה טעות בסדר אופרנדי החילוק שתוקנה במהלך הבחינה; לאחר התיקון התשובה הנכונה היא {opt:a}.",
    "id": "24B-A-Q15",
    "examCode": "24B-A",
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
    "year": 2024,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית",
-   "lockOrder": true
+   "topicLabel": "אלגברה רלציונית"
   },
   {
    "part": "ג",
@@ -6220,14 +6147,13 @@
    "official": true,
    "answerSource": "accepted-answers-docx",
    "confidence": "high",
-   "explanation": "התקבלו שתי תשובות: \"כל התשובות האחרות אינן נכונות\" (ה' בבחינה) וגם \"מזהי חברי הספרייה, שלא השאילו את אותו הספר יותר מפעם אחת, כולל שלא השאילו ספרים כלל\" (א' בבחינה).",
+   "explanation": "התקבלו שתי תשובות: \"כל התשובות האחרות אינן נכונות\" ({opt:e}) וגם \"מזהי חברי הספרייה, שלא השאילו את אותו הספר יותר מפעם אחת, כולל שלא השאילו ספרים כלל\" ({opt:a}).",
    "id": "24B-A-Q16",
    "examCode": "24B-A",
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
    "year": 2024,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית",
-   "lockOrder": true
+   "topicLabel": "אלגברה רלציונית"
   },
   {
    "part": "ג",
@@ -6307,7 +6233,7 @@
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "כדי לקבל את המורה בעל הציון הנמוך ביותר: כל מזהי המורים פחות אלו שקיים מורה עם ציון נמוך מהם. לכן חלק (1) = $Π_{id}(teacher) −$ (הפרש) וחלק (2) = `>` (T1 גבוה מ-T2). לכן תשובה A.",
+   "explanation": "כדי לקבל את המורה בעל הציון הנמוך ביותר: כל מזהי המורים פחות אלו שקיים מורה עם ציון נמוך מהם. לכן חלק (1) = $Π_{id}(teacher) −$ (הפרש) וחלק (2) = `>` (T1 גבוה מ-T2). לכן תשובה {opt:a}.",
    "confidence": "high",
    "id": "25B-A-Q13",
    "examCode": "25B-A",
@@ -6315,8 +6241,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ג",
@@ -6396,7 +6321,7 @@
    ],
    "correctId": "c",
    "answerSource": "solution-pdf",
-   "explanation": "\"מורה שלימד בשיעורים פרטיים את כל התלמידים מעל גיל 35\" דורש חילוק (÷), ובנוסף שינוי-שם (ρ) כדי להתאים את `id` ל-`student_id`. סה\"כ 2 פעולות מתוך הרשימה — לכן C.",
+   "explanation": "\"מורה שלימד בשיעורים פרטיים את כל התלמידים מעל גיל 35\" דורש חילוק (÷), ובנוסף שינוי-שם (ρ) כדי להתאים את `id` ל-`student_id`. סה\"כ 2 פעולות מתוך הרשימה — לכן {opt:c}.",
    "confidence": "high",
    "id": "25B-A-Q15",
    "examCode": "25B-A",
@@ -6404,8 +6329,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ג",
@@ -6449,8 +6373,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ג",
@@ -6529,7 +6452,7 @@
    ],
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "כשמשתמשים במכפלה קרטזית (X) חייבים להוסיף בתנאי הבחירה את תנאֵי החיבור: `student.id = student_id` ו-`teacher.id = teacher_id` — אחרת מתקבלים צירופים שגויים. רק D כולל אותם.",
+   "explanation": "כשמשתמשים במכפלה קרטזית (X) חייבים להוסיף בתנאי הבחירה את תנאֵי החיבור: `student.id = student_id` ו-`teacher.id = teacher_id` — אחרת מתקבלים צירופים שגויים. רק {opt:d} כולל אותם.",
    "confidence": "high",
    "contextId": "25C-A-ra",
    "id": "25C-A-Q14",
@@ -6538,8 +6461,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ג",
@@ -6626,8 +6548,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ג",
@@ -6705,7 +6626,7 @@
     }
    ],
    "correctId": "b",
-   "explanation": "כשמשתמשים במכפלה קרטזית (×) חובה לכלול בתנאי הבחירה את **כל** תנאֵי החיבור: `customer.cust_id = package.recipient_id`, `delivery.pkg_id = package.pkg_id` ו-`courier.courier_id = delivery.courier_id`, לצד `city='תל אביב'`, `courier.region = customer.city` ו-`is_express = True`. רק B כוללת את כולם.",
+   "explanation": "כשמשתמשים במכפלה קרטזית (×) חובה לכלול בתנאי הבחירה את **כל** תנאֵי החיבור: `customer.cust_id = package.recipient_id`, `delivery.pkg_id = package.pkg_id` ו-`courier.courier_id = delivery.courier_id`, לצד `city='תל אביב'`, `courier.region = customer.city` ו-`is_express = True`. רק {opt:b} כוללת את כולם.",
    "confidence": "high",
    "id": "25S-B-Q14",
    "examCode": "25S-B",
@@ -6713,8 +6634,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": false,
-   "lockOrder": true
+   "official": false
   },
   {
    "part": "ג",
@@ -6834,7 +6754,7 @@
    ],
    "correctId": "a",
    "answerSource": "form-0",
-   "explanation": "ל-project ול-client אין תכונה בשם משותף (`client_id` מול `id`), ולכן צירוף טבעי ביניהם הוא בעצם מכפלה קרטזית — B ו-D מחזירות את כל הכותרות. צריך מכפלה עם תנאי `project.client_id = client.id`. ב-C אין `is_verified` ב-project.",
+   "explanation": "ל-project ול-client אין תכונה בשם משותף (`client_id` מול `id`), ולכן צירוף טבעי ביניהם הוא בעצם מכפלה קרטזית — {opt:b} ו-{opt:d} מחזירות את כל הכותרות. צריך מכפלה עם תנאי `project.client_id = client.id`. ב-{opt:c} אין `is_verified` ב-project.",
    "confidence": "high",
    "id": "26B-A-Q13",
    "examCode": "26B-A",
@@ -6842,8 +6762,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ג",
@@ -6931,8 +6850,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ג",
@@ -6968,7 +6886,7 @@
    ],
    "correctId": "a",
    "answerSource": "form-0",
-   "explanation": "‏`f1.age < f2.age` מוצא את כל הגילים שיש גיל גדול מהם (כלומר לא מקסימליים). מחסירים אותם מכל הגילים ונשאר המקסימום. ‏B מחזירה את המינימום. ‏C מחזירה כל גיל שאינו המינימלי. ב-D אין שינוי שם, ולכן אי אפשר להבחין בין שני העותקים.",
+   "explanation": "‏`f1.age < f2.age` מוצא את כל הגילים שיש גיל גדול מהם (כלומר לא מקסימליים). מחסירים אותם מכל הגילים ונשאר המקסימום. ‏{opt:b} מחזירה את המינימום. ‏{opt:c} מחזירה כל גיל שאינו המינימלי. ב-{opt:d} אין שינוי שם, ולכן אי אפשר להבחין בין שני העותקים.",
    "confidence": "high",
    "id": "26B-A-Q16",
    "examCode": "26B-A",
@@ -6976,8 +6894,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -7263,7 +7180,7 @@
     "d"
    ],
    "confidence": "high",
-   "explanation": "פתרון B מצרף את הטבלה לעצמה ומחזיר את המגדר בעל הממוצע הגדול. אם יש רק שני מגדרים B יעבוד, אך התשובה אינה חד-משמעית ולכן ניתן ניקוד מלא גם על D. (פתרון C שגוי: בגלל NOT EXISTS הוא מחזיר את המינימלי ולא את המקסימלי.)",
+   "explanation": "פתרון {opt:b} מצרף את הטבלה לעצמה ומחזיר את המגדר בעל הממוצע הגדול. אם יש רק שני מגדרים {opt:b} יעבוד, אך התשובה אינה חד-משמעית ולכן ניתן ניקוד מלא גם על {opt:d}. (פתרון {opt:c} שגוי: בגלל NOT EXISTS הוא מחזיר את המינימלי ולא את המקסימלי.)",
    "official": true,
    "answerSource": "solution-pdf",
    "id": "21B-A-Q7",
@@ -7271,8 +7188,7 @@
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7313,7 +7229,7 @@
     "e"
    ],
    "confidence": "high",
-   "explanation": "קודי התחביב בסדר עולה ושמות האנשים בסדר יורד → `Order by interested.h_code, person.p_name desc`. התקבלה גם E, כיוון שלא צוין במפורש מה למיין קודם.",
+   "explanation": "קודי התחביב בסדר עולה ושמות האנשים בסדר יורד → `Order by interested.h_code, person.p_name desc`. התקבלה גם {opt:e}, כיוון שלא צוין במפורש מה למיין קודם.",
    "official": true,
    "answerSource": "solution-pdf",
    "id": "21B-A-Q8",
@@ -7321,8 +7237,7 @@
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7401,14 +7316,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "התנאי \"כמות ייחודית\" פירושו שלא קיימת פרה אחרת עם אותה כמות → `Where NOT Exists (...)` → E (אומת לוגית). הסטודנט סימן במקביל גם D בטעות. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "התנאי \"כמות ייחודית\" פירושו שלא קיימת פרה אחרת עם אותה כמות → `Where NOT Exists (...)` → {opt:e} (אומת לוגית). הסטודנט סימן במקביל גם {opt:d} בטעות. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q10",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7442,14 +7356,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "תת-השאילתה סופרת כמה פרות בעלות אותה כמות חלב; לייחודיות הספירה חייבת להיות בדיוק 1 (רק הפרה עצמה) → `=1` → B. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "תת-השאילתה סופרת כמה פרות בעלות אותה כמות חלב; לייחודיות הספירה חייבת להיות בדיוק 1 (רק הפרה עצמה) → `=1` → {opt:b}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q11",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7483,14 +7396,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "`mother_of.mom_id = c.cow_id` מתקיים כאשר הפרה היא אם; `NOT EXISTS` בוחר פרות שאינן אם של אף פרה — כלומר פרות שאין להן בנות → A. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "`mother_of.mom_id = c.cow_id` מתקיים כאשר הפרה היא אם; `NOT EXISTS` בוחר פרות שאינן אם של אף פרה — כלומר פרות שאין להן בנות → {opt:a}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q12",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7524,14 +7436,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "שאילתה 12 מוצאת פרות שאינן אמהות. שאילתה 1 (`cow_id not in (select mom_id...)`) שקולה. שאילתה 2 עם `NOT IN` מתואם: תת-השאילתה מחזירה {c.cow_id} כשהפרה אמא (→ מסוננת) או קבוצה ריקה כשאינה אמא (→ נכללת), ולכן גם היא שקולה. שתי השאילתות שקולות → C. (הסטודנט סימן A מתוך חשש שנדרש NOT EXISTS, אך ה-NOT IN המתואם תקין כאן.) (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "שאילתה 12 מוצאת פרות שאינן אמהות. שאילתה 1 (`cow_id not in (select mom_id...)`) שקולה. שאילתה 2 עם `NOT IN` מתואם: תת-השאילתה מחזירה {c.cow_id} כשהפרה אמא (→ מסוננת) או קבוצה ריקה כשאינה אמא (→ נכללת), ולכן גם היא שקולה. שתי השאילתות שקולות → {opt:c}. (הסטודנט סימן {opt:a} מתוך חשש שנדרש NOT EXISTS, אך ה-NOT IN המתואם תקין כאן.) (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q13",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7565,14 +7476,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "השורה `cow.nickname = \"נחמה\" and cow.cow_id = food2.cow_id` בוחרת את קודי המזון של הפרה \"נחמה\" → A. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "השורה `cow.nickname = \"נחמה\" and cow.cow_id = food2.cow_id` בוחרת את קודי המזון של הפרה \"נחמה\" → {opt:a}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q14",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7606,14 +7516,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "תת-השאילתה `WHERE food1.cow_id = food3.cow_id` אוספת את כל קודי המזון של הפרה הנבדקת (food1) → B. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "תת-השאילתה `WHERE food1.cow_id = food3.cow_id` אוספת את כל קודי המזון של הפרה הנבדקת (food1) → {opt:b}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q15",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7652,14 +7561,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "פתרונות 1, 2 ו-3 מחזירים את הפרות בעלות כמות החלב המקסימלית (בדרכים שונות); פתרון 4 שגוי — `max(amount)` יחד עם `cow_id` ללא `GROUP BY`. לכן D. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "פתרונות 1, 2 ו-3 מחזירים את הפרות בעלות כמות החלב המקסימלית (בדרכים שונות); פתרון 4 שגוי — `max(amount)` יחד עם `cow_id` ללא `GROUP BY`. לכן {opt:d}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q5",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7698,14 +7606,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "נדרש קודם צירוף היחסים בתנאי `milk_product.cow_id=place_of.cow_id` ואז `Group by block_id` — הסדר התקין הוא WHERE ואז GROUP BY, כלומר C. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "נדרש קודם צירוף היחסים בתנאי `milk_product.cow_id=place_of.cow_id` ואז `Group by block_id` — הסדר התקין הוא WHERE ואז GROUP BY, כלומר {opt:c}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q6",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7744,14 +7651,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "שאילתות 1 ו-3 משתמשות ב-`avg(age)` בתוך `WHERE` (שגוי). רק שאילתה 2 מסננת קבוצות נכון עם `HAVING (avg(age) > 10)` → D. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "שאילתות 1 ו-3 משתמשות ב-`avg(age)` בתוך `WHERE` (שגוי). רק שאילתה 2 מסננת קבוצות נכון עם `HAVING (avg(age) > 10)` → {opt:d}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q7",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7790,14 +7696,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "ה-WHERE משתמש ב-`m1.mom_id`/`m1.daughter_id` (מ-mother_of) ובחסר את `mp1`, ולכן הקטע (3) הוא `mother_of as m1, mother_of as m2, milk_product as mp1` → C. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "ה-WHERE משתמש ב-`m1.mom_id`/`m1.daughter_id` (מ-mother_of) ובחסר את `mp1`, ולכן הקטע (3) הוא `mother_of as m1, mother_of as m2, milk_product as mp1` → {opt:c}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q8",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7836,14 +7741,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "יש לקשר את הדור השני (c2, אם) לדור השלישי (c3, נכדה) דרך `m2`: `m2.mom_id=c2.cow_id and m2.daughter_id=c3.cow_id` → D. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "יש לקשר את הדור השני (c2, אם) לדור השלישי (c3, נכדה) דרך `m2`: `m2.mom_id=c2.cow_id and m2.daughter_id=c3.cow_id` → {opt:d}. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q9",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7864,7 +7768,7 @@
     {
      "id": "c",
      "type": "text",
-     "value": "תשובות א' וב' עושות אותו דבר"
+     "value": "תשובות {opt:a} ו{opt:b} עושות אותו דבר"
     },
     {
      "id": "d",
@@ -7876,14 +7780,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "high",
-   "explanation": "רק תשובה ב מצרפת נכון: לקוח→רכישה→דירה (c.city=a.city) וגם קבלן (b.city=a.city). בתשובה א חסר תנאי ה-join עם הקבלן.",
+   "explanation": "רק תשובה {opt:b} מצרפת נכון: לקוח→רכישה→דירה (c.city=a.city) וגם קבלן (b.city=a.city). בתשובה {opt:a} חסר תנאי ה-join עם הקבלן.",
    "id": "21S-B-Q10",
    "examCode": "21S-B",
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7956,14 +7859,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "high",
-   "explanation": "יש לצרף Purchases→Apartment→customer ולסנן `name like \"%a%\" AND age>39`. תשובה א משתמשת ב-`OR`, תשובה ג חסרה את הצירוף ל-Apartment, ותשובה ד מבצעת מכפלה קרטזית ללא תנאי צירוף.",
+   "explanation": "יש לצרף Purchases→Apartment→customer ולסנן `name like \"%a%\" AND age>39`. תשובה {opt:a} משתמשת ב-`OR`, תשובה {opt:c} חסרה את הצירוף ל-Apartment, ותשובה {opt:d} מבצעת מכפלה קרטזית ללא תנאי צירוף.",
    "id": "21S-B-Q12",
    "examCode": "21S-B",
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -7996,14 +7898,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "high",
-   "explanation": "כדי שקבלן מכר את כל דירותיו, קבוצת הדירות שנקנו (Purchases) חייבת להכיל (CONTAINS) את קבוצת הדירות שהוא בנה (Apartments של אותו קבלן) — כפי שבתשובה ד.",
+   "explanation": "כדי שקבלן מכר את כל דירותיו, קבוצת הדירות שנקנו (Purchases) חייבת להכיל (CONTAINS) את קבוצת הדירות שהוא בנה (Apartments של אותו קבלן) — כפי שבתשובה {opt:d}.",
    "id": "21S-B-Q13",
    "examCode": "21S-B",
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -8036,14 +7937,13 @@
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "high",
-   "explanation": "יש להשוות את המשכורת ל-min(salary) של כל הלקוחות ולצרף ל-Purchases כדי לוודא שרכשו דירה. תשובות א/ב מחזירות עמודות שגויות ותשובה ד אינה מסננת למינימום.",
+   "explanation": "יש להשוות את המשכורת ל-min(salary) של כל הלקוחות ולצרף ל-Purchases כדי לוודא שרכשו דירה. תשובות {opt:a}/{opt:b} מחזירות עמודות שגויות ותשובה {opt:d} אינה מסננת למינימום.",
    "id": "21S-B-Q7",
    "examCode": "21S-B",
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -8109,7 +8009,7 @@
     {
      "id": "d",
      "type": "text",
-     "value": "תשובות ב' וג' נכונות."
+     "value": "תשובות {opt:b} ו{opt:c} נכונות."
     }
    ],
    "correctId": "b",
@@ -8122,8 +8022,7 @@
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -8166,14 +8065,13 @@
    "official": true,
    "answerSource": "solution-pdf",
    "confidence": "high",
-   "explanation": "שאלה מורכבת — התקבלו שתי התשובות D ו-E (יש חוסר התאמה בשורות אך הוא אפשרי כיוון שמדובר ב-`NOT EXISTS`).",
+   "explanation": "שאלה מורכבת — התקבלו שתי התשובות {opt:d} ו-{opt:e} (יש חוסר התאמה בשורות אך הוא אפשרי כיוון שמדובר ב-`NOT EXISTS`).",
    "id": "22B-A-Q10",
    "examCode": "22B-A",
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -8257,14 +8155,13 @@
    "official": true,
    "answerSource": "solution-pdf",
    "confidence": "high",
-   "explanation": "לפי הפתרון הרשמי התקבלו התשובות C, D ו-E למלוא הנקודות (השאלה לא הובהרה דיה, ובתשובה D נכתב \"שם שונה\" ולא \"קוד שונה\").",
+   "explanation": "לפי הפתרון הרשמי התקבלו התשובות {opt:c}, {opt:d} ו-{opt:e} למלוא הנקודות (השאלה לא הובהרה דיה, ובתשובה {opt:d} נכתב \"שם שונה\" ולא \"קוד שונה\").",
    "id": "22B-A-Q6",
    "examCode": "22B-A",
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -8307,14 +8204,13 @@
    "official": true,
    "answerSource": "solution-pdf",
    "confidence": "high",
-   "explanation": "השאילתה אינה נכונה — חסר בה חלק של JOIN (הקשר `band.b_code = band_musician.b_code`), ואינה מתייחסת לסוג הלהקה. התקבלו התשובות D ו-E.",
+   "explanation": "השאילתה אינה נכונה — חסר בה חלק של JOIN (הקשר `band.b_code = band_musician.b_code`), ואינה מתייחסת לסוג הלהקה. התקבלו התשובות {opt:d} ו-{opt:e}.",
    "id": "22B-A-Q7",
    "examCode": "22B-A",
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -8353,14 +8249,13 @@
    "official": true,
    "answerSource": "solution-pdf",
    "confidence": "high",
-   "explanation": "פתרון 2 שגוי (min ללא GROUP BY עם עמודות נוספות). פתרונות 1 ו-3 מחזירים את המוסיקאי בעל הגיל המינימלי. (על A, C, E ניתנו חצי מהנקודות.)",
+   "explanation": "פתרון 2 שגוי (min ללא GROUP BY עם עמודות נוספות). פתרונות 1 ו-3 מחזירים את המוסיקאי בעל הגיל המינימלי. (על {opt:a}, {opt:c}, {opt:e} ניתנו חצי מהנקודות.)",
    "id": "22B-A-Q8",
    "examCode": "22B-A",
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -8440,7 +8335,7 @@
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "המדינה המקבלת היא `to_country`; מסננים `num_points = 12` ומקבצים לפי `to_country` עם `COUNT(*)`. A היא התשובה הנכונה והתמציתית ביותר. C מגיע לתוצאה דומה דרך תת-שאילתה מיותרת (וקיבל ניקוד חלקי בלבד), ואילו B מקבץ לפי `from_country` ו-D מחזיר מספר יחיד ללא פירוט למדינה.",
+   "explanation": "המדינה המקבלת היא `to_country`; מסננים `num_points = 12` ומקבצים לפי `to_country` עם `COUNT(*)`. {opt:a} היא התשובה הנכונה והתמציתית ביותר. {opt:c} מגיע לתוצאה דומה דרך תת-שאילתה מיותרת (וקיבל ניקוד חלקי בלבד), ואילו {opt:b} מקבץ לפי `from_country` ו-{opt:d} מחזיר מספר יחיד ללא פירוט למדינה.",
    "confidence": "high",
    "id": "23B-A-Q10",
    "examCode": "23B-A",
@@ -8448,8 +8343,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -8489,7 +8383,7 @@
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "שאלת חילוק ברמת קושי גבוהה, שנפתרת בשלילה כפולה: מדינה `to_country` שאין מדינה משתתפת (בין 2012–2022) שלא נתנה לה מעל 4 נקודות. רק A מנוסח נכון; במסיחים B, C, D יש שגיאות (למשל שימוש בעמודות `score`/`country_name` שאינן קיימות ב-Score, וסדר סעיפים משובש ב-C). לכן A.",
+   "explanation": "שאלת חילוק ברמת קושי גבוהה, שנפתרת בשלילה כפולה: מדינה `to_country` שאין מדינה משתתפת (בין 2012–2022) שלא נתנה לה מעל 4 נקודות. רק {opt:a} מנוסח נכון; במסיחים {opt:b}, {opt:c}, {opt:d} יש שגיאות (למשל שימוש בעמודות `score`/`country_name` שאינן קיימות ב-Score, וסדר סעיפים משובש ב-{opt:c}). לכן {opt:a}.",
    "confidence": "med",
    "id": "23B-A-Q11",
    "examCode": "23B-A",
@@ -8497,8 +8391,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -8582,7 +8475,7 @@
    ],
    "correctId": "c",
    "answerSource": "solution-pdf",
-   "explanation": "צריך לספור שנים **שונות**:`count(distinct year) > 1`. מסיח A סופר `count(year)` ועלול לספור אותה שנה פעמיים (לכן ירדו עליו נקודות); B משתמש ב-COUNT בתוך WHERE (לא חוקי); D מפעיל HAVING ללא GROUP BY. לכן C.",
+   "explanation": "צריך לספור שנים **שונות**:`count(distinct year) > 1`. מסיח {opt:a} סופר `count(year)` ועלול לספור אותה שנה פעמיים (לכן ירדו עליו נקודות); {opt:b} משתמש ב-COUNT בתוך WHERE (לא חוקי); {opt:d} מפעיל HAVING ללא GROUP BY. לכן {opt:c}.",
    "confidence": "high",
    "id": "23B-A-Q5",
    "examCode": "23B-A",
@@ -8590,8 +8483,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -8631,7 +8523,7 @@
    ],
    "correctId": "e",
    "answerSource": "solution-pdf",
-   "explanation": "ב-A יש מכפלה קרטזית (Performer, Instrument ללא תנאי חיבור) שהופכת את התוצאה ללא נכונה; B מכיל שגיאת תחביר גסה; C מחבר על `Instrument.p_name` שאינו קיים ומשתמש ב-LIKE שלא לצורך; D מחזיר גם שם וגם ממוצע שלא נדרש. לכן אף תשובה אינה נכונה.",
+   "explanation": "ב-{opt:a} יש מכפלה קרטזית (Performer, Instrument ללא תנאי חיבור) שהופכת את התוצאה ללא נכונה; {opt:b} מכיל שגיאת תחביר גסה; {opt:c} מחבר על `Instrument.p_name` שאינו קיים ומשתמש ב-LIKE שלא לצורך; {opt:d} מחזיר גם שם וגם ממוצע שלא נדרש. לכן אף תשובה אינה נכונה.",
    "confidence": "high",
    "id": "23B-A-Q6",
    "examCode": "23B-A",
@@ -8639,8 +8531,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -8681,7 +8572,7 @@
    ],
    "correctId": "c",
    "answerSource": "solution-pdf",
-   "explanation": "יש לחשב לכל שנה את `MAX(age) - MIN(age)` (עם `GROUP BY year` בתת-שאילתה, שחייבת לקבל שם — `funnyQ`), ומעליה `AVG`. A מחשב ממוצע גילאים ולא הפרשים; B מחלק ב-`COUNT(*)` במקום ממוצע לפי שנה; ל-D יש תנאי לא-קבוצתי ב-HAVING. לכן C.",
+   "explanation": "יש לחשב לכל שנה את `MAX(age) - MIN(age)` (עם `GROUP BY year` בתת-שאילתה, שחייבת לקבל שם — `funnyQ`), ומעליה `AVG`. {opt:a} מחשב ממוצע גילאים ולא הפרשים; {opt:b} מחלק ב-`COUNT(*)` במקום ממוצע לפי שנה; ל-{opt:d} יש תנאי לא-קבוצתי ב-HAVING. לכן {opt:c}.",
    "confidence": "high",
    "id": "23B-A-Q7",
    "examCode": "23B-A",
@@ -8689,8 +8580,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -8734,7 +8624,7 @@
     "b"
    ],
    "answerSource": "solution-pdf",
-   "explanation": "בשאלה מספר שגיאות מכוונות: A מקבץ ב-`GROUP BY country_name` (עמודה שאינה בטבלת Band); B מקבץ לפי `p_name` במקום `b_name`; C (`LEFT JOIN ... IS NULL`) מחזיר מי שאינו בלהקה כלל ולא 'להקה של אדם אחד'; D משתמש ב-COUNT בתוך WHERE (לא חוקי). לכן התשובה E. הערה: על-פי המחוון קיבלו גם את מסיח B.",
+   "explanation": "בשאלה מספר שגיאות מכוונות: {opt:a} מקבץ ב-`GROUP BY country_name` (עמודה שאינה בטבלת Band); {opt:b} מקבץ לפי `p_name` במקום `b_name`; {opt:c} (`LEFT JOIN ... IS NULL`) מחזיר מי שאינו בלהקה כלל ולא 'להקה של אדם אחד'; {opt:d} משתמש ב-COUNT בתוך WHERE (לא חוקי). לכן התשובה {opt:e}. הערה: על-פי המחוון קיבלו גם את מסיח {opt:b}.",
    "confidence": "high",
    "id": "23B-A-Q8",
    "examCode": "23B-A",
@@ -8742,8 +8632,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -8783,7 +8672,7 @@
    ],
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "שאלת MAX ברמת קושי גבוהה. A משרשר `MAX(COUNT(...))` באופן לא חוקי; B שגוי תחבירית (`COUNT = MAX(p_name)`); C מחזיר שנה מקסימלית ולא את השנה של הלהקה הגדולה. D מוצא את הלהקה עם מספר המבצעים הגדול ביותר (`COUNT(b.p_name) >= ALL ...`). לכן D.",
+   "explanation": "שאלת MAX ברמת קושי גבוהה. {opt:a} משרשר `MAX(COUNT(...))` באופן לא חוקי; {opt:b} שגוי תחבירית (`COUNT = MAX(p_name)`); {opt:c} מחזיר שנה מקסימלית ולא את השנה של הלהקה הגדולה. {opt:d} מוצא את הלהקה עם מספר המבצעים הגדול ביותר (`COUNT(b.p_name) >= ALL ...`). לכן {opt:d}.",
    "confidence": "high",
    "id": "23B-A-Q9",
    "examCode": "23B-A",
@@ -8791,8 +8680,7 @@
    "year": 2023,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "id": "23B-A2-Q10",
@@ -8836,12 +8724,11 @@
    "correctId": "c",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "המדינה הנותנת היא `from_country`. \"מעולם לא נתנה 12\" = `from_country` שאינו מופיע באף שורה עם `num_points = 12` (`NOT IN`). A מחזיר מדינות שנתנו ניקוד השונה מ-12 ולו פעם אחת (גם אם נתנו 12 בפעם אחרת); B, D משתמשים ב-`to_country` (המדינה המקבלת).",
+   "explanation": "המדינה הנותנת היא `from_country`. \"מעולם לא נתנה 12\" = `from_country` שאינו מופיע באף שורה עם `num_points = 12` (`NOT IN`). {opt:a} מחזיר מדינות שנתנו ניקוד השונה מ-12 ולו פעם אחת (גם אם נתנו 12 בפעם אחרת); {opt:b}, {opt:d} משתמשים ב-`to_country` (המדינה המקבלת).",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam",
-   "lockOrder": true
+   "source": "exam"
   },
   {
    "id": "23B-A2-Q11",
@@ -8885,12 +8772,11 @@
    "correctId": "b",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "זוהי שאלת חלוקה: להקה שאין קטגוריה שאין לה יצוג בה. התבנית `NOT EXISTS`-כפול של B בודקת שאין קטגוריה שאינה מיוצגת בכלים של אותה להקה. A משתמש ב-`JOIN` ללא תנאי חיבור (`serial_number`), ולכן הספירה שגויה.",
+   "explanation": "זוהי שאלת חלוקה: להקה שאין קטגוריה שאין לה יצוג בה. התבנית `NOT EXISTS`-כפול של {opt:b} בודקת שאין קטגוריה שאינה מיוצגת בכלים של אותה להקה. {opt:a} משתמש ב-`JOIN` ללא תנאי חיבור (`serial_number`), ולכן הספירה שגויה.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam",
-   "lockOrder": true
+   "source": "exam"
   },
   {
    "id": "23B-A2-Q12",
@@ -8930,12 +8816,11 @@
    "correctId": "c",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "חלוקה ניתנת לביטוי כהכלת קבוצות, ובחלק מהדיאלקטים אף באמצעות `CONTAINS`, אך לא כל מימוש של `SQL` תומך בכך. חילוק ניתן גם להמיר לספירת שורות (ולכן B שגוי), ואינו הפעולה ההופכית למכפלה קרטזית באופן שמוזכר ב-D.",
+   "explanation": "חלוקה ניתנת לביטוי כהכלת קבוצות, ובחלק מהדיאלקטים אף באמצעות `CONTAINS`, אך לא כל מימוש של `SQL` תומך בכך. חילוק ניתן גם להמיר לספירת שורות (ולכן {opt:b} שגוי), ואינו הפעולה ההופכית למכפלה קרטזית באופן שמוזכר ב-{opt:d}.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam",
-   "lockOrder": true
+   "source": "exam"
   },
   {
    "id": "23B-A2-Q5",
@@ -9027,12 +8912,11 @@
    "correctId": "c",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "\"כולם בגובה ≥ 1.80\" = אין אף חבר נמוך מ-1.80. C בוחר מדינות שהלהקה המייצגת אותן אינה נמצאת בין הלהקות שיש בהן מבצע בגובה קטן מ-1.80 (`NOT IN`). A ו-B מחזירים מדינות שיש בהן ולו מבצע אחד גבוה, ו-D שגוי לוגית ותחבירית.",
+   "explanation": "\"כולם בגובה ≥ 1.80\" = אין אף חבר נמוך מ-1.80. {opt:c} בוחר מדינות שהלהקה המייצגת אותן אינה נמצאת בין הלהקות שיש בהן מבצע בגובה קטן מ-1.80 (`NOT IN`). {opt:a} ו-{opt:b} מחזירים מדינות שיש בהן ולו מבצע אחד גבוה, ו-{opt:d} שגוי לוגית ותחבירית.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam",
-   "lockOrder": true
+   "source": "exam"
   },
   {
    "id": "23B-A2-Q7",
@@ -9077,12 +8961,11 @@
    "correctId": "c",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "צריך לחבר את `Represent` ל-`Score` לפי אותה שנה (`USING(year)`) ולסנן `country_name = to_country AND num_points = 12`. A ו-B מבצעים מכפלה ללא חיבור על השנה (`Score` מכיל `year` נפרד → צימוד שנים שגוי), D מחבר לפי עמודה לא קיימת `country`, ו-E אינו מחזיר את שם הלהקה כלל.",
+   "explanation": "צריך לחבר את `Represent` ל-`Score` לפי אותה שנה (`USING(year)`) ולסנן `country_name = to_country AND num_points = 12`. {opt:a} ו-{opt:b} מבצעים מכפלה ללא חיבור על השנה (`Score` מכיל `year` נפרד → צימוד שנים שגוי), {opt:d} מחבר לפי עמודה לא קיימת `country`, ו-{opt:e} אינו מחזיר את שם הלהקה כלל.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam",
-   "lockOrder": true
+   "source": "exam"
   },
   {
    "id": "23B-A2-Q8",
@@ -9126,12 +9009,11 @@
    "correctId": "a",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "מקבצים לפי (`to_country`, `year`), וב-`HAVING` דורשים שסכום הנקודות של הקבוצה יהיה גדול-או-שווה לכל הסכומים של כל קבוצה אחרת (`>= ALL`). B משווה סכום ל-`max` של ניקוד בודד, ו-C, D בעלי קיבוץ/צירוף אגרגציה שגויים.",
+   "explanation": "מקבצים לפי (`to_country`, `year`), וב-`HAVING` דורשים שסכום הנקודות של הקבוצה יהיה גדול-או-שווה לכל הסכומים של כל קבוצה אחרת (`>= ALL`). {opt:b} משווה סכום ל-`max` של ניקוד בודד, ו-{opt:c}, {opt:d} בעלי קיבוץ/צירוף אגרגציה שגויים.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam",
-   "lockOrder": true
+   "source": "exam"
   },
   {
    "id": "23B-A2-Q9",
@@ -9401,14 +9283,13 @@
    "official": true,
    "answerSource": "accepted-answers-docx",
    "confidence": "high",
-   "explanation": "יש לצרף Passenger→Booking→Schedule→Flight→Airline. בתשובה ב חלה שגיאה (`Schedule` לא הוגדר `AS s`), ולכן התקבלו א או ה.",
+   "explanation": "יש לצרף Passenger→Booking→Schedule→Flight→Airline. בתשובה {opt:b} חלה שגיאה (`Schedule` לא הוגדר `AS s`), ולכן התקבלו {opt:a} או {opt:e}.",
    "id": "24B-A-Q6",
    "examCode": "24B-A",
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
    "year": 2024,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -9450,14 +9331,13 @@
    "official": true,
    "answerSource": "accepted-answers-docx",
    "confidence": "high",
-   "explanation": "יש לצרף Airline ל-Flight, לקבץ לפי שם החברה ולספור. התקבלו א וגם ה.",
+   "explanation": "יש לצרף Airline ל-Flight, לקבץ לפי שם החברה ולספור. התקבלו {opt:a} וגם {opt:e}.",
    "id": "24B-A-Q7",
    "examCode": "24B-A",
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
    "year": 2024,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -9544,14 +9424,13 @@
    "official": true,
    "answerSource": "accepted-answers-docx",
    "confidence": "medium",
-   "explanation": "התקבלו א או ה. בתשובה א מופיע `f` במקום `f1` (אי-דיוק קל), ולכן התקבלה גם ה.",
+   "explanation": "התקבלו {opt:a} או {opt:e}. בתשובה {opt:a} מופיע `f` במקום `f1` (אי-דיוק קל), ולכן התקבלה גם {opt:e}.",
    "id": "24B-A-Q9",
    "examCode": "24B-A",
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
    "year": 2024,
    "source": "exam",
-   "topicLabel": "SQL",
-   "lockOrder": true
+   "topicLabel": "SQL"
   },
   {
    "part": "ב",
@@ -9591,7 +9470,7 @@
    ],
    "correctId": "c",
    "answerSource": "solution-pdf",
-   "explanation": "\"נרשמו לכל הקורסים של Mathematics\" = חלוקה: אין קורס Mathematics שאליו הסטודנט לא נרשם — תבנית `NOT EXISTS` כפולה (C). B בודק היעדר הרשמה; ל-A מספיק קורס אחד; D הוא חיבור פנימי רגיל.",
+   "explanation": "\"נרשמו לכל הקורסים של Mathematics\" = חלוקה: אין קורס Mathematics שאליו הסטודנט לא נרשם — תבנית `NOT EXISTS` כפולה ({opt:c}). {opt:b} בודק היעדר הרשמה; ל-{opt:a} מספיק קורס אחד; {opt:d} הוא חיבור פנימי רגיל.",
    "confidence": "high",
    "id": "25B-A-Q10",
    "examCode": "25B-A",
@@ -9599,8 +9478,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -9640,7 +9518,7 @@
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "עם אופרטור `CONTAINS`: קבוצת הקורסים שאליהם נרשם הסטודנט חייבת להכיל את קבוצת קורסי Mathematics — כלומר (הרשמות הסטודנט) `CONTAINS` (קורסי Mathematics), כפי ש-A מנסח. B הופך את כיוון ההכלה; C משווה לכל הקורסים; D משווה `course_id` מול `department`.",
+   "explanation": "עם אופרטור `CONTAINS`: קבוצת הקורסים שאליהם נרשם הסטודנט חייבת להכיל את קבוצת קורסי Mathematics — כלומר (הרשמות הסטודנט) `CONTAINS` (קורסי Mathematics), כפי ש-{opt:a} מנסח. {opt:b} הופך את כיוון ההכלה; {opt:c} משווה לכל הקורסים; {opt:d} משווה `course_id` מול `department`.",
    "confidence": "high",
    "id": "25B-A-Q11",
    "examCode": "25B-A",
@@ -9648,8 +9526,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -9689,7 +9566,7 @@
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "‏A מחבר Students↔Enrollments↔Courses ומסנן `credits >= 4` עם סדר העמודות הנכון `(first_name, course_name)`. B בודק `credits > 4`; C בודק `credits = 4`. ל-D ניתן ניקוד חלקי בלבד (4 נק') — סדר העמודות הפוך `(course_name, first_name)` והשאילתה פחות יעילה.",
+   "explanation": "‏{opt:a} מחבר Students↔Enrollments↔Courses ומסנן `credits >= 4` עם סדר העמודות הנכון `(first_name, course_name)`. {opt:b} בודק `credits > 4`; {opt:c} בודק `credits = 4`. ל-{opt:d} ניתן ניקוד חלקי בלבד (4 נק') — סדר העמודות הפוך `(course_name, first_name)` והשאילתה פחות יעילה.",
    "confidence": "high",
    "id": "25B-A-Q12",
    "examCode": "25B-A",
@@ -9697,8 +9574,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -9743,7 +9619,7 @@
     "d"
    ],
    "answerSource": "solution-pdf",
-   "explanation": "צריך לחבר Students↔Enrollments ולסנן `grade = (SELECT MIN(grade) FROM Enrollments)`. A עושה זאת ישירות; ל-D עם `= ANY (SELECT MIN(grade)…)` תוצאה זהה (ANY מול ערך יחיד ≡ שוויון) ולכן התקבל גם הוא (4 נק'). B בודק `> MIN`, ו-C בודק `<= MAX` (כלומר את כל הציונים).",
+   "explanation": "צריך לחבר Students↔Enrollments ולסנן `grade = (SELECT MIN(grade) FROM Enrollments)`. {opt:a} עושה זאת ישירות; ל-{opt:d} עם `= ANY (SELECT MIN(grade)…)` תוצאה זהה (ANY מול ערך יחיד ≡ שוויון) ולכן התקבל גם הוא (4 נק'). {opt:b} בודק `> MIN`, ו-{opt:c} בודק `<= MAX` (כלומר את כל הציונים).",
    "confidence": "high",
    "id": "25B-A-Q5",
    "examCode": "25B-A",
@@ -9751,8 +9627,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -9789,7 +9664,7 @@
    ],
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "‏`COUNT(DISTINCT student_id)` עם סינון `C.credits >= 3` סופר את מספר הסטודנטים השונים שנרשמו לקורס כלשהו המעניק 3 נקודות זכות או יותר. A מגביל ל'בדיוק 3'; B סופר קורסים; C סופר הרשמות.",
+   "explanation": "‏`COUNT(DISTINCT student_id)` עם סינון `C.credits >= 3` סופר את מספר הסטודנטים השונים שנרשמו לקורס כלשהו המעניק 3 נקודות זכות או יותר. {opt:a} מגביל ל'בדיוק 3'; {opt:b} סופר קורסים; {opt:c} סופר הרשמות.",
    "confidence": "high",
    "id": "25B-A-Q6",
    "examCode": "25B-A",
@@ -9797,8 +9672,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -9842,7 +9716,7 @@
     "e"
    ],
    "answerSource": "solution-pdf",
-   "explanation": "צריך לסנן `semester = 'Spring 2024'` ב-WHERE ואז `HAVING COUNT(course_id) > 3`. B שם את תנאי הסמסטר ב-HAVING (שגוי); C משתמש ב-`WHERE COUNT(*)` (שגוי); D סוכם נקודות זכות. הערת ערעור: מאחר ש-GROUP BY לפי `first_name` אינו ייחודי (ייתכן שסופרים קורסים של סטודנטים שונים בעלי אותו שם), התקבלה כנכונה גם תשובה E.",
+   "explanation": "צריך לסנן `semester = 'Spring 2024'` ב-WHERE ואז `HAVING COUNT(course_id) > 3`. {opt:b} שם את תנאי הסמסטר ב-HAVING (שגוי); {opt:c} משתמש ב-`WHERE COUNT(*)` (שגוי); {opt:d} סוכם נקודות זכות. הערת ערעור: מאחר ש-GROUP BY לפי `first_name` אינו ייחודי (ייתכן שסופרים קורסים של סטודנטים שונים בעלי אותו שם), התקבלה כנכונה גם תשובה {opt:e}.",
    "confidence": "high",
    "id": "25B-A-Q7",
    "examCode": "25B-A",
@@ -9850,8 +9724,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -9892,7 +9765,7 @@
     "e"
    ],
    "answerSource": "solution-pdf",
-   "explanation": "‏LEFT JOIN עם `WHERE grade < 60` מסנן החוצה את ערכי ה-NULL, כך שבפועל מוצגים רק הסטודנטים שקיבלו ציון מתחת ל-60. הכוונה הייתה ל-A, אך מכיוון שהיא אינה מציינת שגם הציון עצמו מוצג לצד השם — התקבלה כלגיטימית גם תשובה E.",
+   "explanation": "‏LEFT JOIN עם `WHERE grade < 60` מסנן החוצה את ערכי ה-NULL, כך שבפועל מוצגים רק הסטודנטים שקיבלו ציון מתחת ל-60. הכוונה הייתה ל-{opt:a}, אך מכיוון שהיא אינה מציינת שגם הציון עצמו מוצג לצד השם — התקבלה כלגיטימית גם תשובה {opt:e}.",
    "confidence": "high",
    "id": "25B-A-Q8",
    "examCode": "25B-A",
@@ -9900,8 +9773,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -9941,7 +9813,7 @@
    ],
    "correctId": "b",
    "answerSource": "solution-pdf",
-   "explanation": "צריך AND בין `first_name LIKE '%e%'` לבין `birth_year < 2001` (גיל מעל 24). A ו-C משתמשים ב-OR (וב-C גם קדימות שגויה של OR מול AND); D בודק `birth_year > 2001` (כיוון הפוך). רק B נכון.",
+   "explanation": "צריך AND בין `first_name LIKE '%e%'` לבין `birth_year < 2001` (גיל מעל 24). {opt:a} ו-{opt:c} משתמשים ב-OR (וב-{opt:c} גם קדימות שגויה של OR מול AND); {opt:d} בודק `birth_year > 2001` (כיוון הפוך). רק {opt:b} נכון.",
    "confidence": "high",
    "id": "25B-A-Q9",
    "examCode": "25B-A",
@@ -9949,8 +9821,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -9989,7 +9860,7 @@
    ],
    "correctId": "b",
    "answerSource": "solution-pdf",
-   "explanation": "מסננים `category = 'Programming'` ב-`WHERE` (לפני הקיבוץ), מקבצים לפי הקורס וסופרים `COUNT(*)`. A שם `WHERE` אחרי `GROUP BY` (שגוי תחבירית); C מסנן `category` בטבלת Enrollments; D מחזיר `category` במקום ספירה נכונה לכל קורס.",
+   "explanation": "מסננים `category = 'Programming'` ב-`WHERE` (לפני הקיבוץ), מקבצים לפי הקורס וסופרים `COUNT(*)`. {opt:a} שם `WHERE` אחרי `GROUP BY` (שגוי תחבירית); {opt:c} מסנן `category` בטבלת Enrollments; {opt:d} מחזיר `category` במקום ספירה נכונה לכל קורס.",
    "confidence": "high",
    "contextId": "25C-A-sql",
    "id": "25C-A-Q10",
@@ -9998,8 +9869,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -10086,7 +9956,7 @@
    ],
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "קורס ללא הרשמות = course_id שאינו מופיע כלל בטבלת Enrollments, כלומר `course_id NOT IN (SELECT course_id FROM Enrollments)`. חיבור פנימי (A) לא יחזיר קורסים ללא הרשמות כלל.",
+   "explanation": "קורס ללא הרשמות = course_id שאינו מופיע כלל בטבלת Enrollments, כלומר `course_id NOT IN (SELECT course_id FROM Enrollments)`. חיבור פנימי ({opt:a}) לא יחזיר קורסים ללא הרשמות כלל.",
    "confidence": "high",
    "contextId": "25C-A-sql",
    "id": "25C-A-Q12",
@@ -10095,8 +9965,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -10135,7 +10004,7 @@
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "שתי התשובות נכונות, כל אחת בדרכה. לא הייתה כאן דרישה מפורשת להופעת שם רק פעם אחת — שהרי בלי DISTINCT ייתכנו כאן כפילויות. (A מבצע `JOIN` עם `progress < 50`; C משיג זאת עם תת-שאילתות. B משתמש ב-`> 50`, ו-D ב-`<= 50` עם `OR` — שגויים.)",
+   "explanation": "שתי התשובות נכונות, כל אחת בדרכה. לא הייתה כאן דרישה מפורשת להופעת שם רק פעם אחת — שהרי בלי DISTINCT ייתכנו כאן כפילויות. ({opt:a} מבצע `JOIN` עם `progress < 50`; {opt:c} משיג זאת עם תת-שאילתות. {opt:b} משתמש ב-`> 50`, ו-{opt:d} ב-`<= 50` עם `OR` — שגויים.)",
    "confidence": "high",
    "contextId": "25C-A-sql",
    "acceptedIds": [
@@ -10148,8 +10017,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -10188,7 +10056,7 @@
    ],
    "correctId": "c",
    "answerSource": "solution-pdf",
-   "explanation": "צריך סינון `registration_year = 2023` וגם `country <> 'Israel'` (תנאי `AND`), וספירה לכל מדינה עם `GROUP BY country`. A מסנן דווקא Israel, B משתמש ב-OR, ו-D בעל GROUP BY שגוי.",
+   "explanation": "צריך סינון `registration_year = 2023` וגם `country <> 'Israel'` (תנאי `AND`), וספירה לכל מדינה עם `GROUP BY country`. {opt:a} מסנן דווקא Israel, {opt:b} משתמש ב-OR, ו-{opt:d} בעל GROUP BY שגוי.",
    "confidence": "high",
    "contextId": "25C-A-sql",
    "id": "25C-A-Q6",
@@ -10197,8 +10065,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -10237,7 +10104,7 @@
    ],
    "correctId": "b",
    "answerSource": "solution-pdf",
-   "explanation": "מחברים Courses ל-Enrollments לפי `course_id` ומסננים `progress = 0`. A בודק `progress = 100`; C שולף `course_title` מ-Enrollments (עמודה שאינה קיימת שם); D מחבר לפי `course_id = enrollment_id` — שגוי.",
+   "explanation": "מחברים Courses ל-Enrollments לפי `course_id` ומסננים `progress = 0`. {opt:a} בודק `progress = 100`; {opt:c} שולף `course_title` מ-Enrollments (עמודה שאינה קיימת שם); {opt:d} מחבר לפי `course_id = enrollment_id` — שגוי.",
    "confidence": "high",
    "contextId": "25C-A-sql",
    "id": "25C-A-Q7",
@@ -10246,8 +10113,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -10286,7 +10152,7 @@
    ],
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "צריך לחבר Users↔Enrollments לפי `user_id` ו-Enrollments↔Courses לפי `course_id`, ולסנן `status = 'withdrawn'`. C מחבר לפי `enrollment_id` (שגוי); A ו-B אינם מחזירים גם שם וגם קורס נכונים.",
+   "explanation": "צריך לחבר Users↔Enrollments לפי `user_id` ו-Enrollments↔Courses לפי `course_id`, ולסנן `status = 'withdrawn'`. {opt:c} מחבר לפי `enrollment_id` (שגוי); {opt:a} ו-{opt:b} אינם מחזירים גם שם וגם קורס נכונים.",
    "confidence": "high",
    "contextId": "25C-A-sql",
    "id": "25C-A-Q8",
@@ -10295,8 +10161,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -10335,7 +10200,7 @@
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "החיבור הנכון הוא לפי `Courses.category = Instructors.expertise` (כפי שרומז ההערה). B מחבר לפי `level` (שאינו קיים ב-Instructors); C לפי `category = email`; D לפי `course_id` ב-`USING` (שאינו קיים ב-Instructors).",
+   "explanation": "החיבור הנכון הוא לפי `Courses.category = Instructors.expertise` (כפי שרומז ההערה). {opt:b} מחבר לפי `level` (שאינו קיים ב-Instructors); {opt:c} לפי `category = email`; {opt:d} לפי `course_id` ב-`USING` (שאינו קיים ב-Instructors).",
    "confidence": "high",
    "contextId": "25C-A-sql",
    "id": "25C-A-Q9",
@@ -10344,8 +10209,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -10389,7 +10253,7 @@
     "b",
     "e"
    ],
-   "explanation": "החיבור הנכון הוא Sellers→Products→OrderItems→Orders עם סינון `category='Home'` ו-`status='Paid'` וקיבוץ לפי המוכר. A סופרת `COUNT(O.order_id)` ו-B סופרת `COUNT(*)`. לפי הטבלה הרשמית התקבלו A, B וגם E.",
+   "explanation": "החיבור הנכון הוא Sellers→Products→OrderItems→Orders עם סינון `category='Home'` ו-`status='Paid'` וקיבוץ לפי המוכר. {opt:a} סופרת `COUNT(O.order_id)` ו-{opt:b} סופרת `COUNT(*)`. לפי הטבלה הרשמית התקבלו {opt:a}, {opt:b} וגם {opt:e}.",
    "confidence": "high",
    "id": "25S-B-Q10",
    "examCode": "25S-B",
@@ -10397,8 +10261,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false,
-   "lockOrder": true
+   "official": false
   },
   {
    "part": "ב",
@@ -10437,7 +10300,7 @@
     }
    ],
    "correctId": "c",
-   "explanation": "\"לפחות 3 לקוחות שונים\" דורש `COUNT(DISTINCT O.customer_id) >= 3` לאחר קיבוץ לפי המוצר — כפי שב-C. A סופרת ללא DISTINCT ועם > 3; B בודקת `customer_id >= 3` (השוואת ערך המזהה); D סופרת הופעות ולא לקוחות שונים.",
+   "explanation": "\"לפחות 3 לקוחות שונים\" דורש `COUNT(DISTINCT O.customer_id) >= 3` לאחר קיבוץ לפי המוצר — כפי שב-{opt:c}. {opt:a} סופרת ללא DISTINCT ועם > 3; {opt:b} בודקת `customer_id >= 3` (השוואת ערך המזהה); {opt:d} סופרת הופעות ולא לקוחות שונים.",
    "confidence": "high",
    "id": "25S-B-Q11",
    "examCode": "25S-B",
@@ -10445,8 +10308,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false,
-   "lockOrder": true
+   "official": false
   },
   {
    "part": "ב",
@@ -10485,7 +10347,7 @@
     }
    ],
    "correctId": "c",
-   "explanation": "מוצר ללא ביקורת = אין לו התאמה ב-Reviews. LEFT JOIN עם `R.product_id IS NULL` מחזיר בדיוק אותם. A תמיד ריקה; B ו-D מחייבות קיום ביקורת (חיבור פנימי).",
+   "explanation": "מוצר ללא ביקורת = אין לו התאמה ב-Reviews. LEFT JOIN עם `R.product_id IS NULL` מחזיר בדיוק אותם. {opt:a} תמיד ריקה; {opt:b} ו-{opt:d} מחייבות קיום ביקורת (חיבור פנימי).",
    "confidence": "high",
    "id": "25S-B-Q12",
    "examCode": "25S-B",
@@ -10493,8 +10355,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false,
-   "lockOrder": true
+   "official": false
   },
   {
    "part": "ב",
@@ -10533,7 +10394,7 @@
     }
    ],
    "correctId": "e",
-   "explanation": "אף שאילתה אינה נכונה: A משתמשת ב-OR (במקום AND) ואינה מסננת `status='Paid'`; B מסננת `status <> 'Paid'` (הפוך) וללא תנאי כמות; C ו-D משתמשות ב-NATURAL JOIN בין Customers ל-Products (חיבור שגוי, ללא Orders/OrderItems, והעמודות quantity/status אינן קיימות שם). לכן E.",
+   "explanation": "אף שאילתה אינה נכונה: {opt:a} משתמשת ב-OR (במקום AND) ואינה מסננת `status='Paid'`; {opt:b} מסננת `status <> 'Paid'` (הפוך) וללא תנאי כמות; {opt:c} ו-{opt:d} משתמשות ב-NATURAL JOIN בין Customers ל-Products (חיבור שגוי, ללא Orders/OrderItems, והעמודות quantity/status אינן קיימות שם). לכן {opt:e}.",
    "confidence": "high",
    "id": "25S-B-Q5",
    "examCode": "25S-B",
@@ -10541,8 +10402,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false,
-   "lockOrder": true
+   "official": false
   },
   {
    "part": "ב",
@@ -10581,7 +10441,7 @@
     }
    ],
    "correctId": "d",
-   "explanation": "צריך לסנן ב-WHERE את `EXTRACT(YEAR FROM joined_at) = 2024` וגם `country <> 'Israel'` (תנאי AND) ולספור לכל מדינה עם GROUP BY country. A משתמשת ב-OR; B ממקמת את התנאים ב-GROUP BY; C מסננת שנת 2023. רק D נכונה.",
+   "explanation": "צריך לסנן ב-WHERE את `EXTRACT(YEAR FROM joined_at) = 2024` וגם `country <> 'Israel'` (תנאי AND) ולספור לכל מדינה עם GROUP BY country. {opt:a} משתמשת ב-OR; {opt:b} ממקמת את התנאים ב-GROUP BY; {opt:c} מסננת שנת 2023. רק {opt:d} נכונה.",
    "confidence": "high",
    "id": "25S-B-Q6",
    "examCode": "25S-B",
@@ -10589,8 +10449,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false,
-   "lockOrder": true
+   "official": false
   },
   {
    "part": "ב",
@@ -10629,7 +10488,7 @@
     }
    ],
    "correctId": "b",
-   "explanation": "מוצר שלא הוזמן = מוצר שאין לו התאמה ב-OrderItems. LEFT JOIN עם `OI.product_id IS NULL` מחזיר בדיוק את המוצרים ללא הזמנה. A מחזירה את ההפך; C תמיד ריקה (חיבור פנימי + COUNT=0); D מכילה שגיאה `P._product_id_`.",
+   "explanation": "מוצר שלא הוזמן = מוצר שאין לו התאמה ב-OrderItems. LEFT JOIN עם `OI.product_id IS NULL` מחזיר בדיוק את המוצרים ללא הזמנה. {opt:a} מחזירה את ההפך; {opt:c} תמיד ריקה (חיבור פנימי + COUNT=0); {opt:d} מכילה שגיאה `P._product_id_`.",
    "confidence": "high",
    "id": "25S-B-Q7",
    "examCode": "25S-B",
@@ -10637,8 +10496,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false,
-   "lockOrder": true
+   "official": false
   },
   {
    "part": "ב",
@@ -10677,7 +10535,7 @@
     }
    ],
    "correctId": "d",
-   "explanation": "רק D מבצעת את שרשרת החיבורים הנכונה עד ל-Sellers (Orders→OrderItems→Products→Sellers) ולכן מסוגלת לסנן לפי דירוג המוכר. A אינה מגיעה כלל ל-Sellers; B ו-C מפנות ל-S ללא חיבור תקין. (התשובה הרשמית: D.)",
+   "explanation": "רק {opt:d} מבצעת את שרשרת החיבורים הנכונה עד ל-Sellers (Orders→OrderItems→Products→Sellers) ולכן מסוגלת לסנן לפי דירוג המוכר. {opt:a} אינה מגיעה כלל ל-Sellers; {opt:b} ו-{opt:c} מפנות ל-S ללא חיבור תקין. (התשובה הרשמית: {opt:d}.)",
    "confidence": "high",
    "id": "25S-B-Q8",
    "examCode": "25S-B",
@@ -10685,8 +10543,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false,
-   "lockOrder": true
+   "official": false
   },
   {
    "part": "ב",
@@ -10725,7 +10582,7 @@
     }
    ],
    "correctId": "a",
-   "explanation": "החיבור הנכון הוא `S.seller_id = P.seller_id`, עם סינון `P.active = TRUE AND P.price > 100` והצגת שם מוצר, שם מוכר ותאריך פתיחה. B מבצעת מכפלה קרטזית ללא תנאי חיבור; C מחברת לפי `P.product_id = S.seller_id` (שגוי); D מחזירה רק פרטי מוכר.",
+   "explanation": "החיבור הנכון הוא `S.seller_id = P.seller_id`, עם סינון `P.active = TRUE AND P.price > 100` והצגת שם מוצר, שם מוכר ותאריך פתיחה. {opt:b} מבצעת מכפלה קרטזית ללא תנאי חיבור; {opt:c} מחברת לפי `P.product_id = S.seller_id` (שגוי); {opt:d} מחזירה רק פרטי מוכר.",
    "confidence": "high",
    "id": "25S-B-Q9",
    "examCode": "25S-B",
@@ -10733,8 +10590,7 @@
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false,
-   "lockOrder": true
+   "official": false
   },
   {
    "part": "ב",
@@ -10774,7 +10630,7 @@
    ],
    "correctId": "a",
    "answerSource": "form-0",
-   "explanation": "חילוק ב-SQL: \"לא קיים שיעור Yoga שהמנוי לא השתתף בו\". ‏C בודקת את **כל** השיעורים (בלי סינון ל-Yoga). ‏B ו-D מחזירות מי שהשתתף בשיעור Yoga **אחד לפחות**.",
+   "explanation": "חילוק ב-SQL: \"לא קיים שיעור Yoga שהמנוי לא השתתף בו\". ‏{opt:c} בודקת את **כל** השיעורים (בלי סינון ל-Yoga). ‏{opt:b} ו-{opt:d} מחזירות מי שהשתתף בשיעור Yoga **אחד לפחות**.",
    "confidence": "high",
    "id": "26B-A-Q10",
    "examCode": "26B-A",
@@ -10782,8 +10638,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -10823,7 +10678,7 @@
    ],
    "correctId": "a",
    "answerSource": "form-0",
-   "explanation": "‏`>= ALL` מחזיר את השיעור שמחירו גדול או שווה לכל המחירים, כלומר המקסימום. ‏`> ALL` לא מחזיר כלום, כי מחיר לא גדול ממש מעצמו. ב-B פונקציית צבירה ב-`WHERE` אסורה. ‏D מחזירה את הכותרת המקסימלית לפי סדר אלפביתי.",
+   "explanation": "‏`>= ALL` מחזיר את השיעור שמחירו גדול או שווה לכל המחירים, כלומר המקסימום. ‏`> ALL` לא מחזיר כלום, כי מחיר לא גדול ממש מעצמו. ב-{opt:b} פונקציית צבירה ב-`WHERE` אסורה. ‏{opt:d} מחזירה את הכותרת המקסימלית לפי סדר אלפביתי.",
    "confidence": "high",
    "id": "26B-A-Q11",
    "examCode": "26B-A",
@@ -10831,8 +10686,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -10872,7 +10726,7 @@
    ],
    "correctId": "a",
    "answerSource": "form-0",
-   "explanation": "מחשבים קודם את המקסימום לכל סוג בתת-שאילתא ב-`FROM`, ואז ממוצע עליה. טבלה נגזרת ב-`FROM` חייבת כינוי (`AS T`), ולכן C שגויה. ב-B וב-D יש צבירה מקוננת `AVG(MAX(...))`, שאסורה.",
+   "explanation": "מחשבים קודם את המקסימום לכל סוג בתת-שאילתא ב-`FROM`, ואז ממוצע עליה. טבלה נגזרת ב-`FROM` חייבת כינוי (`AS T`), ולכן {opt:c} שגויה. ב-{opt:b} וב-{opt:d} יש צבירה מקוננת `AVG(MAX(...))`, שאסורה.",
    "confidence": "high",
    "id": "26B-A-Q12",
    "examCode": "26B-A",
@@ -10880,8 +10734,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -10926,8 +10779,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -11017,7 +10869,7 @@
    ],
    "correctId": "a",
    "answerSource": "form-0",
-   "explanation": "\"מעולם לא\" = כל המנויים פחות אלה שכן השתתפו ב-Spin, ולכן `NOT IN` על תת-שאילתא שמוצאת את משתתפי ה-Spin. ‏B מחזירה מי שהשתתף בשיעור כלשהו שאינו Spin (גם אם השתתף ב-Spin). ב-C וב-D אין עמודה `member_id`/`type` בטבלה שבה משתמשים.",
+   "explanation": "\"מעולם לא\" = כל המנויים פחות אלה שכן השתתפו ב-Spin, ולכן `NOT IN` על תת-שאילתא שמוצאת את משתתפי ה-Spin. ‏{opt:b} מחזירה מי שהשתתף בשיעור כלשהו שאינו Spin (גם אם השתתף ב-Spin). ב-{opt:c} וב-{opt:d} אין עמודה `member_id`/`type` בטבלה שבה משתמשים.",
    "confidence": "high",
    "id": "26B-A-Q7",
    "examCode": "26B-A",
@@ -11025,8 +10877,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -11066,7 +10917,7 @@
    ],
    "correctId": "a",
    "answerSource": "form-0",
-   "explanation": "צריך לספור סוגים **שונים** לכל מנוי, ולכן `COUNT(DISTINCT type)` ב-`HAVING`. ‏B סופרת השתתפויות (שני שיעורי Yoga ייספרו כ-2). ב-C פונקציית צבירה ב-`WHERE` אסורה. ב-D אין `member_id` בטבלת `Class`.",
+   "explanation": "צריך לספור סוגים **שונים** לכל מנוי, ולכן `COUNT(DISTINCT type)` ב-`HAVING`. ‏{opt:b} סופרת השתתפויות (שני שיעורי Yoga ייספרו כ-2). ב-{opt:c} פונקציית צבירה ב-`WHERE` אסורה. ב-{opt:d} אין `member_id` בטבלת `Class`.",
    "confidence": "high",
    "id": "26B-A-Q8",
    "examCode": "26B-A",
@@ -11074,8 +10925,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   },
   {
    "part": "ב",
@@ -11115,7 +10965,7 @@
    ],
    "correctId": "a",
    "answerSource": "form-0",
-   "explanation": "‏`fee_paid` נמצא ב-Attendance ו-`type` נמצא ב-Class, לכן צריך לצרף לפי `class_id`. ‏B היא מכפלה קרטזית בלי תנאי צירוף. ב-C אין `type`, וב-D אין `fee_paid`.",
+   "explanation": "‏`fee_paid` נמצא ב-Attendance ו-`type` נמצא ב-Class, לכן צריך לצרף לפי `class_id`. ‏{opt:b} היא מכפלה קרטזית בלי תנאי צירוף. ב-{opt:c} אין `type`, וב-{opt:d} אין `fee_paid`.",
    "confidence": "high",
    "id": "26B-A-Q9",
    "examCode": "26B-A",
@@ -11123,8 +10973,7 @@
    "year": 2026,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true,
-   "lockOrder": true
+   "official": true
   }
  ]
 }

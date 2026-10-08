@@ -93,7 +93,7 @@
         { "id": "e", "type": "text", "value": "אף אחת מהתשובות." }
       ],
       "correctId": "c", "acceptedIds": ["c", "d", "e"], "official": true, "answerSource": "solution-pdf", "confidence": "high",
-      "explanation": "לפי הפתרון הרשמי התקבלו התשובות C, D ו-E למלוא הנקודות (השאלה לא הובהרה דיה, ובתשובה D נכתב \"שם שונה\" ולא \"קוד שונה\")."
+      "explanation": "לפי הפתרון הרשמי התקבלו התשובות {opt:c}, {opt:d} ו-{opt:e} למלוא הנקודות (השאלה לא הובהרה דיה, ובתשובה {opt:d} נכתב \"שם שונה\" ולא \"קוד שונה\")."
     },
     {
       "num": 7, "part": "ב", "topic": "sql", "contextId": "schema",
@@ -107,7 +107,7 @@
         { "id": "e", "type": "text", "value": "אף אחת מהתשובות." }
       ],
       "correctId": "e", "acceptedIds": ["d", "e"], "official": true, "answerSource": "solution-pdf", "confidence": "high",
-      "explanation": "השאילתה אינה נכונה — חסר בה חלק של JOIN (הקשר `band.b_code = band_musician.b_code`), ואינה מתייחסת לסוג הלהקה. התקבלו התשובות D ו-E."
+      "explanation": "השאילתה אינה נכונה — חסר בה חלק של JOIN (הקשר `band.b_code = band_musician.b_code`), ואינה מתייחסת לסוג הלהקה. התקבלו התשובות {opt:d} ו-{opt:e}."
     },
     {
       "num": 8, "part": "ב", "topic": "sql", "contextId": "schema",
@@ -121,7 +121,7 @@
         { "id": "e", "type": "text", "value": "רק פתרון 3 נכון." }
       ],
       "correctId": "b", "official": true, "answerSource": "solution-pdf", "confidence": "high",
-      "explanation": "פתרון 2 שגוי (min ללא GROUP BY עם עמודות נוספות). פתרונות 1 ו-3 מחזירים את המוסיקאי בעל הגיל המינימלי. (על A, C, E ניתנו חצי מהנקודות.)"
+      "explanation": "פתרון 2 שגוי (min ללא GROUP BY עם עמודות נוספות). פתרונות 1 ו-3 מחזירים את המוסיקאי בעל הגיל המינימלי. (על {opt:a}, {opt:c}, {opt:e} ניתנו חצי מהנקודות.)"
     },
     {
       "num": 9, "part": "ב", "topic": "sql", "contextId": "schema",
@@ -148,7 +148,7 @@
         { "id": "e", "type": "text", "value": "השאילתה כתובה באופן שגוי, ולכן אי אפשר לנסח בשפה טבעית שאלה מתאימה." }
       ],
       "correctId": "d", "acceptedIds": ["d", "e"], "official": true, "answerSource": "solution-pdf", "confidence": "high",
-      "explanation": "שאלה מורכבת — התקבלו שתי התשובות D ו-E (יש חוסר התאמה בשורות אך הוא אפשרי כיוון שמדובר ב-`NOT EXISTS`)."
+      "explanation": "שאלה מורכבת — התקבלו שתי התשובות {opt:d} ו-{opt:e} (יש חוסר התאמה בשורות אך הוא אפשרי כיוון שמדובר ב-`NOT EXISTS`)."
     },
     {
       "num": 11, "part": "ג", "topic": "relalg", "contextId": "schema",
@@ -174,7 +174,7 @@
         { "id": "e", "type": "text", "value": "צירוף טבעי וחיסור" }
       ],
       "correctId": "b", "official": true, "answerSource": "solution-pdf", "confidence": "high",
-      "explanation": "\"מנגנים בכל כלי הפריטה\" הוא כימות אוניברסלי ← אופרטור החילוק (÷). (על D ניתנו חצי מהנקודות.)"
+      "explanation": "\"מנגנים בכל כלי הפריטה\" הוא כימות אוניברסלי ← אופרטור החילוק (÷). (על {opt:d} ניתנו חצי מהנקודות.)"
     },
     {
       "num": 13, "part": "ג", "topic": "relalg", "contextId": "schema",
@@ -187,7 +187,7 @@
         { "id": "e", "type": "text", "value": "אף אחת מהתשובות אינה נכונה." }
       ],
       "correctId": "e", "official": true, "answerSource": "solution-pdf", "confidence": "high",
-      "explanation": "ב-B2 אין m_id, ולכן השאילתה אינה נכונה; אם היינו רוצים שהיא תעבוד היה צריך צירוף טבעי עם musician שחסר. (על C ניתנו חצי מהנקודות.)"
+      "explanation": "ב-B2 אין m_id, ולכן השאילתה אינה נכונה; אם היינו רוצים שהיא תעבוד היה צריך צירוף טבעי עם musician שחסר. (על {opt:c} ניתנו חצי מהנקודות.)"
     },
     {
       "num": 15, "part": "ד", "topic": "fd_norm", "contextId": "fd",
@@ -200,7 +200,7 @@
         { "id": "e", "type": "text", "value": "אף אחת מהתשובות" }
       ],
       "correctId": "e", "acceptedIds": ["c", "e"], "official": true, "answerSource": "solution-pdf", "confidence": "high",
-      "explanation": "הסגור של תכונה חייב להכיל את התכונה עצמה: A⁺ = {A,C,D,E}. אף אפשרות אינה מדויקת (ב-{CDE} חסר A), ולכן התשובה E — אך התקבלה גם C."
+      "explanation": "הסגור של תכונה חייב להכיל את התכונה עצמה: A⁺ = {A,C,D,E}. אף אפשרות אינה מדויקת (ב-{CDE} חסר A), ולכן התשובה {opt:e} — אך התקבלה גם {opt:c}."
     },
     {
       "num": 16, "part": "ד", "topic": "fd_norm", "contextId": "fd",
@@ -264,7 +264,7 @@
         { "id": "d", "type": "text", "value": "מערכת ששומרת לכל אדם את ההוצאות וההכנסות שלו לחודש ולפי אילו סעיפים הוא מסווג אותם." }
       ],
       "correctId": "c", "official": true, "answerSource": "solution-pdf", "confidence": "high",
-      "explanation": "C היא מערכת עם המלצות ותוכן חופשי (הכי פחות מספרים וסעיפים קבועים) — מתאימה למודל לא-רלציוני. התקבלו גם תשובות אחרות אם כללו הסבר רלוונטי."
+      "explanation": "{opt:c} היא מערכת עם המלצות ותוכן חופשי (הכי פחות מספרים וסעיפים קבועים) — מתאימה למודל לא-רלציוני. התקבלו גם תשובות אחרות אם כללו הסבר רלוונטי."
     }
   ],
   "askAdir": []

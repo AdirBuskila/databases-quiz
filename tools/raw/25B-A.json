@@ -324,7 +324,7 @@
         "d"
       ],
       "answerSource": "solution-pdf",
-      "explanation": "צריך לחבר Students↔Enrollments ולסנן `grade = (SELECT MIN(grade) FROM Enrollments)`. A עושה זאת ישירות; ל-D עם `= ANY (SELECT MIN(grade)…)` תוצאה זהה (ANY מול ערך יחיד ≡ שוויון) ולכן התקבל גם הוא (4 נק'). B בודק `> MIN`, ו-C בודק `<= MAX` (כלומר את כל הציונים).",
+      "explanation": "צריך לחבר Students↔Enrollments ולסנן `grade = (SELECT MIN(grade) FROM Enrollments)`. {opt:a} עושה זאת ישירות; ל-{opt:d} עם `= ANY (SELECT MIN(grade)…)` תוצאה זהה (ANY מול ערך יחיד ≡ שוויון) ולכן התקבל גם הוא (4 נק'). {opt:b} בודק `> MIN`, ו-{opt:c} בודק `<= MAX` (כלומר את כל הציונים).",
       "confidence": "high"
     },
     {
@@ -363,7 +363,7 @@
       ],
       "correctId": "d",
       "answerSource": "solution-pdf",
-      "explanation": "‏`COUNT(DISTINCT student_id)` עם סינון `C.credits >= 3` סופר את מספר הסטודנטים השונים שנרשמו לקורס כלשהו המעניק 3 נקודות זכות או יותר. A מגביל ל'בדיוק 3'; B סופר קורסים; C סופר הרשמות.",
+      "explanation": "‏`COUNT(DISTINCT student_id)` עם סינון `C.credits >= 3` סופר את מספר הסטודנטים השונים שנרשמו לקורס כלשהו המעניק 3 נקודות זכות או יותר. {opt:a} מגביל ל'בדיוק 3'; {opt:b} סופר קורסים; {opt:c} סופר הרשמות.",
       "confidence": "high"
     },
     {
@@ -409,7 +409,7 @@
         "e"
       ],
       "answerSource": "solution-pdf",
-      "explanation": "צריך לסנן `semester = 'Spring 2024'` ב-WHERE ואז `HAVING COUNT(course_id) > 3`. B שם את תנאי הסמסטר ב-HAVING (שגוי); C משתמש ב-`WHERE COUNT(*)` (שגוי); D סוכם נקודות זכות. הערת ערעור: מאחר ש-GROUP BY לפי `first_name` אינו ייחודי (ייתכן שסופרים קורסים של סטודנטים שונים בעלי אותו שם), התקבלה כנכונה גם תשובה E.",
+      "explanation": "צריך לסנן `semester = 'Spring 2024'` ב-WHERE ואז `HAVING COUNT(course_id) > 3`. {opt:b} שם את תנאי הסמסטר ב-HAVING (שגוי); {opt:c} משתמש ב-`WHERE COUNT(*)` (שגוי); {opt:d} סוכם נקודות זכות. הערת ערעור: מאחר ש-GROUP BY לפי `first_name` אינו ייחודי (ייתכן שסופרים קורסים של סטודנטים שונים בעלי אותו שם), התקבלה כנכונה גם תשובה {opt:e}.",
       "confidence": "high"
     },
     {
@@ -452,7 +452,7 @@
         "e"
       ],
       "answerSource": "solution-pdf",
-      "explanation": "‏LEFT JOIN עם `WHERE grade < 60` מסנן החוצה את ערכי ה-NULL, כך שבפועל מוצגים רק הסטודנטים שקיבלו ציון מתחת ל-60. הכוונה הייתה ל-A, אך מכיוון שהיא אינה מציינת שגם הציון עצמו מוצג לצד השם — התקבלה כלגיטימית גם תשובה E.",
+      "explanation": "‏LEFT JOIN עם `WHERE grade < 60` מסנן החוצה את ערכי ה-NULL, כך שבפועל מוצגים רק הסטודנטים שקיבלו ציון מתחת ל-60. הכוונה הייתה ל-{opt:a}, אך מכיוון שהיא אינה מציינת שגם הציון עצמו מוצג לצד השם — התקבלה כלגיטימית גם תשובה {opt:e}.",
       "confidence": "high"
     },
     {
@@ -494,7 +494,7 @@
       ],
       "correctId": "b",
       "answerSource": "solution-pdf",
-      "explanation": "צריך AND בין `first_name LIKE '%e%'` לבין `birth_year < 2001` (גיל מעל 24). A ו-C משתמשים ב-OR (וב-C גם קדימות שגויה של OR מול AND); D בודק `birth_year > 2001` (כיוון הפוך). רק B נכון.",
+      "explanation": "צריך AND בין `first_name LIKE '%e%'` לבין `birth_year < 2001` (גיל מעל 24). {opt:a} ו-{opt:c} משתמשים ב-OR (וב-{opt:c} גם קדימות שגויה של OR מול AND); {opt:d} בודק `birth_year > 2001` (כיוון הפוך). רק {opt:b} נכון.",
       "confidence": "high"
     },
     {
@@ -536,7 +536,7 @@
       ],
       "correctId": "c",
       "answerSource": "solution-pdf",
-      "explanation": "\"נרשמו לכל הקורסים של Mathematics\" = חלוקה: אין קורס Mathematics שאליו הסטודנט לא נרשם — תבנית `NOT EXISTS` כפולה (C). B בודק היעדר הרשמה; ל-A מספיק קורס אחד; D הוא חיבור פנימי רגיל.",
+      "explanation": "\"נרשמו לכל הקורסים של Mathematics\" = חלוקה: אין קורס Mathematics שאליו הסטודנט לא נרשם — תבנית `NOT EXISTS` כפולה ({opt:c}). {opt:b} בודק היעדר הרשמה; ל-{opt:a} מספיק קורס אחד; {opt:d} הוא חיבור פנימי רגיל.",
       "confidence": "high"
     },
     {
@@ -578,7 +578,7 @@
       ],
       "correctId": "a",
       "answerSource": "solution-pdf",
-      "explanation": "עם אופרטור `CONTAINS`: קבוצת הקורסים שאליהם נרשם הסטודנט חייבת להכיל את קבוצת קורסי Mathematics — כלומר (הרשמות הסטודנט) `CONTAINS` (קורסי Mathematics), כפי ש-A מנסח. B הופך את כיוון ההכלה; C משווה לכל הקורסים; D משווה `course_id` מול `department`.",
+      "explanation": "עם אופרטור `CONTAINS`: קבוצת הקורסים שאליהם נרשם הסטודנט חייבת להכיל את קבוצת קורסי Mathematics — כלומר (הרשמות הסטודנט) `CONTAINS` (קורסי Mathematics), כפי ש-{opt:a} מנסח. {opt:b} הופך את כיוון ההכלה; {opt:c} משווה לכל הקורסים; {opt:d} משווה `course_id` מול `department`.",
       "confidence": "high"
     },
     {
@@ -620,7 +620,7 @@
       ],
       "correctId": "a",
       "answerSource": "solution-pdf",
-      "explanation": "‏A מחבר Students↔Enrollments↔Courses ומסנן `credits >= 4` עם סדר העמודות הנכון `(first_name, course_name)`. B בודק `credits > 4`; C בודק `credits = 4`. ל-D ניתן ניקוד חלקי בלבד (4 נק') — סדר העמודות הפוך `(course_name, first_name)` והשאילתה פחות יעילה.",
+      "explanation": "‏{opt:a} מחבר Students↔Enrollments↔Courses ומסנן `credits >= 4` עם סדר העמודות הנכון `(first_name, course_name)`. {opt:b} בודק `credits > 4`; {opt:c} בודק `credits = 4`. ל-{opt:d} ניתן ניקוד חלקי בלבד (4 נק') — סדר העמודות הפוך `(course_name, first_name)` והשאילתה פחות יעילה.",
       "confidence": "high"
     },
     {
@@ -658,7 +658,7 @@
       ],
       "correctId": "a",
       "answerSource": "solution-pdf",
-      "explanation": "כדי לקבל את המורה בעל הציון הנמוך ביותר: כל מזהי המורים פחות אלו שקיים מורה עם ציון נמוך מהם. לכן חלק (1) = $Π_{id}(teacher) −$ (הפרש) וחלק (2) = `>` (T1 גבוה מ-T2). לכן תשובה A.",
+      "explanation": "כדי לקבל את המורה בעל הציון הנמוך ביותר: כל מזהי המורים פחות אלו שקיים מורה עם ציון נמוך מהם. לכן חלק (1) = $Π_{id}(teacher) −$ (הפרש) וחלק (2) = `>` (T1 גבוה מ-T2). לכן תשובה {opt:a}.",
       "confidence": "high"
     },
     {
@@ -734,7 +734,7 @@
       ],
       "correctId": "c",
       "answerSource": "solution-pdf",
-      "explanation": "\"מורה שלימד בשיעורים פרטיים את כל התלמידים מעל גיל 35\" דורש חילוק (÷), ובנוסף שינוי-שם (ρ) כדי להתאים את `id` ל-`student_id`. סה\"כ 2 פעולות מתוך הרשימה — לכן C.",
+      "explanation": "\"מורה שלימד בשיעורים פרטיים את כל התלמידים מעל גיל 35\" דורש חילוק (÷), ובנוסף שינוי-שם (ρ) כדי להתאים את `id` ל-`student_id`. סה\"כ 2 פעולות מתוך הרשימה — לכן {opt:c}.",
       "confidence": "high"
     },
     {

@@ -26,32 +26,28 @@ TOOLS = pathlib.Path(__file__).parent
 RAW = TOOLS / "raw"
 OUT = TOOLS.parent
 
-# Options like "תשובות ב' וג' נכונות" point at their SIBLINGS by printed letter. The app
-# shuffles options, which would make that reference land on whatever happens to fall in
-# those slots. Such questions keep the source's printed order instead (app.js honours
-# the lockOrder flag).
-LETTER_REF = re.compile(r"(תשובות|תשובה|סעיפים|סעיף)\s+[אבגדה]['׳]?\s*[,ו]")
-# an option that is nothing but sibling letters ("ב + ג", "A, C")
+# Text that cites an option by its printed letter ("ב + ג", "תשובות א' וג' נכונות", "לכן D.")
+# stores it as {opt:<id>}; the app shuffles options and renders each token as the letter
+# that option currently shows. Raw letters would point at whatever lands in that slot.
+OPT_REF = re.compile(r"\{opt:([^}]*)\}")
+# an option still citing siblings by raw letter (missed tokenization)
+LETTER_REF = re.compile(r"(תשובות|תשובה|סעיפים|סעיף)\s+[אבגדה]['׳]?(?:\s*,|\s+ו-?[אבגדה](?![֐-׿]))")
 LETTERS_ONLY = re.compile(r"^[A-Eאבגדה]['׳]?(\s*(?:[+,&]|ו-?)\s*[A-Eאבגדה]['׳]?)+$")
 
-# an explanation that cites options by printed letter ("C שגויה", "כפי שב-C", "תשובה א'",
-# "התקבלו א וגם ה") only makes sense in the printed order, so it locks the order too.
-# `code` and $math$ spans are skipped (they hold attribute/table names like A, R1).
-EXPL_SPANS = re.compile(r"`[^`]*`|\$\$[^$]*\$\$|\$[^$]*\$")
-EXPL_LETTER = re.compile(
-    r"(?<![A-Za-z0-9_.'\"`])[A-E](?![A-Za-z0-9_'(`])"
-    r"|(?<![֐-׿])[אבגדה][׳']"
-    r"|(?:תשובה|תשובות|אפשרות|אפשרויות|או|וגם)\s+[אבגדה](?![֐-׿])"
-    r"|(?<![֐-׿])[אבגדה]\s+(?:או|וגם)\s")
 
-
-def cites_letters(explanation):
-    return bool(EXPL_LETTER.search(EXPL_SPANS.sub(" ", explanation or "")))
-
-
-def locks_order(options):
-    vals = [o.get("value", "") if isinstance(o, dict) else o for o in options]
-    return any(LETTER_REF.search(str(v)) or LETTERS_ONLY.match(str(v).strip()) for v in vals)
+def option_ref_errors(q, ids):
+    errs = []
+    texts = [("question", q.get("question")), ("explanation", q.get("explanation"))]
+    texts += [(f"option-{o.get('id')}", o.get("value")) for o in q.get("options", [])]
+    for where, t in texts:
+        if not isinstance(t, str): continue
+        for m in OPT_REF.finditer(t):
+            if m.group(1) not in ids: errs.append(f"bad-opt-ref:{where}:{m.group(0)}")
+    for o in q.get("options", []):
+        v = str(o.get("value", "")).strip()
+        if LETTER_REF.search(v) or LETTERS_ONLY.match(v): errs.append(f"raw-letter-ref:option-{o.get('id')}")
+        if f"{{opt:{o.get('id')}}}" in v: errs.append(f"self-opt-ref:option-{o.get('id')}")
+    return errs
 
 TOPIC_LABEL = {
     "erd": "מודל ERD",
@@ -92,6 +88,7 @@ def valid_question(q, code):
     for o in opts:
         if o.get("type") == "code" and re.search(r"[֐-׿]", str(o.get("value", ""))):
             errs.append(f"hebrew-in-code:{o.get('id')}")
+    errs += option_ref_errors(q, ids)
     return errs
 
 def main():
@@ -129,8 +126,6 @@ def main():
             q["source"] = "exam"
             q["topicLabel"] = TOPIC_LABEL[q["topic"]]
             q["official"] = q.get("answerSource") in OFFICIAL_SOURCES
-            if locks_order(q.get("options", [])) or cites_letters(q.get("explanation")):
-                q["lockOrder"] = True
             if q.get("contextId"):
                 q["contextId"] = cmap.get(q["contextId"], q["contextId"])
             q.pop("num", None)

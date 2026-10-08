@@ -274,7 +274,7 @@
         }
       ],
       "correctId": "e",
-      "explanation": "אף שאילתה אינה נכונה: A משתמשת ב-OR (במקום AND) ואינה מסננת `status='Paid'`; B מסננת `status <> 'Paid'` (הפוך) וללא תנאי כמות; C ו-D משתמשות ב-NATURAL JOIN בין Customers ל-Products (חיבור שגוי, ללא Orders/OrderItems, והעמודות quantity/status אינן קיימות שם). לכן E.",
+      "explanation": "אף שאילתה אינה נכונה: {opt:a} משתמשת ב-OR (במקום AND) ואינה מסננת `status='Paid'`; {opt:b} מסננת `status <> 'Paid'` (הפוך) וללא תנאי כמות; {opt:c} ו-{opt:d} משתמשות ב-NATURAL JOIN בין Customers ל-Products (חיבור שגוי, ללא Orders/OrderItems, והעמודות quantity/status אינן קיימות שם). לכן {opt:e}.",
       "confidence": "high"
     },
     {
@@ -315,7 +315,7 @@
         }
       ],
       "correctId": "d",
-      "explanation": "צריך לסנן ב-WHERE את `EXTRACT(YEAR FROM joined_at) = 2024` וגם `country <> 'Israel'` (תנאי AND) ולספור לכל מדינה עם GROUP BY country. A משתמשת ב-OR; B ממקמת את התנאים ב-GROUP BY; C מסננת שנת 2023. רק D נכונה.",
+      "explanation": "צריך לסנן ב-WHERE את `EXTRACT(YEAR FROM joined_at) = 2024` וגם `country <> 'Israel'` (תנאי AND) ולספור לכל מדינה עם GROUP BY country. {opt:a} משתמשת ב-OR; {opt:b} ממקמת את התנאים ב-GROUP BY; {opt:c} מסננת שנת 2023. רק {opt:d} נכונה.",
       "confidence": "high"
     },
     {
@@ -356,7 +356,7 @@
         }
       ],
       "correctId": "b",
-      "explanation": "מוצר שלא הוזמן = מוצר שאין לו התאמה ב-OrderItems. LEFT JOIN עם `OI.product_id IS NULL` מחזיר בדיוק את המוצרים ללא הזמנה. A מחזירה את ההפך; C תמיד ריקה (חיבור פנימי + COUNT=0); D מכילה שגיאה `P._product_id_`.",
+      "explanation": "מוצר שלא הוזמן = מוצר שאין לו התאמה ב-OrderItems. LEFT JOIN עם `OI.product_id IS NULL` מחזיר בדיוק את המוצרים ללא הזמנה. {opt:a} מחזירה את ההפך; {opt:c} תמיד ריקה (חיבור פנימי + COUNT=0); {opt:d} מכילה שגיאה `P._product_id_`.",
       "confidence": "high"
     },
     {
@@ -397,7 +397,7 @@
         }
       ],
       "correctId": "d",
-      "explanation": "רק D מבצעת את שרשרת החיבורים הנכונה עד ל-Sellers (Orders→OrderItems→Products→Sellers) ולכן מסוגלת לסנן לפי דירוג המוכר. A אינה מגיעה כלל ל-Sellers; B ו-C מפנות ל-S ללא חיבור תקין. (התשובה הרשמית: D.)",
+      "explanation": "רק {opt:d} מבצעת את שרשרת החיבורים הנכונה עד ל-Sellers (Orders→OrderItems→Products→Sellers) ולכן מסוגלת לסנן לפי דירוג המוכר. {opt:a} אינה מגיעה כלל ל-Sellers; {opt:b} ו-{opt:c} מפנות ל-S ללא חיבור תקין. (התשובה הרשמית: {opt:d}.)",
       "confidence": "high"
     },
     {
@@ -438,7 +438,7 @@
         }
       ],
       "correctId": "a",
-      "explanation": "החיבור הנכון הוא `S.seller_id = P.seller_id`, עם סינון `P.active = TRUE AND P.price > 100` והצגת שם מוצר, שם מוכר ותאריך פתיחה. B מבצעת מכפלה קרטזית ללא תנאי חיבור; C מחברת לפי `P.product_id = S.seller_id` (שגוי); D מחזירה רק פרטי מוכר.",
+      "explanation": "החיבור הנכון הוא `S.seller_id = P.seller_id`, עם סינון `P.active = TRUE AND P.price > 100` והצגת שם מוצר, שם מוכר ותאריך פתיחה. {opt:b} מבצעת מכפלה קרטזית ללא תנאי חיבור; {opt:c} מחברת לפי `P.product_id = S.seller_id` (שגוי); {opt:d} מחזירה רק פרטי מוכר.",
       "confidence": "high"
     },
     {
@@ -484,7 +484,7 @@
         "b",
         "e"
       ],
-      "explanation": "החיבור הנכון הוא Sellers→Products→OrderItems→Orders עם סינון `category='Home'` ו-`status='Paid'` וקיבוץ לפי המוכר. A סופרת `COUNT(O.order_id)` ו-B סופרת `COUNT(*)`. לפי הטבלה הרשמית התקבלו A, B וגם E.",
+      "explanation": "החיבור הנכון הוא Sellers→Products→OrderItems→Orders עם סינון `category='Home'` ו-`status='Paid'` וקיבוץ לפי המוכר. {opt:a} סופרת `COUNT(O.order_id)` ו-{opt:b} סופרת `COUNT(*)`. לפי הטבלה הרשמית התקבלו {opt:a}, {opt:b} וגם {opt:e}.",
       "confidence": "high"
     },
     {
@@ -525,7 +525,7 @@
         }
       ],
       "correctId": "c",
-      "explanation": "\"לפחות 3 לקוחות שונים\" דורש `COUNT(DISTINCT O.customer_id) >= 3` לאחר קיבוץ לפי המוצר — כפי שב-C. A סופרת ללא DISTINCT ועם > 3; B בודקת `customer_id >= 3` (השוואת ערך המזהה); D סופרת הופעות ולא לקוחות שונים.",
+      "explanation": "\"לפחות 3 לקוחות שונים\" דורש `COUNT(DISTINCT O.customer_id) >= 3` לאחר קיבוץ לפי המוצר — כפי שב-{opt:c}. {opt:a} סופרת ללא DISTINCT ועם > 3; {opt:b} בודקת `customer_id >= 3` (השוואת ערך המזהה); {opt:d} סופרת הופעות ולא לקוחות שונים.",
       "confidence": "high"
     },
     {
@@ -566,7 +566,7 @@
         }
       ],
       "correctId": "c",
-      "explanation": "מוצר ללא ביקורת = אין לו התאמה ב-Reviews. LEFT JOIN עם `R.product_id IS NULL` מחזיר בדיוק אותם. A תמיד ריקה; B ו-D מחייבות קיום ביקורת (חיבור פנימי).",
+      "explanation": "מוצר ללא ביקורת = אין לו התאמה ב-Reviews. LEFT JOIN עם `R.product_id IS NULL` מחזיר בדיוק אותם. {opt:a} תמיד ריקה; {opt:b} ו-{opt:d} מחייבות קיום ביקורת (חיבור פנימי).",
       "confidence": "high"
     },
     {
@@ -640,7 +640,7 @@
         }
       ],
       "correctId": "b",
-      "explanation": "כשמשתמשים במכפלה קרטזית (×) חובה לכלול בתנאי הבחירה את **כל** תנאֵי החיבור: `customer.cust_id = package.recipient_id`, `delivery.pkg_id = package.pkg_id` ו-`courier.courier_id = delivery.courier_id`, לצד `city='תל אביב'`, `courier.region = customer.city` ו-`is_express = True`. רק B כוללת את כולם.",
+      "explanation": "כשמשתמשים במכפלה קרטזית (×) חובה לכלול בתנאי הבחירה את **כל** תנאֵי החיבור: `customer.cust_id = package.recipient_id`, `delivery.pkg_id = package.pkg_id` ו-`courier.courier_id = delivery.courier_id`, לצד `city='תל אביב'`, `courier.region = customer.city` ו-`is_express = True`. רק {opt:b} כוללת את כולם.",
       "confidence": "high"
     },
     {
@@ -862,7 +862,7 @@
         "c",
         "d"
       ],
-      "explanation": "לפי טבלת התשובות הרשמית התקבלו כאן **שתי תשובות** — C וגם D (שתיהן קובעות שהפירוק אינו משמר תלויות; הן נחלקות בשאלת חוסר-אובדן המידע).",
+      "explanation": "לפי טבלת התשובות הרשמית התקבלו כאן **שתי תשובות** — {opt:c} וגם {opt:d} (שתיהן קובעות שהפירוק אינו משמר תלויות; הן נחלקות בשאלת חוסר-אובדן המידע).",
       "confidence": "high"
     }
   ]
