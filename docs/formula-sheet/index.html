@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>דף נוסחאות — מערכות בסיסי נתונים</title>
+<style>
+@page { size: A4; margin: 5mm; }
+html, body { margin: 0; padding: 0; background: #fff; color: #111; }
+body { font-family: Arial, "Noto Sans Hebrew", sans-serif; font-size: 7pt; line-height: 1.22; direction: rtl; }
+.page { width: 200mm; height: 286.5mm; display: flex; gap: 2.2mm; overflow: hidden; }
+.page.first { page-break-after: always; }
+.col { flex: 1 1 0; min-width: 0; overflow: hidden; }
+h1 { font-size: 10.5pt; margin: 0 0 0.6mm; color: #1f3a5f; }
+h2 { font-size: 8.2pt; margin: 1.2mm 0 0.6mm; padding: 0.5mm 1.2mm; background: #1f3a5f; color: #fff; border-radius: 0.8mm; }
+h2:first-child { margin-top: 0; }
+h3 { font-size: 7.3pt; margin: 0.8mm 0 0.3mm; padding-bottom: 0.2mm; border-bottom: 0.35pt solid #8a9bb0; color: #1f3a5f; }
+p { margin: 0 0 0.45mm; }
+ul { margin: 0 0 0.4mm; padding: 0 2.8mm 0 0; }
+ol { margin: 0 0 0.4mm; padding: 0 3.4mm 0 0; }
+li { margin: 0 0 0.25mm; }
+table { border-collapse: collapse; width: 100%; font-size: 6.5pt; margin: 0.4mm 0 0.6mm; }
+th, td { border: 0.3pt solid #9aa7b5; padding: 0.25mm 0.7mm; vertical-align: top; text-align: right; }
+th { background: #e6edf5; font-weight: bold; }
+code, .en { font-family: Consolas, "Courier New", monospace; font-size: 6.4pt; direction: ltr; unicode-bidi: isolate; background: #f0f3f7; padding: 0 0.35mm; border-radius: 0.4mm; white-space: pre-wrap; }
+.nw { white-space: nowrap; }
+.en { font-family: Arial, sans-serif; font-size: inherit; background: none; padding: 0; white-space: nowrap; }
+pre { direction: ltr; text-align: left; font-family: Consolas, "Courier New", monospace; font-size: 6pt; line-height: 1.18; background: #f0f3f7; padding: 0.6mm 1mm; margin: 0.4mm 0 0.6mm; border-radius: 0.6mm; white-space: pre; overflow: hidden; }
+pre .c { color: #6b7280; }
+.f { font-family: "Cambria Math", Cambria, "Segoe UI Symbol", serif; font-size: 7.2pt; direction: ltr; unicode-bidi: isolate; white-space: nowrap; }
+.fb { display: block; text-align: center; margin: 0.3mm 0 0.5mm; font-size: 7.4pt; white-space: normal; }
+sub { font-size: 70%; line-height: 0; }
+.box { border: 0.45pt solid #1f3a5f; border-radius: 0.8mm; padding: 0.5mm 1mm; margin: 0.5mm 0 0.7mm; background: #f7f9fc; }
+.warn { border-color: #b42318; background: #fff6f5; }
+.ok { color: #1a7f37; font-weight: bold; }
+.bad { color: #b42318; font-weight: bold; }
+.k { font-weight: bold; color: #1f3a5f; }
+.hdr { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 0.6pt solid #1f3a5f; padding-bottom: 0.4mm; margin-bottom: 0.8mm; }
+.hdr small { font-size: 6.3pt; color: #444; }
+.two { display: flex; gap: 1.2mm; }
+.two > * { flex: 1 1 0; min-width: 0; }
+.tight td { padding: 0.15mm 0.6mm; }
+.pf { page-break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<!-- ============================ PAGE 1 ============================ -->
+<div class="page first">
+
+<!-- ---------- column 1: header + SQL part 1 ---------- -->
+<div class="col" data-name="p1-col1">
+<div class="hdr"><h1>דף נוסחאות — מערכות בסיסי נתונים</h1><small>HIT · מבוסס על 10 מבחנים 2021–2025</small></div>
+
+<div class="box">
+<b>מבנה המבחן (2025):</b> א׳ ERD <b>4</b> · ב׳ SQL <b>8</b> · ג׳ אלגברה <b>4</b> · ד׳ נרמול <b>4</b> = 20 שאלות. NoSQL לא הופיע מ-2024.<br>
+<b>לפני שקוראים אפשרויות:</b> זהה את התבנית מהניסוח ← כתוב בראש את השלד ← רק אז התאם אפשרות.<br>
+<b>"אף אחת מהתשובות"</b> נכונה ב-13/212 (6%) — אל תפחד לסמן. שלוש הסיבות: עמודה שלא קיימת ביחס · מכפלה קרטזית בלי תנאי חיבור · פרט קטן שחסר בכולן (סגור בלי X עצמו).
+ב-28 שאלות התקבלה יותר מתשובה אחת — אל תפסול תשובה טובה רק כי מצאת עוד אחת.
+</div>
+
+<h2>SQL — חלק ב׳ (8 שאלות = 40%)</h2>
+
+<h3>1. סדר הביצוע הלוגי — שורת הזהב</h3>
+<p><span class="f fb" style="font-size:6.9pt">FROM→WHERE→GROUP BY→HAVING→SELECT→ORDER BY</span></p>
+<ul>
+<li><span class="bad">✗</span> אגרגציה ב-<code>WHERE</code>‏ (<code>WHERE avg(x)&gt;10</code>‏) — WHERE רץ לפני הקבוצות.</li>
+<li><span class="bad">✗</span> תנאי שורה ב-<code>HAVING</code>‏ · <code>HAVING</code>‏ בלי <code>GROUP BY</code>‏ · <code>GROUP BY</code>‏ לפני <code>WHERE</code>‏.</li>
+<li><span class="bad">✗</span> <code>SELECT MAX(x), name FROM T</code>‏ בלי GROUP BY — אגרגציה ליד עמודה רגילה (חזר ב-5 מועדים!).</li>
+<li><span class="bad">✗</span> <code>MAX(COUNT(x))</code>‏ — אין קינון אגרגציות. התחליף: <code>HAVING COUNT(*) &gt;= ALL (SELECT COUNT(*) … GROUP BY …)</code>‏.</li>
+<li>אגרגציה על אגרגציה ← תת-שאילתה ב-<code>FROM</code>‏ (חייבת <b>alias</b>!) או VIEW: <code>SELECT AVG(p) FROM (SELECT y, MAX(a)-MIN(a) AS p … GROUP BY y) AS Q</code>‏.</li>
+<li>כלל אצבע: תנאי על <b>שדה שורה</b> ← WHERE. תנאי על <b>COUNT/SUM/AVG</b> ← HAVING.</li>
+</ul>
+
+<h3>2. קיבוץ וספירה</h3>
+<pre>SELECT g, COUNT(*)     <span class="c">-- לא-אגרגטיבי ⇒ GROUP BY</span>
+FROM A JOIN B USING(k)
+WHERE &lt;תנאי שורה&gt;       <span class="c">-- לפני הקיבוץ</span>
+GROUP BY g             <span class="c">-- "לכל X" ⇒ GROUP BY X</span>
+HAVING COUNT(DISTINCT y) &gt;= 3   <span class="c">-- אחרי הקיבוץ</span></pre>
+<ul>
+<li><b>"כמה שונים" / "לפחות N שונים"</b> ← <code>COUNT(DISTINCT c)</code>‏. <code>COUNT(c)</code>‏ סופר הופעות (לא NULL); <code>COUNT(*)</code>‏ סופר שורות.</li>
+<li><b>"לפחות N"</b> ← <code>&gt;= N</code>‏ · <b>"יותר מ-N"</b> ← <code>&gt; N</code>‏ · "ייחודי" ← <code>HAVING COUNT(*) = 1</code>‏.</li>
+<li>קבץ לפי <b>מזהה</b>, לא לפי שם (שני סטודנטים באותו שם יתמזגו — זו תשובה "אף אחת").</li>
+<li>"נתן" = <code>from_x</code>‏ · "קיבל" = <code>to_x</code>‏ — סמן על הדף מי נותן ומי מקבל.</li>
+<li>בלי <code>COUNT</code>‏ בכלל ← רשימת שורות, לא צריך GROUP BY. <code>SUM</code>‏ ≠ <code>COUNT</code>‏ ("גובה כולל" = SUM).</li>
+<li>שנה מתוך תאריך: <code>EXTRACT(YEAR FROM d) = 2024</code>‏ / <code>YEAR(d)</code>‏. "ממוצע לכל X" כש-X מאחורי טבלה שלישית ← ספור טבלאות בשרשרת ובדוק אם יש שתי רמות קיבוץ.</li>
+</ul>
+
+<h3>3. מקסימום / מינימום — 3 צורות כשרות</h3>
+<pre>WHERE x &gt;= ALL (SELECT x FROM T)   <span class="c">-- מקסימום</span>
+WHERE x &lt;= ALL (SELECT x FROM T)   <span class="c">-- מינימום</span>
+WHERE x = (SELECT MAX(x) FROM T)   <span class="c">-- ≡ = ANY (…)</span>
+WHERE NOT EXISTS (SELECT * FROM T t2
+      WHERE t2.x &gt; t1.x)   <span class="c">-- ⇒ מקסימום</span>
+<span class="c">-- t2.x &lt; t1.x ⇒ מינימום</span></pre>
+<ul>
+<li>"לא קיים גדול ממני" ⇒ מקסימום: הסימן בתת-השאילתה מצביע על מי <b>שנפסל</b>, לא על התשובה. <code>&gt;= ALL</code>‏ מחזיר <b>את כל</b> מי שהגיע למקסימום ("ייתכן יותר מאחד").</li>
+<li>המגדר/קבוצה עם הממוצע הגבוה: VIEW של הממוצעים + צירוף עצמי <code>AG1.avg &gt; AG2.avg</code>‏, או <code>&gt;= ALL</code>‏.</li>
+<li>בשאלת "איזה ניסוח מתאים" — <b>ספור את העמודות ב-SELECT</b>; התשובה מכסה את כולן ולא יותר.</li>
+</ul>
+<h3>4. חילוק — "לכל ה___" (NOT EXISTS כפול)</h3>
+<div class="box">"X שקשור <b>לכל</b> ה-Y" ⟺ "<b>אין</b> Y שאין לו קשר עם X". <b>המבחן:</b> נסח "…לכל ה-___" עם שם עצם ברבים ← חילוק. אם מתאים רק "אף פעם" ← <b>הפרש</b> (ראה §5).</div>
+<pre>SELECT s.name FROM Student s
+WHERE NOT EXISTS (          <span class="c">-- לא קיים קורס נדרש…</span>
+  SELECT * FROM Course c WHERE c.dept='Math'
+  AND NOT EXISTS (          <span class="c">-- …שאין לו רישום של s</span>
+    SELECT * FROM Enroll e
+    WHERE e.sid=s.sid AND e.cid=c.cid))
+<span class="c">-- חלופה 1 — הכלה: (שלו) CONTAINS (הנדרש)</span>
+WHERE (SELECT cid FROM Enroll WHERE sid=s.sid)
+  CONTAINS (SELECT cid FROM Course
+            WHERE dept='Math')
+<span class="c">-- חלופה 2 — ספירה (אחרי צמצום לקבוצה הנדרשת)</span>
+GROUP BY sid HAVING COUNT(DISTINCT cid) =
+(SELECT COUNT(*) FROM Course WHERE dept='Math')</pre>
+<ul>
+<li>⚠ <code>EXISTS</code>‏ פנימי ← "לפחות אחד". <code>NOT EXISTS</code>‏ יחיד ← "אף אחד". רק <b>שלילה כפולה</b> = "לכל".</li>
+<li><b>"כולם מקיימים P"</b> ⟺ "אין אחד שמפר את P": <code>WHERE g NOT IN (SELECT g FROM … WHERE NOT P)</code>‏. לא <code>WHERE P</code>‏!</li>
+<li>המילה "כל" לבד לא מספיקה: "כל פעם <b>לא</b>" = "מעולם לא" = הפרש.</li>
+<li>בצורת הספירה חובה לצמצם קודם לקבוצה הנדרשת (<code>cid IN (…)</code>‏), אחרת הספירה כוללת קורסים זרים.</li>
+</ul>
+
+</div>
+
+<!-- ---------- column 2: SQL part 2 ---------- -->
+<div class="col" data-name="p1-col2">
+<h3>5. שלילה — "אין לו / מעולם לא / רק"</h3>
+<pre>x NOT IN (SELECT x FROM R)
+NOT EXISTS (SELECT * FROM R WHERE R.x=T.x)
+LEFT JOIN R ON R.x=T.x WHERE R.x IS NULL</pre>
+<table class="tight">
+<tr><th>מסיח קבוע</th><th>למה שגוי</th></tr>
+<tr><td><code>WHERE col != v</code>‏</td><td>מחזיר מי שיש לו <b>ערך אחר</b>, לא מי שאין לו v אף פעם</td></tr>
+<tr><td><code>INNER JOIN … WHERE r.x IS NULL</code>‏</td><td>חיבור פנימי לא מייצר NULL ← <b>תמיד ריק</b></td></tr>
+<tr><td><code>INNER JOIN … HAVING COUNT(*)=0</code>‏</td><td>הקבוצה לא נוצרת ← <b>תמיד ריק</b></td></tr>
+<tr><td><code>LEFT JOIN … WHERE r.col &lt; 60</code>‏</td><td>תנאי WHERE על הצד הימני <b>הופך ל-INNER</b> (NULL&lt;60 אינו TRUE)</td></tr>
+</table>
+<ul>
+<li>"רק X" = הכול − מי שעשה משהו שאינו X. <code>NOT IN</code>‏ ו-<code>NOT EXISTS</code>‏ מתואם <b>שקולים</b> (בלי NULL). <code>NOT IN</code>‏ מול תת-שאילתה שמכילה NULL ← ריק.</li>
+<li>"רק כיחיד / אך ורק" דורש חיסור — ניסוח בלי שלילה הוא "אף אחת".</li>
+</ul>
+
+<h3>6. חיבורים (JOIN)</h3>
+<ul>
+<li><b>שרשרת מלאה:</b> השדה שמסננים בו בטבלה D ← חייבים לצרף את כל הטבלאות בדרך. ספור טבלאות.</li>
+<li><b>פסיק ב-FROM</b> = מכפלה קרטזית ← <b>n טבלאות ⇒ n−1 תנאי חיבור</b>. אחד חסר ← שגוי.</li>
+<li>בדוק שכל צד ב-<code>ON</code>‏ באמת קיים בטבלה שלו (<code>enrollment_id</code>‏ במקום <code>course_id</code>‏ הוא המסיח השקט). <code>NATURAL JOIN</code>‏ בלי עמודה משותפת = מכפלה.</li>
+<li><b>קשר רקורסיבי באורך k</b> (סבתא-אם-נכדה) ← k−1 עותקים של טבלת הקשר, לכל עותק <b>שני</b> תנאים (דור קודם + דור הבא).</li>
+<li><b>"יותר מפעם אחת"</b>: <code>FROM B b1, B b2 WHERE b1.k=b2.k AND b1.id&lt;&gt;b2.id</code>‏ או <code>GROUP BY k HAVING COUNT(DISTINCT id)&gt;1</code>‏.</li>
+<li>צירוף שני VIEWs בפסיק ← גם תנאי חיבור (מפתח=מפתח) וגם תנאי התוכן.</li>
+<li><code>LEFT JOIN</code>‏ שומר את כל הצד השמאלי; מי שאין לו התאמה מקבל NULL (שימוש תקין: שלילה §5).</li>
+</ul>
+
+<h3>7. תנאים · LIKE · NULL · קבוצות</h3>
+<ul>
+<li><code>LIKE 'x%'</code>‏ מתחיל · <code>'%x'</code>‏ מסתיים · <code>'%x%'</code>‏ מכיל · <code>_</code>‏ תו בודד. <code>=</code>‏ לא מקבל תבניות; <code>'%584%'</code>‏ תופס גם 15847.</li>
+<li>ספור את התנאים בשאלה = מספר ה-<code>AND</code>‏. <b>AND קודם ל-OR</b>: <code>a AND b OR c</code>‏ = <code>(a AND b) OR c</code>‏. בדוק כיוון (<code>&lt;</code>‏/<code>&gt;</code>‏, <code>=</code>‏/<code>&lt;&gt;</code>‏, השנה).</li>
+<li>לוגיקה תלת-ערכית: השוואה ל-NULL = Unknown ← השורה נזרקת. <code>IS NULL</code>‏, לא <code>= NULL</code>‏. אגרגציות <b>מתעלמות</b> מ-NULL פרט ל-<code>COUNT(*)</code>‏.</li>
+<li><code>IN</code>‏ ≡ <code>= ANY</code>‏ · <code>NOT IN</code>‏ ≡ <code>&lt;&gt; ALL</code>‏ · <code>UNION</code>‏ (מסיר כפילויות; <code>UNION ALL</code>‏ לא) · <code>INTERSECT</code>‏ · <code>EXCEPT</code>‏/<code>MINUS</code>‏.</li>
+<li><code>DISTINCT</code>‏ אחרי SELECT מסיר שורות כפולות. <code>BETWEEN a AND b</code>‏ כולל קצוות.</li>
+<li><b>ORDER BY:</b> <code>ORDER BY x, y DESC</code>‏ — <code>DESC</code>‏ חל <b>רק</b> על העמודה שלפניו; ברירת מחדל ASC. ORDER BY אינו GROUP BY (שורות חוזרות נשארות).</li>
+<li><b>VIEW:</b> <code>INTO V</code>‏ בבחינה ≡ <code>CREATE VIEW V AS</code>‏. <b>סדר העמודות ב-SELECT הוא חלק מהתשובה.</b></li>
+<li>DDL: <code>CREATE TABLE T(… PRIMARY KEY(k), FOREIGN KEY(f) REFERENCES S(k), NOT NULL, UNIQUE, CHECK(c))</code>‏ · <code>INSERT INTO</code>‏ · <code>UPDATE … SET … WHERE</code>‏ · <code>DELETE FROM … WHERE</code>‏.</li>
+</ul>
+<h2>ERD — חלק א׳ (4 שאלות)</h2>
+
+<h3>1. מילון הסימנים</h3>
+<table class="tight">
+<tr><th>סימן</th><th>משמעות</th><th>בהמרה לטבלאות</th></tr>
+<tr><td>מלבן</td><td>טיפוס ישויות</td><td>טבלה; מפתח = מפתח הישות</td></tr>
+<tr><td><b>מלבן כפול</b></td><td>ישות <b>חלשה</b> (אין מפתח משלה)</td><td>טבלה; מפתח = <b>מפתח הבעלים + מזהה חלקי</b></td></tr>
+<tr><td>אליפסה</td><td>תכונה פשוטה</td><td>עמודה</td></tr>
+<tr><td>אליפסה עם תת-אליפסות</td><td>תכונה <b>מורכבת</b> (שם, תאריך)</td><td><b>מתפרקת</b> לעמודות באותה טבלה</td></tr>
+<tr><td><b>אליפסה כפולה</b></td><td>תכונה <b>מרובת-ערכים</b></td><td><b>טבלה נפרדת</b> (מפתח הישות, הערך) — מפתח = שניהם</td></tr>
+<tr><td><b>אליפסה מקווקוות</b></td><td>תכונה <b>מחושבת</b> / נגזרת</td><td><b>לא מיוצגת</b> כלל</td></tr>
+<tr><td>קו תחתון מלא / <b>מקווקו</b></td><td>מפתח / <b>מפתח חלקי</b> (ישות חלשה)</td><td>PK / חלק מה-PK</td></tr>
+<tr><td>מעוין / <b>מעוין כפול</b></td><td>קשר / <b>קשר מזהה</b> (לישות חלשה)</td><td>ראה §3</td></tr>
+<tr><td>משולש IsA</td><td>היררכיית תת-סוגים — <b>אינו קשר</b> (לא נספר)</td><td>ראה §3</td></tr>
+<tr><td>מלבן מקיף קשר</td><td><b>הקבצה</b> (aggregation) — קשר כישות</td><td>מפתח = מפתחות כל הישויות שבתוכה</td></tr>
+</table>
+
+</div>
+
+<!-- ---------- column 3: ERD ---------- -->
+<div class="col" data-name="p1-col3">
+<h3>2. קרדינליות והשתתפות — 13 שאלות</h3>
+<div class="box">
+<b>חץ</b> אל הישות ← <b>"לכל היותר אחד"</b> (מקסימום 1). &nbsp; <b>קו כפול/עבה</b> ← <b>"לפחות אחד"</b> (מינימום 1, השתתפות מלאה).<br>
+<b>חץ + קו כפול</b> ← "בדיוק אחד". קו רגיל ← 0 או יותר. <span class="f">(a,b)</span>‏ על הקו ← בין a ל-b (<span class="f">(2,2)</span>‏ = בדיוק שניים).<br>
+<b>הם בלתי-תלויים:</b> "יכול" נבדק מול החץ · "חייב" נבדק מול הקו הכפול. המסיח הקבוע מחליף ביניהם.
+</div>
+<ul>
+<li>חץ מ-X אל Y = רבים-לאחד: כל X קשור ל-Y אחד לכל היותר, אבל <b>בכיוון ההפוך אין הגבלה</b> (ב-Y אחד יכולים להיות הרבה X).</li>
+<li>ERD <b>לא</b> מבטא אילוץ בין שני קשרים שונים ← "האם ייתכן מצב X?" בין שני קשרים ← כמעט תמיד <b>כן</b>, וזו לא "שגיאה בדיאגרמה".</li>
+<li>קו עבה חוקי <b>רק</b> בין ישות לקשר; בין ישות לתכונה = שגיאת תחביר. מותר כמה תכונות מרובות-ערכים; אין הגבלה על מספר תת-סוגים.</li>
+<li>תכונה ששייכת ל<b>צירוף</b> של שתי ישויות (ציון של סטודנט בקורס) ← יושבת <b>על הקשר</b>.</li>
+<li>קשר בין שני מופעים של אותה ישות (חונך) ← <b>רקורסיבי</b>: מעוין המחובר פעמיים, לעולם לא תכונה. ישות שלישית שמוזכרת ← חייבת להופיע.</li>
+<li>לכפות ייחודיות של (KeyA,KeyB) בטבלת קשר ← <b>חץ מהקשר אל הישות השנייה</b> (לא שני חצים).</li>
+</ul>
+
+<h3>3. המרה לטבלאות — הכללים</h3>
+<table class="tight">
+<tr><th>מה</th><th>טבלה?</th><th>מפתח / הערה</th></tr>
+<tr><td>ישות חזקה</td><td>כן</td><td>מפתח הישות + כל התכונות הפשוטות; מורכבת מתפרקת</td></tr>
+<tr><td>ישות חלשה</td><td>כן</td><td>מפתח הבעלים (FK) + מזהה חלקי + תכונותיה</td></tr>
+<tr><td>מרובת-ערכים</td><td>כן</td><td>(מפתח הישות, ערך) — שניהם המפתח</td></tr>
+<tr><td>קשר <b>N:M</b> (בלי חצים)</td><td><b>כן, חובה</b></td><td>מפתחות שתי הישויות (יחד = PK) + תכונות הקשר</td></tr>
+<tr><td>קשר <b>1:N</b> (חץ)</td><td><b>לא</b></td><td>מפתח צד ה-"1" נכנס כ-FK לצד ה-"רבים" (+תכונות הקשר)</td></tr>
+<tr><td>קשר <b>1:1</b></td><td>לא</td><td>FK באחד הצדדים; עדיף בצד עם השתתפות מלאה (פחות NULL)</td></tr>
+<tr><td>קשר טרנארי</td><td>כן</td><td>מפתח = מפתחות הצדדים שאינם "1": M:N:P ← שלושתם; M:N:1 ← שני ה-N; N:1:1 ← N + אחד</td></tr>
+<tr><td>תת-סוג IsA</td><td>כן</td><td><b>המפתח היורש + תכונות התת-סוג בלבד</b> (לא תכונות האב, לא של אחים)</td></tr>
+<tr><td>הקבצה בקשר</td><td>—</td><td>תורמת את מפתחות <b>כל</b> הישויות שבתוכה (C + (A,B) ← 3 שדות)</td></tr>
+</table>
+<ul>
+<li><b>ספירת טבלאות:</b> ישויות + תכונות מרובות-ערכים + קשרי N:M. <b>לא</b> קשרים עם חץ, <b>לא</b> תכונות מחושבות/מורכבות.</li>
+<li>תת-סוג עם תכונה מרובת-ערכים ← <b>שתי</b> סכמות (טבלת התת-סוג + טבלת התכונה); אפשרות "B + C" לגיטימית.</li>
+<li>בדיקת המרת תת-סוג ב-20 שניות: המורכבת <b>התפרקה</b>? המרובה <b>יצאה</b> לטבלה? אין תכונה <b>זרה</b> (של אח/אב)? כל תכונות התת-סוג <b>קיימות</b>?</li>
+<li>מפתח של קשר: N:M ← שני המפתחות; N:1 ← מפתח צד ה-"רבים" מספיק.</li>
+<li>IsA — 3 דרכי המרה: (1) טבלה לאב + טבלה לכל תת-סוג עם המפתח בלבד [הסטנדרט במבחן]; (2) טבלה אחת לאב עם כל התכונות (NULL); (3) רק טבלאות לתתי-סוגים שיורשות את תכונות האב — רק אם הכיסוי מלא וזר.</li>
+</ul>
+
+<p><b>דוגמה מעובדת:</b> עובד(ssn, name, salary) + טלפונים (מרובת-ערכים); מחלקה(dnum, dname); קשר 1:N "עובד ב-" עם חץ אל מחלקה; ישות חלשה Dependent(name, age) של עובד:</p>
+<pre>Employee(<u>ssn</u>, name, salary, dnum) <span class="c">-- dnum: FK</span>
+Department(<u>dnum</u>, dname)
+Emp_Phone(<u>ssn</u>, <u>phone</u>)      <span class="c">-- מרובת-ערכים</span>
+Dependent(<u>ssn</u>, <u>name</u>, age)  <span class="c">-- חלשה: בעלים + חלקי</span></pre>
+<h3>4. תיאוריה שחוזרת</h3>
+<ul>
+<li><b>הפרדה</b> (specialization): מלמעלה למטה, <b>פתוח</b> להוספת תת-סוגים. <b>הכללה</b> (generalization): מלמטה למעלה, רשימה סגורה. אילוצי IsA: זרות/חפיפה (disjoint/overlapping) · כיסוי מלא/חלקי (total/partial).</li>
+<li><b>כל ישות חלשה היא נשלטת</b> (תלות קיום: מחיקת הבעלים מוחקת אותה); לא כל נשלטת חלשה. ישות חזקה <b>לא</b> מקבלת את מפתח הישות הקשורה אליה.</li>
+<li>"קשר חזק" = קשר שאינו מזהה ישות חלשה; IsA לא נספר כקשר.</li>
+<li>מודל היחסים: <b>מפתח-על</b> (ייחודי) ⊇ <b>מפתח קביל</b> (מינימלי) ∋ <b>מפתח ראשי</b> (נבחר); <b>מפתח זר</b> מפנה ל-PK. <b>שלמות ישות:</b> PK ≠ NULL. <b>שלמות התייחסותית:</b> FK קיים כ-PK ביחס המופנה או NULL. יחס = קבוצה ← אין שורות כפולות ואין סדר; דרגה = #עמודות, עוצמה = #שורות.</li>
+</ul>
+<h2>זיהוי התבנית מהניסוח — SQL ↔ אלגברה (65 שאלות)</h2>
+<table class="tight">
+<tr><th>בשאלה</th><th>תבנית</th><th>SQL</th><th>אלגברה</th></tr>
+<tr><td>"<b>לכל</b> ה___"</td><td>חילוק</td><td>NOT EXISTS כפול / CONTAINS</td><td><span class="f">÷</span>‏</td></tr>
+<tr><td>"ה<b>מקסימלי</b> / הכי"</td><td>קיצון</td><td><code>&gt;= ALL</code>‏ / <code>= (SELECT MAX)</code>‏</td><td><span class="f">Π − Πσ(ρ×ρ)</span>‏</td></tr>
+<tr><td>"<b>אף פעם לא</b> / אין / רק"</td><td>הפרש</td><td><code>NOT IN</code>‏ / LEFT JOIN+IS NULL</td><td><span class="f">−</span>‏</td></tr>
+<tr><td>"<b>גם</b> X <b>וגם</b> Y"</td><td>חיתוך</td><td><code>INTERSECT</code>‏ / 2 תת-שאילתות</td><td><span class="f">∩</span>‏</td></tr>
+<tr><td>"<b>יותר מפעם אחת</b>"</td><td>צירוף עצמי</td><td><code>t1,t2 … t1.x&lt;&gt;t2.x</code>‏</td><td><span class="f">ρ + ×</span>‏ עם <span class="f">≠</span>‏</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ============================ PAGE 2 ============================ -->
+<div class="page">
+
+<!-- ---------- column 1: Relational algebra ---------- -->
+<div class="col" data-name="p2-col1">
+<h2>אלגברה רלציונית — חלק ג׳ (4 שאלות)</h2>
+
+<h3>1. האופרטורים</h3>
+<table class="tight">
+<tr><th>סימן</th><th>שם</th><th>מה עושה</th></tr>
+<tr><td><span class="f">σ<sub>cond</sub>(R)</span>‏</td><td>בחירה</td><td>מסנן <b>שורות</b>; תנאים עם <span class="f">∧ ∨ ¬</span>‏</td></tr>
+<tr><td><span class="f">Π<sub>cols</sub>(R)</span>‏</td><td>היטל</td><td>בוחר <b>עמודות</b> + <b>מסיר כפילויות</b></td></tr>
+<tr><td><span class="f">ρ<sub>S</sub>(R)</span>‏</td><td>שינוי שם</td><td>כינוי ליחס/תכונות; חובה לצירוף עצמי ולהתאמת שמות</td></tr>
+<tr><td><span class="f">R × S</span>‏</td><td>מכפלה קרטזית</td><td>כל שורה מול כל שורה; שורות |R|·|S|, עמודות |R|+|S|</td></tr>
+<tr><td><span class="f">R ⊗ S</span>‏ / <span class="f">R ⋈ S</span>‏</td><td>צירוף טבעי</td><td>זיווג לפי <b>כל</b> התכונות עם שם משותף; המשותפת מופיעה <b>פעם אחת</b></td></tr>
+<tr><td><span class="f">R − S</span>‏</td><td>הפרש</td><td>"יש ב-R ואין ב-S" — הסדר קריטי</td></tr>
+<tr><td><span class="f">R ∩ S</span>‏ / <span class="f">R ∪ S</span>‏</td><td>חיתוך / איחוד</td><td>"גם וגם" / "או"; רק בין יחסים <b>תואמים</b> (אותן עמודות)</td></tr>
+<tr><td><span class="f">R ÷ S</span>‏</td><td>חילוק</td><td>"לכל"</td></tr>
+</table>
+<ul>
+<li><span class="f">R ⊗ S = Π<sub>…</sub>(σ<sub>R.A=S.A</sub>(R × S))</span>‏. אין תכונה משותפת ← <span class="f">⊗</span>‏ מתנוון ל-<span class="f">×</span>‏. במכפלה שמות העמודות חייבים להיות שונים — אחרת <span class="f">ρ</span>‏.</li>
+<li><b>n יחסים ב-<span class="f">×</span>‏ ⇒ בדיוק n−1 תנאי חיבור ב-<span class="f">σ</span>‏.</b> ספור שוויונות <b>בין טבלאות</b>; תנאי עסקיים (<span class="f">city='…'</span>‏) לא נספרים.</li>
+<li><b><span class="f">⊗</span>‏ מזווג לפי כל השמות המשותפים</b> — רשום את שתי הסכמות, הקף כל שם שחוזר, ספור. מסיח: ניסוח שמוותר על אחת מהן.</li>
+<li><b>אין</b> COUNT / SUM / AVG / GROUP BY. "יותר מאחד" ניתן לביטוי (צירוף עצמי); "בדיוק כמה" — לא.</li>
+<li>לפני סמנטיקה בדוק <b>חוקיות</b>: כל עמודה ב-<span class="f">Π</span>‏/<span class="f">σ</span>‏ קיימת ביחס? (4 שאלות "אף אחת" מהסיבה הזו).</li>
+</ul>
+
+<h3>2. חילוק — "לכל"</h3>
+<p><span class="f fb">R(x, y) ÷ S(y) = { x | ∀y∈S : (x,y)∈R }</span></p>
+<ul>
+<li>x = <b>מי</b> (התוצאה), y = <b>את מה</b> (הקבוצה שצריך לכסות): <span class="f">Π<sub>who,what</sub>(…) ÷ Π<sub>what</sub>(σ<sub>…</sub>(S))</span>‏.</li>
+<li>סכמת המחלק <b>מוכלת</b> בסכמת המחולק; <b>המחולק חייב ≥2 תכונות</b> — מחולק יחיד ← פסול מיד. תוצאה = מחולק − מחלק.</li>
+<li>שם עמודה שונה (<span class="f">id</span>‏ מול <span class="f">student_id</span>‏) ← חובה <span class="f">ρ</span>‏, וזה <b>נספר כפעולה</b> ("חילוק + שינוי שם" = 2).</li>
+<li>מסיחים: חיתוך במקום חילוק ("גם וגם" של שניים, לא "לכל"); סדר אופרנדים הפוך.</li>
+</ul>
+
+<h3>3. מינימום / מקסימום — הפרש + צירוף עצמי</h3>
+<p><span class="f fb">Π<sub>id</sub>(T) − Π<sub>T1.id</sub> σ<sub>T1.x &gt; T2.x</sub>(ρ<sub>T1</sub>T × ρ<sub>T2</sub>T) &nbsp;= מינימום</span></p>
+<ul>
+<li>"כל המזהים פחות מי שקיים קטן ממנו". <b>הכינוי שמקרינים הוא זה ש"מפסיד"</b> בתנאי: מקרינים T1 ו-<span class="f">T1.x &gt; T2.x</span>‏ ← הגדולים מוצאים ← נשאר <b>מינימום</b>. הופכים סימן (או כינוי) ← <b>מקסימום</b>. ההתחלה תמיד <span class="f">Π<sub>id</sub>(T) −</span>‏.</li>
+</ul>
+<table class="tight">
+<tr><td><span class="f">TRes ← σ<sub>T1.g&gt;T2.g</sub>(ρ<sub>T1</sub>T × ρ<sub>T2</sub>T)</span>‏</td><td>כל הזוגות (גדול, קטן)</td></tr>
+<tr><td><span class="f">Π<sub>T1.g</sub>(TRes)</span>‏ &nbsp;/&nbsp; <span class="f">Π<sub>T2.g</sub>(TRes)</span>‏</td><td>הכול פרט למינימום / הכול פרט למקסימום</td></tr>
+<tr><td><span class="f">TR1 ← Π<sub>T1.g</sub>(TRes) ∩ Π<sub>T2.g</sub>(TRes)</span>‏</td><td><b>האמצעיים</b> (יש מתחת וגם מעל)</td></tr>
+<tr><td><span class="f">Π<sub>g</sub>(T) − TR1</span>‏</td><td><b>המינימום וגם המקסימום</b></td></tr>
+</table>
+<ul style="display:none">
+</ul>
+
+<h3>4. צירוף עצמי · חיתוך · הפרש</h3>
+<ul>
+<li><b>"יותר מפעם אחת"</b>: <span class="f">Π<sub>R1.k</sub> σ<sub>R1.k=R2.k ∧ R1.a≠R2.a</sub>(ρ<sub>R1</sub>R × ρ<sub>R2</sub>R)</span>‏. בלי הפרש אי-אפשר לבטא "אך ורק" / "לכל".</li>
+<li><b>"גם X וגם Y"</b> (בשתי שורות): <span class="f">Π<sub>n</sub>σ<sub>c=X</sub>(R) ∩ Π<sub>n</sub>σ<sub>c=Y</sub>(R)</span>‏. &nbsp; <span class="bad">✗</span> <span class="f">σ<sub>c=X ∧ c=Y</sub></span>‏ = <span class="f">∅</span>‏ תמיד (שורה אחת לא מחזיקה שני ערכים). איחוד = "או".</li>
+<li><b>"מעולם לא / אין לו / רק"</b>: <span class="f">Π<sub>k</sub>(T) − Π<sub>k</sub>(T ⊗ R)</span>‏. הפוך סדר ← ריק; איחוד במקום הפרש ← מחזיר הכול.</li>
+<li><span class="f">Π<sub>k</sub>(T ⊗ R)</span>‏ = "לפחות אחד" (רק מי שיש לו שורה ב-R).</li>
+</ul>
+
+<h3>5. חישוב שורות ועמודות</h3>
+<ul>
+<li>קודם <span class="f">Π</span>‏ — <b>אחד שורות זהות</b>. צירוף טבעי על עמודה משותפת B: לכל ערך של B, (שורות משמאל)×(שורות מימין), וסוכמים. עמודות = |R|+|S|−|משותפות| (B פעם אחת; ב-<span class="f">×</span>‏ פעמיים). ואז <span class="f">σ</span>‏ מסנן.</li>
+<li><span class="f">÷</span>‏: עמודות = מחולק − מחלק; שורה x נכנסת אם היא מופיעה עם <b>כל</b> ערכי המחלק.</li>
+</ul>
+
+<p><b>דוגמה (אותם יחסים ב-25B וב-25C):</b></p>
+<pre>R(A,B,C) = {(2,2,3) (1,2,5) (3,2,7) (2,5,3) (2,2,5)}
+S(A,B,C) = {(1,5,7) (1,2,5) (3,6,5) (3,2,3) (2,2,2)}</pre>
+<ul>
+<li><span class="f">σ<sub>A≤2</sub>(Π<sub>A,B</sub>(R) ⊗ Π<sub>B,C</sub>(S))</span>‏: <span class="f">Π<sub>A,B</sub>(R)</span>‏ = 4 שורות (לא 5 — (2,2) התמזגה), <span class="f">Π<sub>B,C</sub>(S)</span>‏ = 5. צירוף על B: B=2 ← 3×3=9, B=5 ← 1×1=1 ← 10 שורות × 3 עמודות (A,B,C). אחרי <span class="f">σ<sub>A≤2</sub></span>‏: 2×3+1 = <b>7 שורות, 3 עמודות</b>.</li>
+<li><span class="f">Π<sub>A,B</sub>(R) ÷ Π<sub>A</sub>(S)</span>‏: מחלק {1,2,3}; סכמת התוצאה {B}; B=2 מופיע עם 1,2,3 ✓, B=5 רק עם 2 ✗ ← <b>שורה אחת, עמודה אחת</b>.</li>
+</ul>
+<h2>תלויות ונרמול — חלק ד׳ (4 שאלות)</h2>
+
+<h3>1. תלות פונקציונלית וכללי היסק</h3>
+<ul>
+<li><span class="f">X → Y</span>‏: לכל שתי שורות שמסכימות על X — מסכימות על Y. <b>טריוויאלית</b> אם <span class="f">Y ⊆ X</span>‏. <span class="f">F<sup>+</sup></span>‏ = כל התלויות הנגזרות מ-F.</li>
+<li><b>ארמסטרונג</b> (נאותים ושלמים): <span class="nw"><b>רפלקסיביות</b> <span class="f">Y⊆X ⇒ X→Y</span>‏</span> · <span class="nw"><b>הרחבה</b> <span class="f">X→Y ⇒ WX→WY</span>‏</span> · <span class="nw"><b>טרנזיטיביות</b> <span class="f">X→Y, Y→Z ⇒ X→Z</span>‏</span>.</li>
+<li>נגזרים: <span class="nw"><b>איחוד</b> <span class="f">X→Y, X→Z ⇒ X→YZ</span>‏</span> · <span class="nw"><b>פירוק</b> <span class="f">X→YZ ⇒ X→Y, X→Z</span>‏</span> · <span class="nw"><b>פסאודו-טרנזיטיביות</b> <span class="f">X→Y, WY→Z ⇒ WX→Z</span>‏</span>.</li>
+<li><span class="bad">✗</span> <b>אין פירוק בצד שמאל:</b> מ-<span class="f">XY→Z</span>‏ <b>לא</b> נובע <span class="f">X→Z</span>‏.</li>
+</ul>
+
+</div>
+
+<!-- ---------- column 2: FD part 1 ---------- -->
+<div class="col" data-name="p2-col2">
+<h3>2. סגור תכונות X⁺ — הפרוצדורה שהכול בנוי עליה</h3>
+<div class="box">
+<b>1.</b> <span class="f">X<sup>+</sup> := X</span>‏ — מתחילים מ-X <b>עצמו</b> (הטעות מספר 1: סגור בלי A עצמו ← "אף אחת"). &nbsp;
+<b>2.</b> חזור: לכל <span class="f">Y→Z</span>‏ ב-F, אם <span class="f">Y ⊆ X<sup>+</sup></span>‏ הוסף Z. &nbsp;
+<b>3.</b> עצור כשסבב שלם לא הוסיף כלום.<br>
+<b><span class="f">X→Y ∈ F<sup>+</sup></span>‏ ⟺ <span class="f">Y ⊆ X<sup>+</sup></span>‏.</b> אל "תוכיח" עם ארמסטרונג — חשב סגור.
+</div>
+<ul>
+<li>תכונה ש<b>אף פעם לא בצד שמאל</b> ← הסגור שלה = היא עצמה ← תלות ממנה "אינה ב-F⁺" (המסיח/התשובה הקבועים).</li>
+<li>"אילו תלויות בסגור" — חשב X⁺ של כל צד שמאל שבאפשרויות ובדוק הכלה; <b>אל תעצור</b> אחרי שמצאת אחת ("יותר מאחת" תשובה נפוצה).</li>
+<li>דוגמה חוזרת (25B/25C): <span class="f">F={A→B, C→BD, E→B, AB→E}</span>‏: <span class="f">A<sup>+</sup>=ABE</span>‏, <span class="f">C<sup>+</sup>=CBD</span>‏, <span class="f">B<sup>+</sup>=B</span>‏, <span class="f">(AC)<sup>+</sup>=R</span>‏ ← מפתח קביל <span class="f">{AC}</span>‏; <span class="f">B→E ∉ F<sup>+</sup></span>‏.</li>
+</ul>
+
+<h3>3. מפתחות</h3>
+<div class="box">
+<b>מפתח-על:</b> <span class="f">X<sup>+</sup> = R</span>‏. &nbsp; <b>מפתח קביל:</b> מפתח-על <b>מינימלי</b> (הסר כל תכונה — נשבר). כל קביל הוא על; <b>לא</b> כל על הוא קביל. <b>ראשוני</b> (prime) = תכונה באיזשהו מפתח קביל.<br>
+<b>①</b> תכונה שמופיעה <b>רק בצד שמאל</b> או <b>בשום צד</b> ← ב<b>כל</b> מפתח. &nbsp; <b>②</b> תכונה <b>רק בצד ימין</b> ← ב<b>אף</b> מפתח. &nbsp; <b>③</b> "מי מהבאים מפתח" ← <b>בדוק את האפשרויות</b>, אל תחפש מאפס.
+</div>
+<ul>
+<li>קרא את המילה <b>"קביל" / "על"</b> פעמיים: אותם נתונים (<span class="f">C→AEF</span>‏, C רק בשמאל, <span class="f">C<sup>+</sup>=R</span>‏) ← <span class="f">{ABC},{BC},{CD}</span>‏ כולם <b>מפתחות-על</b> אבל <b>אף אחד לא קביל</b> (רק <span class="f">{C}</span>‏).</li>
+<li><span class="f">R(A,B,C)</span>‏: מקסימום מפתחות קבילים = <b>3</b> (<span class="f">A→B, B→C, C→A</span>‏). <span class="f">F={C→B, B→A}</span>‏ ← C לא בימין, <span class="f">C<sup>+</sup>=R</span>‏ ← מפתח קביל <b>יחיד</b>.</li>
+</ul>
+
+<h3>4. תכונה עודפת (extraneous)</h3>
+<ul>
+<li><b>בצד שמאל</b> של <span class="f">XA → Y</span>‏: A עודפת אם <span class="f">Y ⊆ X<sup>+</sup></span>‏ (סגור לפי <b>כל</b> F) — התלות מתקיימת גם בלי A. תבנית: "<span class="f">X→…A…</span>‏ ואז <span class="f">XA→W</span>‏" ← A עודפת תמיד.</li>
+<li><b>בצד ימין</b> של <span class="f">X → YB</span>‏: B עודפת אם <span class="f">X→B</span>‏ נגזרת בלי התלות הזו (חשב <span class="f">X<sup>+</sup></span>‏ לפי <span class="f">(F − {X→YB}) ∪ {X→Y}</span>‏).</li>
+<li>תלות עם <b>תכונה יחידה בשמאל</b> — אין בה עודפת בשמאל. <b>"אין תכונה עודפת"</b> היא תשובה לגיטימית. בדוק <b>שני</b> הצדדים.</li>
+</ul>
+
+<h3>5. כיסוי מינימלי (קנוני) F<sub>c</sub></h3>
+<ul>
+<li>תנאים: (1) <span class="f">F<sub>c</sub><sup>+</sup> = F<sup>+</sup></span>‏; (2) אין תכונות עודפות; (3) אין שתי תלויות עם אותו צד שמאל (אוחדו) / צד ימין יחיד; (4) אין תלות מיותרת.</li>
+<li>אלגוריתם: <span class="f">F<sub>c</sub> := F</span>‏; חזור { אחד <span class="f">α→β, α→γ</span>‏ ל-<span class="f">α→βγ</span>‏; הסר תכונות עודפות } עד שאין שינוי.</li>
+<li><b>שקילות</b> <span class="f">F<sup>+</sup>=G<sup>+</sup></span>‏: לכל <span class="f">X→Y</span>‏ ב-F בדוק <span class="f">Y ⊆ X<sup>+</sup><sub>G</sub></span>‏, <b>וגם בכיוון ההפוך</b>. הכלה סינטקטית לא נדרשת.</li>
+<li>להוכיח ש-F2 כיסוי מינימלי של F1: <span class="f">F1<sup>+</sup> = F2<sup>+</sup></span>‏ <b>+</b> ב-<b>F2</b> אין עודפות/מיותרות. המינימליות נבדקת על <b>F2</b>, לא על F1.</li>
+</ul>
+
+<h3>6. מופע חוקי מול F</h3>
+<ul>
+<li>המופע <b>מפר</b> <span class="f">X→Y</span>‏ (שתי שורות שוות ב-X, שונות ב-Y) ⇒ <span class="f">X→Y ∉ F</span>‏ — <b>ודאי</b>.</li>
+<li>המופע <b>מקיים</b> <span class="f">X→Y</span>‏ ⇒ <b>לא נובע</b> שהיא ב-F (מופע עתידי עלול להפר). בשני הכיוונים התשובה "ייתכן".</li>
+</ul>
+<h3>7. דוגמה מלאה — פירוק BCNF מול סינתזת 3NF (אלגוריתמים ב-§10)</h3>
+<p><span class="f">R(A,B,C,D)</span>‏, <span class="f">F={AB→CD, C→B}</span>‏. מפתחות: <span class="f">AB</span>‏, <span class="f">AC</span>‏ (ראשוניים A,B,C). <span class="f">C→B</span>‏: C לא מפתח-על, B ראשוני ← <b>3NF, לא BCNF</b>.</p>
+<ul>
+<li><b>פירוק BCNF</b> לפי <span class="f">C→B</span>‏: <span class="f">R1(C,B)</span>‏, <span class="f">R2(A,C,D)</span>‏. חיתוך {C}, <span class="f">C→B</span>‏ ← משמר מידע ✓. <span class="f">AB→CD</span>‏ לא יושבת באף רכיב ולא נגזרת מ-<span class="f">{C→B, AC→D}</span>‏ ← <b>לא משמר תלויות</b>.</li>
+<li><b>סינתזת 3NF</b>: <span class="f">F<sub>c</sub>={AB→CD, C→B}</span>‏ ← רכיבים <span class="f">(A,B,C,D)</span>‏, <span class="f">(C,B)</span>‏; השני מוכל בראשון ← נמחק; הראשון מכיל מפתח ← התוצאה <span class="f">R</span>‏ עצמו: 3NF, משמר מידע ותלויות.</li>
+</ul>
+<p><b>סגור ומפתח:</b> <span class="f">F={A→BC, E→CF, B→E, CD→EF}</span>‏ על <span class="f">R(A,…,F)</span>‏: <span class="f">(AD)<sup>+</sup></span>‏ = AD → ABCD → ABCDE → ABCDEF = R; <span class="f">A<sup>+</sup>=ABCEF</span>‏, <span class="f">D<sup>+</sup>=D</span>‏ ← <b>AD מפתח קביל</b> (D לא בשום צד ימין ← בכל מפתח).</p>
+<h3>8. צורות נורמליות</h3>
+<table class="tight">
+<tr><th>צורה</th><th>התנאי (לכל <span class="f">X→Y</span>‏ לא-טריוויאלית ב-F⁺)</th></tr>
+<tr><td><b>1NF</b></td><td>כל הערכים אטומיים (אין מרובות-ערכים/מורכבות בתא)</td></tr>
+<tr><td><b>2NF</b></td><td>1NF + אין תלות <b>חלקית</b> של תכונה לא-ראשונית בחלק ממפתח קביל</td></tr>
+<tr><td><b>3NF</b></td><td>X מפתח-על, <b>או</b> כל תכונה ב-<span class="f">Y−X</span>‏ היא <b>ראשונית</b></td></tr>
+<tr><td><b>BCNF</b></td><td>X מפתח-על. נקודה. &nbsp; <b>BCNF ⇒ 3NF</b>, לא להפך</td></tr>
+</table>
+<div class="box">
+<b>עץ ההחלטה:</b> ① מצא <b>כל</b> המפתחות הקבילים ② סמן תכונות ראשוניות ③ חפש תלות שצד שמאל שלה <b>אינו מפתח-על</b>:<br>
+לא מצאת ← <b>BCNF</b> (וגם 3NF) · מצאת וצד ימין <b>ראשוני</b> ← <b>3NF בלבד</b> · צד ימין <b>לא-ראשוני</b> ← <b>לא 3NF ולא BCNF</b>.
+</div>
+<ul>
+<li>הסימן המזהה ל-"3NF בלבד": 4 תכונות, שני מפתחות שחולקים תכונה, תלות אחת מצד ראשוני (<span class="f">AB→CD, C→B</span>‏; <span class="f">AB→C, AB→D, C→A</span>‏).</li>
+<li>אל תבחר "לא 3NF ולא BCNF" רק כי מצאת הפרה — בדוק ראשוניות הצד הימני. (<span class="f">A→BC, AE→D</span>‏: מפתח AE, B,C לא ראשוניים ← לא ולא.)</li>
+<li>כל רכיב של פירוק BCNF הוא גם 3NF. "R לא ב-BCNF, והפירוק ב-3NF" — תשובה לגיטימית.</li>
+</ul>
+
+</div>
+
+<!-- ---------- column 3: FD part 2 + NoSQL ---------- -->
+<div class="col" data-name="p2-col3">
+<h3>9. פירוק — שני המבחנים</h3>
+<div class="box">
+<b>שימור מידע (lossless, פירוק לשניים):</b> <span class="f">R1∩R2 → R1</span>‏ <b>או</b> <span class="f">R1∩R2 → R2</span>‏ ב-F⁺ — <b>החיתוך הוא מפתח-על של אחד הרכיבים.</b> פרוצדורה: <span class="f">I := R1∩R2</span>‏, חשב <span class="f">I<sup>+</sup></span>‏, בדוק <span class="f">I<sup>+</sup> ⊇ R1</span>‏ או <span class="f">⊇ R2</span>‏.<br>
+<b>שימור תלויות:</b> <span class="f">(F<sub>1</sub> ∪ … ∪ F<sub>n</sub>)<sup>+</sup> = F<sup>+</sup></span>‏ (<span class="f">F<sub>i</sub></span>‏ = היטל F על <span class="f">R<sub>i</sub></span>‏). בדיקה מהירה: לכל <span class="f">X→Y</span>‏ — יש רכיב שמכיל את <span class="f">X∪Y</span>‏? אין, ולא נגזרת מההיטלים ← <b>לא משמר</b>.
+</div>
+<ul>
+<li>בדיקת תלות מול היטלים: <span class="f">res := X</span>‏; חזור לכל <span class="f">R<sub>i</sub></span>‏: <span class="f">res := res ∪ ((res ∩ R<sub>i</sub>)<sup>+</sup> ∩ R<sub>i</sub>)</span>‏; אם <span class="f">Y ⊆ res</span>‏ — נשמרת.</li>
+<li><b>"מפסיד מידע" לא גורר "מפסיד תלויות"</b> — בדוק בנפרד. ארבע תוצאות אפשריות וכולן הופיעו: לא ולא · תלויות בלבד · מידע בלבד · שניהם.</li>
+<li>פירוק לשלושה ויותר: בדוק זוגות בהדרגה (<span class="f">R1</span>‏ עם <span class="f">R2</span>‏, התוצאה עם <span class="f">R3</span>‏).</li>
+</ul>
+
+<h3>10. אלגוריתמי הפירוק והשוואה</h3>
+<ul>
+<li><b>פירוק ל-BCNF:</b> כל עוד יש <span class="f">R<sub>i</sub></span>‏ לא ב-BCNF: מצא <span class="f">α→β</span>‏ מפרה (<span class="f">α</span>‏ לא מפתח-על של <span class="f">R<sub>i</sub></span>‏), החלף את <span class="f">R<sub>i</sub></span>‏ ב-<span class="f">(α ∪ β)</span>‏ ו-<span class="f">(R<sub>i</sub> − β)</span>‏. סדר הבחירה משפיע על התוצאה.</li>
+<li><b>סינתזה ל-3NF:</b> חשב <span class="f">F<sub>c</sub></span>‏; לכל <span class="f">α→β</span>‏ ב-<span class="f">F<sub>c</sub></span>‏ צור <span class="f">R<sub>i</sub> = αβ</span>‏; אם אף רכיב לא מכיל מפתח קביל — הוסף רכיב עם מפתח; מחק רכיב המוכל באחר.</li>
+</ul>
+<table class="tight">
+<tr><th></th><th>שימור מידע</th><th>שימור תלויות</th><th>כפילויות</th></tr>
+<tr><td><b>3NF</b> (סינתזה)</td><td><span class="ok">תמיד</span></td><td><span class="ok">תמיד</span></td><td>ייתכנו (מתיר הפרה מצד ראשוני)</td></tr>
+<tr><td><b>BCNF</b></td><td><span class="ok">תמיד</span></td><td><span class="bad">לא בהכרח</span></td><td>אין</td></tr>
+</table>
+<p>זו הסיבה שבפועל מסתפקים ב-3NF. דוגמה: <span class="f">R(A,B,C)</span>‏, <span class="f">F={AB→C, C→B}</span>‏, מפתחות AB, AC; פירוק BCNF לפי <span class="f">C→B</span>‏: <span class="f">(C,B),(A,C)</span>‏ מאבד את <span class="f">AB→C</span>‏.</p>
+
+<h2>NoSQL — חלק ה׳ (לא הופיע מ-2024)</h2>
+<ul>
+<li><b>יוצא דופן:</b> <span class="en">AWS</span>‏ · <span class="en">Azure</span>‏ · <span class="en">GCP</span>‏ = ספקי <b>ענן</b>; <b>NoSQL</b> = סוג בסיס נתונים.</li>
+<li>מובנה, טבלאי, <b>עסקאות</b> מורכבות, כסף/הימורים/הוצאות ← <b>SQL</b>. לא-מובנה, בלי סכמה, טקסט חופשי, המלצות, רשת חברתית ("חברים של חברים"), נפח עצום/זמן אמת ← <b>NoSQL</b>.</li>
+<li><span class="bad">✗</span> "NoSQL לא משתמש ב-SQL בכלל" · "תמיד טבלאי" · "מחליף את SQL בכל המקרים" — NoSQL <b>משלים</b>, לא מחייב סכמה, ויש בו שפות דמויות-SQL.</li>
+<li><b>MongoDB:</b> <code>db.users.find({ "age": { $gt: 30 } })</code>‏ — שני זוגות סוגריים, בלי <code>&gt;</code>‏. <code>$gt $gte $lt $lte</code>‏; <code>$or: [ {…}, {…} ]</code>‏ = "או"; <code>find</code>‏ = אחזור בלבד (לא עדכון/מחיקה). אגרגציה (<code>_id</code>‏ = GROUP BY, <code>$multiply</code>‏ מקבל <b>מערך</b>):</li>
+</ul>
+<pre>{ $group: { _id: "$item",
+   total: { $sum: { $multiply:
+             ["$price","$quantity"] } } } }</pre>
+<ul>
+<li><b>Neo4j</b> → מסד <b>גרפי</b> → שפת <b>Cypher</b> → traversal עמוק; <b>לא</b> לנתונים רלציוניים.</li>
+<li><b>CAP</b> = Consistency · <b>Availability</b> · Partition tolerance — אי-אפשר את שלושתן; רק CAP עוסק בפשרת הזמינות. ACID = תכונות טרנזקציה (Atomicity, Consistency, Isolation, Durability). BASE = גישת NoSQL.</li>
+<li><b>Sharding מחלק</b> (כל רסיס במקום אחד) ← <b>לא</b> משכפל. Replication / גיבוי / ייצוא ← משכפלים.</li>
+</ul>
+<h2>12 בדיקות של שתי שניות לפני שמסמנים</h2>
+<ol>
+<li>ספור תנאים בשאלה = מספר ה-<code>AND</code>‏; בדוק כיוון של כל אי-שוויון ואת השנה/הערך.</li>
+<li>אגרגציה ב-WHERE · HAVING בלי GROUP BY · <code>MAX(x), name</code>‏ · <code>MAX(COUNT)</code>‏ ← פסול מיד.</li>
+<li>פסיק ב-FROM או <span class="f">×</span>‏: n טבלאות ⇒ n−1 תנאי חיבור; כל ON/<span class="f">Π</span>‏/<span class="f">σ</span>‏ מפנה לעמודה שקיימת.</li>
+<li>"לכל ה___" ⇒ שלילה כפולה / <span class="f">÷</span>‏ עם מחולק זוג / (שלו) <span class="en">CONTAINS</span>‏ (הנדרש). "כל פעם לא" ⇒ הפרש.</li>
+<li>"מעולם לא / אין / רק" ⇒ <span class="en">NOT IN</span>‏ · <span class="en">NOT EXISTS</span>‏ · <span class="en">LEFT JOIN + IS NULL</span>‏ · <span class="f">−</span>‏. לא <code>!=</code>‏, לא <span class="en">INNER + IS NULL</span>‏.</li>
+<li>מקסימום: <code>&gt;= ALL</code>‏ · <code>= (SELECT MAX)</code>‏ · <span class="en">NOT EXISTS</span>‏ (גדול ממני). באלגברה: המוקרן "מפסיד".</li>
+<li>"גם וגם" בשתי שורות ⇒ חיתוך (<span class="f">σ<sub>c=a∧c=b</sub></span>‏ = ריק). "יותר מפעם אחת" ⇒ צירוף עצמי עם ≠.</li>
+<li>חץ = מקסימום 1 · קו כפול = מינימום 1 · "יכול" מול חץ, "חייב" מול קו כפול · IsA אינו קשר.</li>
+<li>המרה: מרובת-ערכים ⇒ טבלה · מורכבת ⇒ מתפרקת · מחושבת ⇒ נעלמת · N:M ⇒ טבלה · חץ ⇒ FK · תת-סוג ⇒ מפתח יורש + תכונותיו.</li>
+<li><span class="f">X<sup>+</sup></span>‏ מתחיל מ-X · תכונה שאף פעם לא בימין ⇒ בכל מפתח · "קביל" (מינימלי) ≠ "על" · "אין עודפת" לגיטימי.</li>
+<li>מצאת הפרה ⇒ בדוק אם צד ימין ראשוני: כן ⇒ 3NF בלבד; לא ⇒ לא 3NF ולא BCNF.</li>
+<li>שימור מידע: (חיתוך)⁺ מכיל רכיב. שימור תלויות: רכיב שמכיל X∪Y — בדוק <b>בנפרד</b>. 3NF שומר הכול, BCNF לא בהכרח תלויות.</li>
+</ol>
+</div>
+</div>
+
+</body>
+</html>

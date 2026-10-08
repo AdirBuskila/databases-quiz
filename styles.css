@@ -225,6 +225,9 @@ main{max-width:860px;margin:1.6rem auto;padding:0 1rem}
 .btn.ghost:hover{color:var(--ink);border-color:var(--brand)}
 .btn.big{width:100%;padding:.9rem;font-size:1.06rem;margin-top:.5rem}
 .btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none;transform:none}
+/* top-bar download link for the 2-page formula sheet (docs/formula-sheet/) */
+.sheet-link{display:inline-flex;align-items:center;gap:.35rem;text-decoration:none;white-space:nowrap;line-height:1.2}
+.sheet-link:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 .linkbtn{background:none;border:none;color:var(--brand);cursor:pointer;font:inherit;font-weight:600;text-decoration:underline}
 
 /* ---------------- quiz ---------------- */
@@ -541,7 +544,7 @@ main{max-width:860px;margin:1.6rem auto;padding:0 1rem}
 
 /* ---------------- responsive ---------------- */
 @media(max-width:860px){
-  .learn-entry{padding:.45rem .7rem}
+  .learn-entry,.sheet-link{padding:.45rem .7rem}
   .learn-layout{grid-template-columns:1fr}
   .learn-toc-toggle{display:inline-block}
   .learn-toc{display:none;position:static;width:auto;max-height:none;margin-bottom:.9rem;top:auto}
@@ -560,7 +563,10 @@ main{max-width:860px;margin:1.6rem auto;padding:0 1rem}
   .topstats{flex-wrap:nowrap;gap:.35rem}
   .stat{padding:.2rem .5rem;font-size:.66rem;border-radius:10px}
   .stat b{font-size:.8rem}
-  .learn-entry{padding:.42rem .7rem;font-size:.82rem;flex:none}
+  .topbar-right{flex-wrap:wrap}
+  .topbar-right::before{content:"";flex-basis:100%;height:0;order:2} /* row break: stats + toggle above, the two buttons below */
+  .theme-toggle{order:1}
+  .learn-entry,.sheet-link{order:3;flex:1 1 0;justify-content:center;padding:.42rem .7rem;font-size:.82rem}
   .theme-toggle{width:2.1rem;height:2.1rem;font-size:1rem;flex:none}
   main{margin:1rem auto}
   .card{padding:1.2rem 1.1rem}

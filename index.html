@@ -6,7 +6,7 @@
 <title>משחק תרגול — מערכות בסיסי נתונים</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="katex/katex.min.css">
-<link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="styles.css?v=3">
 <script>
   // Apply saved theme before first paint to avoid a flash of the wrong theme.
   (function(){ try{ var t=localStorage.getItem("dbq_theme"); if(t==="light"||t==="dark") document.documentElement.dataset.theme=t; }catch(e){} })();
@@ -25,6 +25,7 @@
   <div class="topbar-right">
     <div class="topstats" id="topStats"></div>
     <button id="learnEntry" class="btn ghost learn-entry" type="button">📖 מצב לימוד</button>
+    <a id="sheetDownload" class="btn ghost sheet-link" href="docs/formula-sheet/formula-sheet.pdf" download="דף נוסחאות - מערכות בסיסי נתונים.pdf" title="הורדת דף הנוסחאות למבחן (PDF, 2 עמודים)">📄 דף נוסחאות</a>
     <button id="themeToggle" class="theme-toggle" type="button" aria-label="החלפת מצב תצוגה (בהיר/כהה)" title="מצב בהיר/כהה"></button>
   </div>
 </header>
