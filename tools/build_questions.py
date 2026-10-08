@@ -47,7 +47,7 @@ TOPIC_LABEL = {
 }
 PARTS = {"א", "ב", "ג", "ד", "ה"}
 # answerSource values that count as an official (real-key) answer
-OFFICIAL_SOURCES = {"solution-pdf", "accepted-answers-docx", "combined-pdf", "answers-pdf"}
+OFFICIAL_SOURCES = {"solution-pdf", "accepted-answers-docx", "combined-pdf", "answers-pdf", "form-0"}
 
 def norm(s):
     return re.sub(r"\s+", " ", str(s)).strip().lower()

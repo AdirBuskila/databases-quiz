@@ -1,10 +1,10 @@
 {
  "meta": {
   "generated": "build_questions.py",
-  "exams": 10,
+  "exams": 11,
   "counts": {
-   "total": 212,
-   "contexts": 36
+   "total": 232,
+   "contexts": 40
   }
  },
  "contexts": {
@@ -705,6 +705,75 @@
    "algebra": [
     "R = (A, B, C, D, E)",
     "F1 = {A → B, CD → E, B → D, E → A}"
+   ]
+  },
+  "26B-A-erd": {
+   "kind": "image",
+   "title": "חלק א׳ — ERD",
+   "image": "images/exams/26B-A-erd.png",
+   "caption": "התייחסו לתרשים ה-ERD הנתון וענו על השאלות. (התרשים חולץ מהמבחן.)"
+  },
+  "26B-A-sql": {
+   "kind": "schema",
+   "title": "חלק ב׳ — SQL: רשת מועדוני כושר",
+   "intro": "נתונות תבניות היחסים הבאות, המתארות אפליקציה של רשת מועדוני כושר. קו תחתון מסמן מפתח קביל.",
+   "relations": [
+    {
+     "schema": "Member([u]member_id[/u], name, city, age)",
+     "meaning": "מנוי — מזהה מנוי, שם, עיר מגורים, גיל."
+    },
+    {
+     "schema": "Class([u]class_id[/u], title, type, price, studio)",
+     "meaning": "שיעור — מזהה שיעור, כותרת, סוג (Pilates / Spin / Yoga), מחיר, סטודיו."
+    },
+    {
+     "schema": "Trainer([u]trainer_id[/u], name, country)",
+     "meaning": "מאמן/ת — מזהה מאמן, שם, מדינה."
+    },
+    {
+     "schema": "Teaches([u]trainer_id[/u], [u]class_id[/u])",
+     "meaning": "הוראה — איזה מאמן מעביר איזה שיעור (יחס רבים-לרבים)."
+    },
+    {
+     "schema": "Attendance([u]member_id[/u], [u]class_id[/u], [u]attend_date[/u], fee_paid)",
+     "meaning": "השתתפות — מנוי השתתף בשיעור בתאריך מסוים, והמחיר ששילם בפועל (`fee_paid`)."
+    }
+   ]
+  },
+  "26B-A-ra": {
+   "kind": "schema",
+   "title": "חלק ג׳ — אלגברת היחסים: פלטפורמת פרילנסרים",
+   "intro": "נתונות תבניות/סכמות יחסים מתוך בסיס נתונים של פלטפורמה המקשרת בין פרילנסרים ללקוחות. ניתן להניח שבטבלאות אין ערכים ריקים (Null).",
+   "relations": [
+    {
+     "schema": "freelancer([u]id[/u], name, age, country)",
+     "meaning": "פרטי פרילנסר: מספר מזהה, שם, גיל ומדינת מגורים."
+    },
+    {
+     "schema": "client([u]id[/u], industry, country, is_verified)",
+     "meaning": "פרטי לקוח: מספר מזהה, תחום/ענף, מדינה, והאם הלקוח מאומת."
+    },
+    {
+     "schema": "project([u]project_id[/u], title, client_id, description, is_remote)",
+     "meaning": "פרויקט: מזהה פרויקט, כותרת, מזהה הלקוח שפרסם, פרטים, והאם מתבצע מרחוק."
+    },
+    {
+     "schema": "bid([u]freelancer_id[/u], [u]project_id[/u])",
+     "meaning": "הגשת הצעה של פרילנסר לפרויקט (מזהה פרילנסר, מזהה פרויקט)."
+    },
+    {
+     "schema": "contract([u]contract_id[/u], project_id, freelancer_id, client_id, is_remote)",
+     "meaning": "חוזה חתום: מזהה חוזה, מזהה הפרויקט שהוא נושא החוזה, מזהה פרילנסר, מזהה לקוח, והאם מתבצע מרחוק."
+    }
+   ],
+   "note": "**הערות:** פרילנסר יכול גם להיות לקוח (לפרסם פרויקטים משלו). פרילנסר יכול להגיש הצעה לפרויקט, לחתום על חוזה, או שניהם."
+  },
+  "26B-A-fd": {
+   "kind": "fd",
+   "title": "חלק ד׳ — תלויות פונקציונליות",
+   "algebra": [
+    "R = (A, B, C, D, E)",
+    "F = {A → B, B → C, A → D, AC → E}"
    ]
   }
  },
@@ -2391,6 +2460,182 @@
    "official": false
   },
   {
+   "part": "א",
+   "topic": "erd",
+   "contextId": "26B-A-erd",
+   "question": "בתרגום היעיל ביותר, כמה טבלאות נדרשות עבור `M` ו-`A` והקשר `R3` שביניהן (בלי לספור את `M1`, `M2`)?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "2 — (M, A). R3 ממוזג לתוך M"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "3 — (M, A, R3)."
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "1 — הכול ממוזג לטבלה אחת"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "2 — (A, R3). M ממוזגת לתוך A"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "כל התשובות האחרות אינן נכונות"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "‏R3 הוא קשר אחד-לרבים: החץ פונה אל A, כלומר כל M קשור ל-A אחד לכל היותר. קשר כזה ממזגים לצד ה'רבים' — מוסיפים את `KeyA` כמפתח זר לטבלת M. נשארות שתי טבלאות: M ו-A.",
+   "confidence": "high",
+   "id": "26B-A-Q1",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "מודל ERD",
+   "official": true
+  },
+  {
+   "part": "א",
+   "topic": "erd",
+   "contextId": "26B-A-erd",
+   "question": "אם נוסיף חץ המכוון מ-`R2` לישות `A`, מה יהיה המפתח הראשי של טבלת `R2`?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "{KeyG, KeyB}"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "{KeyA}"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "{KeyG, KeyB, KeyA}"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "{KeyG, KeyA}"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "כל התשובות האחרות אינן נכונות"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "‏R2 מקשר את A עם הצבירה B-R1-G, שהמפתח שלה הוא המפתח של R1: ‏{KeyG, KeyB}. חץ אל A אומר שכל מופע של הצבירה קשור ל-A אחד לכל היותר, ולכן המפתח של R2 הוא המפתח של הצד ה'רבים' — {KeyG, KeyB}.",
+   "confidence": "high",
+   "id": "26B-A-Q2",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "מודל ERD",
+   "official": true
+  },
+  {
+   "part": "א",
+   "topic": "erd",
+   "contextId": "26B-A-erd",
+   "question": "לישות `M` יש השתתפות מלאה ב-`R3` (קו כפול). כיצד אילוץ זה נשמר בתרגום לסכמה רלציונית?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "נשמר באמצעות הגדרת KeyA כשדה NOT NULL בטבלת M (מכיוון ש-R3 הוא אחד-לרבים וממוזג לתוך M)"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "אינו ניתן לאכיפה ישירה ודורש אילוץ נוסף (trigger / assertion)"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "נשמר אוטומטית על-ידי כך ש-KeyM הוא מפתח ראשי"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "נשמר על-ידי הוספת PropA_1 לטבלת M"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "כל התשובות האחרות אינן נכונות"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "כש-R3 ממוזג לתוך M, כל שורה ב-M מחזיקה את `KeyA` כמפתח זר. השתתפות מלאה = כל M חייב להיות קשור ל-A, ולכן מגדירים את `KeyA` כ-NOT NULL — וזה אוכף את האילוץ ישירות.",
+   "confidence": "high",
+   "id": "26B-A-Q3",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "מודל ERD",
+   "official": true
+  },
+  {
+   "part": "א",
+   "topic": "erd",
+   "contextId": "26B-A-erd",
+   "question": "‏`R4` הוא קשר מזהה (בין ישות חזקה לחלשה) ו-`R3` הוא קשר אחד-לרבים רגיל — שניהם ממוזגים. מה ההבדל המהותי בתרגומם?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "ב-R4 מפתח הבעלים (KeyM) הופך לחלק מהמפתח הראשי של W, ואילו ב-R3 המפתח הזר (KeyA) נשאר שדה רגיל מחוץ למפתח הראשי של M"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "בשני המקרים המפתח הזר הופך לחלק מהמפתח הראשי"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "R4 דורש טבלה נפרדת ו-R3 ממוזג"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "R3 דורש טבלה נפרדת ו-R4 ממוזג"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "כל התשובות האחרות אינן נכונות"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "‏W היא ישות חלשה: המפתח שלה הוא המפתח של הבעלים (‏KeyM, דרך M1) יחד עם המפריד `DiscW_1`. לכן ב-R4 המפתח הזר נכנס למפתח הראשי. ב-R3 ‏`KeyA` הוא סתם מפתח זר בטבלת M, והמפתח של M נשאר `KeyM`.",
+   "confidence": "high",
+   "id": "26B-A-Q4",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "מודל ERD",
+   "official": true
+  },
+  {
    "part": "ד",
    "topic": "fd_norm",
    "contextId": "21B-A-fd",
@@ -4026,6 +4271,182 @@
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
    "official": false
+  },
+  {
+   "part": "ד",
+   "topic": "fd_norm",
+   "contextId": "26B-A-fd",
+   "question": "איזו מהתלויות הבאות **אינה נובעת** מ-F (כלומר אינה נמצאת בסגור $F^{+}$)?",
+   "options": [
+    {
+     "id": "a",
+     "type": "algebra",
+     "value": "C → D"
+    },
+    {
+     "id": "b",
+     "type": "algebra",
+     "value": "A → C"
+    },
+    {
+     "id": "c",
+     "type": "algebra",
+     "value": "A → E"
+    },
+    {
+     "id": "d",
+     "type": "algebra",
+     "value": "AB → E"
+    },
+    {
+     "id": "e",
+     "type": "algebra",
+     "value": "A → BCDE"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "‏C⁺ = {C}, כי C לבדו אינו צד שמאל של אף תלות, ולכן C → D אינה נובעת. לעומת זאת A⁺ = {A, B, C, D, E}, ולכן A → C, ‏A → E, ‏AB → E ו-A → BCDE כולן נובעות.",
+   "confidence": "high",
+   "id": "26B-A-Q17",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "תלויות ונרמול",
+   "official": true
+  },
+  {
+   "part": "ד",
+   "topic": "fd_norm",
+   "contextId": "26B-A-fd",
+   "question": "מהו הסגור של קבוצת התכונות {B}, כלומר {B}⁺, ביחס ל-F?",
+   "options": [
+    {
+     "id": "a",
+     "type": "algebra",
+     "value": "{B, C}"
+    },
+    {
+     "id": "b",
+     "type": "algebra",
+     "value": "{B}"
+    },
+    {
+     "id": "c",
+     "type": "algebra",
+     "value": "{B, C, D}"
+    },
+    {
+     "id": "d",
+     "type": "algebra",
+     "value": "{A, B, C}"
+    },
+    {
+     "id": "e",
+     "type": "algebra",
+     "value": "{A, B, C, D, E}"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "מתחילים מ-{B}. ‏B → C מוסיפה את C. אין תלות נוספת שהצד השמאלי שלה מוכל ב-{B, C}, ולכן {B}⁺ = {B, C}.",
+   "confidence": "high",
+   "id": "26B-A-Q18",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "תלויות ונרמול",
+   "official": true
+  },
+  {
+   "part": "ד",
+   "topic": "fd_norm",
+   "contextId": "26B-A-fd",
+   "question": "מהו מפתח קביל של R (ביחס ל-F)?",
+   "options": [
+    {
+     "id": "a",
+     "type": "algebra",
+     "value": "{A}"
+    },
+    {
+     "id": "b",
+     "type": "algebra",
+     "value": "{A, B}"
+    },
+    {
+     "id": "c",
+     "type": "algebra",
+     "value": "{A, C}"
+    },
+    {
+     "id": "d",
+     "type": "algebra",
+     "value": "{B, C}"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף אחד מהם"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "‏A⁺: ‏A → B, ‏A → D, ואז B → C ו-AC → E, כך ש-A⁺ = {A, B, C, D, E}. ‏A מינימלי (תכונה יחידה), ולכן הוא מפתח קביל. ‏{A, B} ו-{A, C} הם על-מפתחות לא מינימליים, ו-{B, C}⁺ = {B, C}.",
+   "confidence": "high",
+   "id": "26B-A-Q19",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "תלויות ונרמול",
+   "official": true
+  },
+  {
+   "part": "ד",
+   "topic": "fd_norm",
+   "contextId": "26B-A-fd",
+   "question": "בחישוב הכיסוי הקנוני של F, איזו תכונה היא תכונה **עודפת** (תכונה שאפשר למחוק מבלי לשנות את הסגור)?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "בתלות `AC -> E` התכונה C"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "בתלות `AC -> E` התכונה A"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "בתלות `A -> D` התכונה D"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "בתלות `B -> C` התכונה B"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אין תכונה עודפת באף תלות"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "‏A⁺ (בלי C) = {A, B, C, D, E}, כי A → B → C, ולכן כבר A → E, ו-C עודפת ב-AC → E. ‏A לא עודפת, כי C⁺ = {C} לא מכיל את E. ‏D ו-B הן הצד היחיד של התלות שלהן, ומחיקתן משנה את הסגור.",
+   "confidence": "high",
+   "id": "26B-A-Q20",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "תלויות ונרמול",
+   "official": true
   },
   {
    "part": "ה",
@@ -6302,6 +6723,182 @@
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
    "official": false
+  },
+  {
+   "part": "ג",
+   "topic": "relalg",
+   "contextId": "26B-A-ra",
+   "question": "איזו שאילתה מחזירה את כותרות הפרויקטים שפורסמו על-ידי לקוח מאומת (`is_verified = True`)?",
+   "options": [
+    {
+     "id": "a",
+     "type": "algebra",
+     "value": "Π_{title}(σ_{is_verified=True ∧ project.client_id = client.id}(project × client))"
+    },
+    {
+     "id": "b",
+     "type": "algebra",
+     "value": "Π_{title}(σ_{is_verified=True}(project ⊗ client))"
+    },
+    {
+     "id": "c",
+     "type": "algebra",
+     "value": "Π_{title}(σ_{is_verified=True}(project))"
+    },
+    {
+     "id": "d",
+     "type": "algebra",
+     "value": "Π_{title}(project ⊗ σ_{is_verified=True}(client))"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף אחת מהאפשרויות."
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "ל-project ול-client אין תכונה בשם משותף (`client_id` מול `id`), ולכן צירוף טבעי ביניהם הוא בעצם מכפלה קרטזית — B ו-D מחזירות את כל הכותרות. צריך מכפלה עם תנאי `project.client_id = client.id`. ב-C אין `is_verified` ב-project.",
+   "confidence": "high",
+   "id": "26B-A-Q13",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "אלגברה רלציונית",
+   "official": true
+  },
+  {
+   "part": "ג",
+   "topic": "relalg",
+   "contextId": "26B-A-ra",
+   "question": "מה עושה השאילתה הבאה? בחרו את התשובה הנכונה ביותר.\n$$Π_{freelancer_id}(contract ⊗ bid ⊗ project)$$",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "מחזירה את המזהים של פרילנסרים שהגישו הצעה לפרויקט וחתמו על חוזה לאותו פרויקט, אצל אותו לקוח, וגם באותו אופן עבודה (מרחוק או לא)."
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "מחזירה את המזהים של פרילנסרים שגם הגישו הצעה לפרויקט וגם חתמו על חוזה כלשהו."
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "מחזירה את המזהים של פרילנסרים שחתמו על חוזה לפרויקט מסוים וגם הגישו הצעה לפרויקט כלשהו, לא בהכרח אותו פרויקט."
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "מחזירה את המזהים של פרילנסרים שהגישו הצעה לפרויקט וחתמו על חוזה לאותו פרויקט, אצל אותו לקוח, לא בהכרח באותו אופן עבודה (מרחוק או לא)."
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "השאילתה אינה תקינה."
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "הצירוף הטבעי משווה את כל התכונות בעלות שם משותף: contract ו-bid לפי `freelancer_id` ו-`project_id`; ‏contract ו-project לפי `project_id`, `client_id` **וגם** `is_remote`. לכן ההצעה, החוזה והפרויקט הם על אותו פרויקט, אצל אותו לקוח ובאותו אופן עבודה.",
+   "confidence": "high",
+   "id": "26B-A-Q14",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "אלגברה רלציונית",
+   "official": true
+  },
+  {
+   "part": "ג",
+   "topic": "relalg",
+   "contextId": "26B-A-ra",
+   "question": "נתונים שני יחסים: יחס $R(A, B)$ ויחס $S(B)$. נתבונן ברצף הפעולות הבא באלגברת היחסים:\n$$T_{1} = Π_{A}(R) × S$$\n$$T_{2} = T_{1} − R$$\n$$T_{3} = Π_{A}(T_{2})$$\n$$Result = Π_{A}(R) − T_{3}$$\nאיזו פעולה מורכבת באלגברת היחסים שקולה מתמטית לתוצאה המתקבלת ב-`Result`?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "פעולת החילוק — Division: $R ÷ S$"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "פעולת החיתוך — Intersection: $R ∩ S$"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "צירוף טבעי — Natural Join: $R ⊗ S$"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "צירוף חיצוני שמאלי — Left Outer Join"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "הפרש סימטרי — Symmetric Difference: $(R − S) ∪ (S − R)$"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "זו ההגדרה של חילוק: ‏T1 = כל הזוגות האפשריים (A, B); ‏T2 = הזוגות החסרים ב-R; ‏T3 = ערכי A שחסר להם B כלשהו מ-S; ‏Result = ערכי A שמופיעים עם **כל** ערכי B ב-S, כלומר $R ÷ S$.",
+   "confidence": "high",
+   "id": "26B-A-Q15",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "אלגברה רלציונית",
+   "official": true
+  },
+  {
+   "part": "ג",
+   "topic": "relalg",
+   "contextId": "26B-A-ra",
+   "question": "איזו שאילתה מחזירה את הגיל של הפרילנסר המבוגר ביותר (הגיל המקסימלי בטבלת `freelancer`)?",
+   "options": [
+    {
+     "id": "a",
+     "type": "algebra",
+     "value": "Π_{age}(freelancer) − Π_{f1.age}(σ_{f1.age < f2.age}(ρ_{f1}(freelancer) × ρ_{f2}(freelancer)))"
+    },
+    {
+     "id": "b",
+     "type": "algebra",
+     "value": "Π_{age}(freelancer) − Π_{f1.age}(σ_{f1.age > f2.age}(ρ_{f1}(freelancer) × ρ_{f2}(freelancer)))"
+    },
+    {
+     "id": "c",
+     "type": "algebra",
+     "value": "Π_{f1.age}(σ_{f1.age > f2.age}(ρ_{f1}(freelancer) × ρ_{f2}(freelancer)))"
+    },
+    {
+     "id": "d",
+     "type": "algebra",
+     "value": "Π_{age}(freelancer) − Π_{age}(σ_{freelancer.age < freelancer.age}(freelancer × freelancer))"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף אחת מהאפשרויות."
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "‏`f1.age < f2.age` מוצא את כל הגילים שיש גיל גדול מהם (כלומר לא מקסימליים). מחסירים אותם מכל הגילים ונשאר המקסימום. ‏B מחזירה את המינימום. ‏C מחזירה כל גיל שאינו המינימלי. ב-D אין שינוי שם, ולכן אי אפשר להבחין בין שני העותקים.",
+   "confidence": "high",
+   "id": "26B-A-Q16",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "אלגברה רלציונית",
+   "official": true
   },
   {
    "part": "ב",
@@ -9998,6 +10595,389 @@
    "source": "exam",
    "topicLabel": "SQL",
    "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26B-A-sql",
+   "question": "מיהם המנויים שהשתתפו בכל השיעורים מסוג `'Yoga'`? בחרו את השאילתא הנכונה.",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT name FROM Member m WHERE NOT EXISTS\n(SELECT class_id FROM Class c WHERE c.type='Yoga' AND\n   c.class_id NOT IN (SELECT a.class_id FROM Attendance a\n   WHERE a.member_id = m.member_id))"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT DISTINCT name FROM Member JOIN Attendance USING(member_id)\n  JOIN Class USING(class_id) WHERE type='Yoga'"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT name FROM Member m WHERE NOT EXISTS\n  (SELECT class_id FROM Class c WHERE c.class_id NOT IN\n   (SELECT a.class_id FROM Attendance a\n    WHERE a.member_id = m.member_id))"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT name FROM Member WHERE member_id IN\n  (SELECT member_id FROM Attendance JOIN Class USING(class_id)\n   WHERE type='Yoga')"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף תשובה אינה נכונה"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "חילוק ב-SQL: \"לא קיים שיעור Yoga שהמנוי לא השתתף בו\". ‏C בודקת את **כל** השיעורים (בלי סינון ל-Yoga). ‏B ו-D מחזירות מי שהשתתף בשיעור Yoga **אחד לפחות**.",
+   "confidence": "high",
+   "id": "26B-A-Q10",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": true
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26B-A-sql",
+   "question": "מהו השיעור **היקר** ביותר (בעל המחיר הגבוה ביותר)? בחרו את התשובה הנכונה ביותר.",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT title FROM Class WHERE price >= ALL (SELECT price FROM Class)"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT title FROM Class WHERE price = MAX(price)"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT title FROM Class WHERE price > ALL (SELECT price FROM Class)"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT MAX(title) FROM Class"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף תשובה אינה נכונה"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "‏`>= ALL` מחזיר את השיעור שמחירו גדול או שווה לכל המחירים, כלומר המקסימום. ‏`> ALL` לא מחזיר כלום, כי מחיר לא גדול ממש מעצמו. ב-B פונקציית צבירה ב-`WHERE` אסורה. ‏D מחזירה את הכותרת המקסימלית לפי סדר אלפביתי.",
+   "confidence": "high",
+   "id": "26B-A-Q11",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": true
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26B-A-sql",
+   "question": "לכל סוג שיעור מחושב המחיר המקסימלי של שיעור מאותו סוג. החזירו את הממוצע של ערכים מקסימליים אלו (כלומר ממוצע המקסימומים על פני כל הסוגים).",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT AVG(maxp) FROM\n  (SELECT type, MAX(price) AS maxp FROM Class GROUP BY type) AS T"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT AVG(MAX(price)) FROM Class GROUP BY type"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT AVG(maxp) FROM\n  (SELECT type, MAX(price) AS maxp FROM Class GROUP BY type)"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT type, AVG(MAX(price)) FROM Class GROUP BY type"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף תשובה אינה נכונה"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "מחשבים קודם את המקסימום לכל סוג בתת-שאילתא ב-`FROM`, ואז ממוצע עליה. טבלה נגזרת ב-`FROM` חייבת כינוי (`AS T`), ולכן C שגויה. ב-B וב-D יש צבירה מקוננת `AVG(MAX(...))`, שאסורה.",
+   "confidence": "high",
+   "id": "26B-A-Q12",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": true
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26B-A-sql",
+   "question": "כתבו שאילתא המחזירה לכל מנוי את שמו (`name`) ואת כותרות השיעורים (`title`) שבהם השתתף ושילם **מעל 100 ₪**. עיינו בהצעות וקבעו מה מהבאים נכון.",
+   "code": "(A) SELECT member_id, class_id FROM Attendance WHERE fee_paid > 100\n(B) SELECT name, title FROM Attendance JOIN Member USING(member_id)\n    JOIN Class USING(class_id) WHERE fee_paid > 100\n(C) SELECT name, title FROM Attendance JOIN Member USING(member_id)\n    WHERE fee_paid > 100",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "רק השאילתא B נכונה"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "רק השאילתא A נכונה"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "רק השאילתא C נכונה"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "השאילתות A ו-B נכונות"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף תשובה אינה נכונה"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "‏A מחזירה מזהים (`member_id`, `class_id`) ולא שם וכותרת. ‏C לא מצרפת את `Class`, ולכן `title` לא קיים בה. רק B מצרפת את שלוש הטבלאות ומחזירה `name` ו-`title`.",
+   "confidence": "high",
+   "id": "26B-A-Q5",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": true
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26B-A-sql",
+   "question": "מיהם השיעורים שכותרתם מכילה את המילה `Power` ומחירם גבוה מ-50 ₪? השלימו את החסר במקום `X`.",
+   "code": "SELECT title FROM Class WHERE title ____X____ AND price > 50",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "LIKE '%Power%'"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "= '%Power%'"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "LIKE 'Power'"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "LIKE '_Power_'"
+    },
+    {
+     "id": "e",
+     "type": "code",
+     "lang": "sql",
+     "value": "= 'Power%'"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "‏\"מכילה\" = כל רצף תווים לפני ואחרי, כלומר `LIKE '%Power%'`. עם `=` התווים `%` הם תווים רגילים ולא תווים כלליים; `LIKE 'Power'` תופס רק את המילה בדיוק; ו-`_` מחליף תו אחד בדיוק.",
+   "confidence": "high",
+   "id": "26B-A-Q6",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": true
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26B-A-sql",
+   "question": "מיהם המנויים **שמעולם לא** השתתפו בשיעור מסוג `'Spin'`? בחרו את השאילתא הנכונה.",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT name FROM Member WHERE member_id NOT IN\n  (SELECT member_id FROM Attendance JOIN Class USING(class_id)\n   WHERE type='Spin')"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT name FROM Member JOIN Attendance USING (member_id)\n JOIN Class USING (class_id) WHERE type <> 'Spin'"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT name FROM Member WHERE member_id NOT IN\n(SELECT member_id FROM Class WHERE type='Spin')"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT name FROM Member WHERE type <> 'Spin'"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף תשובה אינה נכונה"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "\"מעולם לא\" = כל המנויים פחות אלה שכן השתתפו ב-Spin, ולכן `NOT IN` על תת-שאילתא שמוצאת את משתתפי ה-Spin. ‏B מחזירה מי שהשתתף בשיעור כלשהו שאינו Spin (גם אם השתתף ב-Spin). ב-C וב-D אין עמודה `member_id`/`type` בטבלה שבה משתמשים.",
+   "confidence": "high",
+   "id": "26B-A-Q7",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": true
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26B-A-sql",
+   "question": "מיהם המנויים שהשתתפו בשיעורים מיותר מסוג אחד (כלומר ממספר סוגים שונים)?",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT member_id FROM Attendance JOIN Class USING (class_id)\n GROUP BY member_id HAVING COUNT (DISTINCT type) > 1"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT member_id FROM Attendance JOIN Class USING (class_id)\n GROUP BY member_id HAVING COUNT(type) > 1"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT member_id FROM Attendance JOIN Class USING(class_id)\n WHERE COUNT(DISTINCT type) > 1"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT member_id, COUNT(type) FROM Class\n GROUP BY member_id HAVING COUNT(type) > 1"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף תשובה אינה נכונה"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "צריך לספור סוגים **שונים** לכל מנוי, ולכן `COUNT(DISTINCT type)` ב-`HAVING`. ‏B סופרת השתתפויות (שני שיעורי Yoga ייספרו כ-2). ב-C פונקציית צבירה ב-`WHERE` אסורה. ב-D אין `member_id` בטבלת `Class`.",
+   "confidence": "high",
+   "id": "26B-A-Q8",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": true
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26B-A-sql",
+   "question": "מהו ממוצע המחיר ששולם (`fee_paid`) עבור ההשתתפויות בשיעורים מסוג `'Yoga'`?",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT AVG (fee_paid) FROM Attendance JOIN Class USING (class_id)\nWHERE type='Yoga'"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT AVG (fee_paid) FROM Attendance, Class WHERE type='Yoga'"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT AVG (fee_paid) FROM Attendance WHERE type='Yoga'"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT AVG(fee_paid) FROM Class WHERE type='Yoga'"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף תשובה אינה נכונה"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "form-0",
+   "explanation": "‏`fee_paid` נמצא ב-Attendance ו-`type` נמצא ב-Class, לכן צריך לצרף לפי `class_id`. ‏B היא מכפלה קרטזית בלי תנאי צירוף. ב-C אין `type`, וב-D אין `fee_paid`.",
+   "confidence": "high",
+   "id": "26B-A-Q9",
+   "examCode": "26B-A",
+   "examLabel": "2026 סמסטר ב׳ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": true
   }
  ]
 }

@@ -49,17 +49,19 @@ node tools/shoot.js                                 # screenshots (desktop/mobil
 ## Status
 **Shipped** — live at https://adirbuskila.github.io/databases-quiz/
 
-206 questions across 10 exams (2021–2025), 36 shared context blocks.
+232 questions across 11 exams (2021–2026), 40 shared context blocks.
 Learn mode ships 12 chapters: 1–5 theory, 6–12 exam-technique briefs (every one of the
 212 questions is mapped to a pattern in chapters 7–10).
-By topic: SQL 81 · ERD 40 · אלגברה רלציונית 40 · תלויות ונרמול 38 · NoSQL 7.
-Answer provenance: 186 from official keys, 20 derived. See `tools/build_report.md`
+By topic: SQL 89 · ERD 44 · אלגברה רלציונית 45 · תלויות ונרמול 42 · NoSQL 12.
+Answer provenance: 192 from official keys, 20 from טופס 0 (26B-A), 20 derived. See `tools/build_report.md`
 for the full breakdown and `docs/build_plan.md` for the build history.
 
 Note: the rendered exam pages under `tools/raw/<CODE>/` are not committed (196M of
 source scans). The transcriptions `tools/raw/*.json` are, so the build is reproducible.
 
 ## Sources & disclaimer
-Built from the course's 2021–2025 exams with matching solution files. Answers come from real
-פתרון/פתרונות files (no "טופס 0" rule); questions without a key are flagged. Answers marked
+Built from the course's 2021–2026 exams with matching solution files. Answers come from real
+פתרון/פתרונות files; questions without a key are flagged. The one exception is 2026 סמסטר ב׳
+מועד א׳ (`26B-A`): it is "מבחן מס' 000" (טופס 0, answer always א) with no published key, so its
+answers use `answerSource: "form-0"` — every question was also solved independently and agrees. Answers marked
 "לא רשמי" were derived from course material — verify against the source.
