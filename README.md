@@ -23,6 +23,7 @@ For screenshots/verify scripts it's easier to serve it:
   from the Obsidian "Practice by Subject" notes; appends onto `window.LEARN`
 - `images/exams/` — cropped ERD diagrams, tables, and image-based options
 - `tools/` — Python + Node pipeline
+- `docs/formula-sheet/` — 2-page printable exam formula sheet: `index.html` (source), `render.js` (prints to `formula-sheet.pdf` via puppeteer-core + local Chrome and reports column overflow)
 
 ## Data model (extended vs data-science-quiz)
 `window.DB_QUIZ = { meta, contexts, questions }`
