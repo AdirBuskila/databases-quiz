@@ -285,7 +285,7 @@ main{max-width:860px;margin:1.6rem auto;padding:0 1rem}
   overflow-x:auto;white-space:pre;font-size:.85rem;line-height:1.5;
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace
 }
-.opt-code{margin:0;font-size:.82rem;width:100%}
+.opt-code{margin:0;font-size:.82rem;width:100%;white-space:pre-wrap;overflow-wrap:anywhere}
 .q-fig{margin:.4rem 0;text-align:center}
 .q-img{
   max-width:100%;height:auto;display:block;margin:.4rem auto;
@@ -323,8 +323,10 @@ main{max-width:860px;margin:1.6rem auto;padding:0 1rem}
 /* ---- relation schema with underlined keys (solid = key, dashed = weak/partial key) ---- */
 .schema{direction:ltr;unicode-bidi:isolate;display:inline-block;
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.95em}
-.schema .pk{text-decoration:underline;text-underline-offset:3px}
-.schema .ppk{text-decoration:underline dashed;text-underline-offset:3px}
+.schema-gap{display:inline-block;width:1.6em}
+.schema-rtl{direction:rtl;font-family:inherit;font-size:1em}
+.schema .pk{text-decoration:underline;text-underline-offset:4px;text-decoration-skip-ink:none}
+.schema .ppk{text-decoration:underline dashed;text-underline-offset:4px;text-decoration-skip-ink:none}
 .opt-schema{display:inline-block}
 .opt-schema .schema{font-size:.92rem}
 
@@ -340,7 +342,7 @@ main{max-width:860px;margin:1.6rem auto;padding:0 1rem}
 /* inline code token inside stems / explanations (LTR-isolated) */
 .tok{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;direction:ltr;
   unicode-bidi:isolate;background:var(--card2);border:1px solid var(--line);
-  border-radius:5px;padding:.02em .34em;font-size:.88em;white-space:nowrap}
+  border-radius:5px;padding:.02em .34em;font-size:.88em;white-space:pre-wrap;overflow-wrap:anywhere}
 
 .options-list{display:flex;flex-direction:column;gap:.6rem}
 .opt{

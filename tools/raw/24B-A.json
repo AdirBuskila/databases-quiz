@@ -9,7 +9,7 @@
       "kind": "image",
       "title": "חלק א׳ — ERD: דיאגרמת \"ניהול שאלות\"",
       "image": "images/exams/24B-A-erd.png",
-      "caption": "התייחסו לתרשים ה-ERD \"ניהול שאלות\" המתאר בסיס נתונים, וענו על השאלות. **הערה לגבי התרשים:** בבחינה המקורית התכונה \"מזהה כניסה\" מסומנת בקו תחתון **מקווקו**, כלומר מפתח חלקי (partial key) של ישות חלשה. בסריקה שברשותנו הקו המקווקו נמרח לקו מלא ולכן הוא נראה כמו מפתח רגיל — יש להתייחס אל \"מזהה כניסה\" כאל מפתח חלקי."
+      "caption": "התייחסו לתרשים ה-ERD \"ניהול שאלות\" המתאר בסיס נתונים, וענו על השאלות. הערה לגבי התרשים: בבחינה המקורית התכונה \"מזהה כניסה\" מסומנת בקו תחתון מקווקו, כלומר מפתח חלקי (partial key) של ישות חלשה. בסריקה שברשותנו הקו המקווקו נמרח לקו מלא ולכן הוא נראה כמו מפתח רגיל — יש להתייחס אל \"מזהה כניסה\" כאל מפתח חלקי."
     },
     "sql": {
       "kind": "schema",
@@ -147,7 +147,7 @@
       "official": true,
       "answerSource": "accepted-answers-docx",
       "confidence": "high",
-      "explanation": "\"כניסות\" הוא טיפוס ישויות חלש התלוי ב\"משתמש\", ולכן מפתחו כולל את המפתח החלקי שלו יחד עם מפתח הישות השולטת. התקבלו א וגם ב."
+      "explanation": "\"כניסות\" הוא טיפוס ישויות חלש התלוי ב\"משתמש\", ולכן מפתחו כולל את המפתח החלקי שלו יחד עם מפתח הישות השולטת. התקבלו שתי תשובות: \"מזהה כניסה, מזהה משתמש\" וגם \"מזהה כניסה\"."
     },
     {
       "num": 3,
@@ -190,7 +190,7 @@
       "official": true,
       "answerSource": "accepted-answers-docx",
       "confidence": "high",
-      "explanation": "לפי הקשר הרקורסיבי \"נושא אב\", סכמת \"נושא\" כוללת את שם הנושא ואת ה-FK לנושא האב. התקבלו א וגם ב."
+      "explanation": "לפי הקשר הרקורסיבי \"נושא אב\", סכמת \"נושא\" כוללת את שם הנושא ואת ה-FK לנושא האב. התקבלו שתי תשובות: 2 וגם 1."
     },
     {
       "num": 4,
@@ -272,7 +272,7 @@
       "official": true,
       "answerSource": "accepted-answers-docx",
       "confidence": "high",
-      "explanation": "ישות חלשה תלויה לזיהוי בישות אחרת ולכן היא נשלטת. התקבלו א וגם ב."
+      "explanation": "ישות חלשה תלויה לזיהוי בישות אחרת ולכן היא נשלטת. התקבלו שתי תשובות: \"כל טיפוס ישויות חלש הוא נשלט\" וגם \"כל טיפוס ישויות נשלט הוא חלש\"."
     },
     {
       "num": 6,
@@ -316,7 +316,7 @@
       "official": true,
       "answerSource": "accepted-answers-docx",
       "confidence": "high",
-      "explanation": "יש לצרף Passenger→Booking→Schedule→Flight→Airline. בתשובה ב חלה שגיאה (Schedule לא הוגדר AS s), ולכן התקבלו א או ה."
+      "explanation": "יש לצרף Passenger→Booking→Schedule→Flight→Airline. בתשובה ב חלה שגיאה (`Schedule` לא הוגדר `AS s`), ולכן התקבלו א או ה."
     },
     {
       "num": 7,
@@ -568,32 +568,32 @@
       "topic": "sql",
       "contextId": "sql",
       "question": "כתבו שאילתה שמחזירה את השם הפרטי ושם משפחה של הלקוחות שהזמינו הכי הרבה טיסות. היעזרו בשאילתא הנתונה:",
-      "code": "CREATE VIEW numBookingPerCustomer AS (SELECT PassportNumber, count(DISTINCT BookingID) As numBooking FROM Booking Group By PassportNumber",
+      "code": "CREATE VIEW numBookingPerCustomer AS\n(SELECT PassportNumber, count(DISTINCT BookingID) As numBooking\nFROM Booking Group By PassportNumber",
       "options": [
         {
           "id": "a",
           "type": "code",
-          "value": "SELECT LastName, FirstName FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)\nWHERE numBooking >= ALL (SELECT numBooking FROM numBookingPerCustomer)"
+          "value": "SELECT LastName, FirstName\nFROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)\nWHERE numBooking >= ALL (SELECT numBooking FROM numBookingPerCustomer)"
         },
         {
           "id": "b",
           "type": "code",
-          "value": "SELECT LastName, FirstName , max (numBooking ) FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)"
+          "value": "SELECT LastName, FirstName , max (numBooking )\nFROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)"
         },
         {
           "id": "c",
           "type": "code",
-          "value": "SELECT LastName, FirstName FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber) WHERE max(numBooking)"
+          "value": "SELECT LastName, FirstName\nFROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)\nWHERE max(numBooking)"
         },
         {
           "id": "d",
           "type": "code",
-          "value": "SELECT LastName, FirstName FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber) HAVING numBooking not in min(numBooking)"
+          "value": "SELECT LastName, FirstName\nFROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)\nHAVING numBooking not in min(numBooking)"
         },
         {
           "id": "e",
           "type": "code",
-          "value": "SELECT LastName, FirstName FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)\nHAVING numBooking = (SELECT numBooking FROM numBookingPerCustomer WHERE max(numBooking)"
+          "value": "SELECT LastName, FirstName\nFROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)\nHAVING numBooking =\n  (SELECT numBooking FROM numBookingPerCustomer WHERE max(numBooking)"
         }
       ],
       "correctId": "a",
@@ -726,15 +726,14 @@
       "official": true,
       "answerSource": "accepted-answers-docx",
       "confidence": "high",
-      "explanation": "התקבלו ה' וגם א'."
+      "explanation": "התקבלו שתי תשובות: \"כל התשובות האחרות אינן נכונות\" (ה' בבחינה) וגם \"מזהי חברי הספרייה, שלא השאילו את אותו הספר יותר מפעם אחת, כולל שלא השאילו ספרים כלל\" (א' בבחינה)."
     },
     {
       "num": 17,
       "part": "ג",
       "topic": "relalg",
       "contextId": "ra",
-      "question": "מה נקבל ב-RES? **הערה:** ההנחה היא, כי אין שני תאריכים זהים בטבלת Borrow.",
-      "code": "MBD ← Π borrow_date BR1 − Π BR1.borrow_date (σ (BR1.borrow_date > BR2.borrow_date) (ρ BR1 BR X ρ BR2 BR))\nRES ← Π title (σ borrow_date=MBD.borrow_date ((B ⊗ BR) X MBD))",
+      "question": "מה נקבל ב-RES? **הערה:** ההנחה היא, כי אין שני תאריכים זהים בטבלת Borrow.\n$$MBD ← Π_{borrow_date} BR1 − Π_{BR1.borrow_date} (σ_{(BR1.borrow_date > BR2.borrow_date)} (ρ_{BR1} BR X ρ_{BR2} BR))$$\n$$RES ← Π_{title} (σ_{borrow_date=MBD.borrow_date} ((B ⊗ BR) X MBD))$$",
       "options": [
         {
           "id": "a",
@@ -772,7 +771,7 @@
       "num": 18,
       "part": "ד",
       "topic": "fd_norm",
-      "question": "נתונה סכמת R=(A,B,C) כלשהי, כמו כן נתונות 4 הטענות הבאות. כמה מהטענות הנתונות הן טענות נכונות?  **טענה 1:** ייתכן מצב שבו יהיה בדיוק מפתח קביל אחד וגודלו יהיה 1 (תכונה בודדת).  **טענה 2:** ייתכן מצב שבו יהיו בדיוק 2 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).  **טענה 3:** ייתכן מצב שבו יהיו בדיוק 3 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).  **טענה 4:** ייתכן מצב שבו יהיו בדיוק 2 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).",
+      "question": "נתונה סכמת R=(A,B,C) כלשהי, כמו כן נתונות 4 הטענות הבאות. כמה מהטענות הנתונות הן טענות נכונות?\n**טענה 1:** ייתכן מצב שבו יהיה בדיוק מפתח קביל אחד וגודלו יהיה 1 (תכונה בודדת).\n**טענה 2:** ייתכן מצב שבו יהיו בדיוק 2 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).\n**טענה 3:** ייתכן מצב שבו יהיו בדיוק 3 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).\n**טענה 4:** ייתכן מצב שבו יהיו בדיוק 2 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).",
       "options": [
         {
           "id": "a",
@@ -852,7 +851,7 @@
       "num": 20,
       "part": "ד",
       "topic": "fd_norm",
-      "question": "נתונה התבנית R עם התלויות הפונקציות F הבאות. איזה מבין הבאים הינו מפתח קביל ב-R?  $$R = (A, B, C, D, E, G, I)$$  $$F = {AB→C, GAEID→C, CD→E, EI→G, IG→E, DE→C, BC→A, AIDE→I, CGI→E, ICBEG→A}$$",
+      "question": "נתונה התבנית R עם התלויות הפונקציות F הבאות. איזה מבין הבאים הינו מפתח קביל ב-R?$$R = (A, B, C, D, E, G, I)$$$$F = {AB→C, GAEID→C, CD→E, EI→G, IG→E, DE→C, BC→A, AIDE→I, CGI→E, ICBEG→A}$$",
       "options": [
         {
           "id": "a",

@@ -349,7 +349,7 @@
       "official": true,
       "answerSource": "combined-pdf",
       "confidence": "high",
-      "explanation": "ללא count השאילתה מחזירה את רשימת ה-contractor_id של הקבלנים שבנו דירות שנמכרו (ללא צורך ב-GROUP BY)."
+      "explanation": "ללא count השאילתה מחזירה את רשימת ה-contractor_id של הקבלנים שבנו דירות שנמכרו (ללא צורך ב-`GROUP BY`)."
     },
     {
       "num": 10,
@@ -452,7 +452,7 @@
       "official": true,
       "answerSource": "combined-pdf",
       "confidence": "high",
-      "explanation": "יש לצרף Purchases→Apartment→customer ולסנן name like \"%a%\" AND age>39. תשובה א משתמשת ב-OR, תשובה ג חסרה את הצירוף ל-Apartment, ותשובה ד מבצעת מכפלה קרטזית ללא תנאי צירוף."
+      "explanation": "יש לצרף Purchases→Apartment→customer ולסנן `name like \"%a%\" AND age>39`. תשובה א משתמשת ב-`OR`, תשובה ג חסרה את הצירוף ל-Apartment, ותשובה ד מבצעת מכפלה קרטזית ללא תנאי צירוף."
     },
     {
       "num": 13,
@@ -520,7 +520,7 @@
       "official": true,
       "answerSource": "combined-pdf",
       "confidence": "high",
-      "explanation": "\"גם וגם\" בשתי שורות נפרדות של אותו לקוח מחייב חיתוך (∩) של שמות הלקוחות מכל עיר. תנאי σ יחיד עם city=A ∧ city=B (תשובה א) לעולם ריק."
+      "explanation": "\"גם וגם\" בשתי שורות נפרדות של אותו לקוח מחייב חיתוך (∩) של שמות הלקוחות מכל עיר. תנאי σ יחיד עם $city=A ∧ city=B$ (תשובה א) לעולם ריק."
     },
     {
       "num": 15,
@@ -537,12 +537,12 @@
         {
           "id": "b",
           "type": "text",
-          "value": "מוצאת את ה-id של הדירה\\ות היקרה ביותר."
+          "value": "מוצאת את ה-id של הדירה/ות היקרה ביותר."
         },
         {
           "id": "c",
           "type": "text",
-          "value": "מוצאת את ה-id של הדירה\\ות הזולה ביותר."
+          "value": "מוצאת את ה-id של הדירה/ות הזולה ביותר."
         },
         {
           "id": "d",
@@ -599,7 +599,7 @@
         {
           "id": "a",
           "type": "text",
-          "value": "תוצאה זהה לפקודת הפרש בין הטבלאות ."
+          "value": "תוצאה זהה לפקודת הפרש בין הטבלאות."
         },
         {
           "id": "b",
@@ -609,12 +609,12 @@
         {
           "id": "c",
           "type": "text",
-          "value": "תוצאה זהה לפקודת איחוד בין הטבלאות ."
+          "value": "תוצאה זהה לפקודת איחוד בין הטבלאות."
         },
         {
           "id": "d",
           "type": "text",
-          "value": "תוצאה זהה למכפלה קרטזית בין הטבלאות ."
+          "value": "תוצאה זהה למכפלה קרטזית בין הטבלאות."
         }
       ],
       "correctId": "d",
@@ -633,7 +633,7 @@
         {
           "id": "a",
           "type": "text",
-          "value": "מחזירה מספרי דירות בעיר חולון שנמכרו במחיר שהן היו שוות ."
+          "value": "מחזירה מספרי דירות בעיר חולון שנמכרו במחיר שהן היו שוות."
         },
         {
           "id": "b",
@@ -732,14 +732,14 @@
       "official": true,
       "answerSource": "combined-pdf",
       "confidence": "high",
-      "explanation": "E חייבת בכל מפתח (אינה בצד ימין). EI⁺ = כל R וגם EG⁺ = כל R, ושניהם מינימליים ← שני מפתחות קבילים: EI ו-EG (שניהם מסומנים בבחינה)."
+      "explanation": "E חייבת בכל מפתח (אינה בצד ימין). $EI^{+}$ = כל R וגם $EG^{+}$ = כל R, ושניהם מינימליים ← שני מפתחות קבילים: EI ו-EG (שניהם מסומנים בבחינה)."
     },
     {
       "num": 21,
       "part": "ד",
       "topic": "fd_norm",
       "contextId": "fd",
-      "question": "מה הנרמול הנכון לפי BCNF? (ניתן להניח ש-Fu שווה ל-F⁺)",
+      "question": "מה הנרמול הנכון לפי BCNF? (ניתן להניח ש-Fu שווה ל-$F^{+}$)",
       "options": [
         {
           "id": "a",
@@ -749,12 +749,12 @@
         {
           "id": "b",
           "type": "text",
-          "value": "R1(F,E,H), R2(F,G ,I), R3(E,I)."
+          "value": "R1(F,E,H), R2(F,G,I), R3(E,I)."
         },
         {
           "id": "c",
           "type": "text",
-          "value": "R4(E,F), R1(G,H), R2(F,G,H,I), R3(E,F,I) ."
+          "value": "R4(E,F), R1(G,H), R2(F,G,H,I), R3(E,F,I)."
         },
         {
           "id": "d",

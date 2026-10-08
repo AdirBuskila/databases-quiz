@@ -363,7 +363,7 @@
       ],
       "correctId": "d",
       "answerSource": "solution-pdf",
-      "explanation": "‏COUNT(DISTINCT student_id) עם סינון `C.credits >= 3` סופר את מספר הסטודנטים השונים שנרשמו לקורס כלשהו המעניק 3 נקודות זכות או יותר. A מגביל ל'בדיוק 3'; B סופר קורסים; C סופר הרשמות.",
+      "explanation": "‏`COUNT(DISTINCT student_id)` עם סינון `C.credits >= 3` סופר את מספר הסטודנטים השונים שנרשמו לקורס כלשהו המעניק 3 נקודות זכות או יותר. A מגביל ל'בדיוק 3'; B סופר קורסים; C סופר הרשמות.",
       "confidence": "high"
     },
     {
@@ -536,7 +536,7 @@
       ],
       "correctId": "c",
       "answerSource": "solution-pdf",
-      "explanation": "\"נרשמו לכל הקורסים של Mathematics\" = חלוקה: אין קורס Mathematics שאליו הסטודנט לא נרשם — תבנית NOT EXISTS כפולה (C). B בודק היעדר הרשמה; ל-A מספיק קורס אחד; D הוא חיבור פנימי רגיל.",
+      "explanation": "\"נרשמו לכל הקורסים של Mathematics\" = חלוקה: אין קורס Mathematics שאליו הסטודנט לא נרשם — תבנית `NOT EXISTS` כפולה (C). B בודק היעדר הרשמה; ל-A מספיק קורס אחד; D הוא חיבור פנימי רגיל.",
       "confidence": "high"
     },
     {
@@ -578,7 +578,7 @@
       ],
       "correctId": "a",
       "answerSource": "solution-pdf",
-      "explanation": "עם אופרטור CONTAINS: קבוצת הקורסים שאליהם נרשם הסטודנט חייבת להכיל את קבוצת קורסי Mathematics — כלומר (הרשמות הסטודנט) CONTAINS (קורסי Mathematics), כפי ש-A מנסח. B הופך את כיוון ההכלה; C משווה לכל הקורסים; D משווה `course_id` מול `department`.",
+      "explanation": "עם אופרטור `CONTAINS`: קבוצת הקורסים שאליהם נרשם הסטודנט חייבת להכיל את קבוצת קורסי Mathematics — כלומר (הרשמות הסטודנט) `CONTAINS` (קורסי Mathematics), כפי ש-A מנסח. B הופך את כיוון ההכלה; C משווה לכל הקורסים; D משווה `course_id` מול `department`.",
       "confidence": "high"
     },
     {
@@ -620,7 +620,7 @@
       ],
       "correctId": "a",
       "answerSource": "solution-pdf",
-      "explanation": "‏A מחבר Students↔Enrollments↔Courses ומסנן `credits >= 4` עם סדר העמודות הנכון (first_name, course_name). B בודק `credits > 4`; C בודק `credits = 4`. ל-D ניתן ניקוד חלקי בלבד (4 נק') — סדר העמודות הפוך (course_name, first_name) והשאילתה פחות יעילה.",
+      "explanation": "‏A מחבר Students↔Enrollments↔Courses ומסנן `credits >= 4` עם סדר העמודות הנכון `(first_name, course_name)`. B בודק `credits > 4`; C בודק `credits = 4`. ל-D ניתן ניקוד חלקי בלבד (4 נק') — סדר העמודות הפוך `(course_name, first_name)` והשאילתה פחות יעילה.",
       "confidence": "high"
     },
     {
@@ -658,7 +658,7 @@
       ],
       "correctId": "a",
       "answerSource": "solution-pdf",
-      "explanation": "כדי לקבל את המורה בעל הציון הנמוך ביותר: כל מזהי המורים פחות אלו שקיים מורה עם ציון נמוך מהם. לכן חלק (1) = `Π_id(teacher) −` (הפרש) וחלק (2) = `>` (T1 גבוה מ-T2). לכן תשובה A.",
+      "explanation": "כדי לקבל את המורה בעל הציון הנמוך ביותר: כל מזהי המורים פחות אלו שקיים מורה עם ציון נמוך מהם. לכן חלק (1) = $Π_{id}(teacher) −$ (הפרש) וחלק (2) = `>` (T1 גבוה מ-T2). לכן תשובה A.",
       "confidence": "high"
     },
     {
@@ -772,7 +772,7 @@
       ],
       "correctId": "d",
       "answerSource": "solution-pdf",
-      "explanation": "‏Π(A,B)(R) = {(2,2),(1,2),(3,2),(2,5)}; Π(B,C)(S) = {(5,7),(2,5),(6,5),(2,3),(2,2)}. החיבור הטבעי על B נותן 10 שורות (9 עבור B=2 ועוד 1 עבור B=5) ו-3 עמודות (A,B,C). לאחר σ_{R.A ≤ 2} נותרות 7 שורות ו-3 עמודות.",
+      "explanation": "‏Π(A,B)(R) = {(2,2),(1,2),(3,2),(2,5)}; Π(B,C)(S) = {(5,7),(2,5),(6,5),(2,3),(2,2)}. החיבור הטבעי על B נותן 10 שורות (9 עבור B=2 ועוד 1 עבור B=5) ו-3 עמודות (A,B,C). לאחר $σ_{R.A ≤ 2}$ נותרות 7 שורות ו-3 עמודות.",
       "confidence": "high"
     },
     {
@@ -810,7 +810,7 @@
       ],
       "correctId": "d",
       "answerSource": "solution-pdf",
-      "explanation": "‏A⁺: מ-A→B מוסיפים B; מ-AB→E מוסיפים E. C→BD דורש C (שאינו בסגור). לכן A⁺ = {A, B, E} = {ABE}.",
+      "explanation": "$A^{+}$: מ-A→B מוסיפים B; מ-AB→E מוסיפים E. C→BD דורש C (שאינו בסגור). לכן A⁺ = {A, B, E} = {ABE}.",
       "confidence": "high"
     },
     {
@@ -855,7 +855,7 @@
       "num": 19,
       "part": "ד",
       "topic": "fd_norm",
-      "question": "נתונה הסכמה `R=(A,B,C,D,E)` וקבוצת תלויות פונקציונליות שהיא מקיימת:\n$$F = {B → E, DE → CD, C → AB}$$\nכמו כן, נתון הפירוק הבא: `R1(A,B,C,D)`, `R2(C,E)`, `R3(D,E)`.\nיש לבחור את הטענה הנכונה מבין הבאות:",
+      "question": "נתונה הסכמה `R=(A,B,C,D,E)` וקבוצת תלויות פונקציונליות שהיא מקיימת:\n$$F = {B → E, DE → CD, C → AB}$$כמו כן, נתון הפירוק הבא: `R1(A,B,C,D)`, `R2(C,E)`, `R3(D,E)`.\nיש לבחור את הטענה הנכונה מבין הבאות:",
       "options": [
         {
           "id": "a",
@@ -892,7 +892,7 @@
       "num": 20,
       "part": "ד",
       "topic": "fd_norm",
-      "question": "נתונה הסכמה `R=(A,B,C,D,E)` וקבוצת תלויות פונקציונליות שהיא מקיימת:\n$$F = {A → B, C → D, BC → E}$$\nכמו כן, נתון הפירוק הבא: `R1(A,B)`, `R2(C,D)`, `R3(B,C,E)`, `R4(A,C)`.\nיש לבחור את הטענה הנכונה מבין הבאות:",
+      "question": "נתונה הסכמה `R=(A,B,C,D,E)` וקבוצת תלויות פונקציונליות שהיא מקיימת:\n$$F = {A → B, C → D, BC → E}$$כמו כן, נתון הפירוק הבא: `R1(A,B)`, `R2(C,D)`, `R3(B,C,E)`, `R4(A,C)`.\nיש לבחור את הטענה הנכונה מבין הבאות:",
       "options": [
         {
           "id": "a",

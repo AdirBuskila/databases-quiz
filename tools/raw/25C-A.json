@@ -338,7 +338,7 @@
       ],
       "correctId": "a",
       "answerSource": "solution-pdf",
-      "explanation": "שתי התשובות נכונות, כל אחת בדרכה. לא הייתה כאן דרישה מפורשת להופעת שם רק פעם אחת — שהרי בלי DISTINCT ייתכנו כאן כפילויות. (A מבצע JOIN עם progress < 50; C משיג זאת עם תת-שאילתות. B משתמש ב-> 50, ו-D ב-<= 50 עם OR — שגויים.)",
+      "explanation": "שתי התשובות נכונות, כל אחת בדרכה. לא הייתה כאן דרישה מפורשת להופעת שם רק פעם אחת — שהרי בלי DISTINCT ייתכנו כאן כפילויות. (A מבצע `JOIN` עם `progress < 50`; C משיג זאת עם תת-שאילתות. B משתמש ב-`> 50`, ו-D ב-`<= 50` עם `OR` — שגויים.)",
       "confidence": "high",
       "contextId": "sql",
       "acceptedIds": [
@@ -384,7 +384,7 @@
       ],
       "correctId": "c",
       "answerSource": "solution-pdf",
-      "explanation": "צריך סינון registration_year = 2023 וגם country <> 'Israel' (תנאי AND), וספירה לכל מדינה עם GROUP BY country. A מסנן דווקא Israel, B משתמש ב-OR, ו-D בעל GROUP BY שגוי.",
+      "explanation": "צריך סינון `registration_year = 2023` וגם `country <> 'Israel'` (תנאי `AND`), וספירה לכל מדינה עם `GROUP BY country`. A מסנן דווקא Israel, B משתמש ב-OR, ו-D בעל GROUP BY שגוי.",
       "confidence": "high",
       "contextId": "sql"
     },
@@ -426,7 +426,7 @@
       ],
       "correctId": "b",
       "answerSource": "solution-pdf",
-      "explanation": "מחברים Courses ל-Enrollments לפי course_id ומסננים progress = 0. A בודק progress = 100; C שולף course_title מ-Enrollments (עמודה שאינה קיימת שם); D מחבר לפי course_id = enrollment_id — שגוי.",
+      "explanation": "מחברים Courses ל-Enrollments לפי `course_id` ומסננים `progress = 0`. A בודק `progress = 100`; C שולף `course_title` מ-Enrollments (עמודה שאינה קיימת שם); D מחבר לפי `course_id = enrollment_id` — שגוי.",
       "confidence": "high",
       "contextId": "sql"
     },
@@ -468,7 +468,7 @@
       ],
       "correctId": "d",
       "answerSource": "solution-pdf",
-      "explanation": "צריך לחבר Users↔Enrollments לפי user_id ו-Enrollments↔Courses לפי course_id, ולסנן status = 'withdrawn'. C מחבר לפי enrollment_id (שגוי); A ו-B אינם מחזירים גם שם וגם קורס נכונים.",
+      "explanation": "צריך לחבר Users↔Enrollments לפי `user_id` ו-Enrollments↔Courses לפי `course_id`, ולסנן `status = 'withdrawn'`. C מחבר לפי `enrollment_id` (שגוי); A ו-B אינם מחזירים גם שם וגם קורס נכונים.",
       "confidence": "high",
       "contextId": "sql"
     },
@@ -510,7 +510,7 @@
       ],
       "correctId": "a",
       "answerSource": "solution-pdf",
-      "explanation": "החיבור הנכון הוא לפי `Courses.category = Instructors.expertise` (כפי שרומז ההערה). B מחבר לפי level (שאינו קיים ב-Instructors); C לפי category = email; D לפי course_id ב-USING (שאינו קיים ב-Instructors).",
+      "explanation": "החיבור הנכון הוא לפי `Courses.category = Instructors.expertise` (כפי שרומז ההערה). B מחבר לפי `level` (שאינו קיים ב-Instructors); C לפי `category = email`; D לפי `course_id` ב-`USING` (שאינו קיים ב-Instructors).",
       "confidence": "high",
       "contextId": "sql"
     },
@@ -552,7 +552,7 @@
       ],
       "correctId": "b",
       "answerSource": "solution-pdf",
-      "explanation": "מסננים category = 'Programming' ב-WHERE (לפני הקיבוץ), מקבצים לפי הקורס וסופרים COUNT(*). A שם WHERE אחרי GROUP BY (שגוי תחבירית); C מסנן category בטבלת Enrollments; D מחזיר category במקום ספירה נכונה לכל קורס.",
+      "explanation": "מסננים `category = 'Programming'` ב-`WHERE` (לפני הקיבוץ), מקבצים לפי הקורס וסופרים `COUNT(*)`. A שם `WHERE` אחרי `GROUP BY` (שגוי תחבירית); C מסנן `category` בטבלת Enrollments; D מחזיר `category` במקום ספירה נכונה לכל קורס.",
       "confidence": "high",
       "contextId": "sql"
     },
@@ -594,7 +594,7 @@
       ],
       "correctId": "d",
       "answerSource": "solution-pdf",
-      "explanation": "זוהי חלוקה (division): קורס שאין אף משתמש שלא נרשם אליו. התבנית הנכונה היא NOT EXISTS כפול — אין משתמש שעבורו לא קיימת הרשמה לקורס הזה.",
+      "explanation": "זוהי חלוקה (division): קורס שאין אף משתמש שלא נרשם אליו. התבנית הנכונה היא `NOT EXISTS` כפול — אין משתמש שעבורו לא קיימת הרשמה לקורס הזה.",
       "confidence": "high",
       "contextId": "sql"
     },
@@ -825,7 +825,7 @@
       ],
       "correctId": "d",
       "answerSource": "solution-pdf",
-      "explanation": "‏B⁺ = {B} (‏B אינו צד-שמאל של אף תלות ב-F1), ולכן B → E אינה נובעת. לעומת זאת C → D נובעת מ-C → BD; A → E מ-A → B ואז AB → E; ו-CE → B מ-E → B.",
+      "explanation": "‏B⁺ = {B} (‏B אינו צד-שמאל של אף תלות ב-F1), ולכן B → E אינה נובעת. לעומת זאת C → D נובעת מ-$C → BD$; $A → E$ מ-A → B ואז $AB → E$; ו-CE → B מ-E → B.",
       "confidence": "high",
       "contextId": "fd"
     },

@@ -81,7 +81,7 @@
       "correctId": "a",
       "official": true,
       "answerSource": "solution-pdf",
-      "explanation": "בקשר `נולד/ה ב` יש חץ מ-`שחקן/ית` אל `מדינה`, כלומר כל שחקן נולד במדינה אחת — ולכן במדינה מסוימת יכולים להיוולד מספר שחקנים. שאר ההיגדים אינם נובעים מהתרשים.",
+      "explanation": "בקשר \"נולד/ה ב\" יש חץ מ\"שחקן/ית\" אל \"מדינה\", כלומר כל שחקן נולד במדינה אחת — ולכן במדינה מסוימת יכולים להיוולד מספר שחקנים. שאר ההיגדים אינם נובעים מהתרשים.",
       "confidence": "high"
     },
     {
@@ -123,7 +123,7 @@
       "correctId": "b",
       "official": true,
       "answerSource": "solution-pdf",
-      "explanation": "לישות `פרס` יש השתתפות מלאה (קו כפול) בקשר `זוכה ב`, ולכן כל פרס חייב שיהיה לו לפחות זוכה אחד. אין חובת השתתפות מלאה על השחקן.",
+      "explanation": "לישות \"פרס\" יש השתתפות מלאה (קו כפול) בקשר \"זוכה ב\", ולכן כל פרס חייב שיהיה לו לפחות זוכה אחד. אין חובת השתתפות מלאה על השחקן.",
       "confidence": "high"
     },
     {
@@ -165,7 +165,7 @@
       "correctId": "d",
       "official": true,
       "answerSource": "solution-pdf",
-      "explanation": "אפשר לאחד תכונות פשוטות לתכונה מורכבת — למשל `שם פרטי` ו-`שם משפחה` של שחקן/ית לתכונה מורכבת `שם`. אין בתרשים תכונה מרובת-ערכים ואין טעות תחביר.",
+      "explanation": "אפשר לאחד תכונות פשוטות לתכונה מורכבת — למשל \"שם פרטי\" ו\"שם משפחה\" של שחקן/ית לתכונה מורכבת \"שם\". אין בתרשים תכונה מרובת-ערכים ואין טעות תחביר.",
       "confidence": "high"
     },
     {
@@ -239,13 +239,13 @@
         {
           "id": "c",
           "type": "code",
-          "value": "SELECT country_name FROM Represent WHERE b_name NOT IN (SELECT b_name FROM Band JOIN Performer USING(p_name) WHERE height < 1.80)",
+          "value": "SELECT country_name FROM Represent WHERE b_name NOT IN\n  (SELECT b_name FROM Band JOIN Performer USING(p_name)\n   WHERE height < 1.80)",
           "lang": "sql"
         },
         {
           "id": "d",
           "type": "code",
-          "value": "SELECT country_name FROM Represent As R1 WHERE NOT EXISTS (SELECT p_name FROM Band As B1 WHERE b_name NOT IN (SELECT b_name FROM Performer JOIN Band As B2 USING(p_name) WHERE height < 1.80 and B1.b_name = R1.p_name))",
+          "value": "SELECT country_name FROM Represent As R1 WHERE NOT EXISTS\n  (SELECT p_name FROM Band As B1 WHERE b_name NOT IN\n    (SELECT b_name FROM Performer JOIN Band As B2 USING(p_name)\n     WHERE height < 1.80 and B1.b_name = R1.p_name))",
           "lang": "sql"
         },
         {
@@ -360,7 +360,8 @@
       "part": "ב",
       "topic": "sql",
       "topicLabel": "חלק ב׳ — SQL",
-      "question": "לכל תזמורת מעוניינים להשכיר מכולה שבה הכלים יהיו בקופסאות בגודל המתאים להם, אך יעמדו אך ורק קופסא על גבי קופסא. מה גובה ה-`height` של המכולה לכל תזמורת? השלם את `(1)`:\n`SELECT ____(1)____ FROM Band JOIN Instrument USING(serial_number) GROUP BY b_name`",
+      "question": "לכל תזמורת מעוניינים להשכיר מכולה שבה הכלים יהיו בקופסאות בגודל המתאים להם, אך יעמדו אך ורק קופסא על גבי קופסא. מה גובה ה-`height` של המכולה לכל תזמורת? השלם את `(1)`:",
+      "code": "SELECT ____(1)____ FROM Band JOIN Instrument USING(serial_number) GROUP BY b_name",
       "contextId": "sql",
       "options": [
         {
@@ -614,7 +615,7 @@
       "correctId": "b",
       "official": true,
       "answerSource": "solution-pdf",
-      "explanation": "זוהי חלוקה: מחלקים את הזוגות (`to_country`, `from_country`) שבהם ניתנו 12 נקודות בקבוצת כל המדינות הנותנות (`Π_{from_country} Score`). התוצאה = המדינות שקיבלו 12 מכל מדינה. ב-C המחולק בעל תכונה יחידה ואינו מכיל את סכמת המחלק, ולכן החלוקה אינה תקינה.",
+      "explanation": "זוהי חלוקה: מחלקים את הזוגות (`to_country`, `from_country`) שבהם ניתנו 12 נקודות בקבוצת כל המדינות הנותנות ($Π_{from_country} Score$). התוצאה = המדינות שקיבלו 12 מכל מדינה. ב-C המחולק בעל תכונה יחידה ואינו מכיל את סכמת המחלק, ולכן החלוקה אינה תקינה.",
       "confidence": "high"
     },
     {
@@ -708,7 +709,7 @@
       "part": "ד",
       "topic": "fd_norm",
       "topicLabel": "חלק ד׳ — תלויות פונקציונליות ושימור מידע",
-      "question": "נתונה קבוצת תלויות פונקציונליות $F = {Q → U, U → V, PQ → WST, SU → TR, VT → RW, R → W}$. קבעו האם אחת מהתלויות הבאות נובעת מ-F:",
+      "question": "נתונה קבוצת תלויות פונקציונליות $$F = {Q → U, U → V, PQ → WST, SU → TR, VT → RW, R → W}$$קבעו האם אחת מהתלויות הבאות נובעת מ-F:",
       "options": [
         {
           "id": "a",
@@ -739,7 +740,7 @@
       "correctId": "d",
       "official": true,
       "answerSource": "solution-pdf",
-      "explanation": "‏(SQ)⁺: מ-Q→U, U→V מקבלים U,V; מ-SU→TR מקבלים T,R; ולכן R→W → יש W, אז SQ→W נובעת. ‏(PQ)⁺: PQ→WST נותן W,S,T; ואז SU→TR נותן R, ולכן PQ→R נובעת. לעומת זאת (QU)⁺={Q,U,V} בלבד, כך ש-QU→R אינה נובעת. שתי תלויות נובעות → תשובה D.",
+      "explanation": "‏$(SQ)^{+}$: מ-Q→U, U→V מקבלים U,V; מ-SU→TR מקבלים T,R; ולכן R→W → יש W, אז SQ→W נובעת. ‏$(PQ)^{+}$: PQ→WST נותן W,S,T; ואז SU→TR נותן R, ולכן PQ→R נובעת. לעומת זאת $(QU)^{+}={Q,U,V}$ בלבד, כך ש-QU→R אינה נובעת. שתי תלויות נובעות → תשובה D.",
       "confidence": "high"
     },
     {
@@ -780,7 +781,7 @@
       "correctId": "e",
       "official": true,
       "answerSource": "solution-pdf",
-      "explanation": "‏(C)⁺: מ-C→AEF מקבלים A,E,F; מ-E→D מקבלים D; מ-D→B מקבלים B — כלומר C לבדו קובע את כל התכונות ולכן {C} הוא מפתח-על (וגם מפתח מועמד). מכאן ש-{BC} ו-{ABC} (המכילים את C) הם אף הם מפתחות-על — כל המפתחות המנויים הם מפתחות-על.",
+      "explanation": "‏$(C)^{+}$: מ-C→AEF מקבלים A,E,F; מ-E→D מקבלים D; מ-D→B מקבלים B — כלומר C לבדו קובע את כל התכונות ולכן {C} הוא מפתח-על (וגם מפתח מועמד). מכאן ש-{BC} ו-{ABC} (המכילים את C) הם אף הם מפתחות-על — כל המפתחות המנויים הם מפתחות-על.",
       "confidence": "high"
     },
     {
@@ -866,7 +867,7 @@
       ],
       "official": true,
       "answerSource": "solution-pdf",
-      "explanation": "בפתרון סומנו כנכונות גם A וגם D — שתיהן נתונים מובְנים, טבלאיים ובעלי יחסים ברורים (רשומות מובנות; מערכת הוצאות עם סעיפים והפניה עצמית), ולכן מתאימות ל-SQL. B ו-C הם נתונים גרפיים/לא-מובנים (רשת חברתית, המלצות) המתאימים יותר ל-NoSQL.",
+      "explanation": "בפתרון סומנו כנכונות גם A וגם D — שתיהן נתונים מובְנים, טבלאיים ובעלי יחסים ברורים (רשומות מובנות; מערכת הוצאות עם סעיפים והפניה עצמית), ולכן מתאימות ל-SQL.‏ B ו-C הם נתונים גרפיים/לא-מובנים (רשת חברתית, המלצות) המתאימים יותר ל-NoSQL.",
       "confidence": "high"
     },
     {

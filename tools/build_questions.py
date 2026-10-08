@@ -31,11 +31,27 @@ OUT = TOOLS.parent
 # those slots. Such questions keep the source's printed order instead (app.js honours
 # the lockOrder flag).
 LETTER_REF = re.compile(r"(תשובות|תשובה|סעיפים|סעיף)\s+[אבגדה]['׳]?\s*[,ו]")
+# an option that is nothing but sibling letters ("ב + ג", "A, C")
+LETTERS_ONLY = re.compile(r"^[A-Eאבגדה]['׳]?(\s*(?:[+,&]|ו-?)\s*[A-Eאבגדה]['׳]?)+$")
+
+# an explanation that cites options by printed letter ("C שגויה", "כפי שב-C", "תשובה א'",
+# "התקבלו א וגם ה") only makes sense in the printed order, so it locks the order too.
+# `code` and $math$ spans are skipped (they hold attribute/table names like A, R1).
+EXPL_SPANS = re.compile(r"`[^`]*`|\$\$[^$]*\$\$|\$[^$]*\$")
+EXPL_LETTER = re.compile(
+    r"(?<![A-Za-z0-9_.'\"`])[A-E](?![A-Za-z0-9_'(`])"
+    r"|(?<![֐-׿])[אבגדה][׳']"
+    r"|(?:תשובה|תשובות|אפשרות|אפשרויות|או|וגם)\s+[אבגדה](?![֐-׿])"
+    r"|(?<![֐-׿])[אבגדה]\s+(?:או|וגם)\s")
+
+
+def cites_letters(explanation):
+    return bool(EXPL_LETTER.search(EXPL_SPANS.sub(" ", explanation or "")))
 
 
 def locks_order(options):
     vals = [o.get("value", "") if isinstance(o, dict) else o for o in options]
-    return any(LETTER_REF.search(str(v)) for v in vals)
+    return any(LETTER_REF.search(str(v)) or LETTERS_ONLY.match(str(v).strip()) for v in vals)
 
 TOPIC_LABEL = {
     "erd": "מודל ERD",
@@ -113,7 +129,7 @@ def main():
             q["source"] = "exam"
             q["topicLabel"] = TOPIC_LABEL[q["topic"]]
             q["official"] = q.get("answerSource") in OFFICIAL_SOURCES
-            if locks_order(q.get("options", [])):
+            if locks_order(q.get("options", [])) or cites_letters(q.get("explanation")):
                 q["lockOrder"] = True
             if q.get("contextId"):
                 q["contextId"] = cmap.get(q["contextId"], q["contextId"])

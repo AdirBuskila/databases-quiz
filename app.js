@@ -88,12 +88,17 @@ const katexBlock  = t => katexRender(t, true);
 const algBlock  = s => window.renderAlgebra ? window.renderAlgebra(s, true)  : `<code class="math-fallback" dir="ltr">${escapeHtml(s)}</code>`;
 const algInline = s => window.renderAlgebra ? window.renderAlgebra(s, false) : `<code class="math-fallback" dir="ltr">${escapeHtml(s)}</code>`;
 function richText(s){
+  const he = hasHebrew(s);
   return String(s).split(/(\$\$[^$]*\$\$|\$[^$]+\$|`[^`]+`|\*\*[^*]+\*\*)/g).map(part=>{
     if(part.length>4 && part.startsWith("$$") && part.endsWith("$$")) return algBlock(part.slice(2,-2));
     if(part.length>2 && part[0]==="$" && part[part.length-1]==="$") return algInline(part.slice(1,-1));
     if(part.length>2 && part[0]==="`" && part[part.length-1]==="`") return `<code class="tok" dir="ltr">${escapeHtml(part.slice(1,-1))}</code>`;
     if(part.length>4 && part.startsWith("**") && part.endsWith("**")) return `<strong>${escapeHtml(part.slice(2,-2))}</strong>`;
-    return escapeHtml(part);
+    // in Hebrew text, "…SQL. B שגויה" would join "SQL. B" into one LTR run and show the
+    // letter before the term; an RLM after the punctuation keeps it with the preceding word
+    // and a bare closure (EI⁺, {B}⁺) gets isolated so the ⁺ can't jump to the other side
+    return he ? escapeHtml(part).replace(/([.;:]["'”]?)(\s+)(?=[A-Za-z])/g, "$1&rlm;$2")
+                  .replace(/[A-Za-z0-9{}(), ]*[A-Za-z0-9}\)]⁺/g, m => `<bdi dir="ltr">${m}</bdi>`) : escapeHtml(part);
   }).join("");
 }
 
@@ -127,7 +132,7 @@ function contextHtml(ctx){
   if(ctx.title) h += `<div class="ctx-title">${escapeHtml(ctx.title)}</div>`;
   if(ctx.intro) h += `<div class="ctx-text">${richText(ctx.intro)}</div>`;
   if(ctx.image) h += `<figure class="ctx-fig"><img class="q-img ctx-img" src="${ctx.image}" alt="${escapeHtml(ctx.caption||"")}" loading="lazy">`+
-                     (ctx.caption?`<figcaption>${escapeHtml(ctx.caption)}</figcaption>`:"")+`</figure>`;
+                     (ctx.caption?`<figcaption>${richText(ctx.caption)}</figcaption>`:"")+`</figure>`;
   if(Array.isArray(ctx.relations)) h += relationsHtml(ctx.relations);
   if(Array.isArray(ctx.tables)) h += `<div class="ctx-tables">`+ctx.tables.map(tableHtml).join("")+`</div>`;
   if(ctx.algebra) h += `<div class="ctx-algebra">`+(Array.isArray(ctx.algebra)?ctx.algebra:[ctx.algebra]).map(a=>algBlock(a)).join("")+`</div>`;
@@ -396,7 +401,7 @@ function paintAnswered(v){
   const srcNote = SRC_NOTE[q.answerSource] || (q.official?"":SRC_NOTE.derived);
   fb.innerHTML = `<div class="verdict">${correct?"✓ נכון":"✗ לא נכון"}</div>`+
     `<div class="expl">${richText(q.explanation||"")}</div>`+
-    (q.official?"":`<span class="note">⚠ תשובה לא רשמית — נגזרה מחומר הקורס.</span>`)+
+    (q.official||q.answerSource==="derived"||!q.answerSource?"":`<span class="note">⚠ תשובה לא רשמית.</span>`)+
     (srcNote?`<span class="note">${escapeHtml(srcNote)}</span>`:"")+
     `<span class="note">מקור: ${escapeHtml(examLabelOf(q))}</span>`;
   $("#nextBtn").classList.remove("hidden");

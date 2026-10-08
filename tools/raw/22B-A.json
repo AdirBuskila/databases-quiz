@@ -79,7 +79,7 @@
         { "id": "d", "type": "text", "value": "אף תשובה לא נכונה." }
       ],
       "correctId": "b", "official": true, "answerSource": "solution-pdf", "confidence": "high",
-      "explanation": "מצרפים את שני היחסים המבוקשים (inst_n ו-max_set) בתנאי inst_n.inst_num = max_set.max_num כדי לבחור את הקבוצות בעלות מספר הכלים המקסימלי."
+      "explanation": "מצרפים את שני היחסים המבוקשים (`inst_n` ו-`max_set`) בתנאי `inst_n.inst_num = max_set.max_num` כדי לבחור את הקבוצות בעלות מספר הכלים המקסימלי."
     },
     {
       "num": 6, "part": "ב", "topic": "sql", "contextId": "schema",
@@ -107,7 +107,7 @@
         { "id": "e", "type": "text", "value": "אף אחת מהתשובות." }
       ],
       "correctId": "e", "acceptedIds": ["d", "e"], "official": true, "answerSource": "solution-pdf", "confidence": "high",
-      "explanation": "השאילתה אינה נכונה — חסר בה חלק של JOIN (הקשר band.b_code = band_musician.b_code), ואינה מתייחסת לסוג הלהקה. התקבלו התשובות D ו-E."
+      "explanation": "השאילתה אינה נכונה — חסר בה חלק של JOIN (הקשר `band.b_code = band_musician.b_code`), ואינה מתייחסת לסוג הלהקה. התקבלו התשובות D ו-E."
     },
     {
       "num": 8, "part": "ב", "topic": "sql", "contextId": "schema",
@@ -134,7 +134,7 @@
         { "id": "d", "type": "code", "value": "Order by inst.instrument , m.m_name desc" }
       ],
       "correctId": "d", "official": true, "answerSource": "solution-pdf", "confidence": "high",
-      "explanation": "המיון: כלי נגינה בסדר עולה ושמות המוסיקאים בסדר יורד → Order by inst.instrument, m.m_name desc. אין צורך ב-GROUP BY כי מוצגות שורות עם חזרות."
+      "explanation": "המיון: כלי נגינה בסדר עולה ושמות המוסיקאים בסדר יורד → `Order by inst.instrument, m.m_name desc`. אין צורך ב-`GROUP BY` כי מוצגות שורות עם חזרות."
     },
     {
       "num": 10, "part": "ב", "topic": "sql", "contextId": "schema",
@@ -148,16 +148,16 @@
         { "id": "e", "type": "text", "value": "השאילתה כתובה באופן שגוי, ולכן אי אפשר לנסח בשפה טבעית שאלה מתאימה." }
       ],
       "correctId": "d", "acceptedIds": ["d", "e"], "official": true, "answerSource": "solution-pdf", "confidence": "high",
-      "explanation": "שאלה מורכבת — התקבלו שתי התשובות D ו-E (יש חוסר התאמה בשורות אך הוא אפשרי כיוון שמדובר ב-NOT EXISTS)."
+      "explanation": "שאלה מורכבת — התקבלו שתי התשובות D ו-E (יש חוסר התאמה בשורות אך הוא אפשרי כיוון שמדובר ב-`NOT EXISTS`)."
     },
     {
       "num": 11, "part": "ג", "topic": "relalg", "contextId": "schema",
       "question": "מי מהתשובות הבאות מתאימה לשאילתה: \"באילו כלים מנגנים מוזיקאים שהם להקה של איש אחד\"?",
       "options": [
-        { "id": "a", "type": "algebra", "value": "Π instrument (one_man_band X musician X band_musician)" },
-        { "id": "b", "type": "algebra", "value": "Π instrument (one_man_band ⊗ musician ⊗ band_musician)" },
-        { "id": "c", "type": "algebra", "value": "Π instrument σ_{one_man_band.b_code=band_musician.b_code} (one_man_band X musician X band_musician)" },
-        { "id": "d", "type": "algebra", "value": "Π instrument σ_{band_musician.m_id=band_musician.m_id} (one_man_band X musician ⊗ band_musician)" },
+        { "id": "a", "type": "algebra", "value": "Π_{instrument} (one_man_band X musician X band_musician)" },
+        { "id": "b", "type": "algebra", "value": "Π_{instrument} (one_man_band ⊗ musician ⊗ band_musician)" },
+        { "id": "c", "type": "algebra", "value": "Π_{instrument} σ_{one_man_band.b_code=band_musician.b_code} (one_man_band X musician X band_musician)" },
+        { "id": "d", "type": "algebra", "value": "Π_{instrument} σ_{band_musician.m_id=band_musician.m_id} (one_man_band X musician ⊗ band_musician)" },
         { "id": "e", "type": "text", "value": "אף אחת מהתשובות" }
       ],
       "correctId": "b", "official": true, "answerSource": "solution-pdf", "confidence": "high",
@@ -178,7 +178,7 @@
     },
     {
       "num": 13, "part": "ג", "topic": "relalg", "contextId": "schema",
-      "question": "מה עושה השאילתה הבאה:  $$Π m_id σ_{m_gender=\"אשה\"} (musician) − Π B2.m_id σ_{B1.num_of_instruments > B2.num_of_instruments} (ρ B1 one_man_band X ρ B2 one_man_band)$$",
+      "question": "מה עושה השאילתה הבאה:  $$Π_{m_id} σ_{m_gender=\"אשה\"} (musician) − Π_{B2.m_id} σ_{B1.num_of_instruments > B2.num_of_instruments} (ρ_{B1} one_man_band X ρ_{B2} one_man_band)$$",
       "options": [
         { "id": "a", "type": "text", "value": "מחזירה את תעודת זהות האומנים שמנגנים לבד על הכי הרבה כלים." },
         { "id": "b", "type": "text", "value": "מחזירה את תעודת זהות האומנים שמנגנים לבד על הכי מעט כלים." },
@@ -204,7 +204,7 @@
     },
     {
       "num": 16, "part": "ד", "topic": "fd_norm", "contextId": "fd",
-      "question": "מי מבין ה-F הנתונים מקיים  $F^{+}=F1^{+}$ ?",
+      "question": "מי מבין ה-F הנתונים מקיים $F^{+} = F1^{+}$?",
       "options": [
         { "id": "a", "type": "algebra", "value": "F = {A→C, B→A}" },
         { "id": "b", "type": "algebra", "value": "F = {A→DE, B→C}" },

@@ -296,7 +296,7 @@ window.DB_QUIZ = {
    "kind": "image",
    "title": "חלק א׳ — ERD: דיאגרמת \"ניהול שאלות\"",
    "image": "images/exams/24B-A-erd.png",
-   "caption": "התייחסו לתרשים ה-ERD \"ניהול שאלות\" המתאר בסיס נתונים, וענו על השאלות. **הערה לגבי התרשים:** בבחינה המקורית התכונה \"מזהה כניסה\" מסומנת בקו תחתון **מקווקו**, כלומר מפתח חלקי (partial key) של ישות חלשה. בסריקה שברשותנו הקו המקווקו נמרח לקו מלא ולכן הוא נראה כמו מפתח רגיל — יש להתייחס אל \"מזהה כניסה\" כאל מפתח חלקי."
+   "caption": "התייחסו לתרשים ה-ERD \"ניהול שאלות\" המתאר בסיס נתונים, וענו על השאלות. הערה לגבי התרשים: בבחינה המקורית התכונה \"מזהה כניסה\" מסומנת בקו תחתון מקווקו, כלומר מפתח חלקי (partial key) של ישות חלשה. בסריקה שברשותנו הקו המקווקו נמרח לקו מלא ולכן הוא נראה כמו מפתח רגיל — יש להתייחס אל \"מזהה כניסה\" כאל מפתח חלקי."
   },
   "24B-A-sql": {
    "kind": "schema",
@@ -1004,7 +1004,7 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "\"מניות\" ו\"ותק\" הן תכונות של תת-ישויות מסוימות בלבד (מנכ\"ל / מתכנת), ולכן A ו-B שגויים. עקב השתתפות מלאה של החברה בקשר \"מנהל\", לכל חברת סטארט-אפ יש מנכ\"ל אחד לפחות → D. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "\"מניות\" ו\"ותק\" הן תכונות של תת-ישויות מסוימות בלבד (מנכ\"ל / מתכנת), ולכן ההיגדים \"לכל עובד יש שכר ומניות\" ו\"לכל עובד נשמר הותק\" שגויים. עקב השתתפות מלאה של החברה בקשר \"מנהל\", לכל חברת סטארט-אפ יש מנכ\"ל אחד לפחות. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q2",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
@@ -1049,7 +1049,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "מודל ERD"
+   "topicLabel": "מודל ERD",
+   "lockOrder": true
   },
   {
    "part": "א",
@@ -1082,7 +1083,7 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "הקשר \"חונך\" הוא קשר רקורסיבי על ישות אחת (מנכ\"ל חונך מנכ\"ל מנוסה אחר), ולכן גם A וגם C מציגות אותו נכון כקשר רקורסיבי. ההבדל ביניהן: השאלה מדברת על \"מנכ\"ל שמנהל חברה מסוימת\", כלומר החונכות נקשרת גם לחברה שבה מכהן המנכ\"ל — ורק C מחברת את חברת הסטארט-אפ אל קשר החונכות. B מציגה קשר לא-רקורסיבי בין מנכ\"ל לחברה (כלומר החונך אינו מנכ\"ל), ו-D מציגה את \"חונך\" כתכונה במקום כקשר. לכן C היא הדיאגרמה השלמה והנכונה ביותר. (התשובה מפתרון סטודנט — לא רשמית. בדף המקור חלופה A מסומנת ב-✗ וחלופה C מסומנת בהדגשה, וזהו הסימון שעליו מסתמכות שאר שאלות הבחינה.)",
+   "explanation": "הקשר \"חונך\" הוא קשר רקורסיבי על ישות אחת (מנכ\"ל חונך מנכ\"ל מנוסה אחר), ולכן שתי הדיאגרמות שבהן מנכ\"ל מחובר פעמיים לקשר \"חונך\" מציגות אותו נכון כקשר רקורסיבי. ההבדל ביניהן: השאלה מדברת על \"מנכ\"ל שמנהל חברה מסוימת\", כלומר החונכות נקשרת גם לחברה שבה מכהן המנכ\"ל — ורק אחת מהן מחברת גם את חברת הסטארט-אפ אל קשר החונכות. הדיאגרמה שבה \"חונך\" מקשר רק בין מנכ\"ל לחברה מציגה קשר לא-רקורסיבי (כלומר החונך אינו מנכ\"ל), והדיאגרמה שבה \"חונך\" מצויר כאליפסה מציגה אותו כתכונה במקום כקשר. לכן הדיאגרמה הרקורסיבית שגם חברת הסטארט-אפ מחוברת בה לקשר היא השלמה והנכונה ביותר. (התשובה מפתרון סטודנט — לא רשמית. בדף המקור החלופה הרקורסיבית ללא החברה מסומנת ב-✗ והחלופה הנכונה מסומנת בהדגשה, וזהו הסימון שעליו מסתמכות שאר שאלות הבחינה.)",
    "id": "21B-C-Q4",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
@@ -1475,17 +1476,18 @@ window.DB_QUIZ = {
     {
      "id": "d",
      "type": "text",
-     "value": "B + C"
+     "value": "ב + ג"
     },
     {
      "id": "e",
      "type": "text",
-     "value": "A + C"
+     "value": "א + ג"
     }
    ],
+   "lockOrder": true,
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "‏'סגנון גלישה' היא תכונה מרובת-ערכים של תת-הישות מדריכת גלישה. C מכיל את כל התכונות הנובעות דרך ה-ISA (`מספר זהות`, `עובד מתאריך`, `שכר`, `שם מלא`), ו-B מייצג את התכונה מרובת-הערכים כטבלה נפרדת. לכן נדרשים גם B וגם C.",
+   "explanation": "‏'סגנון גלישה' היא תכונה מרובת-ערכים של תת-הישות מדריכת גלישה. חלופה ג מכילה את כל התכונות הנובעות דרך ה-ISA ('מספר זהות', 'עובד מתאריך', 'שכר', 'שם מלא'), וחלופה ב מייצגת את התכונה מרובת-הערכים כטבלה נפרדת. לכן נדרשות גם ב וגם ג.",
    "confidence": "high",
    "id": "23B-A-Q1",
    "examCode": "23B-A",
@@ -1537,7 +1539,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "א",
@@ -1573,7 +1576,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "b",
    "answerSource": "solution-pdf",
-   "explanation": "על-פי המחוון התשובה היא B: בתרשים שני מקומות עם קווים עבים (ב'מיקום מסלול גלישה' וב'מוצר נמכר ב'), ורק אחד מהם שימוש תקין — ולכן קיימת שגיאת סינטקס.",
+   "explanation": "על-פי המחוון זו התשובה הנכונה: בתרשים שני מקומות עם קווים עבים (ב'מיקום מסלול גלישה' וב'מוצר נמכר ב'), ורק אחד מהם שימוש תקין — ולכן קיימת שגיאת סינטקס.",
    "confidence": "high",
    "id": "23B-A-Q3",
    "examCode": "23B-A",
@@ -1581,7 +1584,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q1",
@@ -1621,7 +1625,7 @@ window.DB_QUIZ = {
    "correctId": "a",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "בקשר `נולד/ה ב` יש חץ מ-`שחקן/ית` אל `מדינה`, כלומר כל שחקן נולד במדינה אחת — ולכן במדינה מסוימת יכולים להיוולד מספר שחקנים. שאר ההיגדים אינם נובעים מהתרשים.",
+   "explanation": "בקשר \"נולד/ה ב\" יש חץ מ\"שחקן/ית\" אל \"מדינה\", כלומר כל שחקן נולד במדינה אחת — ולכן במדינה מסוימת יכולים להיוולד מספר שחקנים. שאר ההיגדים אינם נובעים מהתרשים.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
@@ -1665,7 +1669,7 @@ window.DB_QUIZ = {
    "correctId": "b",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "לישות `פרס` יש השתתפות מלאה (קו כפול) בקשר `זוכה ב`, ולכן כל פרס חייב שיהיה לו לפחות זוכה אחד. אין חובת השתתפות מלאה על השחקן.",
+   "explanation": "לישות \"פרס\" יש השתתפות מלאה (קו כפול) בקשר \"זוכה ב\", ולכן כל פרס חייב שיהיה לו לפחות זוכה אחד. אין חובת השתתפות מלאה על השחקן.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
@@ -1709,7 +1713,7 @@ window.DB_QUIZ = {
    "correctId": "d",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "אפשר לאחד תכונות פשוטות לתכונה מורכבת — למשל `שם פרטי` ו-`שם משפחה` של שחקן/ית לתכונה מורכבת `שם`. אין בתרשים תכונה מרובת-ערכים ואין טעות תחביר.",
+   "explanation": "אפשר לאחד תכונות פשוטות לתכונה מורכבת — למשל \"שם פרטי\" ו\"שם משפחה\" של שחקן/ית לתכונה מורכבת \"שם\". אין בתרשים תכונה מרובת-ערכים ואין טעות תחביר.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
@@ -1799,7 +1803,7 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "accepted-answers-docx",
    "confidence": "high",
-   "explanation": "\"כניסות\" הוא טיפוס ישויות חלש התלוי ב\"משתמש\", ולכן מפתחו כולל את המפתח החלקי שלו יחד עם מפתח הישות השולטת. התקבלו א וגם ב.",
+   "explanation": "\"כניסות\" הוא טיפוס ישויות חלש התלוי ב\"משתמש\", ולכן מפתחו כולל את המפתח החלקי שלו יחד עם מפתח הישות השולטת. התקבלו שתי תשובות: \"מזהה כניסה, מזהה משתמש\" וגם \"מזהה כניסה\".",
    "id": "24B-A-Q2",
    "examCode": "24B-A",
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
@@ -1847,7 +1851,7 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "accepted-answers-docx",
    "confidence": "high",
-   "explanation": "לפי הקשר הרקורסיבי \"נושא אב\", סכמת \"נושא\" כוללת את שם הנושא ואת ה-FK לנושא האב. התקבלו א וגם ב.",
+   "explanation": "לפי הקשר הרקורסיבי \"נושא אב\", סכמת \"נושא\" כוללת את שם הנושא ואת ה-FK לנושא האב. התקבלו שתי תשובות: 2 וגם 1.",
    "id": "24B-A-Q3",
    "examCode": "24B-A",
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
@@ -1939,7 +1943,7 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "accepted-answers-docx",
    "confidence": "high",
-   "explanation": "ישות חלשה תלויה לזיהוי בישות אחרת ולכן היא נשלטת. התקבלו א וגם ב.",
+   "explanation": "ישות חלשה תלויה לזיהוי בישות אחרת ולכן היא נשלטת. התקבלו שתי תשובות: \"כל טיפוס ישויות חלש הוא נשלט\" וגם \"כל טיפוס ישויות נשלט הוא חלש\".",
    "id": "24B-A-Q5",
    "examCode": "24B-A",
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
@@ -2145,7 +2149,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "א",
@@ -2189,7 +2194,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "א",
@@ -2277,7 +2283,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "א",
@@ -2312,7 +2319,7 @@ window.DB_QUIZ = {
     }
    ],
    "correctId": "e",
-   "explanation": "מפתח המרצה הוא `שם` בלבד (שדה יחיד); המפתח של סטודנט לתואר ראשון הוא `ת\"ז` שיורש מהאב בלבד; `כיתה` היא ישות חזקה שמפתחה `מס' כיתה` בלבד. לכן אף אחת מ-A–D אינה נכונה — התשובה E.",
+   "explanation": "מפתח המרצה הוא \"שם\" בלבד (שדה יחיד); המפתח של סטודנט לתואר ראשון הוא \"ת\"ז\" שיורש מהאב בלבד; \"כיתה\" היא ישות חזקה שמפתחה \"מס' כיתה\" בלבד. לכן אף אחד מארבעת ההיגדים האחרים אינו נכון.",
    "confidence": "high",
    "id": "25S-B-Q1",
    "examCode": "25S-B",
@@ -2359,7 +2366,7 @@ window.DB_QUIZ = {
     "a",
     "e"
    ],
-   "explanation": "לפי טבלת התשובות הרשמית התקבלו כאן **שתי תשובות** — A וגם E. (A מתייחסת למספר שדות המפתח בטבלת הקשר `מלמד ב`.)",
+   "explanation": "לפי טבלת התשובות הרשמית התקבלו כאן **שתי תשובות**: \"בטבלה של מלמד ב יש שני שדות המהווים מפתח\" (מספר שדות המפתח בטבלת הקשר \"מלמד ב\") וגם \"כל התשובות האחרות אינן נכונות\".",
    "confidence": "high",
    "id": "25S-B-Q2",
    "examCode": "25S-B",
@@ -2406,7 +2413,7 @@ window.DB_QUIZ = {
     "c",
     "e"
    ],
-   "explanation": "התכונה הרב-ערכית `פרויקט` נדרשת לטבלה נפרדת `פרויקטים(תז, פרויקט)`, והתאריך המורכב מתפרק ל-יום/חודש/שנה. לפי הטבלה הרשמית התקבלו C וגם E.",
+   "explanation": "התכונה הרב-ערכית \"פרויקט\" נדרשת לטבלה נפרדת פרויקטים(תז, פרויקט), והתאריך המורכב מתפרק ל-יום/חודש/שנה. לפי הטבלה הרשמית התקבלו שתי תשובות: ההמרה עם יום/חודש/שנה וטבלת פרויקטים נפרדת, וגם \"כל התשובות האחרות אינן נכונות\".",
    "confidence": "high",
    "id": "25S-B-Q3",
    "examCode": "25S-B",
@@ -2449,7 +2456,7 @@ window.DB_QUIZ = {
     }
    ],
    "correctId": "d",
-   "explanation": "המרת תת-הסוג ב-ISA יוצרת טבלה עם המפתח היורש `תז` ותכונת התת-סוג עצמו `תזה` בלבד — כלומר (תז, תזה).",
+   "explanation": "המרת תת-הסוג ב-ISA יוצרת טבלה עם המפתח היורש \"תז\" ותכונת התת-סוג עצמו \"תזה\" בלבד — כלומר (תז, תזה).",
    "confidence": "high",
    "id": "25S-B-Q4",
    "examCode": "25S-B",
@@ -2501,7 +2508,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "א",
@@ -2545,7 +2553,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "א",
@@ -2589,7 +2598,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "מודל ERD",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "א",
@@ -2672,7 +2682,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -2716,7 +2727,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -2765,12 +2777,13 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
    "topic": "fd_norm",
-   "question": "נתון ש-E עודפת בתבנית היחסים $$R = (A, B, C, D, E)$$ עם אוסף התלויות $$F = { A → BC, AE → D }$$ מה מהבאים נכון?",
+   "question": "נתון ש-E עודפת בתבנית היחסים$$R = (A, B, C, D, E)$$עם אוסף התלויות$$F = { A → BC, AE → D }$$מה מהבאים נכון?",
    "options": [
     {
      "id": "a",
@@ -2803,7 +2816,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -2841,13 +2855,14 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "‎{BFE}⁺: מ-F→AE מקבלים A,E; מ-BE→C מקבלים C; מ-C→AD מקבלים D. סה\"כ {A,B,C,D,E,F}=R, ולכן {BFE} מפתח-על. שאר האפשרויות אינן מכסות את כל R (למשל אינן כוללות את B) → B. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "${BFE}^{+}$: מ-F→AE מקבלים A,E; מ-BE→C מקבלים C; מ-C→AD מקבלים D. סה\"כ {A,B,C,D,E,F}=R, ולכן {BFE} מפתח-על. שאר האפשרויות אינן מכסות את כל R (למשל אינן כוללות את B) → B. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q20",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -2857,28 +2872,28 @@ window.DB_QUIZ = {
    "options": [
     {
      "id": "a",
-     "type": "algebra",
-     "value": "F→A וגם B→C"
+     "type": "text",
+     "value": "$F→A$ וגם $B→C$"
     },
     {
      "id": "b",
-     "type": "algebra",
-     "value": "B→C וגם C→D"
+     "type": "text",
+     "value": "$B→C$ וגם $C→D$"
     },
     {
      "id": "c",
-     "type": "algebra",
-     "value": "F→A וגם E→C"
+     "type": "text",
+     "value": "$F→A$ וגם $E→C$"
     },
     {
      "id": "d",
-     "type": "algebra",
-     "value": "E→C וגם B→C"
+     "type": "text",
+     "value": "$E→C$ וגם $B→C$"
     },
     {
      "id": "e",
-     "type": "algebra",
-     "value": "F→A וגם F→E"
+     "type": "text",
+     "value": "$F→A$ וגם $F→E$"
     }
    ],
    "correctId": "e",
@@ -2891,12 +2906,13 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
    "topic": "fd_norm",
-   "question": "בהינתן יחס אחר $R = (A, B, C, D)$ והתלויות $F = \\{AB → CD,\\; C → B\\}$, מה מהבאים נכון?",
+   "question": "בהינתן יחס אחר $R = (A, B, C, D)$ והתלויות $F = {AB → CD, C → B}$, מה מהבאים נכון?",
    "options": [
     {
      "id": "a",
@@ -2929,7 +2945,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -2971,19 +2988,20 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "high",
-   "explanation": "E חייבת בכל מפתח (אינה בצד ימין). EI⁺ = כל R וגם EG⁺ = כל R, ושניהם מינימליים ← שני מפתחות קבילים: EI ו-EG (שניהם מסומנים בבחינה).",
+   "explanation": "E חייבת בכל מפתח (אינה בצד ימין). $EI^{+}$ = כל R וגם $EG^{+}$ = כל R, ושניהם מינימליים ← שני מפתחות קבילים: EI ו-EG (שניהם מסומנים בבחינה).",
    "id": "21S-B-Q20",
    "examCode": "21S-B",
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
    "topic": "fd_norm",
    "contextId": "21S-B-fd",
-   "question": "מה הנרמול הנכון לפי BCNF? (ניתן להניח ש-Fu שווה ל-F⁺)",
+   "question": "מה הנרמול הנכון לפי BCNF? (ניתן להניח ש-Fu שווה ל-$F^{+}$)",
    "options": [
     {
      "id": "a",
@@ -2993,12 +3011,12 @@ window.DB_QUIZ = {
     {
      "id": "b",
      "type": "text",
-     "value": "R1(F,E,H), R2(F,G ,I), R3(E,I)."
+     "value": "R1(F,E,H), R2(F,G,I), R3(E,I)."
     },
     {
      "id": "c",
      "type": "text",
-     "value": "R4(E,F), R1(G,H), R2(F,G,H,I), R3(E,F,I) ."
+     "value": "R4(E,F), R1(G,H), R2(F,G,H,I), R3(E,F,I)."
     },
     {
      "id": "d",
@@ -3016,7 +3034,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -3055,7 +3074,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -3133,7 +3153,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -3220,13 +3241,14 @@ window.DB_QUIZ = {
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
    "topic": "fd_norm",
    "contextId": "22B-A-fd",
-   "question": "מי מבין ה-F הנתונים מקיים  $F^{+}=F1^{+}$ ?",
+   "question": "מי מבין ה-F הנתונים מקיים $F^{+} = F1^{+}$?",
    "options": [
     {
      "id": "a",
@@ -3308,7 +3330,8 @@ window.DB_QUIZ = {
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -3352,13 +3375,14 @@ window.DB_QUIZ = {
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
    "topic": "fd_norm",
    "contextId": "23B-A-q17",
-   "question": "נתון מסד נתונים חוקי מעל סכמה $R = (P1, P2, P3)$ (ראו המופע למעלה), ותהי F קבוצת התלויות הפונקציונליות מעל R. קבעו האם יתכן ש:\n(1) התלות $P1\\;P3 → P2$ היא תלות ב-F.\n(2) התלות $P2 → P3$ אינה תלות ב-F.",
+   "question": "נתון מסד נתונים חוקי מעל סכמה $R = (P1, P2, P3)$ (ראו המופע למעלה), ותהי F קבוצת התלויות הפונקציונליות מעל R. קבעו האם יתכן ש:\n(1) התלות $P1 P3 → P2$ היא תלות ב-F.\n(2) התלות $P2 → P3$ אינה תלות ב-F.",
    "options": [
     {
      "id": "a",
@@ -3392,7 +3416,7 @@ window.DB_QUIZ = {
     "b"
    ],
    "answerSource": "solution-pdf",
-   "explanation": "מופע חוקי חייב לקיים כל תלות ב-F. (1) התלות $P1\\;P3 → P2$ מופרת ע\"י שורות 3 ו-5: `(b,80,T)` ו-`(b,50,T)` — זהות ב-P1,P3 אך שונות ב-P2 — ולכן אינה יכולה להיות ב-F ⇒ 'לא יתכן'. (2) המופע מקיים את $P2 → P3$, כך שנדמה שהיא חייבת להיות ב-F, אך F אינו חייב לכלול כל תלות שהמופע מקיים (ומופעים עתידיים עשויים להפר אותה) ⇒ 'יתכן' שאינה ב-F. לכן D. הערה: על-פי המחוון קיבלו גם את מסיח B.",
+   "explanation": "מופע חוקי חייב לקיים כל תלות ב-F. (1) התלות $P1 P3 → P2$ מופרת ע\"י שורות 3 ו-5: `(b,80,T)` ו-`(b,50,T)` — זהות ב-P1,P3 אך שונות ב-P2 — ולכן אינה יכולה להיות ב-F ⇒ 'לא יתכן'. (2) המופע מקיים את $P2 → P3$, כך שנדמה שהיא חייבת להיות ב-F, אך F אינו חייב לכלול כל תלות שהמופע מקיים (ומופעים עתידיים עשויים להפר אותה) ⇒ 'יתכן' שאינה ב-F. לכן D. הערה: על-פי המחוון קיבלו גם את מסיח B.",
    "confidence": "high",
    "id": "23B-A-Q17",
    "examCode": "23B-A",
@@ -3400,7 +3424,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -3443,7 +3468,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -3478,7 +3504,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "החיתוך R1∩R2 = {B}, ו-B אינו מפתח של R1 ולא של R2 (B⁺ = {B}) — ולכן אין שימור מידע (הצירוף אינו lossless). ההיטלים על R1, R2 נותנים רק `A → B` ו-`C → B`, שמהם לא ניתן להסיק את `A → C` — ולכן גם אין שימור תלויות. לכן D.",
+   "explanation": "החיתוך R1∩R2 = {B}, ו-B אינו מפתח של R1 ולא של R2 ($B^{+} = {B}$) — ולכן אין שימור מידע (הצירוף אינו lossless). ההיטלים על R1, R2 נותנים רק `A → B` ו-`C → B`, שמהם לא ניתן להסיק את `A → C` — ולכן גם אין שימור תלויות. לכן D.",
    "confidence": "high",
    "id": "23B-A-Q19",
    "examCode": "23B-A",
@@ -3486,7 +3512,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q17",
@@ -3494,7 +3521,7 @@ window.DB_QUIZ = {
    "part": "ד",
    "topic": "fd_norm",
    "topicLabel": "תלויות ונרמול",
-   "question": "נתונה קבוצת תלויות פונקציונליות $F = {Q → U, U → V, PQ → WST, SU → TR, VT → RW, R → W}$. קבעו האם אחת מהתלויות הבאות נובעת מ-F:",
+   "question": "נתונה קבוצת תלויות פונקציונליות $$F = {Q → U, U → V, PQ → WST, SU → TR, VT → RW, R → W}$$קבעו האם אחת מהתלויות הבאות נובעת מ-F:",
    "options": [
     {
      "id": "a",
@@ -3525,11 +3552,12 @@ window.DB_QUIZ = {
    "correctId": "d",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "‏(SQ)⁺: מ-Q→U, U→V מקבלים U,V; מ-SU→TR מקבלים T,R; ולכן R→W → יש W, אז SQ→W נובעת. ‏(PQ)⁺: PQ→WST נותן W,S,T; ואז SU→TR נותן R, ולכן PQ→R נובעת. לעומת זאת (QU)⁺={Q,U,V} בלבד, כך ש-QU→R אינה נובעת. שתי תלויות נובעות → תשובה D.",
+   "explanation": "‏$(SQ)^{+}$: מ-Q→U, U→V מקבלים U,V; מ-SU→TR מקבלים T,R; ולכן R→W → יש W, אז SQ→W נובעת. ‏$(PQ)^{+}$: PQ→WST נותן W,S,T; ואז SU→TR נותן R, ולכן PQ→R נובעת. לעומת זאת $(QU)^{+}={Q,U,V}$ בלבד, כך ש-QU→R אינה נובעת. שתי תלויות נובעות → תשובה D.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam"
+   "source": "exam",
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q18",
@@ -3568,11 +3596,12 @@ window.DB_QUIZ = {
    "correctId": "e",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "‏(C)⁺: מ-C→AEF מקבלים A,E,F; מ-E→D מקבלים D; מ-D→B מקבלים B — כלומר C לבדו קובע את כל התכונות ולכן {C} הוא מפתח-על (וגם מפתח מועמד). מכאן ש-{BC} ו-{ABC} (המכילים את C) הם אף הם מפתחות-על — כל המפתחות המנויים הם מפתחות-על.",
+   "explanation": "‏$(C)^{+}$: מ-C→AEF מקבלים A,E,F; מ-E→D מקבלים D; מ-D→B מקבלים B — כלומר C לבדו קובע את כל התכונות ולכן {C} הוא מפתח-על (וגם מפתח מועמד). מכאן ש-{BC} ו-{ABC} (המכילים את C) הם אף הם מפתחות-על — כל המפתחות המנויים הם מפתחות-על.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam"
+   "source": "exam",
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q19",
@@ -3615,12 +3644,13 @@ window.DB_QUIZ = {
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam"
+   "source": "exam",
+   "lockOrder": true
   },
   {
    "part": "ד",
    "topic": "fd_norm",
-   "question": "נתונה סכמת R=(A,B,C) כלשהי, כמו כן נתונות 4 הטענות הבאות. כמה מהטענות הנתונות הן טענות נכונות?  **טענה 1:** ייתכן מצב שבו יהיה בדיוק מפתח קביל אחד וגודלו יהיה 1 (תכונה בודדת).  **טענה 2:** ייתכן מצב שבו יהיו בדיוק 2 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).  **טענה 3:** ייתכן מצב שבו יהיו בדיוק 3 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).  **טענה 4:** ייתכן מצב שבו יהיו בדיוק 2 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).",
+   "question": "נתונה סכמת R=(A,B,C) כלשהי, כמו כן נתונות 4 הטענות הבאות. כמה מהטענות הנתונות הן טענות נכונות?\n**טענה 1:** ייתכן מצב שבו יהיה בדיוק מפתח קביל אחד וגודלו יהיה 1 (תכונה בודדת).\n**טענה 2:** ייתכן מצב שבו יהיו בדיוק 2 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).\n**טענה 3:** ייתכן מצב שבו יהיו בדיוק 3 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).\n**טענה 4:** ייתכן מצב שבו יהיו בדיוק 2 מפתחות קבילים בגדלים שונים (מספר תכונות שונה).",
    "options": [
     {
      "id": "a",
@@ -3662,7 +3692,8 @@ window.DB_QUIZ = {
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
    "year": 2024,
    "source": "exam",
-   "topicLabel": "תלויות ונרמול"
+   "topicLabel": "תלויות ונרמול",
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -3710,7 +3741,7 @@ window.DB_QUIZ = {
   {
    "part": "ד",
    "topic": "fd_norm",
-   "question": "נתונה התבנית R עם התלויות הפונקציות F הבאות. איזה מבין הבאים הינו מפתח קביל ב-R?  $$R = (A, B, C, D, E, G, I)$$  $$F = {AB→C, GAEID→C, CD→E, EI→G, IG→E, DE→C, BC→A, AIDE→I, CGI→E, ICBEG→A}$$",
+   "question": "נתונה התבנית R עם התלויות הפונקציות F הבאות. איזה מבין הבאים הינו מפתח קביל ב-R?$$R = (A, B, C, D, E, G, I)$$$$F = {AB→C, GAEID→C, CD→E, EI→G, IG→E, DE→C, BC→A, AIDE→I, CGI→E, ICBEG→A}$$",
    "options": [
     {
      "id": "a",
@@ -3784,7 +3815,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "‏A⁺: מ-A→B מוסיפים B; מ-AB→E מוסיפים E. C→BD דורש C (שאינו בסגור). לכן A⁺ = {A, B, E} = {ABE}.",
+   "explanation": "$A^{+}$: מ-A→B מוסיפים B; מ-AB→E מוסיפים E. C→BD דורש C (שאינו בסגור). לכן A⁺ = {A, B, E} = {ABE}.",
    "confidence": "high",
    "id": "25B-A-Q17",
    "examCode": "25B-A",
@@ -3792,7 +3823,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -3836,12 +3868,13 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ד",
    "topic": "fd_norm",
-   "question": "נתונה הסכמה `R=(A,B,C,D,E)` וקבוצת תלויות פונקציונליות שהיא מקיימת:\n$$F = {B → E, DE → CD, C → AB}$$\nכמו כן, נתון הפירוק הבא: `R1(A,B,C,D)`, `R2(C,E)`, `R3(D,E)`.\nיש לבחור את הטענה הנכונה מבין הבאות:",
+   "question": "נתונה הסכמה `R=(A,B,C,D,E)` וקבוצת תלויות פונקציונליות שהיא מקיימת:\n$$F = {B → E, DE → CD, C → AB}$$כמו כן, נתון הפירוק הבא: `R1(A,B,C,D)`, `R2(C,E)`, `R3(D,E)`.\nיש לבחור את הטענה הנכונה מבין הבאות:",
    "options": [
     {
      "id": "a",
@@ -3879,12 +3912,13 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ד",
    "topic": "fd_norm",
-   "question": "נתונה הסכמה `R=(A,B,C,D,E)` וקבוצת תלויות פונקציונליות שהיא מקיימת:\n$$F = {A → B, C → D, BC → E}$$\nכמו כן, נתון הפירוק הבא: `R1(A,B)`, `R2(C,D)`, `R3(B,C,E)`, `R4(A,C)`.\nיש לבחור את הטענה הנכונה מבין הבאות:",
+   "question": "נתונה הסכמה `R=(A,B,C,D,E)` וקבוצת תלויות פונקציונליות שהיא מקיימת:\n$$F = {A → B, C → D, BC → E}$$כמו כן, נתון הפירוק הבא: `R1(A,B)`, `R2(C,D)`, `R3(B,C,E)`, `R4(A,C)`.\nיש לבחור את הטענה הנכונה מבין הבאות:",
    "options": [
     {
      "id": "a",
@@ -3922,7 +3956,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -3957,7 +3992,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "‏B⁺ = {B} (‏B אינו צד-שמאל של אף תלות ב-F1), ולכן B → E אינה נובעת. לעומת זאת C → D נובעת מ-C → BD; A → E מ-A → B ואז AB → E; ו-CE → B מ-E → B.",
+   "explanation": "‏B⁺ = {B} (‏B אינו צד-שמאל של אף תלות ב-F1), ולכן B → E אינה נובעת. לעומת זאת C → D נובעת מ-$C → BD$; $A → E$ מ-A → B ואז $AB → E$; ו-CE → B מ-E → B.",
    "confidence": "high",
    "contextId": "25C-A-fd",
    "id": "25C-A-Q17",
@@ -3966,7 +4001,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -4010,7 +4046,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -4053,7 +4090,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -4096,7 +4134,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -4131,7 +4170,7 @@ window.DB_QUIZ = {
     }
    ],
    "correctId": "d",
-   "explanation": "‏A⁺ = {A, B, D} (‏A → B ואז B → D), ו-E אינו נובע מ-A, לכן `A → E` אינה ב-F1⁺. לעומת זאת CE → B, AE → D ו-CD → A כן נובעות (למשל CD⁺ ⊇ {E, A}).",
+   "explanation": "‏A⁺ = {A, B, D} (‏A → B ואז B → D), ו-E אינו נובע מ-A, לכן `A → E` אינה ב-$F1^{+}$. לעומת זאת $CE → B$, $AE → D$ ו-$CD → A$ כן נובעות (למשל $CD^{+} ⊇ {E, A}$).",
    "confidence": "high",
    "id": "25S-B-Q17",
    "examCode": "25S-B",
@@ -4139,7 +4178,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": false
+   "official": false,
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -4187,7 +4227,7 @@ window.DB_QUIZ = {
   {
    "part": "ד",
    "topic": "fd_norm",
-   "question": "עבור היחס $R(A, B, C)$ עם $F = \\{C → B, B → A\\}$ — כמה מפתחות קבילים (candidate keys) יכולים להיות ל-R?",
+   "question": "עבור היחס $R(A, B, C)$ עם $F = {C → B, B → A}$ — כמה מפתחות קבילים (candidate keys) יכולים להיות ל-R?",
    "options": [
     {
      "id": "a",
@@ -4229,7 +4269,7 @@ window.DB_QUIZ = {
   {
    "part": "ד",
    "topic": "fd_norm",
-   "question": "נתונה הסכמה $R(A, B, C, D, E)$ המקיימת $F = \\{D → E, B → BC, CD → A\\}$. שקול את הפירוק הבא:\n$$R_1(A, B, C),\\ R_2(B, D),\\ R_3(C, D, E)$$\nאיזו מהטענות הבאות נכונה?",
+   "question": "נתונה הסכמה $R(A, B, C, D, E)$ המקיימת $F = {D → E, B → BC, CD → A}$. שקול את הפירוק הבא:\n$$R_{1}(A, B, C), R_{2}(B, D), R_{3}(C, D, E)$$איזו מהטענות הבאות נכונה?",
    "options": [
     {
      "id": "a",
@@ -4270,7 +4310,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": false
+   "official": false,
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -4306,7 +4347,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "a",
    "answerSource": "form-0",
-   "explanation": "‏C⁺ = {C}, כי C לבדו אינו צד שמאל של אף תלות, ולכן C → D אינה נובעת. לעומת זאת A⁺ = {A, B, C, D, E}, ולכן A → C, ‏A → E, ‏AB → E ו-A → BCDE כולן נובעות.",
+   "explanation": "‏C⁺ = {C}, כי C לבדו אינו צד שמאל של אף תלות, ולכן C → D אינה נובעת. לעומת זאת A⁺ = {A, B, C, D, E}, ולכן $A → C$, $A → E$, $AB → E$ ו-$A → BCDE$ כולן נובעות.",
    "confidence": "high",
    "id": "26B-A-Q17",
    "examCode": "26B-A",
@@ -4314,13 +4355,14 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ד",
    "topic": "fd_norm",
    "contextId": "26B-A-fd",
-   "question": "מהו הסגור של קבוצת התכונות {B}, כלומר {B}⁺, ביחס ל-F?",
+   "question": "מהו הסגור של קבוצת התכונות {B}, כלומר ${B}^{+}$, ביחס ל-F?",
    "options": [
     {
      "id": "a",
@@ -4350,7 +4392,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "a",
    "answerSource": "form-0",
-   "explanation": "מתחילים מ-{B}. ‏B → C מוסיפה את C. אין תלות נוספת שהצד השמאלי שלה מוכל ב-{B, C}, ולכן {B}⁺ = {B, C}.",
+   "explanation": "מתחילים מ-{B}. ‏B → C מוסיפה את C. אין תלות נוספת שהצד השמאלי שלה מוכל ב-{B, C}, ולכן ${B}^{+} = {B, C}$.",
    "confidence": "high",
    "id": "26B-A-Q18",
    "examCode": "26B-A",
@@ -4358,7 +4400,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -4394,7 +4437,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "a",
    "answerSource": "form-0",
-   "explanation": "‏A⁺: ‏A → B, ‏A → D, ואז B → C ו-AC → E, כך ש-A⁺ = {A, B, C, D, E}. ‏A מינימלי (תכונה יחידה), ולכן הוא מפתח קביל. ‏{A, B} ו-{A, C} הם על-מפתחות לא מינימליים, ו-{B, C}⁺ = {B, C}.",
+   "explanation": "$A^{+}$: A → B, ‏A → D, ואז B → C ו-AC → E, כך ש-A⁺ = {A, B, C, D, E}. ‏A מינימלי (תכונה יחידה), ולכן הוא מפתח קביל. ‏{A, B} ו-{A, C} הם על-מפתחות לא מינימליים, ו-${B, C}^{+} = {B, C}$.",
    "confidence": "high",
    "id": "26B-A-Q19",
    "examCode": "26B-A",
@@ -4402,7 +4445,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ד",
@@ -4438,7 +4482,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "a",
    "answerSource": "form-0",
-   "explanation": "‏A⁺ (בלי C) = {A, B, C, D, E}, כי A → B → C, ולכן כבר A → E, ו-C עודפת ב-AC → E. ‏A לא עודפת, כי C⁺ = {C} לא מכיל את E. ‏D ו-B הן הצד היחיד של התלות שלהן, ומחיקתן משנה את הסגור.",
+   "explanation": "$A^{+}$ (בלי C) = {A, B, C, D, E}, כי A → B → C, ולכן כבר A → E, ו-C עודפת ב-AC → E. ‏A לא עודפת, כי C⁺ = {C} לא מכיל את E. ‏D ו-B הן הצד היחיד של התלות שלהן, ומחיקתן משנה את הסגור.",
    "confidence": "high",
    "id": "26B-A-Q20",
    "examCode": "26B-A",
@@ -4446,7 +4490,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ה",
@@ -4567,7 +4612,7 @@ window.DB_QUIZ = {
     "e"
    ],
    "answerSource": "solution-pdf",
-   "explanation": "‏בפתרון נכתב: \"תשובה: C, נכונה כי מדובר על נתונים מבניים גדולים (כלומר שכל נתון הוא נתון גדול מאוד) מהירים ומשתנים, מכוון ל-NO SQL\". A שגויה — קיימים מסדי NoSQL עם שפות שאילתה דמויות-SQL; B שגויה — NoSQL אינו מחייב מבנה טבלאי; D שגויה — NoSQL אינו מחליף SQL בכל המקרים. בפתרון גם צוין שמכיוון שהניסוח \"מבניים\" בלבל, התקבלה גם תשובה E.",
+   "explanation": "‏בפתרון נכתב: \"תשובה: C, נכונה כי מדובר על נתונים מבניים גדולים (כלומר שכל נתון הוא נתון גדול מאוד) מהירים ומשתנים, מכוון ל-NO SQL\".‏ A שגויה — קיימים מסדי NoSQL עם שפות שאילתה דמויות-SQL;‏ B שגויה — NoSQL אינו מחייב מבנה טבלאי; D שגויה — NoSQL אינו מחליף SQL בכל המקרים. בפתרון גם צוין שמכיוון שהניסוח \"מבניים\" בלבל, התקבלה גם תשובה E.",
    "confidence": "high",
    "id": "23B-A-Q20",
    "examCode": "23B-A",
@@ -4575,7 +4620,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "NoSQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ה",
@@ -4618,7 +4664,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "NoSQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ה",
@@ -4661,7 +4708,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "NoSQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ה",
@@ -4696,7 +4744,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "‏בפתרון נכתב: \"תשובה: A, נתונים מובנים ועסקאות transactions מורכבות מתאימות ל-SQL. C ו-B מדברות על ללא סכמה ונתונים לא מובנים, D non structured מדבר גם כן על נתונים לא מובנים\". כלומר B, C ו-D הם תרחישים מובהקים ל-NoSQL, ורק A שייך לעולם הרלציוני.",
+   "explanation": "‏בפתרון נכתב: \"תשובה: A, נתונים מובנים ועסקאות transactions מורכבות מתאימות ל-SQL.‏ C ו-B מדברות על ללא סכמה ונתונים לא מובנים, D non structured מדבר גם כן על נתונים לא מובנים\". כלומר B, C ו-D הם תרחישים מובהקים ל-NoSQL, ורק A שייך לעולם הרלציוני.",
    "confidence": "high",
    "id": "23B-A-Q23",
    "examCode": "23B-A",
@@ -4704,7 +4752,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "NoSQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ה",
@@ -4747,7 +4796,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "NoSQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q20",
@@ -4790,7 +4840,7 @@ window.DB_QUIZ = {
    ],
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "בפתרון סומנו כנכונות גם A וגם D — שתיהן נתונים מובְנים, טבלאיים ובעלי יחסים ברורים (רשומות מובנות; מערכת הוצאות עם סעיפים והפניה עצמית), ולכן מתאימות ל-SQL. B ו-C הם נתונים גרפיים/לא-מובנים (רשת חברתית, המלצות) המתאימים יותר ל-NoSQL.",
+   "explanation": "בפתרון סומנו כנכונות גם A וגם D — שתיהן נתונים מובְנים, טבלאיים ובעלי יחסים ברורים (רשומות מובנות; מערכת הוצאות עם סעיפים והפניה עצמית), ולכן מתאימות ל-SQL.‏ B ו-C הם נתונים גרפיים/לא-מובנים (רשת חברתית, המלצות) המתאימים יותר ל-NoSQL.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
@@ -4932,7 +4982,8 @@ window.DB_QUIZ = {
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam"
+   "source": "exam",
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q24",
@@ -5097,7 +5148,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית"
+   "topicLabel": "אלגברה רלציונית",
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -5136,13 +5188,14 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית"
+   "topicLabel": "אלגברה רלציונית",
+   "lockOrder": true
   },
   {
    "part": "ג",
    "topic": "relalg",
    "contextId": "21B-C-db",
-   "question": "מה ישלים את הקטע החסר __(9)__ כדי שהשאילתה תחזיר את מזהה הפרה עם הגיל המינימלי?\n$$Π_{cow_id}(cow) − Π_{C2.cow_id} \\_\\_(9)\\_\\_ (ρ_{c1} cow \\; X \\; ρ_{c2} cow)$$",
+   "question": "מה ישלים את הקטע החסר __(9)__ כדי שהשאילתה תחזיר את מזהה הפרה עם הגיל המינימלי?\n$$Π_{cow_id}(cow) − Π_{C2.cow_id} __(9)__ (ρ_{c1} cow X ρ_{c2} cow)$$",
    "options": [
     {
      "id": "a",
@@ -5174,19 +5227,20 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "low",
-   "explanation": "`Π_{C2.cow_id} σ_{c2.age>c1.age} (ρc1 cow X ρc2 cow)` מחזיר את כל הפרות שקיימת פרה צעירה מהן — כלומר כל הפרות פרט לצעירה ביותר. חיסור מכל הפרות משאיר את הפרה עם הגיל המינימלי → A. (התשובה מפתרון סטודנט — לא רשמית.)",
+   "explanation": "$Π_{C2.cow_id} σ_{c2.age>c1.age} (ρ_{c1} cow X ρ_{c2} cow)$ מחזיר את כל הפרות שקיימת פרה צעירה מהן — כלומר כל הפרות פרט לצעירה ביותר. חיסור מכל הפרות משאיר את הפרה עם הגיל המינימלי → A. (התשובה מפתרון סטודנט — לא רשמית.)",
    "id": "21B-C-Q16",
    "examCode": "21B-C",
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית"
+   "topicLabel": "אלגברה רלציונית",
+   "lockOrder": true
   },
   {
    "part": "ג",
    "topic": "relalg",
    "contextId": "21B-C-db",
-   "question": "מה תחזיר השאילתה הבאה?\n$$Π_{nickname} \\; σ_{age > block_id} \\; (cow ⊗ place_of)$$",
+   "question": "מה תחזיר השאילתה הבאה?\n$$Π_{nickname} σ_{age > block_id} (cow ⊗ place_of)$$",
    "options": [
     {
      "id": "a",
@@ -5219,13 +5273,14 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית"
+   "topicLabel": "אלגברה רלציונית",
+   "lockOrder": true
   },
   {
    "part": "ג",
    "topic": "relalg",
    "contextId": "21B-C-db",
-   "question": "תלמידים כתבו שאילתה להצגת כינויי הפרות שיש להן בת. מי מהשאילתות הבאות נכונה?\n**שאילתה 1:**\n$$Π_{nickname} (cow ⊗ mother_of)$$\n**שאילתה 2:**\n$$Π_{nickname} \\; σ_{cow.cow_id = cow.mother_id} \\; (cow \\; X \\; mother_of)$$",
+   "question": "תלמידים כתבו שאילתה להצגת כינויי הפרות שיש להן בת. מי מהשאילתות הבאות נכונה?\n**שאילתה 1:**\n$$Π_{nickname} (cow ⊗ mother_of)$$\n**שאילתה 2:**\n$$Π_{nickname} σ_{cow.cow_id = cow.mother_id} (cow X mother_of)$$",
    "options": [
     {
      "id": "a",
@@ -5258,7 +5313,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית"
+   "topicLabel": "אלגברה רלציונית",
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -5297,7 +5353,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית"
+   "topicLabel": "אלגברה רלציונית",
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -5330,13 +5387,14 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "high",
-   "explanation": "\"גם וגם\" בשתי שורות נפרדות של אותו לקוח מחייב חיתוך (∩) של שמות הלקוחות מכל עיר. תנאי σ יחיד עם city=A ∧ city=B (תשובה א) לעולם ריק.",
+   "explanation": "\"גם וגם\" בשתי שורות נפרדות של אותו לקוח מחייב חיתוך (∩) של שמות הלקוחות מכל עיר. תנאי σ יחיד עם $city=A ∧ city=B$ (תשובה א) לעולם ריק.",
    "id": "21S-B-Q14",
    "examCode": "21S-B",
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית"
+   "topicLabel": "אלגברה רלציונית",
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -5352,12 +5410,12 @@ window.DB_QUIZ = {
     {
      "id": "b",
      "type": "text",
-     "value": "מוצאת את ה-id של הדירה\\ות היקרה ביותר."
+     "value": "מוצאת את ה-id של הדירה/ות היקרה ביותר."
     },
     {
      "id": "c",
      "type": "text",
-     "value": "מוצאת את ה-id של הדירה\\ות הזולה ביותר."
+     "value": "מוצאת את ה-id של הדירה/ות הזולה ביותר."
     },
     {
      "id": "d",
@@ -5425,7 +5483,7 @@ window.DB_QUIZ = {
     {
      "id": "a",
      "type": "text",
-     "value": "תוצאה זהה לפקודת הפרש בין הטבלאות ."
+     "value": "תוצאה זהה לפקודת הפרש בין הטבלאות."
     },
     {
      "id": "b",
@@ -5435,12 +5493,12 @@ window.DB_QUIZ = {
     {
      "id": "c",
      "type": "text",
-     "value": "תוצאה זהה לפקודת איחוד בין הטבלאות ."
+     "value": "תוצאה זהה לפקודת איחוד בין הטבלאות."
     },
     {
      "id": "d",
      "type": "text",
-     "value": "תוצאה זהה למכפלה קרטזית בין הטבלאות ."
+     "value": "תוצאה זהה למכפלה קרטזית בין הטבלאות."
     }
    ],
    "correctId": "d",
@@ -5464,7 +5522,7 @@ window.DB_QUIZ = {
     {
      "id": "a",
      "type": "text",
-     "value": "מחזירה מספרי דירות בעיר חולון שנמכרו במחיר שהן היו שוות ."
+     "value": "מחזירה מספרי דירות בעיר חולון שנמכרו במחיר שהן היו שוות."
     },
     {
      "id": "b",
@@ -5531,7 +5589,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית"
+   "topicLabel": "אלגברה רלציונית",
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -5542,22 +5601,22 @@ window.DB_QUIZ = {
     {
      "id": "a",
      "type": "algebra",
-     "value": "Π instrument (one_man_band X musician X band_musician)"
+     "value": "Π_{instrument} (one_man_band X musician X band_musician)"
     },
     {
      "id": "b",
      "type": "algebra",
-     "value": "Π instrument (one_man_band ⊗ musician ⊗ band_musician)"
+     "value": "Π_{instrument} (one_man_band ⊗ musician ⊗ band_musician)"
     },
     {
      "id": "c",
      "type": "algebra",
-     "value": "Π instrument σ_{one_man_band.b_code=band_musician.b_code} (one_man_band X musician X band_musician)"
+     "value": "Π_{instrument} σ_{one_man_band.b_code=band_musician.b_code} (one_man_band X musician X band_musician)"
     },
     {
      "id": "d",
      "type": "algebra",
-     "value": "Π instrument σ_{band_musician.m_id=band_musician.m_id} (one_man_band X musician ⊗ band_musician)"
+     "value": "Π_{instrument} σ_{band_musician.m_id=band_musician.m_id} (one_man_band X musician ⊗ band_musician)"
     },
     {
      "id": "e",
@@ -5619,13 +5678,14 @@ window.DB_QUIZ = {
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית"
+   "topicLabel": "אלגברה רלציונית",
+   "lockOrder": true
   },
   {
    "part": "ג",
    "topic": "relalg",
    "contextId": "22B-A-schema",
-   "question": "מה עושה השאילתה הבאה:  $$Π m_id σ_{m_gender=\"אשה\"} (musician) − Π B2.m_id σ_{B1.num_of_instruments > B2.num_of_instruments} (ρ B1 one_man_band X ρ B2 one_man_band)$$",
+   "question": "מה עושה השאילתה הבאה:  $$Π_{m_id} σ_{m_gender=\"אשה\"} (musician) − Π_{B2.m_id} σ_{B1.num_of_instruments > B2.num_of_instruments} (ρ_{B1} one_man_band X ρ_{B2} one_man_band)$$",
    "options": [
     {
      "id": "a",
@@ -5663,7 +5723,8 @@ window.DB_QUIZ = {
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית"
+   "topicLabel": "אלגברה רלציונית",
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -5707,7 +5768,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -5751,7 +5813,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -5795,7 +5858,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -5839,7 +5903,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q13",
@@ -5883,7 +5948,8 @@ window.DB_QUIZ = {
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam"
+   "source": "exam",
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q14",
@@ -5923,11 +5989,12 @@ window.DB_QUIZ = {
    "correctId": "b",
    "official": true,
    "answerSource": "solution-pdf",
-   "explanation": "זוהי חלוקה: מחלקים את הזוגות (`to_country`, `from_country`) שבהם ניתנו 12 נקודות בקבוצת כל המדינות הנותנות (`Π_{from_country} Score`). התוצאה = המדינות שקיבלו 12 מכל מדינה. ב-C המחולק בעל תכונה יחידה ואינו מכיל את סכמת המחלק, ולכן החלוקה אינה תקינה.",
+   "explanation": "זוהי חלוקה: מחלקים את הזוגות (`to_country`, `from_country`) שבהם ניתנו 12 נקודות בקבוצת כל המדינות הנותנות ($Π_{from_country} Score$). התוצאה = המדינות שקיבלו 12 מכל מדינה. ב-C המחולק בעל תכונה יחידה ואינו מכיל את סכמת המחלק, ולכן החלוקה אינה תקינה.",
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam"
+   "source": "exam",
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q15",
@@ -5971,7 +6038,8 @@ window.DB_QUIZ = {
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam"
+   "source": "exam",
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q16",
@@ -6064,7 +6132,8 @@ window.DB_QUIZ = {
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
    "year": 2024,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית"
+   "topicLabel": "אלגברה רלציונית",
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -6108,7 +6177,8 @@ window.DB_QUIZ = {
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
    "year": 2024,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית"
+   "topicLabel": "אלגברה רלציונית",
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -6150,20 +6220,20 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "accepted-answers-docx",
    "confidence": "high",
-   "explanation": "התקבלו ה' וגם א'.",
+   "explanation": "התקבלו שתי תשובות: \"כל התשובות האחרות אינן נכונות\" (ה' בבחינה) וגם \"מזהי חברי הספרייה, שלא השאילו את אותו הספר יותר מפעם אחת, כולל שלא השאילו ספרים כלל\" (א' בבחינה).",
    "id": "24B-A-Q16",
    "examCode": "24B-A",
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
    "year": 2024,
    "source": "exam",
-   "topicLabel": "אלגברה רלציונית"
+   "topicLabel": "אלגברה רלציונית",
+   "lockOrder": true
   },
   {
    "part": "ג",
    "topic": "relalg",
    "contextId": "24B-A-ra",
-   "question": "מה נקבל ב-RES? **הערה:** ההנחה היא, כי אין שני תאריכים זהים בטבלת Borrow.",
-   "code": "MBD ← Π borrow_date BR1 − Π BR1.borrow_date (σ (BR1.borrow_date > BR2.borrow_date) (ρ BR1 BR X ρ BR2 BR))\nRES ← Π title (σ borrow_date=MBD.borrow_date ((B ⊗ BR) X MBD))",
+   "question": "מה נקבל ב-RES? **הערה:** ההנחה היא, כי אין שני תאריכים זהים בטבלת Borrow.\n$$MBD ← Π_{borrow_date} BR1 − Π_{BR1.borrow_date} (σ_{(BR1.borrow_date > BR2.borrow_date)} (ρ_{BR1} BR X ρ_{BR2} BR))$$\n$$RES ← Π_{title} (σ_{borrow_date=MBD.borrow_date} ((B ⊗ BR) X MBD))$$",
    "options": [
     {
      "id": "a",
@@ -6237,7 +6307,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "כדי לקבל את המורה בעל הציון הנמוך ביותר: כל מזהי המורים פחות אלו שקיים מורה עם ציון נמוך מהם. לכן חלק (1) = `Π_id(teacher) −` (הפרש) וחלק (2) = `>` (T1 גבוה מ-T2). לכן תשובה A.",
+   "explanation": "כדי לקבל את המורה בעל הציון הנמוך ביותר: כל מזהי המורים פחות אלו שקיים מורה עם ציון נמוך מהם. לכן חלק (1) = $Π_{id}(teacher) −$ (הפרש) וחלק (2) = `>` (T1 גבוה מ-T2). לכן תשובה A.",
    "confidence": "high",
    "id": "25B-A-Q13",
    "examCode": "25B-A",
@@ -6245,7 +6315,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -6333,7 +6404,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -6369,7 +6441,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "‏Π(A,B)(R) = {(2,2),(1,2),(3,2),(2,5)}; Π(B,C)(S) = {(5,7),(2,5),(6,5),(2,3),(2,2)}. החיבור הטבעי על B נותן 10 שורות (9 עבור B=2 ועוד 1 עבור B=5) ו-3 עמודות (A,B,C). לאחר σ_{R.A ≤ 2} נותרות 7 שורות ו-3 עמודות.",
+   "explanation": "‏Π(A,B)(R) = {(2,2),(1,2),(3,2),(2,5)}; Π(B,C)(S) = {(5,7),(2,5),(6,5),(2,3),(2,2)}. החיבור הטבעי על B נותן 10 שורות (9 עבור B=2 ועוד 1 עבור B=5) ו-3 עמודות (A,B,C). לאחר $σ_{R.A ≤ 2}$ נותרות 7 שורות ו-3 עמודות.",
    "confidence": "high",
    "id": "25B-A-Q16",
    "examCode": "25B-A",
@@ -6377,7 +6449,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -6465,7 +6538,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -6552,7 +6626,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -6638,7 +6713,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": false
+   "official": false,
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -6766,7 +6842,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -6854,7 +6931,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ג",
@@ -6898,7 +6976,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7015,7 +7094,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "a",
    "confidence": "high",
-   "explanation": "פתרונות 1 (>= all) ו-3 (= any (max)) נכונים. פתרון 2 שגוי — max ללא GROUP BY יחד עם עמודות נוספות (p_name, p_gender).",
+   "explanation": "פתרונות 1 (`>= all`) ו-3 (`= any (max)`) נכונים. פתרון 2 שגוי — `max` ללא `GROUP BY` יחד עם עמודות נוספות (`p_name, p_gender`).",
    "official": true,
    "answerSource": "solution-pdf",
    "id": "21B-A-Q12",
@@ -7055,7 +7134,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "b",
    "confidence": "high",
-   "explanation": "לכל זוג (עיר, תחביב) יש לקבץ לפי שתי התכונות ולספור, ולכן Group by p_city, h_code.",
+   "explanation": "לכל זוג (עיר, תחביב) יש לקבץ לפי שתי התכונות ולספור, ולכן `Group by p_city, h_code`.",
    "official": true,
    "answerSource": "solution-pdf",
    "id": "21B-A-Q13",
@@ -7192,7 +7271,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7233,7 +7313,7 @@ window.DB_QUIZ = {
     "e"
    ],
    "confidence": "high",
-   "explanation": "קודי התחביב בסדר עולה ושמות האנשים בסדר יורד → Order by interested.h_code, person.p_name desc. התקבלה גם E, כיוון שלא צוין במפורש מה למיין קודם.",
+   "explanation": "קודי התחביב בסדר עולה ושמות האנשים בסדר יורד → `Order by interested.h_code, person.p_name desc`. התקבלה גם E, כיוון שלא צוין במפורש מה למיין קודם.",
    "official": true,
    "answerSource": "solution-pdf",
    "id": "21B-A-Q8",
@@ -7241,7 +7321,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד א׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7326,7 +7407,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7366,7 +7448,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7406,7 +7489,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7446,7 +7530,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7486,7 +7571,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7526,7 +7612,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7571,7 +7658,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7616,7 +7704,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7661,7 +7750,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7706,7 +7796,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7751,7 +7842,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר ב׳ מועד ג׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7864,13 +7956,14 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "high",
-   "explanation": "יש לצרף Purchases→Apartment→customer ולסנן name like \"%a%\" AND age>39. תשובה א משתמשת ב-OR, תשובה ג חסרה את הצירוף ל-Apartment, ותשובה ד מבצעת מכפלה קרטזית ללא תנאי צירוף.",
+   "explanation": "יש לצרף Purchases→Apartment→customer ולסנן `name like \"%a%\" AND age>39`. תשובה א משתמשת ב-`OR`, תשובה ג חסרה את הצירוף ל-Apartment, ותשובה ד מבצעת מכפלה קרטזית ללא תנאי צירוף.",
    "id": "21S-B-Q12",
    "examCode": "21S-B",
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7909,7 +8002,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -7948,7 +8042,8 @@ window.DB_QUIZ = {
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
    "year": 2021,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -8021,7 +8116,7 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "combined-pdf",
    "confidence": "high",
-   "explanation": "ללא count השאילתה מחזירה את רשימת ה-contractor_id של הקבלנים שבנו דירות שנמכרו (ללא צורך ב-GROUP BY).",
+   "explanation": "ללא count השאילתה מחזירה את רשימת ה-contractor_id של הקבלנים שבנו דירות שנמכרו (ללא צורך ב-`GROUP BY`).",
    "id": "21S-B-Q9",
    "examCode": "21S-B",
    "examLabel": "2021 סמסטר קיץ מועד ב׳",
@@ -8071,13 +8166,14 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "solution-pdf",
    "confidence": "high",
-   "explanation": "שאלה מורכבת — התקבלו שתי התשובות D ו-E (יש חוסר התאמה בשורות אך הוא אפשרי כיוון שמדובר ב-NOT EXISTS).",
+   "explanation": "שאלה מורכבת — התקבלו שתי התשובות D ו-E (יש חוסר התאמה בשורות אך הוא אפשרי כיוון שמדובר ב-`NOT EXISTS`).",
    "id": "22B-A-Q10",
    "examCode": "22B-A",
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -8111,7 +8207,7 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "solution-pdf",
    "confidence": "high",
-   "explanation": "מצרפים את שני היחסים המבוקשים (inst_n ו-max_set) בתנאי inst_n.inst_num = max_set.max_num כדי לבחור את הקבוצות בעלות מספר הכלים המקסימלי.",
+   "explanation": "מצרפים את שני היחסים המבוקשים (`inst_n` ו-`max_set`) בתנאי `inst_n.inst_num = max_set.max_num` כדי לבחור את הקבוצות בעלות מספר הכלים המקסימלי.",
    "id": "22B-A-Q5",
    "examCode": "22B-A",
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
@@ -8167,7 +8263,8 @@ window.DB_QUIZ = {
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -8210,13 +8307,14 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "solution-pdf",
    "confidence": "high",
-   "explanation": "השאילתה אינה נכונה — חסר בה חלק של JOIN (הקשר band.b_code = band_musician.b_code), ואינה מתייחסת לסוג הלהקה. התקבלו התשובות D ו-E.",
+   "explanation": "השאילתה אינה נכונה — חסר בה חלק של JOIN (הקשר `band.b_code = band_musician.b_code`), ואינה מתייחסת לסוג הלהקה. התקבלו התשובות D ו-E.",
    "id": "22B-A-Q7",
    "examCode": "22B-A",
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -8261,7 +8359,8 @@ window.DB_QUIZ = {
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
    "year": 2022,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -8295,7 +8394,7 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "solution-pdf",
    "confidence": "high",
-   "explanation": "המיון: כלי נגינה בסדר עולה ושמות המוסיקאים בסדר יורד → Order by inst.instrument, m.m_name desc. אין צורך ב-GROUP BY כי מוצגות שורות עם חזרות.",
+   "explanation": "המיון: כלי נגינה בסדר עולה ושמות המוסיקאים בסדר יורד → `Order by inst.instrument, m.m_name desc`. אין צורך ב-`GROUP BY` כי מוצגות שורות עם חזרות.",
    "id": "22B-A-Q9",
    "examCode": "22B-A",
    "examLabel": "2022 סמסטר ב׳ מועד א׳",
@@ -8341,7 +8440,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "המדינה המקבלת היא `to_country`; מסננים `num_points = 12` ומקבצים לפי `to_country` עם COUNT(*). A היא התשובה הנכונה והתמציתית ביותר. C מגיע לתוצאה דומה דרך תת-שאילתה מיותרת (וקיבל ניקוד חלקי בלבד), ואילו B מקבץ לפי `from_country` ו-D מחזיר מספר יחיד ללא פירוט למדינה.",
+   "explanation": "המדינה המקבלת היא `to_country`; מסננים `num_points = 12` ומקבצים לפי `to_country` עם `COUNT(*)`. A היא התשובה הנכונה והתמציתית ביותר. C מגיע לתוצאה דומה דרך תת-שאילתה מיותרת (וקיבל ניקוד חלקי בלבד), ואילו B מקבץ לפי `from_country` ו-D מחזיר מספר יחיד ללא פירוט למדינה.",
    "confidence": "high",
    "id": "23B-A-Q10",
    "examCode": "23B-A",
@@ -8349,7 +8448,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -8397,7 +8497,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -8481,7 +8582,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "c",
    "answerSource": "solution-pdf",
-   "explanation": "צריך לספור שנים *שונות*: `count(distinct year) > 1`. מסיח A סופר `count(year)` ועלול לספור אותה שנה פעמיים (לכן ירדו עליו נקודות); B משתמש ב-COUNT בתוך WHERE (לא חוקי); D מפעיל HAVING ללא GROUP BY. לכן C.",
+   "explanation": "צריך לספור שנים **שונות**:`count(distinct year) > 1`. מסיח A סופר `count(year)` ועלול לספור אותה שנה פעמיים (לכן ירדו עליו נקודות); B משתמש ב-COUNT בתוך WHERE (לא חוקי); D מפעיל HAVING ללא GROUP BY. לכן C.",
    "confidence": "high",
    "id": "23B-A-Q5",
    "examCode": "23B-A",
@@ -8489,7 +8590,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -8537,13 +8639,15 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
    "topic": "sql",
    "contextId": "23B-A-sql",
-   "question": "מה ממוצע הפרש הגילאים של המופיעים כל שנה (כלומר בכל שנה יש הפרש בין הגיל המקסימלי באותה שנה לגיל המינימלי באותה שנה — מה הממוצע של ההפרשים הללו), למופיעים בין השנים 2023 לבין 2003?\n**אפשר להשתמש ב-view הבא, אך לא חובה:**\n`CREATE VIEW temp_view AS (SELECT * FROM Performer JOIN Band USING(p_name) JOIN Represent USING(b_name)`",
+   "question": "מה ממוצע הפרש הגילאים של המופיעים כל שנה (כלומר בכל שנה יש הפרש בין הגיל המקסימלי באותה שנה לגיל המינימלי באותה שנה — מה הממוצע של ההפרשים הללו), למופיעים בין השנים 2023 לבין 2003?\n**אפשר להשתמש ב-view הבא, אך לא חובה:**",
+   "code": "CREATE VIEW temp_view AS (SELECT * FROM Performer JOIN Band USING(p_name) JOIN Represent USING(b_name)",
    "options": [
     {
      "id": "a",
@@ -8577,7 +8681,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "c",
    "answerSource": "solution-pdf",
-   "explanation": "יש לחשב לכל שנה את `MAX(age) - MIN(age)` (עם GROUP BY year בתת-שאילתה, שחייבת לקבל שם — funnyQ), ומעליה AVG. A מחשב ממוצע גילאים ולא הפרשים; B מחלק ב-COUNT(*) במקום ממוצע לפי שנה; ל-D יש תנאי לא-קבוצתי ב-HAVING. לכן C.",
+   "explanation": "יש לחשב לכל שנה את `MAX(age) - MIN(age)` (עם `GROUP BY year` בתת-שאילתה, שחייבת לקבל שם — `funnyQ`), ומעליה `AVG`. A מחשב ממוצע גילאים ולא הפרשים; B מחלק ב-`COUNT(*)` במקום ממוצע לפי שנה; ל-D יש תנאי לא-קבוצתי ב-HAVING. לכן C.",
    "confidence": "high",
    "id": "23B-A-Q7",
    "examCode": "23B-A",
@@ -8585,7 +8689,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -8629,7 +8734,7 @@ window.DB_QUIZ = {
     "b"
    ],
    "answerSource": "solution-pdf",
-   "explanation": "בשאלה מספר שגיאות מכוונות: A מקבץ ב-GROUP BY country_name (עמודה שאינה בטבלת Band); B מקבץ לפי p_name במקום b_name; C (LEFT JOIN ... IS NULL) מחזיר מי שאינו בלהקה כלל ולא 'להקה של אדם אחד'; D משתמש ב-COUNT בתוך WHERE (לא חוקי). לכן התשובה E. הערה: על-פי המחוון קיבלו גם את מסיח B.",
+   "explanation": "בשאלה מספר שגיאות מכוונות: A מקבץ ב-`GROUP BY country_name` (עמודה שאינה בטבלת Band); B מקבץ לפי `p_name` במקום `b_name`; C (`LEFT JOIN ... IS NULL`) מחזיר מי שאינו בלהקה כלל ולא 'להקה של אדם אחד'; D משתמש ב-COUNT בתוך WHERE (לא חוקי). לכן התשובה E. הערה: על-פי המחוון קיבלו גם את מסיח B.",
    "confidence": "high",
    "id": "23B-A-Q8",
    "examCode": "23B-A",
@@ -8637,7 +8742,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -8685,7 +8791,8 @@ window.DB_QUIZ = {
    "year": 2023,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q10",
@@ -8733,7 +8840,8 @@ window.DB_QUIZ = {
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam"
+   "source": "exam",
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q11",
@@ -8781,7 +8889,8 @@ window.DB_QUIZ = {
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam"
+   "source": "exam",
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q12",
@@ -8825,7 +8934,8 @@ window.DB_QUIZ = {
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam"
+   "source": "exam",
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q5",
@@ -8899,13 +9009,13 @@ window.DB_QUIZ = {
     {
      "id": "c",
      "type": "code",
-     "value": "SELECT country_name FROM Represent WHERE b_name NOT IN (SELECT b_name FROM Band JOIN Performer USING(p_name) WHERE height < 1.80)",
+     "value": "SELECT country_name FROM Represent WHERE b_name NOT IN\n  (SELECT b_name FROM Band JOIN Performer USING(p_name)\n   WHERE height < 1.80)",
      "lang": "sql"
     },
     {
      "id": "d",
      "type": "code",
-     "value": "SELECT country_name FROM Represent As R1 WHERE NOT EXISTS (SELECT p_name FROM Band As B1 WHERE b_name NOT IN (SELECT b_name FROM Performer JOIN Band As B2 USING(p_name) WHERE height < 1.80 and B1.b_name = R1.p_name))",
+     "value": "SELECT country_name FROM Represent As R1 WHERE NOT EXISTS\n  (SELECT p_name FROM Band As B1 WHERE b_name NOT IN\n    (SELECT b_name FROM Performer JOIN Band As B2 USING(p_name)\n     WHERE height < 1.80 and B1.b_name = R1.p_name))",
      "lang": "sql"
     },
     {
@@ -8921,7 +9031,8 @@ window.DB_QUIZ = {
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam"
+   "source": "exam",
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q7",
@@ -8970,7 +9081,8 @@ window.DB_QUIZ = {
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam"
+   "source": "exam",
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q8",
@@ -9018,7 +9130,8 @@ window.DB_QUIZ = {
    "confidence": "high",
    "examLabel": "2023 סמסטר ב׳ מועד א׳",
    "year": 2023,
-   "source": "exam"
+   "source": "exam",
+   "lockOrder": true
   },
   {
    "id": "23B-A2-Q9",
@@ -9026,7 +9139,8 @@ window.DB_QUIZ = {
    "part": "ב",
    "topic": "sql",
    "topicLabel": "SQL",
-   "question": "לכל תזמורת מעוניינים להשכיר מכולה שבה הכלים יהיו בקופסאות בגודל המתאים להם, אך יעמדו אך ורק קופסא על גבי קופסא. מה גובה ה-`height` של המכולה לכל תזמורת? השלם את `(1)`:\n`SELECT ____(1)____ FROM Band JOIN Instrument USING(serial_number) GROUP BY b_name`",
+   "question": "לכל תזמורת מעוניינים להשכיר מכולה שבה הכלים יהיו בקופסאות בגודל המתאים להם, אך יעמדו אך ורק קופסא על גבי קופסא. מה גובה ה-`height` של המכולה לכל תזמורת? השלם את `(1)`:",
+   "code": "SELECT ____(1)____ FROM Band JOIN Instrument USING(serial_number) GROUP BY b_name",
    "contextId": "23B-A2-sql",
    "options": [
     {
@@ -9206,32 +9320,32 @@ window.DB_QUIZ = {
    "topic": "sql",
    "contextId": "24B-A-sql",
    "question": "כתבו שאילתה שמחזירה את השם הפרטי ושם משפחה של הלקוחות שהזמינו הכי הרבה טיסות. היעזרו בשאילתא הנתונה:",
-   "code": "CREATE VIEW numBookingPerCustomer AS (SELECT PassportNumber, count(DISTINCT BookingID) As numBooking FROM Booking Group By PassportNumber",
+   "code": "CREATE VIEW numBookingPerCustomer AS\n(SELECT PassportNumber, count(DISTINCT BookingID) As numBooking\nFROM Booking Group By PassportNumber",
    "options": [
     {
      "id": "a",
      "type": "code",
-     "value": "SELECT LastName, FirstName FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)\nWHERE numBooking >= ALL (SELECT numBooking FROM numBookingPerCustomer)"
+     "value": "SELECT LastName, FirstName\nFROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)\nWHERE numBooking >= ALL (SELECT numBooking FROM numBookingPerCustomer)"
     },
     {
      "id": "b",
      "type": "code",
-     "value": "SELECT LastName, FirstName , max (numBooking ) FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)"
+     "value": "SELECT LastName, FirstName , max (numBooking )\nFROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)"
     },
     {
      "id": "c",
      "type": "code",
-     "value": "SELECT LastName, FirstName FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber) WHERE max(numBooking)"
+     "value": "SELECT LastName, FirstName\nFROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)\nWHERE max(numBooking)"
     },
     {
      "id": "d",
      "type": "code",
-     "value": "SELECT LastName, FirstName FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber) HAVING numBooking not in min(numBooking)"
+     "value": "SELECT LastName, FirstName\nFROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)\nHAVING numBooking not in min(numBooking)"
     },
     {
      "id": "e",
      "type": "code",
-     "value": "SELECT LastName, FirstName FROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)\nHAVING numBooking = (SELECT numBooking FROM numBookingPerCustomer WHERE max(numBooking)"
+     "value": "SELECT LastName, FirstName\nFROM Passenger JOIN numBookingPerCustomer USING (PassportNumber)\nHAVING numBooking =\n  (SELECT numBooking FROM numBookingPerCustomer WHERE max(numBooking)"
     }
    ],
    "correctId": "a",
@@ -9287,13 +9401,14 @@ window.DB_QUIZ = {
    "official": true,
    "answerSource": "accepted-answers-docx",
    "confidence": "high",
-   "explanation": "יש לצרף Passenger→Booking→Schedule→Flight→Airline. בתשובה ב חלה שגיאה (Schedule לא הוגדר AS s), ולכן התקבלו א או ה.",
+   "explanation": "יש לצרף Passenger→Booking→Schedule→Flight→Airline. בתשובה ב חלה שגיאה (`Schedule` לא הוגדר `AS s`), ולכן התקבלו א או ה.",
    "id": "24B-A-Q6",
    "examCode": "24B-A",
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
    "year": 2024,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -9341,7 +9456,8 @@ window.DB_QUIZ = {
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
    "year": 2024,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -9434,7 +9550,8 @@ window.DB_QUIZ = {
    "examLabel": "2024 סמסטר ב׳ מועד א׳",
    "year": 2024,
    "source": "exam",
-   "topicLabel": "SQL"
+   "topicLabel": "SQL",
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -9474,7 +9591,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "c",
    "answerSource": "solution-pdf",
-   "explanation": "\"נרשמו לכל הקורסים של Mathematics\" = חלוקה: אין קורס Mathematics שאליו הסטודנט לא נרשם — תבנית NOT EXISTS כפולה (C). B בודק היעדר הרשמה; ל-A מספיק קורס אחד; D הוא חיבור פנימי רגיל.",
+   "explanation": "\"נרשמו לכל הקורסים של Mathematics\" = חלוקה: אין קורס Mathematics שאליו הסטודנט לא נרשם — תבנית `NOT EXISTS` כפולה (C). B בודק היעדר הרשמה; ל-A מספיק קורס אחד; D הוא חיבור פנימי רגיל.",
    "confidence": "high",
    "id": "25B-A-Q10",
    "examCode": "25B-A",
@@ -9482,7 +9599,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -9522,7 +9640,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "עם אופרטור CONTAINS: קבוצת הקורסים שאליהם נרשם הסטודנט חייבת להכיל את קבוצת קורסי Mathematics — כלומר (הרשמות הסטודנט) CONTAINS (קורסי Mathematics), כפי ש-A מנסח. B הופך את כיוון ההכלה; C משווה לכל הקורסים; D משווה `course_id` מול `department`.",
+   "explanation": "עם אופרטור `CONTAINS`: קבוצת הקורסים שאליהם נרשם הסטודנט חייבת להכיל את קבוצת קורסי Mathematics — כלומר (הרשמות הסטודנט) `CONTAINS` (קורסי Mathematics), כפי ש-A מנסח. B הופך את כיוון ההכלה; C משווה לכל הקורסים; D משווה `course_id` מול `department`.",
    "confidence": "high",
    "id": "25B-A-Q11",
    "examCode": "25B-A",
@@ -9530,7 +9648,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -9570,7 +9689,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "‏A מחבר Students↔Enrollments↔Courses ומסנן `credits >= 4` עם סדר העמודות הנכון (first_name, course_name). B בודק `credits > 4`; C בודק `credits = 4`. ל-D ניתן ניקוד חלקי בלבד (4 נק') — סדר העמודות הפוך (course_name, first_name) והשאילתה פחות יעילה.",
+   "explanation": "‏A מחבר Students↔Enrollments↔Courses ומסנן `credits >= 4` עם סדר העמודות הנכון `(first_name, course_name)`. B בודק `credits > 4`; C בודק `credits = 4`. ל-D ניתן ניקוד חלקי בלבד (4 נק') — סדר העמודות הפוך `(course_name, first_name)` והשאילתה פחות יעילה.",
    "confidence": "high",
    "id": "25B-A-Q12",
    "examCode": "25B-A",
@@ -9578,7 +9697,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -9631,7 +9751,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -9668,7 +9789,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "‏COUNT(DISTINCT student_id) עם סינון `C.credits >= 3` סופר את מספר הסטודנטים השונים שנרשמו לקורס כלשהו המעניק 3 נקודות זכות או יותר. A מגביל ל'בדיוק 3'; B סופר קורסים; C סופר הרשמות.",
+   "explanation": "‏`COUNT(DISTINCT student_id)` עם סינון `C.credits >= 3` סופר את מספר הסטודנטים השונים שנרשמו לקורס כלשהו המעניק 3 נקודות זכות או יותר. A מגביל ל'בדיוק 3'; B סופר קורסים; C סופר הרשמות.",
    "confidence": "high",
    "id": "25B-A-Q6",
    "examCode": "25B-A",
@@ -9676,7 +9797,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -9728,7 +9850,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -9777,7 +9900,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -9825,7 +9949,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -9864,7 +9989,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "b",
    "answerSource": "solution-pdf",
-   "explanation": "מסננים category = 'Programming' ב-WHERE (לפני הקיבוץ), מקבצים לפי הקורס וסופרים COUNT(*). A שם WHERE אחרי GROUP BY (שגוי תחבירית); C מסנן category בטבלת Enrollments; D מחזיר category במקום ספירה נכונה לכל קורס.",
+   "explanation": "מסננים `category = 'Programming'` ב-`WHERE` (לפני הקיבוץ), מקבצים לפי הקורס וסופרים `COUNT(*)`. A שם `WHERE` אחרי `GROUP BY` (שגוי תחבירית); C מסנן `category` בטבלת Enrollments; D מחזיר `category` במקום ספירה נכונה לכל קורס.",
    "confidence": "high",
    "contextId": "25C-A-sql",
    "id": "25C-A-Q10",
@@ -9873,7 +9998,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -9912,7 +10038,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "זוהי חלוקה (division): קורס שאין אף משתמש שלא נרשם אליו. התבנית הנכונה היא NOT EXISTS כפול — אין משתמש שעבורו לא קיימת הרשמה לקורס הזה.",
+   "explanation": "זוהי חלוקה (division): קורס שאין אף משתמש שלא נרשם אליו. התבנית הנכונה היא `NOT EXISTS` כפול — אין משתמש שעבורו לא קיימת הרשמה לקורס הזה.",
    "confidence": "high",
    "contextId": "25C-A-sql",
    "id": "25C-A-Q11",
@@ -9969,7 +10095,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10008,7 +10135,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "שתי התשובות נכונות, כל אחת בדרכה. לא הייתה כאן דרישה מפורשת להופעת שם רק פעם אחת — שהרי בלי DISTINCT ייתכנו כאן כפילויות. (A מבצע JOIN עם progress < 50; C משיג זאת עם תת-שאילתות. B משתמש ב-> 50, ו-D ב-<= 50 עם OR — שגויים.)",
+   "explanation": "שתי התשובות נכונות, כל אחת בדרכה. לא הייתה כאן דרישה מפורשת להופעת שם רק פעם אחת — שהרי בלי DISTINCT ייתכנו כאן כפילויות. (A מבצע `JOIN` עם `progress < 50`; C משיג זאת עם תת-שאילתות. B משתמש ב-`> 50`, ו-D ב-`<= 50` עם `OR` — שגויים.)",
    "confidence": "high",
    "contextId": "25C-A-sql",
    "acceptedIds": [
@@ -10021,7 +10148,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10060,7 +10188,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "c",
    "answerSource": "solution-pdf",
-   "explanation": "צריך סינון registration_year = 2023 וגם country <> 'Israel' (תנאי AND), וספירה לכל מדינה עם GROUP BY country. A מסנן דווקא Israel, B משתמש ב-OR, ו-D בעל GROUP BY שגוי.",
+   "explanation": "צריך סינון `registration_year = 2023` וגם `country <> 'Israel'` (תנאי `AND`), וספירה לכל מדינה עם `GROUP BY country`. A מסנן דווקא Israel, B משתמש ב-OR, ו-D בעל GROUP BY שגוי.",
    "confidence": "high",
    "contextId": "25C-A-sql",
    "id": "25C-A-Q6",
@@ -10069,7 +10197,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10108,7 +10237,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "b",
    "answerSource": "solution-pdf",
-   "explanation": "מחברים Courses ל-Enrollments לפי course_id ומסננים progress = 0. A בודק progress = 100; C שולף course_title מ-Enrollments (עמודה שאינה קיימת שם); D מחבר לפי course_id = enrollment_id — שגוי.",
+   "explanation": "מחברים Courses ל-Enrollments לפי `course_id` ומסננים `progress = 0`. A בודק `progress = 100`; C שולף `course_title` מ-Enrollments (עמודה שאינה קיימת שם); D מחבר לפי `course_id = enrollment_id` — שגוי.",
    "confidence": "high",
    "contextId": "25C-A-sql",
    "id": "25C-A-Q7",
@@ -10117,7 +10246,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10156,7 +10286,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "d",
    "answerSource": "solution-pdf",
-   "explanation": "צריך לחבר Users↔Enrollments לפי user_id ו-Enrollments↔Courses לפי course_id, ולסנן status = 'withdrawn'. C מחבר לפי enrollment_id (שגוי); A ו-B אינם מחזירים גם שם וגם קורס נכונים.",
+   "explanation": "צריך לחבר Users↔Enrollments לפי `user_id` ו-Enrollments↔Courses לפי `course_id`, ולסנן `status = 'withdrawn'`. C מחבר לפי `enrollment_id` (שגוי); A ו-B אינם מחזירים גם שם וגם קורס נכונים.",
    "confidence": "high",
    "contextId": "25C-A-sql",
    "id": "25C-A-Q8",
@@ -10165,7 +10295,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10204,7 +10335,7 @@ window.DB_QUIZ = {
    ],
    "correctId": "a",
    "answerSource": "solution-pdf",
-   "explanation": "החיבור הנכון הוא לפי `Courses.category = Instructors.expertise` (כפי שרומז ההערה). B מחבר לפי level (שאינו קיים ב-Instructors); C לפי category = email; D לפי course_id ב-USING (שאינו קיים ב-Instructors).",
+   "explanation": "החיבור הנכון הוא לפי `Courses.category = Instructors.expertise` (כפי שרומז ההערה). B מחבר לפי `level` (שאינו קיים ב-Instructors); C לפי `category = email`; D לפי `course_id` ב-`USING` (שאינו קיים ב-Instructors).",
    "confidence": "high",
    "contextId": "25C-A-sql",
    "id": "25C-A-Q9",
@@ -10213,7 +10344,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10265,7 +10397,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false
+   "official": false,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10312,7 +10445,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false
+   "official": false,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10359,7 +10493,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false
+   "official": false,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10406,7 +10541,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false
+   "official": false,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10453,7 +10589,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false
+   "official": false,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10500,7 +10637,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false
+   "official": false,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10547,7 +10685,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false
+   "official": false,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10594,7 +10733,8 @@ window.DB_QUIZ = {
    "year": 2025,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": false
+   "official": false,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10642,7 +10782,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10690,7 +10831,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10738,7 +10880,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10783,7 +10926,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10881,7 +11025,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10929,7 +11074,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   },
   {
    "part": "ב",
@@ -10977,7 +11123,8 @@ window.DB_QUIZ = {
    "year": 2026,
    "source": "exam",
    "topicLabel": "SQL",
-   "official": true
+   "official": true,
+   "lockOrder": true
   }
  ]
 };

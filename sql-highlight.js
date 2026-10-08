@@ -65,6 +65,9 @@
           else out += esc(tok);
         } else if (cls === "ws" || cls === "other") {
           out += esc(tok);
+        } else if (cls === "sql-com" && /[֐-׿]/.test(tok)) {
+          // a Hebrew comment reads RTL inside the LTR block ("-- נתון פתרון 1:")
+          out += '<span class="sql-com">' + esc(tok.slice(0, 2)) + '<bdi dir="rtl">' + esc(tok.slice(2)) + "</bdi></span>";
         } else {
           out += wrap(cls, tok);
         }

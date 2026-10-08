@@ -357,7 +357,7 @@
         "e"
       ],
       "confidence": "high",
-      "explanation": "קודי התחביב בסדר עולה ושמות האנשים בסדר יורד → Order by interested.h_code, person.p_name desc. התקבלה גם E, כיוון שלא צוין במפורש מה למיין קודם.",
+      "explanation": "קודי התחביב בסדר עולה ושמות האנשים בסדר יורד → `Order by interested.h_code, person.p_name desc`. התקבלה גם E, כיוון שלא צוין במפורש מה למיין קודם.",
       "official": true,
       "answerSource": "solution-pdf"
     },
@@ -502,7 +502,7 @@
       ],
       "correctId": "a",
       "confidence": "high",
-      "explanation": "פתרונות 1 (>= all) ו-3 (= any (max)) נכונים. פתרון 2 שגוי — max ללא GROUP BY יחד עם עמודות נוספות (p_name, p_gender).",
+      "explanation": "פתרונות 1 (`>= all`) ו-3 (`= any (max)`) נכונים. פתרון 2 שגוי — `max` ללא `GROUP BY` יחד עם עמודות נוספות (`p_name, p_gender`).",
       "official": true,
       "answerSource": "solution-pdf"
     },
@@ -537,7 +537,7 @@
       ],
       "correctId": "b",
       "confidence": "high",
-      "explanation": "לכל זוג (עיר, תחביב) יש לקבץ לפי שתי התכונות ולספור, ולכן Group by p_city, h_code.",
+      "explanation": "לכל זוג (עיר, תחביב) יש לקבץ לפי שתי התכונות ולספור, ולכן `Group by p_city, h_code`.",
       "official": true,
       "answerSource": "solution-pdf"
     },
@@ -803,7 +803,7 @@
       "num": 21,
       "part": "ד",
       "topic": "fd_norm",
-      "question": "נתון ש-E עודפת בתבנית היחסים $$R = (A, B, C, D, E)$$ עם אוסף התלויות $$F = { A → BC, AE → D }$$ מה מהבאים נכון?",
+      "question": "נתון ש-E עודפת בתבנית היחסים$$R = (A, B, C, D, E)$$עם אוסף התלויות$$F = { A → BC, AE → D }$$מה מהבאים נכון?",
       "options": [
         {
           "id": "a",

@@ -20,7 +20,7 @@
     return String(s).replace(/[&<>]/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[m]));
   }
   // escape + wrap maximal Hebrew runs so they sit correctly inside an LTR expression
-  var HE = /[֐-׿יִ-ﭏ]+/g;
+  var HE = /[֐-׿יִ-ﭏ]+(?:\s+[֐-׿יִ-ﭏ]+)*/g;   // multi-word names ("תל אביב") stay one run
   function bidi(s) { return esc(s).replace(HE, m => "<bdi>" + m + "</bdi>"); }
 
   // render sub/superscript groups; everything else literal (+ Hebrew isolation)
@@ -38,16 +38,23 @@
     return "<" + tag + ' class="' + cls + '" dir="ltr">' + algInner(src) + "</" + tag + ">";
   }
 
-  function schemaInner(src) {
+  // wrap = how plain text is escaped: bidi() for an LTR schema, esc() for an RTL one
+  function schemaInner(src, wrap) {
     return String(src).split(/(\[u\][\s\S]*?\[\/u\]|\[d\][\s\S]*?\[\/d\])/g).map(function (p) {
       var m;
-      if ((m = /^\[u\]([\s\S]*?)\[\/u\]$/.exec(p))) return '<span class="pk">' + bidi(m[1]) + "</span>";
-      if ((m = /^\[d\]([\s\S]*?)\[\/d\]$/.exec(p))) return '<span class="ppk">' + bidi(m[1]) + "</span>";
-      return bidi(p);
+      if ((m = /^\[u\]([\s\S]*?)\[\/u\]$/.exec(p))) return '<span class="pk">' + wrap(m[1]) + "</span>";
+      if ((m = /^\[d\]([\s\S]*?)\[\/d\]$/.exec(p))) return '<span class="ppk">' + wrap(m[1]) + "</span>";
+      return wrap(p);
     }).join("");
   }
+  // A schema written in Hebrew (מנהל(שם חברה, מס' עובד)) reads right-to-left: forcing it
+  // LTR and isolating each Hebrew word reverses multi-word names ("חברה שם").
   function renderSchema(src) {
-    return '<span class="schema" dir="ltr">' + schemaInner(src) + "</span>";
+    // 2+ spaces separate relations in a multi-relation option: render a visible gap
+    var gap = function (h) { return h.replace(/ {2,}/g, '<span class="schema-gap"></span>'); };
+    HE.lastIndex = 0;
+    if (HE.test(String(src))) return '<span class="schema schema-rtl" dir="rtl">' + gap(schemaInner(src, esc)) + "</span>";
+    return '<span class="schema" dir="ltr">' + gap(schemaInner(src, bidi)) + "</span>";
   }
 
   var api = { renderAlgebra: renderAlgebra, renderSchema: renderSchema };
