@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Build learn-briefs.js from the Obsidian "Practice by Subject" briefs.
+"""Build learn.js from the Obsidian exam summary (סיכום למבחן).
 
-Source of truth: the Markdown briefs in the Obsidian vault (BRIEF_DIR below).
-Output: learn-briefs.js, which appends chapters onto window.LEARN (defined in
-learn.js).  Math is pre-rendered with the vendored KaTeX via Node, so the page
-needs no extra runtime work — katex.min.css is already loaded by index.html.
+Source of truth: one Markdown note in the Obsidian vault (SRC below). Each "## "
+section becomes a learn-mode chapter; the text before the first "## " plus the
+topic-weight table become the opening chapter. Math is pre-rendered with the
+vendored KaTeX via Node, so the page needs no extra runtime work —
+katex.min.css is already loaded by index.html.
 
-Run:  python tools/build_learn_briefs.py
+Run:  python tools/build_learn.py
 """
 import json
 import os
@@ -16,24 +17,25 @@ import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BRIEF_DIR = os.path.join(
-    os.path.expanduser("~"),
-    "Desktop", "Adir", "busi-notes", "Year-2-Sem-C", "Databases", "Practice by subject",
+SRC = os.path.join(
+    os.path.expanduser("~"), "Desktop", "Adir", "busi-notes", "Year-2-Sem-C", "Databases",
+    "סיכום למבחן - מערכות בסיסי נתונים.md",
 )
 
-# file -> (chapter id, chapter title, sections to drop [by "## " heading prefix])
-CHAPTERS = [
-    ("00 - Index.md", "brief-map", "פרק 6 — מדריך המבחן: מבנה וסדר עדיפויות",
-     ["2. איך מריצים את האפליקציה", "4. לוח תוצאות"]),
-    ("01 - SQL.md", "brief-sql", "פרק 7 — פתרון שאלות SQL", []),
-    ("02 - אלגברה רלציונית.md", "brief-relalg", "פרק 8 — פתרון שאלות אלגברה רלציונית", []),
-    ("03 - מודל ERD.md", "brief-erd", "פרק 9 — פתרון שאלות ERD", []),
-    ("04 - תלויות ונרמול.md", "brief-fd", "פרק 10 — פתרון שאלות תלויות ונרמול", []),
-    ("05 - NoSQL.md", "brief-nosql", "פרק 11 — NoSQL", []),
-    ("06 - חמש התבניות הגדולות.md", "brief-patterns", "פרק 12 — חמש התבניות הגדולות (חזרה)", []),
-]
-# wikilink target -> index into CHAPTERS (for in-app cross links)
-LINK_TARGET = {name[:-3]: i for i, (name, _, _, _) in enumerate(CHAPTERS)}
+# The note links to the "Practice by subject" pages, which are not in the app.
+# Each one maps to the summary chapter that covers the same topic, by the
+# number that opens that chapter's "## " heading (0 = the opening chapter).
+WIKI_CHAPTER = {
+    "00 - Index": 0,
+    "01 - SQL": 4,
+    "02 - אלגברה רלציונית": 3,
+    "03 - מודל ERD": 1,
+    "04 - תלויות ונרמול": 2,
+    "05 - NoSQL": 6,
+    "06 - חמש התבניות הגדולות": 5,
+}
+CHAPTERS = []    # [(id, title)] filled by split_chapters(); index = position in window.LEARN
+NUM_TO_INDEX = {}  # leading section number -> chapter index
 
 MATH = []  # collected TeX; replaced by rendered KaTeX at the end
 
@@ -56,8 +58,15 @@ def inline(text, chapter_base):
         slots.append(html)
         return "\x00S%d\x00" % (len(slots) - 1)
 
+    def code(m):
+        body = m.group(1)
+        dl = re.fullmatch(r"index\.html\?practice=([a-z_]+)", body)
+        if dl:  # a deep link into practice mode: make it clickable
+            return stash('<a href="?practice=%s"><code dir="ltr">%s</code></a>' % (dl.group(1), esc(body)))
+        return stash('<code dir="ltr">%s</code>' % esc(body))
+
+    text = re.sub(r"`([^`]+)`", code, text)
     # display math must be handled by the caller; here only $...$
-    text = re.sub(r"`([^`]+)`", lambda m: stash('<code dir="ltr">%s</code>' % esc(m.group(1))), text)
     text = re.sub(r"\$([^$]+)\$", lambda m: stash(math_slot(m.group(1), False)), text)
 
     text = esc(text)
@@ -65,10 +74,10 @@ def inline(text, chapter_base):
     def wiki(m):
         target = m.group(1)
         label = m.group(2) or target
-        if target in LINK_TARGET:
-            i = LINK_TARGET[target]
-            return '<a href="#" data-learn-goto="%d">%s</a>' % (
-                chapter_base + i, esc(CHAPTERS[i][2]))
+        num = WIKI_CHAPTER.get(target)
+        if num is not None and num in NUM_TO_INDEX:
+            i = NUM_TO_INDEX[num]
+            return '<a href="#" data-learn-goto="%d">%s</a>' % (i, esc(CHAPTERS[i][1]))
         return esc(label)
 
     text = re.sub(r"\[\[([^\]|]+)(?:\|([^\]]+))?\]\]", wiki, text)
@@ -114,7 +123,14 @@ def render(lines, chapter_base):
             while i < n and lines[i].strip().startswith(">"):
                 body.append(re.sub(r"^\s*>\s?", "", lines[i]))
                 i += 1
-            out.append('<div class="learn-note">%s</div>' % render(body, chapter_base))
+            cm = re.match(r"^\[!(\w+)\][+-]?\s*(.*)$", body[0].strip()) if body else None
+            if cm:  # Obsidian callout: first line carries the type and title
+                title = cm.group(2).strip()
+                head = '<p class="learn-note-title"><strong>%s</strong></p>' % inline(title, chapter_base) if title else ""
+                out.append('<div class="learn-note learn-note-%s">%s%s</div>' % (
+                    cm.group(1).lower(), head, render(body[1:], chapter_base)))
+            else:
+                out.append('<div class="learn-note">%s</div>' % render(body, chapter_base))
             continue
 
         if re.match(r"^-{3,}$", s):
@@ -128,7 +144,7 @@ def render(lines, chapter_base):
             if lvl == 1:            # doc title -> chapter title, skip
                 i += 1
                 continue
-            tag = {2: "h3", 3: "h4", 4: "h5"}.get(lvl, "h5")
+            tag = {2: "h3", 3: "h3", 4: "h4"}.get(lvl, "h5")
             out.append("<%s>%s</%s>" % (tag, inline(m.group(2), chapter_base), tag))
             i += 1
             continue
@@ -194,27 +210,54 @@ def render(lines, chapter_base):
     return "".join(out)
 
 
+def strip_frontmatter(lines):
+    if lines and lines[0].strip() == "---":
+        for j in range(1, len(lines)):
+            if lines[j].strip() == "---":
+                return lines[j + 1:]
+    return lines
+
+
+def clean_title(raw):
+    """'1.\u200f מודל ERD (חלק א׳) – 40 שאלות ‏·‏ 4 במבחן' -> (1, 'פרק 1 — מודל ERD (חלק א׳)')."""
+    t = raw.replace("\u200f", "").strip()
+    m = re.match(r"^(\d+)\.\s*(.*)$", t)
+    if not m:
+        return None, t
+    num, rest = int(m.group(1)), m.group(2)
+    rest = re.split(r"\s+–\s+(?=\d)", rest)[0].strip()   # drop "– 40 שאלות · 4 במבחן"
+    return num, "פרק %d — %s" % (num, rest)
+
+
+def split_chapters(lines):
+    """Opening chapter = everything before the first numbered "## " section
+    (title, callouts, topic-weight table); then one chapter per numbered section."""
+    parts, cur = [[0, "מבוא — איך ללמוד למבחן", []]], None
+    cur = parts[0]
+    for ln in lines:
+        m = re.match(r"^##\s+(.*)$", ln)
+        if m:
+            num, title = clean_title(m.group(1))
+            if num is not None:
+                cur = [num, title, []]
+                parts.append(cur)
+                continue
+        cur[2].append(ln)
+    return parts
+
+
 def main():
-    existing = 0
-    with open(os.path.join(ROOT, "learn.js"), encoding="utf-8") as fh:
-        existing = len(re.findall(r"^\s*id: \"", fh.read(), re.M))
+    lines = strip_frontmatter(open(SRC, encoding="utf-8").read().split("\n"))
+    # Obsidian block ids ("^prep-1" on its own line, or trailing " ^id") are link anchors, not text
+    lines = [re.sub(r"\s\^[\w-]+\s*$", "", ln) for ln in lines if not re.fullmatch(r"\s*\^[\w-]+\s*", ln)]
+    parts = split_chapters(lines)
+    for i, (num, title, _) in enumerate(parts):
+        CHAPTERS.append(("summary-%d" % num, title))
+        NUM_TO_INDEX[num] = i
 
     chapters = []
-    for fname, cid, title, drop in CHAPTERS:
-        path = os.path.join(BRIEF_DIR, fname)
-        text = open(path, encoding="utf-8").read()
-        lines = text.split("\n")
-        if drop:
-            kept, skipping = [], False
-            for ln in lines:
-                m = re.match(r"^##\s+(.*)$", ln)
-                if m:
-                    skipping = any(m.group(1).startswith(d) for d in drop)
-                if not skipping:
-                    kept.append(ln)
-            lines = kept
-        html = render(lines, existing)
-        chapters.append({"id": cid, "title": title, "html": html})
+    for (num, title, body), (cid, _) in zip(parts, CHAPTERS):
+        chapters.append({"id": cid, "title": title, "html": render(body, 0)})
 
     # pre-render math with the vendored KaTeX
     tmp = os.path.join(ROOT, "tools", "_math.json")
@@ -238,21 +281,21 @@ fs.writeFileSync('tools/_math.out.json', JSON.stringify(items.map(
             sys.exit("unresolved placeholder in " + ch["id"])
 
     out = (
-        "/* Generated by tools/build_learn_briefs.py — do not edit by hand.\n"
-        "   Source: the Obsidian \"Practice by Subject\" briefs.\n"
-        "   Appends exam-technique chapters onto window.LEARN (see learn.js).\n"
+        "/* Generated by tools/build_learn.py — do not edit by hand.\n"
+        "   Source: the Obsidian exam summary \"סיכום למבחן - מערכות בסיסי נתונים\".\n"
+        "   window.LEARN = [{id, title, html}] is consumed by initLearn() in app.js.\n"
         "   Math is pre-rendered with the vendored KaTeX. */\n"
-        "window.LEARN = (window.LEARN || []).concat(\n"
+        "window.LEARN = "
         + json.dumps(chapters, ensure_ascii=False, indent=1)
-        + "\n);\n"
-        + "window.LEARN_BRIEFS_META = %s;\n" % json.dumps(
-            {"chapters": len(chapters), "math": len(MATH)}, ensure_ascii=False)
+        + ";\n"
     )
-    dest = os.path.join(ROOT, "learn-briefs.js")
+    dest = os.path.join(ROOT, "learn.js")
     with open(dest, "w", encoding="utf-8") as fh:
         fh.write(out)
     print("wrote %s — %d chapters, %d math spans, %d KB"
           % (os.path.basename(dest), len(chapters), len(MATH), len(out) // 1024))
+    for c in chapters:
+        print("  ", c["title"])
 
 
 if __name__ == "__main__":
