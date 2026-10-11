@@ -6,7 +6,7 @@
 <title>משחק תרגול — מערכות בסיסי נתונים</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="katex/katex.min.css">
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=6">
 <script>
   // Apply saved theme before first paint to avoid a flash of the wrong theme.
   (function(){ try{ var t=localStorage.getItem("dbq_theme"); if(t==="light"||t==="dark") document.documentElement.dataset.theme=t; }catch(e){} })();
@@ -24,8 +24,7 @@
   </div>
   <div class="topbar-right">
     <div class="topstats" id="topStats"></div>
-    <button class="btn ghost crs-entry" data-course="erd" type="button">🧩 צריך עזרה ב-ERD?</button>
-    <button class="btn ghost crs-entry" data-course="sql" type="button">💾 צריך עזרה ב-SQL?</button>
+    <button id="crsHub" class="btn ghost crs-entry" type="button" title="קורסים מודרכים: ERD · SQL · נרמול · אלגברה">🎓 צריך עזרה?</button>
     <button id="learnEntry" class="btn ghost learn-entry" type="button">📖 מצב לימוד</button>
     <a id="sheetDownload" class="btn ghost sheet-link" href="docs/formula-sheet/formula-sheet.pdf" download="דף נוסחאות - מערכות בסיסי נתונים.pdf" title="הורדת דף הנוסחאות למבחן (PDF, 2 עמודים)">📄 דף נוסחאות</a>
     <button id="themeToggle" class="theme-toggle" type="button" aria-label="החלפת מצב תצוגה (בהיר/כהה)" title="מצב בהיר/כהה"></button>
@@ -44,6 +43,16 @@
       <div class="card crs-promo" data-course="sql" role="button" tabindex="0">
         <span class="big-ico">💾</span>
         <div><b>צריך עזרה ב-SQL?</b><span class="crs-promo-sub">קורס בעשרה שלבים, מ-SELECT פשוט ועד שאילתות חילוק וקיצון של מבחן.</span></div>
+        <span class="btn primary go">להתחיל ⟵</span>
+      </div>
+      <div class="card crs-promo" data-course="norm" role="button" tabindex="0">
+        <span class="big-ico">🧮</span>
+        <div><b>צריך עזרה בתלויות ונרמול?</b><span class="crs-promo-sub">קורס מודרך, מסגור של תכונה אחת ועד פירוק ל-BCNF ול-3NF של מבחן.</span></div>
+        <span class="btn primary go">להתחיל ⟵</span>
+      </div>
+      <div class="card crs-promo" data-course="alg" role="button" tabindex="0">
+        <span class="big-ico">➗</span>
+        <div><b>צריך עזרה באלגברה רלציונית?</b><span class="crs-promo-sub">קורס מודרך, מ-σ ו-π ועד חילוק, הפרש וקיצון של מבחן.</span></div>
         <span class="btn primary go">להתחיל ⟵</span>
       </div>
     </div>
@@ -209,7 +218,7 @@
 <script src="questions.js?v=2"></script>
 <script src="learn.js?v=2"></script>
 <script src="erd.js?v=1"></script>
-<script src="courses.js?v=1"></script>
+<script src="courses.js?v=2"></script>
 <script src="erd/levels/L01.js?v=1"></script>
 <script src="erd/levels/L02.js?v=1"></script>
 <script src="erd/levels/L03.js?v=1"></script>
@@ -230,7 +239,25 @@
 <script src="sql/levels/S08.js?v=1"></script>
 <script src="sql/levels/S09.js?v=1"></script>
 <script src="sql/levels/S10.js?v=1"></script>
-<script src="app.js?v=5"></script>
-<script src="course-ui.js?v=1"></script>
+<script src="norm/levels/N01.js?v=1"></script>
+<script src="norm/levels/N02.js?v=1"></script>
+<script src="norm/levels/N03.js?v=1"></script>
+<script src="norm/levels/N04.js?v=1"></script>
+<script src="norm/levels/N05.js?v=1"></script>
+<script src="norm/levels/N06.js?v=1"></script>
+<script src="norm/levels/N07.js?v=1"></script>
+<script src="norm/levels/N08.js?v=1"></script>
+<script src="norm/levels/N09.js?v=1"></script>
+<script src="alg/levels/A01.js?v=1"></script>
+<script src="alg/levels/A02.js?v=1"></script>
+<script src="alg/levels/A03.js?v=1"></script>
+<script src="alg/levels/A04.js?v=1"></script>
+<script src="alg/levels/A05.js?v=1"></script>
+<script src="alg/levels/A06.js?v=1"></script>
+<script src="alg/levels/A07.js?v=1"></script>
+<script src="alg/levels/A08.js?v=1"></script>
+<script src="alg/levels/A09.js?v=1"></script>
+<script src="app.js?v=6"></script>
+<script src="course-ui.js?v=2"></script>
 </body>
 </html>

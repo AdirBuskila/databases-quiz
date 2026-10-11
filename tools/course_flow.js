@@ -1,13 +1,14 @@
 // End-to-end check of a guided course (ERD / SQL) in the real app (file://, no server needed).
-// usage: node tools/course_flow.js <erd|sql> [levelId] [light|dark] [mobile]
+// usage: node tools/course_flow.js <erd|sql|norm|alg> [levelId] [light|dark] [mobile]
 // map → lesson → answer every question (alternating right/wrong) → summary → zoom → exit paths.
 const puppeteer = require("puppeteer-core");
 const path = require("path"), fs = require("fs"), url = require("url");
 const CHROME = "C:/Program Files/Google/Chrome/Application/chrome.exe";
 const OUT = path.join(__dirname, "raw", "courseflow"); fs.mkdirSync(OUT, { recursive: true });
 const [crs = "erd", lvlArg, theme = "light", mob] = process.argv.slice(2);
-const lvl = lvlArg || (crs === "sql" ? "S01" : "L01");
-const ARR = crs === "sql" ? "SQL_COURSE" : "ERD_COURSE", STORE = crs === "sql" ? "dbq_sql_v1" : "dbq_erd_v1";
+const META = { erd: ["L01", "ERD_COURSE", "dbq_erd_v1"], sql: ["S01", "SQL_COURSE", "dbq_sql_v1"],
+  norm: ["N01", "NORM_COURSE", "dbq_norm_v1"], alg: ["A01", "ALG_COURSE", "dbq_alg_v1"] }[crs];
+const lvl = lvlArg || META[0], ARR = META[1], STORE = META[2];
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 (async () => {
   const browser = await puppeteer.launch({ executablePath: CHROME, headless: "new", args: ["--no-sandbox", "--hide-scrollbars"] });
@@ -16,7 +17,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   page.on("pageerror", e => errs.push("PAGEERROR " + e.message));
   page.on("console", m => { if (m.type() === "error" && !/Failed to load resource/.test(m.text())) errs.push(m.text()); });
   await page.setViewport(mob ? { width: 390, height: 844, deviceScaleFactor: 2, isMobile: true } : { width: 1100, height: 900, deviceScaleFactor: 1 });
-  await page.evaluateOnNewDocument(t => { try { localStorage.setItem("dbq_theme", t); localStorage.removeItem("dbq_erd_v1"); localStorage.removeItem("dbq_sql_v1"); } catch (e) {} }, theme);
+  await page.evaluateOnNewDocument(t => { try { localStorage.setItem("dbq_theme", t); ["dbq_erd_v1","dbq_sql_v1","dbq_norm_v1","dbq_alg_v1"].forEach(k => localStorage.removeItem(k)); } catch (e) {} }, theme);
   const base = url.pathToFileURL(path.join(__dirname, "..", "index.html")).href;
   await page.goto(base, { waitUntil: "load" });
   const tag = `${crs}-${lvl}-${theme}${mob ? "-m" : ""}`;

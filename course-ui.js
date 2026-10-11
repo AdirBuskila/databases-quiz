@@ -9,10 +9,14 @@
    lesson html may hold {fig:N} placeholders → figure N of lesson.figs.                        */
 (function(){
   const META = {
-    erd: { name: "ERD", icon: "🧩", store: "dbq_erd_v1", topic: "erd", topicLabel: "מודל ERD",
+    erd: { name: "ERD", title: "צריך עזרה ב-ERD?", icon: "🧩", store: "dbq_erd_v1", topic: "erd", topicLabel: "מודל ERD",
       intro: "מתחילים מתרשים של שתי ישויות ומסיימים בתרשים בגודל של מבחן. כל שלב פותח בשיעור קצר וממשיך בשאלות בסגנון המבחן. כל השלבים פתוחים; שלב נחשב עבור מ-80%." },
-    sql: { name: "SQL", icon: "💾", store: "dbq_sql_v1", topic: "sql", topicLabel: "SQL",
+    sql: { name: "SQL", title: "צריך עזרה ב-SQL?", icon: "💾", store: "dbq_sql_v1", topic: "sql", topicLabel: "SQL",
       intro: "מתחילים מ-SELECT על טבלה אחת ומסיימים בשאילתות חילוק, קיצון ושלילה בגודל של מבחן. כל שלב פותח בשיעור קצר עם טבלאות לדוגמה וממשיך בשאלות בסגנון המבחן. כל השלבים פתוחים; שלב נחשב עבור מ-80%." },
+    norm: { name: "נרמול", title: "צריך עזרה בתלויות ונרמול?", icon: "🧮", store: "dbq_norm_v1", topic: "fd_norm", topicLabel: "תלויות ונרמול",
+      intro: "מתחילים מתלות פונקציונלית אחת ומסיימים בפירוק ל-BCNF ול-3NF בגודל של מבחן: סגור, מפתחות, תכונות עודפות, צורות נורמליות ופירוקים. כל שלב פותח בשיעור קצר וממשיך בשאלות בסגנון המבחן. כל השלבים פתוחים; שלב נחשב עבור מ-80%." },
+    alg: { name: "אלגברה", title: "צריך עזרה באלגברה רלציונית?", icon: "➗", store: "dbq_alg_v1", topic: "relalg", topicLabel: "אלגברה רלציונית",
+      intro: "מתחילים מ-σ ו-π על טבלה אחת ומסיימים בחילוק, הפרש וקיצון בגודל של מבחן. כל שלב פותח בשיעור קצר עם טבלאות לדוגמה וממשיך בשאלות בסגנון המבחן. כל השלבים פתוחים; שלב נחשב עבור מ-80%." },
   };
   const PASS = 80;
   const ALL = window.COURSES || {};
@@ -39,12 +43,12 @@
   /* ---------- map ---------- */
   function renderMap(){
     const LV = C.levels, rec = recommendedIn(C), nPass = LV.filter(passed).length;
-    $("#crsTitle").textContent = `${C.meta.icon} צריך עזרה ב-${C.meta.name}?`;
+    $("#crsTitle").textContent = `${C.meta.icon} ${C.meta.title}`;
     $("#crsIntro").textContent = C.meta.intro;
     $("#crsOverall").innerHTML =
       `עברת <b>${nPass}</b> מתוך <b>${LV.length}</b> שלבים` +
       `<div class="progress" style="margin-top:.5rem"><div class="progress-fill" style="width:${nPass / LV.length * 100}%"></div></div>` +
-      (nPass === LV.length ? `<p style="margin:.6rem 0 0">🏆 סיימת את כל הקורס, עכשיו אתה מאסטר ${C.meta.name}. הצעד הבא: שאלות ה-${C.meta.name} מהמבחנים.</p>` : "");
+      (nPass === LV.length ? `<p style="margin:.6rem 0 0">🏆 סיימת את כל הקורס, עכשיו אתה מאסטר ${C.meta.name}. הצעד הבא: שאלות ${C.meta.topicLabel} מהמבחנים.</p>` : "");
     $("#crsMap").innerHTML = LV.map(L => {
       const st = C.prog.levels[L.id];
       const cls = ["crs-lvl", passed(L) ? "passed" : "", L === rec ? "next" : "", L.boss ? "boss" : ""].join(" ");
@@ -65,8 +69,10 @@
     if (!f) return "";
     let body = "";
     if (f.erd) body += `<div class="erd-wrap">${renderERD(f.erd)}</div>`;
-    if (f.tables || f.relations || f.code) body += contextHtml(Object.assign({ kind: "schema" }, f, { title: f.title || "", caption: undefined }));
+    if (f.tables || f.relations || f.code) body += contextHtml(Object.assign({ kind: "schema" }, f, { title: f.title || "", caption: undefined, algebra: undefined }));
     if (f.sql) body += `<pre class="q-code" dir="ltr"><code>${window.highlightSQL ? highlightSQL(f.sql) : escapeHtml(f.sql)}</code></pre>`;
+    if (f.algebra) body += `<div class="ctx-algebra">${[].concat(f.algebra).map(x => algBlock(x)).join("")}</div>`;   // FD sets / formulas
+    if (f.alg) body += `<div class="ctx-algebra">${String(f.alg).split(/\n/).map(x => algBlock(x)).join("")}</div>`;   // RA expression (one line per step)
     if (f.result) body += `<div class="lesson-result"><div class="ctx-title">⟵ התוצאה</div><div class="ctx-tables">${tableHtml(Object.assign({}, f.result, { name: "" }))}</div></div>`;
     return `<figure class="lesson-fig">${body}` + (f.caption ? `<figcaption>${richText(f.caption)}</figcaption>` : "") + `</figure>`;
   }
@@ -120,7 +126,7 @@
         wrong.map(q => `<div class="ctx-note">• ${richText(q.recap || q.question)}</div>`).join("")}</div>` : "") +
       `<div class="crs-actions">` +
         (nextL ? `<button class="btn ${ok ? "primary" : "ghost"}" data-act="next">לשלב הבא: ${escapeHtml(nextL.title)} ⟵</button>` : "") +
-        (L.boss || !nextL ? `<button class="btn primary" data-act="real">לשאלות ה-${C.meta.name} מהמבחנים האמיתיים ⟵</button>` : "") +
+        (L.boss || !nextL ? `<button class="btn primary" data-act="real">לשאלות ${C.meta.topicLabel} מהמבחנים האמיתיים ⟵</button>` : "") +
         `<button class="btn ${ok ? "ghost" : "primary"}" data-act="retry">🔁 לנסות שוב</button>` +
         `<button class="btn ghost" data-act="lesson">📘 לשיעור</button>` +
         `<button class="btn ghost" data-act="map">🗺️ למפת השלבים</button>` +
@@ -150,7 +156,7 @@
   $("#crsLessonGo").onclick = () => cur && startLevel(cur);
   $("#crsLessonBack").onclick = () => openMap();
   $("#crsHomeBtn").onclick = () => quit();
-  $("#crsResetBtn").onclick = () => { if (confirm(`לאפס את ההתקדמות בקורס ה-${C.meta.name}?`)){ C.prog.levels = {}; save(); renderMap(); } };
+  $("#crsResetBtn").onclick = () => { if (confirm(`לאפס את ההתקדמות בקורס ${C.meta.name}?`)){ C.prog.levels = {}; save(); renderMap(); } };
   document.querySelectorAll("[data-course]").forEach(el => {
     const id = el.dataset.course; if (!has(id)) return;
     el.onclick = () => openMap(id);
@@ -161,10 +167,14 @@
     }
   });
 
+  // header: one entry that brings you to the course cards on the home screen
+  const hub = $("#crsHub");
+  if (hub) hub.onclick = () => { quit(); setTimeout(() => { const p = $(".crs-promos"); if (p) p.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60); };
+
   window.COURSE = { record, finishLevel, exit, openMap, openLesson: L => openLesson(L), startLevel: L => startLevel(L) };
   window.ERDC = window.COURSE;   // older name
 
-  // deep link: ?erd=1 / ?sql=1 (map) · ?sql=S03 (that level's lesson) · ?sql=S03&play=1
+  // deep link: ?erd=1 / ?sql=1 / ?norm=1 / ?alg=1 (map) · ?sql=S03 (that level's lesson) · ?sql=S03&play=1
   try {
     const p = new URLSearchParams(location.search);
     Object.keys(META).forEach(id => {

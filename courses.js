@@ -1,5 +1,5 @@
-/* Course registry for the guided sections ("צריך עזרה ב-ERD?" / "צריך עזרה ב-SQL?").
-   Each level file calls ERD_LEVEL({...}) or SQL_LEVEL({...}); levels are kept sorted by `order`.
+/* Course registry for the guided sections ("צריך עזרה ב-ERD / SQL / נרמול / אלגברה?").
+   Each level file calls ERD_LEVEL / SQL_LEVEL / NORM_LEVEL / ALG_LEVEL({...}); levels are kept sorted by `order`.
    course-ui.js renders them. window.ERD_COURSE / SQL_COURSE are the level arrays (used by tools). */
 window.COURSES = window.COURSES || {};
 window.COURSE_LEVEL = function(courseId, level){
@@ -11,3 +11,7 @@ window.ERD_COURSE = (window.COURSES.erd = window.COURSES.erd || { levels: [] }).
 window.SQL_COURSE = (window.COURSES.sql = window.COURSES.sql || { levels: [] }).levels;
 window.ERD_LEVEL = L => window.COURSE_LEVEL("erd", L);
 window.SQL_LEVEL = L => window.COURSE_LEVEL("sql", L);
+window.NORM_COURSE = (window.COURSES.norm = window.COURSES.norm || { levels: [] }).levels;
+window.ALG_COURSE = (window.COURSES.alg = window.COURSES.alg || { levels: [] }).levels;
+window.NORM_LEVEL = L => window.COURSE_LEVEL("norm", L);
+window.ALG_LEVEL = L => window.COURSE_LEVEL("alg", L);
