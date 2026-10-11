@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head><meta charset="UTF-8"><title>ERD preview</title>
+<link rel="stylesheet" href="../styles.css">
+<style>body{padding:1rem} .pv{margin:1rem 0;padding:.8rem;border:1px solid var(--line);border-radius:12px;background:var(--card)} .pv h4{margin:.2rem 0 .5rem;font-family:monospace;direction:ltr;text-align:left}</style>
+</head>
+<body>
+<div id="out"></div>
+<script src="../erd.js"></script>
+<script src="../erd/course.js"></script>
+<script src="../erd/levels/L01.js"></script>
+<script src="../erd/levels/L02.js"></script>
+<script src="../erd/levels/L03.js"></script>
+<script src="../erd/levels/L04.js"></script>
+<script src="../erd/levels/L05.js"></script>
+<script src="../erd/levels/L06.js"></script>
+<script src="../erd/levels/L07.js"></script>
+<script src="../erd/levels/L08.js"></script>
+<script src="../erd/levels/L09.js"></script>
+<script src="../erd/levels/L10.js"></script>
+<script src="erd_test.js"></script>
+<script>
+  // ?only=<levelId> limits to one level; ?test=1 also renders tools/erd_test.js samples
+  const qs=new URLSearchParams(location.search), only=qs.get("only");
+  const items=[];
+  (window.ERD_COURSE||[]).forEach(L=>{
+    if(only && L.id!==only) return;
+    if(L.lesson&&L.lesson.erd) items.push([L.id+" lesson", L.lesson.erd]);
+    (L.lesson&&L.lesson.figs||[]).forEach((f,i)=>items.push([L.id+" lessonfig"+i, f.erd]));
+    (L.questions||[]).forEach(q=>{ if(q.ctx&&q.ctx.erd) items.push([q.id, q.ctx.erd]);
+      (q.options||[]).forEach(o=>{ if(o.type==="erd") items.push([q.id+" opt "+o.id, o.value]); }); });
+  });
+  (window.ERD_TEST||[]).forEach((s,i)=>items.push(["test"+i,s]));
+  document.getElementById("out").innerHTML=items.map(([k,s])=>`<div class="pv" data-k="${k}"><h4>${k}</h4><div class="erd-wrap">${renderERD(s)}</div></div>`).join("");
+  ERD.finish(document);
+</script>
+</body></html>

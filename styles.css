@@ -580,3 +580,83 @@ main{max-width:860px;margin:1.6rem auto;padding:0 1rem}
   .learn-content h2.learn-h{font-size:1.3rem}
   .learn-figs{grid-template-columns:1fr}
 }
+
+/* ---------------- ERD diagrams (erd.js) ---------------- */
+.erd-wrap{overflow-x:auto;text-align:center;margin:.2rem 0;-webkit-overflow-scrolling:touch}
+.erd-svg{width:100%;height:auto;display:inline-block;cursor:zoom-in;
+  --erd-ink:var(--ink);--erd-fill:var(--card-solid);--erd-hl:var(--brand2)}
+.erd-shape{fill:var(--erd-fill);stroke:var(--erd-ink);stroke-width:1.6}
+.erd-shape.inner{fill:none}
+.erd-shape.dashed{stroke-dasharray:6 4}
+.erd-shape.agg{fill:none;stroke-width:1.4}
+.erd-shape.hl{stroke:var(--erd-hl);stroke-width:2.6;fill:color-mix(in srgb,var(--erd-hl) 14%,var(--erd-fill))}
+.erd-shape.inner.hl{fill:none}
+.erd-edge{stroke:var(--erd-ink);stroke-width:1.5}
+.erd-edge.hl{stroke:var(--erd-hl);stroke-width:2.4}
+.erd-arrow{fill:var(--erd-ink)}
+.erd-arrow.hl{fill:var(--erd-hl)}
+.erd-label{fill:var(--erd-ink);font-family:"Segoe UI",system-ui,"Noto Sans Hebrew",Arial,sans-serif;font-size:14px}
+.erd-label.strong{font-weight:800;font-size:15px}
+.erd-label.small{font-size:10px;font-weight:800}
+.erd-label.agg{font-style:italic;font-size:12px;fill:var(--muted)}
+.erd-label.elabel{font-size:12px;font-weight:700;fill:var(--erd-hl)}
+.erd-label.note{fill:var(--muted);font-size:12px}
+.erd-ul{stroke:var(--erd-ink);stroke-width:1.2}
+.erd-ul.dashed{stroke-dasharray:3 2.5}
+.lightbox .erd-zoom{max-width:96vw;max-height:92vh;overflow:auto;background:var(--card-solid);border-radius:12px;padding:1rem;box-shadow:var(--shadow)}
+.lightbox .erd-zoom .erd-svg{width:auto;max-width:none !important;height:auto;min-width:min(92vw,900px);cursor:default}
+
+/* ---------------- ERD course ("צריך עזרה ב-ERD?") ---------------- */
+.erd-entry{font-size:.84rem;padding:.45rem .8rem;white-space:nowrap}
+.erd-promo{display:flex;align-items:center;gap:1rem;cursor:pointer;border:1.5px dashed color-mix(in srgb,var(--brand) 55%,transparent);
+  background:color-mix(in srgb,var(--brand) 8%,var(--card));transition:transform .15s,border-color .15s}
+.erd-promo:hover{transform:translateY(-2px);border-color:var(--brand)}
+.erd-promo .big-ico{font-size:2rem;flex:none}
+.erd-promo b{display:block;font-size:1.05rem}
+.erd-promo span{color:var(--muted);font-size:.85rem}
+.erd-promo .go{margin-inline-start:auto;flex:none}
+.erd-head{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.erd-head .grow{flex:1}
+.erd-overall{font-size:.85rem;color:var(--muted);font-weight:600}
+.erd-map{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.7rem}
+.erd-lvl{position:relative;display:flex;flex-direction:column;gap:.25rem;text-align:right;font:inherit;color:var(--ink);cursor:pointer;
+  border:1.5px solid var(--line);background:var(--card2);border-radius:14px;padding:.85rem 1rem;transition:border-color .15s,transform .15s}
+.erd-lvl:hover{border-color:var(--brand);transform:translateY(-2px)}
+.erd-lvl .num{font-size:.72rem;font-weight:800;color:var(--muted)}
+.erd-lvl .ttl{font-weight:800;font-size:1rem}
+.erd-lvl .gl{font-size:.8rem;color:var(--muted);line-height:1.4}
+.erd-lvl .st{font-size:.75rem;font-weight:700;margin-top:.2rem;color:var(--muted)}
+.erd-lvl.passed{border-color:color-mix(in srgb,var(--ok) 55%,transparent);background:color-mix(in srgb,var(--ok) 8%,var(--card2))}
+.erd-lvl.passed .st{color:var(--ok)}
+.erd-lvl.next{box-shadow:var(--ring);border-color:transparent}
+.erd-lvl.next::after{content:"מומלץ הבא";position:absolute;top:.6rem;left:.7rem;font-size:.66rem;font-weight:800;
+  background:var(--grad);color:#fff;padding:.12rem .5rem;border-radius:20px}
+.erd-lvl.boss{grid-column:1/-1;background:color-mix(in srgb,var(--warn) 9%,var(--card2));border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
+.erd-lesson h2{font-size:1.35rem}
+.erd-lesson .lesson-body{line-height:1.7}
+.erd-lesson .lesson-body h3{color:var(--ink);font-size:1.02rem;margin:1.1rem 0 .4rem}
+.erd-lesson .lesson-body ul{padding-inline-start:1.3rem;margin:.4rem 0}
+.erd-lesson .lesson-body li{margin:.2rem 0}
+.erd-lesson .lesson-body code{font-family:Consolas,ui-monospace,monospace;font-size:.88em;direction:ltr;display:inline-block;
+  background:var(--card2);border:1px solid var(--line);border-radius:6px;padding:0 .35em}
+.erd-lesson .lesson-fig{border:1px solid var(--line);border-radius:14px;background:var(--card2);padding:.8rem;margin:.9rem 0}
+.erd-lesson .lesson-fig figcaption{font-size:.8rem;color:var(--muted);text-align:center;margin-top:.4rem}
+.lesson-rule{border-inline-start:3px solid var(--brand);background:var(--card2);border-radius:10px;padding:.6rem .9rem;margin:.7rem 0}
+.lesson-trap{border-inline-start:3px solid var(--warn);background:color-mix(in srgb,var(--warn) 8%,var(--card2));border-radius:10px;padding:.6rem .9rem;margin:.7rem 0}
+.erd-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.1rem}
+.erd-actions .btn{flex:1 1 auto}
+.erd-sum{text-align:center}
+.erd-sum .big{font-size:2.6rem;font-weight:900;margin:.4rem 0}
+.erd-sum .msg{color:var(--muted);margin-bottom:.6rem}
+@media(max-width:560px){
+  .erd-entry{order:3;flex:1 1 0;justify-content:center;padding:.42rem .7rem;font-size:.82rem}
+  .erd-promo .go{display:none}
+  .erd-map{grid-template-columns:1fr}
+}
+.opt .erd-svg{cursor:pointer}.opt-erd{display:block}
+@media(max-width:560px){
+  /* keep diagrams legible on phones: scroll sideways inside the box instead of shrinking */
+  .erd-wrap .erd-svg{min-width:540px}
+  .opt .erd-wrap .erd-svg{min-width:0}
+  .erd-wrap{padding-bottom:.3rem}
+}

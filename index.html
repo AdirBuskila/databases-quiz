@@ -6,7 +6,7 @@
 <title>משחק תרגול — מערכות בסיסי נתונים</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="katex/katex.min.css">
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=4">
 <script>
   // Apply saved theme before first paint to avoid a flash of the wrong theme.
   (function(){ try{ var t=localStorage.getItem("dbq_theme"); if(t==="light"||t==="dark") document.documentElement.dataset.theme=t; }catch(e){} })();
@@ -24,6 +24,7 @@
   </div>
   <div class="topbar-right">
     <div class="topstats" id="topStats"></div>
+    <button id="erdEntry" class="btn ghost erd-entry" type="button">🧩 צריך עזרה ב-ERD?</button>
     <button id="learnEntry" class="btn ghost learn-entry" type="button">📖 מצב לימוד</button>
     <a id="sheetDownload" class="btn ghost sheet-link" href="docs/formula-sheet/formula-sheet.pdf" download="דף נוסחאות - מערכות בסיסי נתונים.pdf" title="הורדת דף הנוסחאות למבחן (PDF, 2 עמודים)">📄 דף נוסחאות</a>
     <button id="themeToggle" class="theme-toggle" type="button" aria-label="החלפת מצב תצוגה (בהיר/כהה)" title="מצב בהיר/כהה"></button>
@@ -33,6 +34,11 @@
 <main id="app">
   <!-- START -->
   <section id="screen-start" class="screen">
+    <div id="erdPromo" class="card erd-promo" role="button" tabindex="0">
+      <span class="big-ico">🧩</span>
+      <div><b>צריך עזרה ב-ERD?</b><span id="erdPromoSub">קורס קצר בעשרה שלבים, מתרשים של שתי ישויות ועד תרשים בגודל של מבחן.</span></div>
+      <span class="btn primary go">להתחיל ⟵</span>
+    </div>
     <div class="card">
       <h2>בחירת אופן תרגול</h2>
 
@@ -130,6 +136,32 @@
     </div>
   </section>
 
+  <!-- ERD COURSE -->
+  <section id="screen-erd" class="screen hidden">
+    <div id="erdMapView">
+      <div class="card">
+        <div class="erd-head">
+          <div class="grow"><h2>🧩 צריך עזרה ב-ERD?</h2>
+            <p class="sub">מתחילים מתרשים של שתי ישויות ומסיימים בתרשים בגודל של מבחן. כל שלב פותח בשיעור קצר וממשיך בשאלות בסגנון המבחן. כל השלבים פתוחים; שלב נחשב עבור מ-80%.</p></div>
+        </div>
+        <div id="erdOverall" class="erd-overall"></div>
+      </div>
+      <div id="erdMap" class="erd-map"></div>
+      <div class="erd-actions"><button id="erdHomeBtn" class="btn ghost">⟵ חזרה לדף הבית</button>
+        <button id="erdResetBtn" class="btn ghost">איפוס התקדמות הקורס</button></div>
+    </div>
+    <div id="erdLessonView" class="hidden">
+      <article id="erdLesson" class="card erd-lesson"></article>
+      <div class="erd-actions">
+        <button id="erdLessonBack" class="btn ghost">⟵ למפת השלבים</button>
+        <button id="erdLessonGo" class="btn primary">לשאלות ▶</button>
+      </div>
+    </div>
+    <div id="erdSumView" class="hidden">
+      <div id="erdSum" class="card erd-sum"></div>
+    </div>
+  </section>
+
   <!-- RESULTS -->
   <section id="screen-results" class="screen hidden">
     <div class="card">
@@ -151,6 +183,7 @@
 <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-label="תצוגת תמונה מוגדלת">
   <button id="lightboxClose" class="lightbox-close" type="button" aria-label="סגירה">✕</button>
   <img id="lightboxImg" src="" alt="">
+  <div id="lightboxSvg" class="erd-zoom hidden"></div>
 </div>
 
 <footer class="appfoot">
@@ -168,6 +201,19 @@
 <script src="algebra.js?v=1"></script>
 <script src="questions.js?v=2"></script>
 <script src="learn.js?v=2"></script>
-<script src="app.js?v=3"></script>
+<script src="erd.js?v=1"></script>
+<script src="erd/course.js?v=1"></script>
+<script src="erd/levels/L01.js?v=1"></script>
+<script src="erd/levels/L02.js?v=1"></script>
+<script src="erd/levels/L03.js?v=1"></script>
+<script src="erd/levels/L04.js?v=1"></script>
+<script src="erd/levels/L05.js?v=1"></script>
+<script src="erd/levels/L06.js?v=1"></script>
+<script src="erd/levels/L07.js?v=1"></script>
+<script src="erd/levels/L08.js?v=1"></script>
+<script src="erd/levels/L09.js?v=1"></script>
+<script src="erd/levels/L10.js?v=1"></script>
+<script src="app.js?v=4"></script>
+<script src="erd/course-ui.js?v=1"></script>
 </body>
 </html>

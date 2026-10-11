@@ -1,0 +1,57 @@
+// renderer test fixture: a redraw of the 26B-A exam ERD (not shipped)
+window.ERD_TEST = [{
+  w: 920, h: 640,
+  nodes: [
+    {id:"agg", t:"agg", x:675, y:85, w:470, h:140, label:"B - R1 - G"},
+    {id:"A", t:"entity", x:270, y:105, label:"A"},
+    {id:"kA", t:"attr", x:160, y:60, label:"KeyA", key:true, of:"A"},
+    {id:"pA", t:"attr", x:160, y:150, label:"PropA_1", of:"A"},
+    {id:"R2", t:"rel", x:370, y:105, label:"R2"},
+    {id:"G", t:"entity", x:520, y:105, label:"G"},
+    {id:"kG", t:"attr", x:520, y:45, label:"KeyG", key:true, of:"G"},
+    {id:"R1", t:"rel", x:670, y:105, label:"R1"},
+    {id:"B", t:"entity", x:820, y:105, label:"B"},
+    {id:"kB", t:"attr", x:820, y:45, label:"KeyB", key:true, of:"B"},
+    {id:"R3", t:"rel", x:270, y:180, label:"R3"},
+    {id:"M", t:"entity", x:270, y:255, label:"M"},
+    {id:"kM", t:"attr", x:150, y:255, label:"KeyM", key:true, of:"M"},
+    {id:"isa", t:"isa", x:270, y:300},
+    {id:"M1", t:"entity", x:150, y:375, label:"M1"},
+    {id:"pM1", t:"attr", x:45, y:375, label:"PropM1_1", of:"M1"},
+    {id:"M2", t:"entity", x:390, y:375, label:"M2"},
+    {id:"pM2", t:"attr", x:500, y:375, label:"PropM2_1", of:"M2"},
+    {id:"R4", t:"rel", x:150, y:460, label:"R4", ident:true},
+    {id:"W", t:"entity", x:150, y:545, label:"W", weak:true},
+    {id:"dW", t:"attr", x:45, y:545, label:"DiscW_1", partial:true, of:"W"},
+    {id:"pW", t:"attr", x:150, y:610, label:"PropW_1", of:"W"},
+    {id:"R5", t:"rel", x:390, y:460, label:"R5"},
+    {id:"pR5", t:"attr", x:500, y:460, label:"PropR5_1", of:"R5"},
+    {id:"D", t:"entity", x:390, y:545, label:"D"},
+    {id:"pD", t:"attr", x:500, y:545, label:"PropD_1", of:"D"},
+    {id:"kD", t:"attr", x:390, y:610, label:"KeyD", key:true, of:"D"},
+  ],
+  edges: [
+    {a:"R2", b:"A", total:true}, {a:"R2", b:"agg"},
+    {a:"R1", b:"G"}, {a:"R1", b:"B"},
+    {a:"R3", b:"A", arrow:true}, {a:"R3", b:"M", total:true},
+    {a:"isa", b:"M"}, {a:"isa", b:"M1"}, {a:"isa", b:"M2"},
+    {a:"R4", b:"M1", arrow:true}, {a:"R4", b:"W", total:true},
+    {a:"R5", b:"M2"}, {a:"R5", b:"D"},
+  ]
+},{
+  w: 620, h: 300,
+  nodes: [
+    {id:"E", t:"entity", x:150, y:150, label:"עובד"},
+    {id:"R", t:"rel", x:430, y:150, label:"מנהל את"},
+    {id:"n", t:"attr", x:150, y:50, label:"שם", of:"E"},
+    {id:"f", t:"attr", x:60, y:20, label:"פרטי", of:"n"},
+    {id:"l", t:"attr", x:240, y:20, label:"משפחה", of:"n"},
+    {id:"id", t:"attr", x:40, y:150, label:"ת\"ז", key:true, of:"E"},
+    {id:"ph", t:"attr", x:60, y:250, label:"טלפון", multi:true, of:"E"},
+    {id:"age", t:"attr", x:240, y:250, label:"גיל", derived:true, of:"E"},
+  ],
+  edges: [
+    {a:"R", b:"E", arrow:true, label:"מנהל", pts:[[430,60],[300,60]]},
+    {a:"R", b:"E", total:true, label:"(0,5)", pts:[[430,240],[300,240]]},
+  ]
+}];

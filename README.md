@@ -20,6 +20,11 @@ For screenshots/verify scripts it's easier to serve it:
 - `questions.js` / `questions.json` — `{ meta, contexts, questions }` (generated)
 - `learn.js` — learn mode (generated): the Obsidian exam summary
   "סיכום למבחן - מערכות בסיסי נתונים", one chapter per `##` section
+- `erd.js` — self-contained ERD renderer: Chen-notation diagram spec → inline SVG (themeable, offline)
+- `erd/` — the **"צריך עזרה ב-ERD?"** course: `course.js` (registry), `levels/L01–L10.js` (lesson + questions
+  per level, small → exam-sized diagrams), `course-ui.js` (level map / lesson / summary; the quiz runs on the
+  main engine with `S.mode="course"`, progress in `localStorage.dbq_erd_v1`). Deep link: `index.html?erd=1`,
+  `?erd=L05`, `?erd=L05&play=1`
 - `images/exams/` — cropped ERD diagrams, tables, and image-based options
 - `tools/` — Python + Node pipeline
 - `docs/formula-sheet/` — 2-page printable exam formula sheet: `index.html` (source), `render.js` (prints to `formula-sheet.pdf` via puppeteer-core + local Chrome and reports column overflow)
@@ -43,6 +48,9 @@ python tools/build_questions.py                     # -> questions.json / questi
 python tools/build_learn.py                         # Obsidian exam summary -> learn.js
 node tools/smoke.js                                 # integrity + id-shuffle scoring invariant
 node tools/shoot.js                                 # screenshots (desktop/mobile/light/dark)
+node tools/erd_check.js                             # ERD course: data integrity + diagram layout lint
+node tools/erd_shoot.js [L05|test] [light|dark]     # one PNG per course diagram (tools/erd_preview.html)
+node tools/erd_flow.js [L05] [light|dark] [mobile]  # ERD course end-to-end in the real app
 ```
 
 ## Status

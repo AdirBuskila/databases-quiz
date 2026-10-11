@@ -131,6 +131,7 @@ function contextHtml(ctx){
   let h = `<div class="ctx ctx-${ctx.kind||"text"}">`;
   if(ctx.title) h += `<div class="ctx-title">${escapeHtml(ctx.title)}</div>`;
   if(ctx.intro) h += `<div class="ctx-text">${richText(ctx.intro)}</div>`;
+  if(ctx.erd && window.renderERD) h += `<div class="erd-wrap">${window.renderERD(ctx.erd)}</div>`;
   if(ctx.image) h += `<figure class="ctx-fig"><img class="q-img ctx-img" src="${ctx.image}" alt="${escapeHtml(ctx.caption||"")}" loading="lazy">`+
                      (ctx.caption?`<figcaption>${richText(ctx.caption)}</figcaption>`:"")+`</figure>`;
   if(Array.isArray(ctx.relations)) h += relationsHtml(ctx.relations);
@@ -160,6 +161,7 @@ function optionHtml(o){
   if(!o) return "";
   const type = o.type || "text";
   if(type==="image") return `<img class="opt-img" src="${o.value}" alt="" loading="lazy">`;
+  if(type==="erd") return window.renderERD ? `<span class="erd-wrap opt-erd">${window.renderERD(o.value)}</span>` : "";
   if(type==="code"){
     const body = (window.highlightSQL && (o.lang||"sql")==="sql") ? window.highlightSQL(o.value) : escapeHtml(o.value);
     return `<pre class="opt-code" dir="ltr"><code>${body}</code></pre>`;
@@ -336,12 +338,12 @@ function renderQuestion(){
   const partChip=$("#qPart");
   if(q.part){ partChip.textContent = "חלק "+q.part; partChip.classList.remove("hidden"); }
   else partChip.classList.add("hidden");
-  $("#qSource").textContent = examLabelOf(q) || (q.source==="exam"?"מבחן":"תרגול");
+  $("#qSource").textContent = q.course ? q.course.levelTitle : (examLabelOf(q) || (q.source==="exam"?"מבחן":"תרגול"));
   const badge=$("#qBadge");
-  badge.textContent = q.official ? "מפתרון רשמי" : "תשובה לא רשמית";
-  badge.className = "chip " + (q.official?"official":"unofficial");
+  badge.textContent = q.course ? "🧩 קורס ERD" : q.official ? "מפתרון רשמי" : "תשובה לא רשמית";
+  badge.className = "chip " + (q.course?"part":q.official?"official":"unofficial");
 
-  $("#qContext").innerHTML = q.contextId ? contextHtml(CTX[q.contextId]) : "";
+  $("#qContext").innerHTML = q.ctx ? contextHtml(q.ctx) : q.contextId ? contextHtml(CTX[q.contextId]) : "";
   $("#questionText").innerHTML = richText(cite(v, q.question));
   $("#qExtras").innerHTML = extrasHtml(q);
 
@@ -351,6 +353,7 @@ function renderQuestion(){
        <span class="txt">${optionHtml(citedOption(v, optById(q,oid)))}</span>
      </button>`).join("");
   document.querySelectorAll(".opt").forEach(b=> b.onclick=()=>choose(parseInt(b.dataset.disp,10)));
+  if(window.ERD) window.ERD.finish($("#screen-quiz"));
 
   const fb=$("#feedback"); fb.classList.add("hidden"); fb.className="feedback hidden";
 
@@ -369,13 +372,12 @@ function renderQuestion(){
     $("#prevBtn").disabled = S.pos===0;
     $("#streakBox").textContent = `נענו ${Object.keys(S.exam.answers).length}/${S.pool.length}`;
   } else {
-    $("#quizMeta").textContent = `שאלה ${pos+1}`;
+    $("#quizMeta").textContent = S.mode==="course" ? `שאלה ${pos+1}/${S.pool.length}` : `שאלה ${pos+1}`;
     $("#prevBtn").disabled = S.hpos===0;
     $("#nextBtn").classList.toggle("hidden", !v.answered);   // appears after answering
     $("#submitExamBtn").classList.add("hidden");
     if(v.answered) paintAnswered(v);                        // navigated back to an answered question
-    const a=P.stats.answered,c=P.stats.correct;
-    $("#streakBox").textContent = `רצף נכון: ${S.streak||0} · דיוק כולל ${a?Math.round(c/a*100):0}%`;
+    $("#streakBox").textContent = streakText();
   }
 }
 
@@ -391,12 +393,17 @@ function choose(disp){
   if(v.answered) return;
   v.answered=true; v.chosen=disp; v.correct = v.correctSet.has(disp);
   paintAnswered(v);
-  recordAnswer(q, v.correct);
+  if(S.mode==="course") window.ERDC.record(q, v.correct); else recordAnswer(q, v.correct);
   S.streak = v.correct ? (S.streak||0)+1 : 0;
   $("#nextBtn").focus();
   renderTopStats();
+  $("#streakBox").textContent = streakText();
+}
+// practice footer: streak + bank accuracy (the ERD course keeps its own score, so streak only)
+function streakText(){
+  if(S.mode==="course") return `רצף נכון: ${S.streak||0}`;
   const a=P.stats.answered,c=P.stats.correct;
-  $("#streakBox").textContent = `רצף נכון: ${S.streak} · דיוק כולל ${a?Math.round(c/a*100):0}%`;
+  return `רצף נכון: ${S.streak||0} · דיוק כולל ${a?Math.round(c/a*100):0}%`;
 }
 /* Paint an answered practice question: lock the options, mark right/wrong, show the feedback.
    Runs when answering and again when navigating back to an already-answered question. */
@@ -409,12 +416,13 @@ function paintAnswered(v){
   });
   const fb=$("#feedback");
   fb.className = "feedback " + (correct?"good":"bad");
-  const srcNote = SRC_NOTE[q.answerSource] || (q.official?"":SRC_NOTE.derived);
+  const srcNote = q.course ? "" : SRC_NOTE[q.answerSource] || (q.official?"":SRC_NOTE.derived);
   fb.innerHTML = `<div class="verdict">${correct?"✓ נכון":"✗ לא נכון"}</div>`+
     `<div class="expl">${richText(cite(v, q.explanation||""))}</div>`+
+    (q.course ? "" :
     (q.official||q.answerSource==="derived"||!q.answerSource?"":`<span class="note">⚠ תשובה לא רשמית.</span>`)+
     (srcNote?`<span class="note">${escapeHtml(srcNote)}</span>`:"")+
-    `<span class="note">מקור: ${escapeHtml(examLabelOf(q))}</span>`;
+    `<span class="note">מקור: ${escapeHtml(examLabelOf(q))}</span>`);
   $("#nextBtn").classList.remove("hidden");
 }
 
@@ -423,9 +431,10 @@ function recordAnswer(q, correct){ P.stats.answered++; if(correct) P.stats.corre
 
 /* ---------- navigation ---------- */
 function next(){
-  if(S.mode==="practice"){
+  if(S.mode!=="exam"){
     if(!S.current.answered) return;
     if(S.hpos<S.hist.length-1){ S.hpos++; renderQuestion(); return; }   // forward through history after going back
+    if(S.mode==="course" && S.pos>=S.pool.length-1){ window.ERDC.finishLevel(); return; }   // ERD course: level done
     if(S.pos>=S.pool.length-1){ S.pool = shuffle(S.pool); S.pos=0; } else S.pos++;
     S.hpos++;
     renderQuestion();
@@ -503,12 +512,12 @@ function renderResults(correct, byTopic, byPart, review){
 }
 
 /* ---------- controls ---------- */
-function quit(){ clearInterval(S.exam.timer); S._views=null; S.hist=[]; S.hpos=0; S.streak=0; initStart(); show("screen-start"); }
+function quit(){ clearInterval(S.exam.timer); S.mode = (document.querySelector('input[name=mode]:checked')||{}).value || "practice"; S._views=null; S.hist=[]; S.hpos=0; S.streak=0; initStart(); show("screen-start"); }
 function bindGlobal(){
   $("#nextBtn").onclick=next;
   $("#prevBtn").onclick=prev;
   $("#submitExamBtn").onclick=()=>submitExam(false);
-  $("#quitBtn").onclick=()=>{ if(S.mode!=="exam"||confirm("לצאת מהמבחן? ההתקדמות לא תישמר.")) quit(); };
+  $("#quitBtn").onclick=()=>{ if(S.mode==="course"){ window.ERDC.exit(); return; } if(S.mode!=="exam"||confirm("לצאת מהמבחן? ההתקדמות לא תישמר.")) quit(); };
   $("#backHomeBtn").onclick=quit;
   function goHome(){
     const inExamQuiz = S.mode==="exam" && !$("#screen-quiz").classList.contains("hidden");
@@ -522,20 +531,26 @@ function bindGlobal(){
     brand.onkeydown=e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); goHome(); } };
   }
   $("#resetProgress").onclick=()=>{ if(confirm("לאפס את כל ההתקדמות וההיסטוריה?")){ P={stats:{answered:0,correct:0},perQ:{}}; saveProgress(); renderTopStats(); renderPartFilter(); renderTopicGrid(); updatePoolInfo(); } };
-  // click any figure (question / context) to zoom
+  // click any figure (question / context) to zoom; ERD diagrams (inline SVG) zoom as a clone
   document.addEventListener("click", e=>{
-    const img=e.target.closest(".q-img"); if(!img) return;
-    const lb=$("#lightbox"), lbImg=$("#lightboxImg");
+    const lb=$("#lightbox"), lbImg=$("#lightboxImg"), lbSvg=$("#lightboxSvg");
     if(!lb||!lbImg) return;
+    const svg=e.target.closest(".erd-svg");
+    if(svg && lbSvg && !svg.closest(".lightbox") && !svg.closest(".opt")){
+      lbImg.classList.add("hidden"); lbSvg.innerHTML=svg.outerHTML; lbSvg.classList.remove("hidden"); lb.classList.remove("hidden"); return;
+    }
+    const img=e.target.closest(".q-img"); if(!img) return;
+    if(lbSvg){ lbSvg.classList.add("hidden"); lbSvg.innerHTML=""; } lbImg.classList.remove("hidden");
     lbImg.src=img.src; lbImg.alt=img.alt||""; lb.classList.remove("hidden");
   });
   const lb=$("#lightbox"), lbImg=$("#lightboxImg"), lbClose=$("#lightboxClose");
-  function closeLb(){ lb.classList.add("hidden"); lbImg.src=""; }
+  function closeLb(){ lb.classList.add("hidden"); lbImg.src=""; const z=$("#lightboxSvg"); if(z) z.innerHTML=""; }
   if(lb){ lb.addEventListener("click", e=>{ if(e.target===lb) closeLb(); }); }
   if(lbClose) lbClose.onclick=closeLb;
   document.addEventListener("keydown",e=>{
     if(lb && !lb.classList.contains("hidden")){ if(e.key==="Escape") closeLb(); return; }
     if($("#screen-quiz").classList.contains("hidden")) return;
+    if(e.target.closest && e.target.closest("input,select,textarea")) return;
     if(/^[1-8]$/.test(e.key)){ const b=document.querySelector(`.opt[data-disp="${+e.key-1}"]`); if(b && !b.disabled) b.click(); }
     else if(e.key==="Enter"){ if(!$("#nextBtn").classList.contains("hidden")) next(); else if(!$("#submitExamBtn").classList.contains("hidden")) submitExam(false); }
     else if(e.key==="ArrowLeft" && !$("#nextBtn").classList.contains("hidden")) next();
@@ -608,6 +623,7 @@ function bindGlobal(){
     const jump=e.target.closest("[data-learn-goto]");
     if(jump){ e.preventDefault(); go(+jump.dataset.learnGoto); return; }
     const img=e.target.closest(".learn-fig img"); if(!img) return;
+    const z=$("#lightboxSvg"); if(z){ z.classList.add("hidden"); z.innerHTML=""; } lbImg.classList.remove("hidden");
     lbImg.src=img.src; lbImg.alt=img.alt||""; lb.classList.remove("hidden");
   });
   function closeLb(){ lb.classList.add("hidden"); lbImg.src=""; }
