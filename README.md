@@ -21,10 +21,12 @@ For screenshots/verify scripts it's easier to serve it:
 - `learn.js` — learn mode (generated): the Obsidian exam summary
   "סיכום למבחן - מערכות בסיסי נתונים", one chapter per `##` section
 - `erd.js` — self-contained ERD renderer: Chen-notation diagram spec → inline SVG (themeable, offline)
-- `erd/` — the **"צריך עזרה ב-ERD?"** course: `course.js` (registry), `levels/L01–L10.js` (lesson + questions
-  per level, small → exam-sized diagrams), `course-ui.js` (level map / lesson / summary; the quiz runs on the
-  main engine with `S.mode="course"`, progress in `localStorage.dbq_erd_v1`). Deep link: `index.html?erd=1`,
-  `?erd=L05`, `?erd=L05&play=1`
+- `courses.js` + `course-ui.js` — the guided courses **"צריך עזרה ב-ERD?"** and **"צריך עזרה ב-SQL?"**: level map /
+  lesson card / summary; the quiz runs on the main engine with `S.mode="course"`; progress in
+  `localStorage.dbq_erd_v1` / `dbq_sql_v1`. Deep links: `index.html?erd=1`, `?sql=S05`, `?sql=S05&play=1`
+- `erd/levels/L01–L10.js` — ERD course (lesson + questions per level, small → exam-sized diagrams)
+- `sql/levels/S01–S10.js` — SQL course (lessons with sample tables + results; every executable answer
+  is checked in SQLite by `tools/sql_check.js`)
 - `images/exams/` — cropped ERD diagrams, tables, and image-based options
 - `tools/` — Python + Node pipeline
 - `docs/formula-sheet/` — 2-page printable exam formula sheet: `index.html` (source), `render.js` (prints to `formula-sheet.pdf` via puppeteer-core + local Chrome and reports column overflow)
@@ -50,7 +52,8 @@ node tools/smoke.js                                 # integrity + id-shuffle sco
 node tools/shoot.js                                 # screenshots (desktop/mobile/light/dark)
 node tools/erd_check.js                             # ERD course: data integrity + diagram layout lint
 node tools/erd_shoot.js [L05|test] [light|dark]     # one PNG per course diagram (tools/erd_preview.html)
-node tools/erd_flow.js [L05] [light|dark] [mobile]  # ERD course end-to-end in the real app
+node tools/sql_check.js [S05] [--show]               # SQL course: integrity + runs every verify in SQLite
+node tools/course_flow.js <erd|sql> [L05|S05] [light|dark] [mobile]  # a course end-to-end in the real app
 ```
 
 ## Status

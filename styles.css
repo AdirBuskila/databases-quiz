@@ -606,52 +606,55 @@ main{max-width:860px;margin:1.6rem auto;padding:0 1rem}
 .lightbox .erd-zoom{max-width:96vw;max-height:92vh;overflow:auto;background:var(--card-solid);border-radius:12px;padding:1rem;box-shadow:var(--shadow)}
 .lightbox .erd-zoom .erd-svg{width:auto;max-width:none !important;height:auto;min-width:min(92vw,900px);cursor:default}
 
-/* ---------------- ERD course ("צריך עזרה ב-ERD?") ---------------- */
-.erd-entry{font-size:.84rem;padding:.45rem .8rem;white-space:nowrap}
-.erd-promo{display:flex;align-items:center;gap:1rem;cursor:pointer;border:1.5px dashed color-mix(in srgb,var(--brand) 55%,transparent);
+/* ---------------- guided courses ("צריך עזרה ב-ERD? / ב-SQL?") ---------------- */
+.crs-entry{font-size:.84rem;padding:.45rem .8rem;white-space:nowrap}
+.crs-promos{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.1rem}
+.crs-promos .crs-promo{margin-bottom:0}
+.crs-promo{display:flex;align-items:center;gap:1rem;cursor:pointer;border:1.5px dashed color-mix(in srgb,var(--brand) 55%,transparent);
   background:color-mix(in srgb,var(--brand) 8%,var(--card));transition:transform .15s,border-color .15s}
-.erd-promo:hover{transform:translateY(-2px);border-color:var(--brand)}
-.erd-promo .big-ico{font-size:2rem;flex:none}
-.erd-promo b{display:block;font-size:1.05rem}
-.erd-promo span{color:var(--muted);font-size:.85rem}
-.erd-promo .go{margin-inline-start:auto;flex:none}
-.erd-head{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
-.erd-head .grow{flex:1}
-.erd-overall{font-size:.85rem;color:var(--muted);font-weight:600}
-.erd-map{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.7rem}
-.erd-lvl{position:relative;display:flex;flex-direction:column;gap:.25rem;text-align:right;font:inherit;color:var(--ink);cursor:pointer;
+.crs-promo:hover{transform:translateY(-2px);border-color:var(--brand)}
+.crs-promo .big-ico{font-size:2rem;flex:none}
+.crs-promo b{display:block;font-size:1.05rem}
+.crs-promo span{color:var(--muted);font-size:.85rem}
+.crs-promo .go{margin-inline-start:auto;flex:none}
+.crs-head{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.crs-head .grow{flex:1}
+.crs-overall{font-size:.85rem;color:var(--muted);font-weight:600}
+.crs-map{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.7rem}
+.crs-lvl{position:relative;display:flex;flex-direction:column;gap:.25rem;text-align:right;font:inherit;color:var(--ink);cursor:pointer;
   border:1.5px solid var(--line);background:var(--card2);border-radius:14px;padding:.85rem 1rem;transition:border-color .15s,transform .15s}
-.erd-lvl:hover{border-color:var(--brand);transform:translateY(-2px)}
-.erd-lvl .num{font-size:.72rem;font-weight:800;color:var(--muted)}
-.erd-lvl .ttl{font-weight:800;font-size:1rem}
-.erd-lvl .gl{font-size:.8rem;color:var(--muted);line-height:1.4}
-.erd-lvl .st{font-size:.75rem;font-weight:700;margin-top:.2rem;color:var(--muted)}
-.erd-lvl.passed{border-color:color-mix(in srgb,var(--ok) 55%,transparent);background:color-mix(in srgb,var(--ok) 8%,var(--card2))}
-.erd-lvl.passed .st{color:var(--ok)}
-.erd-lvl.next{box-shadow:var(--ring);border-color:transparent}
-.erd-lvl.next::after{content:"מומלץ הבא";position:absolute;top:.6rem;left:.7rem;font-size:.66rem;font-weight:800;
+.crs-lvl:hover{border-color:var(--brand);transform:translateY(-2px)}
+.crs-lvl .num{font-size:.72rem;font-weight:800;color:var(--muted)}
+.crs-lvl .ttl{font-weight:800;font-size:1rem}
+.crs-lvl .gl{font-size:.8rem;color:var(--muted);line-height:1.4}
+.crs-lvl .st{font-size:.75rem;font-weight:700;margin-top:.2rem;color:var(--muted)}
+.crs-lvl.passed{border-color:color-mix(in srgb,var(--ok) 55%,transparent);background:color-mix(in srgb,var(--ok) 8%,var(--card2))}
+.crs-lvl.passed .st{color:var(--ok)}
+.crs-lvl.next{box-shadow:var(--ring);border-color:transparent}
+.crs-lvl.next::after{content:"מומלץ הבא";position:absolute;top:.6rem;left:.7rem;font-size:.66rem;font-weight:800;
   background:var(--grad);color:#fff;padding:.12rem .5rem;border-radius:20px}
-.erd-lvl.boss{grid-column:1/-1;background:color-mix(in srgb,var(--warn) 9%,var(--card2));border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
-.erd-lesson h2{font-size:1.35rem}
-.erd-lesson .lesson-body{line-height:1.7}
-.erd-lesson .lesson-body h3{color:var(--ink);font-size:1.02rem;margin:1.1rem 0 .4rem}
-.erd-lesson .lesson-body ul{padding-inline-start:1.3rem;margin:.4rem 0}
-.erd-lesson .lesson-body li{margin:.2rem 0}
-.erd-lesson .lesson-body code{font-family:Consolas,ui-monospace,monospace;font-size:.88em;direction:ltr;display:inline-block;
+.crs-lvl.boss{grid-column:1/-1;background:color-mix(in srgb,var(--warn) 9%,var(--card2));border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
+.crs-lesson h2{font-size:1.35rem}
+.crs-lesson .lesson-body{line-height:1.7}
+.crs-lesson .lesson-body h3{color:var(--ink);font-size:1.02rem;margin:1.1rem 0 .4rem}
+.crs-lesson .lesson-body ul{padding-inline-start:1.3rem;margin:.4rem 0}
+.crs-lesson .lesson-body li{margin:.2rem 0}
+.crs-lesson .lesson-body code{font-family:Consolas,ui-monospace,monospace;font-size:.88em;direction:ltr;display:inline-block;
   background:var(--card2);border:1px solid var(--line);border-radius:6px;padding:0 .35em}
-.erd-lesson .lesson-fig{border:1px solid var(--line);border-radius:14px;background:var(--card2);padding:.8rem;margin:.9rem 0}
-.erd-lesson .lesson-fig figcaption{font-size:.8rem;color:var(--muted);text-align:center;margin-top:.4rem}
+.crs-lesson .lesson-fig{border:1px solid var(--line);border-radius:14px;background:var(--card2);padding:.8rem;margin:.9rem 0}
+.crs-lesson .lesson-fig figcaption{font-size:.8rem;color:var(--muted);text-align:center;margin-top:.4rem}
 .lesson-rule{border-inline-start:3px solid var(--brand);background:var(--card2);border-radius:10px;padding:.6rem .9rem;margin:.7rem 0}
 .lesson-trap{border-inline-start:3px solid var(--warn);background:color-mix(in srgb,var(--warn) 8%,var(--card2));border-radius:10px;padding:.6rem .9rem;margin:.7rem 0}
-.erd-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.1rem}
-.erd-actions .btn{flex:1 1 auto}
-.erd-sum{text-align:center}
-.erd-sum .big{font-size:2.6rem;font-weight:900;margin:.4rem 0}
-.erd-sum .msg{color:var(--muted);margin-bottom:.6rem}
+.crs-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.1rem}
+.crs-actions .btn{flex:1 1 auto}
+.crs-sum{text-align:center}
+.crs-sum .big{font-size:2.6rem;font-weight:900;margin:.4rem 0}
+.crs-sum .msg{color:var(--muted);margin-bottom:.6rem}
 @media(max-width:560px){
-  .erd-entry{order:3;flex:1 1 0;justify-content:center;padding:.42rem .7rem;font-size:.82rem}
-  .erd-promo .go{display:none}
-  .erd-map{grid-template-columns:1fr}
+  .crs-entry{order:3;flex:1 1 0;justify-content:center;padding:.42rem .7rem;font-size:.82rem}
+  .crs-promo .go{display:none}
+  .crs-promos{grid-template-columns:1fr}
+  .crs-map{grid-template-columns:1fr}
 }
 .opt .erd-svg{cursor:pointer}.opt-erd{display:block}
 @media(max-width:560px){
@@ -660,3 +663,18 @@ main{max-width:860px;margin:1.6rem auto;padding:0 1rem}
   .opt .erd-wrap .erd-svg{min-width:0}
   .erd-wrap{padding-bottom:.3rem}
 }
+.lesson-fig .ctx{margin-bottom:.5rem}
+.lesson-fig .q-code{margin:.5rem 0}
+.lesson-result{border:1px dashed color-mix(in srgb,var(--ok) 55%,transparent);background:color-mix(in srgb,var(--ok) 6%,transparent);border-radius:12px;padding:.6rem .8rem;margin-top:.5rem}
+.lesson-result .ctx-title{color:var(--ok)}
+@media(max-width:560px){
+  .crs-entry,.learn-entry,.sheet-link{flex:1 1 calc(50% - .4rem) !important}
+}
+/* data tables are LTR: make the scroll box LTR too so a wide table opens at its first column */
+.dbtable{direction:ltr}
+.dbtable figcaption{direction:rtl;text-align:right}
+@media(max-width:560px){ .dbtable th,.dbtable td{padding:.28rem .45rem} }
+.sample-data{margin-top:.6rem;border-top:1px dashed var(--line);padding-top:.5rem}
+.sample-data summary{cursor:pointer;font-size:.85rem;font-weight:700;color:var(--muted)}
+.sample-data summary:hover{color:var(--ink)}
+.sample-data .ctx-tables{margin-top:.5rem}

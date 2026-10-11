@@ -340,7 +340,7 @@ function renderQuestion(){
   else partChip.classList.add("hidden");
   $("#qSource").textContent = q.course ? q.course.levelTitle : (examLabelOf(q) || (q.source==="exam"?"מבחן":"תרגול"));
   const badge=$("#qBadge");
-  badge.textContent = q.course ? "🧩 קורס ERD" : q.official ? "מפתרון רשמי" : "תשובה לא רשמית";
+  badge.textContent = q.course ? q.course.badge : q.official ? "מפתרון רשמי" : "תשובה לא רשמית";
   badge.className = "chip " + (q.course?"part":q.official?"official":"unofficial");
 
   $("#qContext").innerHTML = q.ctx ? contextHtml(q.ctx) : q.contextId ? contextHtml(CTX[q.contextId]) : "";
@@ -393,7 +393,7 @@ function choose(disp){
   if(v.answered) return;
   v.answered=true; v.chosen=disp; v.correct = v.correctSet.has(disp);
   paintAnswered(v);
-  if(S.mode==="course") window.ERDC.record(q, v.correct); else recordAnswer(q, v.correct);
+  if(S.mode==="course") window.COURSE.record(q, v.correct); else recordAnswer(q, v.correct);
   S.streak = v.correct ? (S.streak||0)+1 : 0;
   $("#nextBtn").focus();
   renderTopStats();
@@ -419,7 +419,7 @@ function paintAnswered(v){
   const srcNote = q.course ? "" : SRC_NOTE[q.answerSource] || (q.official?"":SRC_NOTE.derived);
   fb.innerHTML = `<div class="verdict">${correct?"✓ נכון":"✗ לא נכון"}</div>`+
     `<div class="expl">${richText(cite(v, q.explanation||""))}</div>`+
-    (q.course ? "" :
+    (q.course ? (q.course.sample ? `<details class="sample-data"><summary>📊 נתוני הדוגמה שעליהם מבוסס ההסבר</summary><div class="ctx-tables">${q.course.sample.map(tableHtml).join("")}</div></details>` : "") :
     (q.official||q.answerSource==="derived"||!q.answerSource?"":`<span class="note">⚠ תשובה לא רשמית.</span>`)+
     (srcNote?`<span class="note">${escapeHtml(srcNote)}</span>`:"")+
     `<span class="note">מקור: ${escapeHtml(examLabelOf(q))}</span>`);
@@ -434,7 +434,7 @@ function next(){
   if(S.mode!=="exam"){
     if(!S.current.answered) return;
     if(S.hpos<S.hist.length-1){ S.hpos++; renderQuestion(); return; }   // forward through history after going back
-    if(S.mode==="course" && S.pos>=S.pool.length-1){ window.ERDC.finishLevel(); return; }   // ERD course: level done
+    if(S.mode==="course" && S.pos>=S.pool.length-1){ window.COURSE.finishLevel(); return; }   // ERD course: level done
     if(S.pos>=S.pool.length-1){ S.pool = shuffle(S.pool); S.pos=0; } else S.pos++;
     S.hpos++;
     renderQuestion();
@@ -517,7 +517,7 @@ function bindGlobal(){
   $("#nextBtn").onclick=next;
   $("#prevBtn").onclick=prev;
   $("#submitExamBtn").onclick=()=>submitExam(false);
-  $("#quitBtn").onclick=()=>{ if(S.mode==="course"){ window.ERDC.exit(); return; } if(S.mode!=="exam"||confirm("לצאת מהמבחן? ההתקדמות לא תישמר.")) quit(); };
+  $("#quitBtn").onclick=()=>{ if(S.mode==="course"){ window.COURSE.exit(); return; } if(S.mode!=="exam"||confirm("לצאת מהמבחן? ההתקדמות לא תישמר.")) quit(); };
   $("#backHomeBtn").onclick=quit;
   function goHome(){
     const inExamQuiz = S.mode==="exam" && !$("#screen-quiz").classList.contains("hidden");

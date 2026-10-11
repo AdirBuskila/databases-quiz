@@ -4,7 +4,7 @@ const fs = require("fs"), path = require("path");
 const ROOT = path.join(__dirname, "..");
 global.window = globalThis;
 const load = f => (0, eval)(fs.readFileSync(path.join(ROOT, f), "utf8"));
-load("erd.js"); load("erd/course.js");
+load("erd.js"); load("courses.js");
 fs.readdirSync(path.join(ROOT, "erd", "levels")).filter(f => /^L\d+\.js$/.test(f)).sort().forEach(f => load("erd/levels/" + f));
 const [out, only] = process.argv.slice(2);
 fs.mkdirSync(out, { recursive: true });

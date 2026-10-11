@@ -52,3 +52,12 @@ leave the student able to solve any exam ERD question.
   endpoint exists, every question has a diagram or explicit `noDiagram`, each level 5–10 Qs.
 - Screenshots of every diagram (light/dark, desktop/mobile) to catch overlaps.
 - Independent re-solve pass on all answers. `smoke.js` + `validate.py` still pass.
+
+## Addendum (same day): SQL course
+Same shell, generalized: `courses.js` (registry, `ERD_LEVEL` / `SQL_LEVEL`), `course-ui.js` (one
+`screen-course` for both), header + start-screen entry per course. SQL levels S01–S10: SELECT basics ·
+ORDER BY/NULL · JOIN · aggregation · GROUP BY/HAVING · subqueries & extremum · negation · division ·
+VIEW / FROM-subquery / multi-step · 🏆 final (one new exam-sized schema, 12 Qs). Lessons show sample
+tables + query + result (checked by running the query). Questions carry `verify` (`{sql, expect}` or
+`{ref, same, differ}`) executed in SQLite by `tools/sql_check.js`; SQLite gaps (ALL/ANY/CONTAINS/INTO,
+leniency on bare columns with aggregates) are covered by explanation + blind review.

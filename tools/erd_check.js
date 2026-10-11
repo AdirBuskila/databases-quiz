@@ -8,7 +8,7 @@ const fs = require("fs"), path = require("path");
 const ROOT = path.join(__dirname, "..");
 global.window = globalThis;
 const load = f => (0, eval)(fs.readFileSync(path.join(ROOT, f), "utf8"));
-load("erd.js"); load("erd/course.js");
+load("erd.js"); load("courses.js");
 const lvDir = path.join(ROOT, "erd", "levels");
 const files = fs.readdirSync(lvDir).filter(f => /^L\d+\.js$/.test(f)).sort();
 files.forEach(f => load("erd/levels/" + f));
