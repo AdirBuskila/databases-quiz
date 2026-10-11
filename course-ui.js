@@ -96,7 +96,7 @@
     S.mode = "course"; S._views = null;
     // schema-only SQL questions: their explanations quote the level's sample rows, so the
     // feedback offers those rows (the tables a question shows itself are already on screen)
-    const sampleOf = q => (q.ctx && q.ctx.tables) ? null : ((q.verify && q.verify.db) || q.db || L.db || null);
+    const sampleOf = q => (q.ctx && q.ctx.tables) ? null : ([].concat(q.verify || []).map(v => v.db).find(Boolean) || q.db || L.db || null);
     S.pool = L.questions.map(q => Object.assign(q, { topic: C.meta.topic, topicLabel: C.meta.topicLabel,
       course: { courseId: C.id, levelId: L.id, levelTitle, badge, sample: sampleOf(q) } }));
     S.pos = 0; S.hist = []; S.hpos = 0; S.streak = 0;

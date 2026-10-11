@@ -44,7 +44,8 @@ function rel(cols, rows){ // dedupe
 function colIndex(R, ref){
   const parts = String(ref).trim().split(".");
   let hits;
-  if (parts.length === 2) hits = R.cols.map((c, i) => [c, i]).filter(([c]) => lc(c.rel) === lc(parts[0]) && lc(c.name) === lc(parts[1]));
+  // a column answers to its relation name and, after NAME ← …, still to the alias it had (T1.x)
+  if (parts.length === 2) hits = R.cols.map((c, i) => [c, i]).filter(([c]) => (lc(c.rel) === lc(parts[0]) || lc(c.alias || "") === lc(parts[0])) && lc(c.name) === lc(parts[1]));
   else hits = R.cols.map((c, i) => [c, i]).filter(([c]) => lc(c.name) === lc(parts[0]));
   if (!hits.length) throw new Error(`no column '${ref}' (have ${R.cols.map(c => c.rel + "." + c.name).join(", ")})`);
   if (hits.length > 1) throw new Error(`ambiguous column '${ref}'`);
@@ -196,7 +197,7 @@ function evaluate(src, tables){
     if (p >= T.length) break;
     if (T[p].t === "name" && T[p + 1] && T[p + 1].t === "op" && T[p + 1].v === "="){
       const name = T[p].v; p += 2; const v = expr();
-      env[lc(name)] = { cols: v.cols.map(c => ({ rel: name, name: c.name })), rows: v.rows }; last = env[lc(name)];
+      env[lc(name)] = { cols: v.cols.map(c => ({ rel: name, alias: c.rel, name: c.name })), rows: v.rows }; last = env[lc(name)];
     } else last = expr();
     if (peek() && peek().t !== "sep") throw new Error("unexpected " + JSON.stringify(peek()));
   }

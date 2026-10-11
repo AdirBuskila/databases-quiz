@@ -25,6 +25,10 @@ For screenshots/verify scripts it's easier to serve it:
   lesson card / summary; the quiz runs on the main engine with `S.mode="course"`; progress in
   `localStorage.dbq_erd_v1` / `dbq_sql_v1`. Deep links: `index.html?erd=1`, `?sql=S05`, `?sql=S05&play=1`
 - `erd/levels/L01–L10.js` — ERD course (lesson + questions per level, small → exam-sized diagrams)
+- `norm/levels/N01–N09.js` — FDs & normalization course; every computable answer is recomputed by
+  `tools/fdlib.js` (closure, keys, normal forms on projected FDs, chase, preservation, minimal cover)
+- `alg/levels/A01–A09.js` — relational-algebra course; options are evaluated on sample tables by
+  `tools/ralib.js` (parses the exam notation: Π σ ρ × ⊗ − ∪ ∩ ÷ ←)
 - `sql/levels/S01–S10.js` — SQL course (lessons with sample tables + results; every executable answer
   is checked in SQLite by `tools/sql_check.js`)
 - `images/exams/` — cropped ERD diagrams, tables, and image-based options
@@ -53,7 +57,10 @@ node tools/shoot.js                                 # screenshots (desktop/mobil
 node tools/erd_check.js                             # ERD course: data integrity + diagram layout lint
 node tools/erd_shoot.js [L05|test] [light|dark]     # one PNG per course diagram (tools/erd_preview.html)
 node tools/sql_check.js [S05] [--show]               # SQL course: integrity + runs every verify in SQLite
-node tools/course_flow.js <erd|sql> [L05|S05] [light|dark] [mobile]  # a course end-to-end in the real app
+node tools/norm_check.js [N05] [--show]              # normalization course: lint + FD facts recomputed
+node tools/alg_check.js [A05] [--show]               # algebra course: lint + options evaluated on sample data
+node tools/course_dump.js <sql|norm|alg> <dir> [ids]  # questions without answers + key, for blind review
+node tools/course_flow.js <erd|sql|norm|alg> [level] [light|dark] [mobile]  # a course end-to-end in the real app
 ```
 
 ## Status
