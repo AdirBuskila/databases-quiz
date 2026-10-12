@@ -29,6 +29,8 @@
   <li><strong>σ<sub>תנאי</sub> (בחירה)</strong> משאיר רק את ה<strong>שורות</strong> שמקיימות את התנאי. מספר העמודות לא משתנה. זה ה-WHERE של SQL.</li>
   <li><strong>Π<sub>עמודות</sub> (היטל)</strong> משאיר רק את ה<strong>עמודות</strong> שנבחרו, <strong>ומוחק שורות כפולות</strong>, כי יחס הוא קבוצה. זה SELECT DISTINCT.</li>
   <li>בתנאי של σ: <code>∧</code> = וגם, <code>∨</code> = או, <code>¬</code> = לא. מחרוזות במירכאות: <code>city="Haifa"</code>.</li>
+  <li>השוואות בתנאי: <code>=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code> (≤), <code>&gt;=</code> (≥). <strong>"שונה מ-"</strong> נכתב במבחנים כמעט תמיד <code>&lt;&gt;</code>, ולפעמים <code>!=</code> או <code>≠</code>: שלושתם אותו דבר. <code>city &lt;&gt; "Haifa"</code> שקול ל-<code>¬(city="Haifa")</code>.</li>
+  <li>שני ביטויים עם אותן עמודות אפשר לשלב: <code>A ∩ B</code> = השורות שיש בשניהם, <code>A − B</code> = השורות שיש ב-A ואין ב-B (הרחבה ברמה 4).</li>
   <li>פעולה חד-מקומית חלה על מה שבא <strong>מיד אחריה</strong>: <code>Π<sub>name</sub> σ<sub>age&gt;24</sub> (Student)</code> = קודם σ, ואז Π.</li>
 </ul>
 {fig:0}

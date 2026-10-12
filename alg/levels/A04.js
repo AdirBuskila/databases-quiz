@@ -24,6 +24,7 @@
   <li><code>A ∪ B</code> (איחוד) = מה שיש ב-A <strong>או</strong> ב-B.</li>
   <li><code>A ∩ B</code> (חיתוך) = מה שיש <strong>גם</strong> ב-A <strong>וגם</strong> ב-B.</li>
   <li><code>A − B</code> (הפרש) = מה שיש ב-A <strong>ואין</strong> ב-B. הסדר קובע: B − A זו שאלה אחרת.</li>
+  <li>שמות העמודות <strong>לא</strong> חייבים להיות זהים: <code>Π_{s_id} (Students) − Π_{performer_id} (Plays)</code> חוקי, כי משווים עמודה מול עמודה לפי המיקום.</li>
 </ul>
 {fig:0}
 <div class="lesson-rule">🔑 <strong>"גם X וגם Y" על שתי שורות שונות ← חיתוך:</strong> <code>Π_{s_id} σ_{course="DB"} (Enroll) ∩ Π_{s_id} σ_{course="AI"} (Enroll)</code>. ה-σ בודק <strong>שורה אחת</strong> בכל פעם, ולכן <code>σ_{course="DB" ∧ course="AI"}</code> תמיד ריק: אין שורה שהקורס בה הוא גם DB וגם AI (21S-B, שאלה 14).</div>

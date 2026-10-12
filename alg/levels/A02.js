@@ -38,6 +38,7 @@
   <li><strong>A × B (מכפלה קרטזית)</strong>: כל שורה של A מול <strong>כל</strong> שורה של B. מספר השורות = |A|·|B|, מספר העמודות = סכום העמודות. בלי תנאי, רוב הזוגות חסרי משמעות.</li>
   <li><strong>A ⊗ B (צירוף טבעי)</strong>: מזווג רק שורות שמסכימות על <strong>כל</strong> העמודות שיש להן <strong>שם משותף</strong>, אוטומטית, והעמודה המשותפת מופיעה <strong>פעם אחת</strong>.</li>
   <li>אין אף עמודה משותפת? אז <strong>A ⊗ B = A × B</strong> (21S-B שאלה 17).</li>
+  <li>ב-× עמודה שקיימת בשתי הטבלאות מופיעה <strong>פעמיים</strong>, ולכן מציינים את שם הטבלה: <code>Student.sid = Enroll.sid</code>. עמודה שקיימת רק בטבלה אחת (<code>credits</code>, <code>city</code>) כותבים בלי קידומת.</li>
 </ul>
 {fig:0}
 <div class="lesson-rule">🔑 <strong>חוק הספירה:</strong> השתמשת ב-× בין n טבלאות? חייבים <strong>n−1 תנאי חיבור</strong> (שוויון בין מפתחות) בתוך ה-σ. ספור אותם בלי לקרוא את שאר התנאים. תנאים כמו <code>city="Haifa"</code> הם <strong>סינון</strong>, לא חיבור (25C-A שאלה 14, 25S-B שאלה 14).</div>

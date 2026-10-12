@@ -25,6 +25,7 @@
   <li>כל האגרגציות <strong>מתעלמות מ-NULL</strong> (מלבד <code>COUNT(*)</code>). <code>AVG(price)</code> מחלק ב-5, לא ב-6.</li>
   <li>"כמה <strong>שונים</strong>" / "ביותר משנה אחת" / "3 לקוחות שונים" ← <code>COUNT(DISTINCT …)</code> (23B-A שאלה 5, 24B-A שאלה 12, 25S-B שאלה 11).</li>
   <li>"קופסאות זו על גבי זו" ← <strong>SUM</strong>(height), לא COUNT (23B-A2, שאלה 9).</li>
+  <li><code>x IN (SELECT …)</code> = x שווה <strong>לאחד</strong> מהערכים שתת-השאילתה מחזירה (וכך גם רשימה: <code>x IN (1, 2, 3)</code>). כשתת-השאילתה מחזירה ערך יחיד, <code>IN</code> שקול ל-<code>=</code>.</li>
 </ul>
 {fig:0}
 <div class="lesson-trap">⚠️ <strong>המסיח הכי נפוץ בכל ה-SQL:</strong> <code>SELECT MAX(price), i_name FROM Instruments</code>. MAX מחזיר <strong>ערך אחד</strong>, אבל i_name הוא ערך <strong>לכל שורה</strong>. אין דרך לדעת איזה שם להצמיד, ולכן השאילתה <strong>פסולה תמיד</strong> (21B-A שאלה 12, 22B-A שאלה 8, 21B-C שאלה 5, 23B-A2 שאלה 8, 24B-A שאלה 13). הדרך הנכונה: <code>WHERE price = (SELECT MAX(price) FROM Instruments)</code>.</div>

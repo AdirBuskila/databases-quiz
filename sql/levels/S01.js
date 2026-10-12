@@ -23,6 +23,7 @@
 {fig:0}
 <ul>
   <li><code>WHERE</code> משאיר רק שורות שהתנאי עליהן <strong>אמת</strong>. כל שאר השורות נזרקות.</li>
+  <li>אופרטורי השוואה: <code>=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, ו<strong>"שונה מ"</strong> נכתב <code>&lt;&gt;</code> או <code>!=</code>. שניהם בדיוק אותו דבר, ושניהם מופיעים במבחן (באלגברה יחסית כמעט תמיד <code>&lt;&gt;</code>).</li>
   <li><code>AND</code> = שני התנאים חייבים להתקיים · <code>OR</code> = מספיק אחד. ל-AND יש <strong>קדימות</strong> על OR (כמו כפל לפני חיבור).</li>
   <li><code>LIKE</code> עם <code>%</code> = רצף תווים כלשהו (גם ריק), <code>_</code> = תו אחד בדיוק: <code>'D%'</code> מתחיל ב-D · <code>'%584'</code> מסתיים ב-584 · <code>'%e%'</code> מכיל e.</li>
   <li><code>DISTINCT</code> אחרי SELECT מוחק שורות כפולות בתוצאה.</li>

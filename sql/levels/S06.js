@@ -39,6 +39,9 @@
 <ul>
   <li>ב-NOT EXISTS הסימן בתת-השאילתה מראה <strong>מי נפסל</strong>: ‏<code>t2.x &lt; t1.x</code> פוסל את מי שיש קטן ממנו, ולכן נשאר המינימום (21B-A, שאלה 10).</li>
   <li><code>&gt; ALL</code> (בלי שווה) מחזיר <strong>כלום</strong>: אף ערך לא גדול מעצמו (26B-A, שאלה 11).</li>
+  <li><code>EXISTS (SELECT …)</code> אמת אם תת-השאילתה מחזירה <strong>לפחות שורה אחת</strong>, ו-<code>NOT EXISTS</code> אמת אם היא <strong>ריקה</strong>. מה שכתוב ב-SELECT שלה (<code>*</code> או עמודה) לא משנה.</li>
+  <li><strong>תת-שאילתה מתואמת:</strong> כשתת-השאילתה מפנה לכינוי של השאילתה החיצונית (כמו <code>E1</code> בתרשים), היא מחושבת <strong>מחדש לכל שורה</strong> חיצונית. למשל <code>WHERE E1.age &lt; (SELECT AVG(E2.age) FROM Employees E2 WHERE E2.dept = E1.dept)</code> משווה כל עובד לגיל הממוצע <strong>במחלקה שלו</strong>.</li>
+  <li><code>CREATE VIEW v AS (SELECT …)</code> שומר שאילתה בשם v, ומשתמשים ב-v כמו בטבלה רגילה (הרחבה בשלב 9). VIEW שסופר לכל עובד הופך את הספירה לעמודה רגילה, ועליה כבר מותר <code>MAX</code> ו-<code>&gt;= ALL</code>.</li>
 </ul>
 <div class="lesson-trap">⚠️ <strong>שלושה מסיחים שחוזרים כמעט מילה במילה:</strong><br>
 • <code>SELECT MAX(salary), name FROM Employees</code> בלי GROUP BY: פסול. ‏MAX מחזיר ערך אחד ו-name ערך לכל שורה (21B-A שאלה 12, 22B-A שאלה 8, 21B-C שאלה 5).<br>

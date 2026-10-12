@@ -28,8 +28,11 @@
 <ul>
   <li><code>A JOIN B ON A.x = B.x</code>: מחברים לפי תנאי מפורש.</li>
   <li><code>A JOIN B USING(x)</code>: אותו דבר, כשלעמודה <strong>אותו שם</strong> בשתי הטבלאות.</li>
+  <li><code>A NATURAL JOIN B</code>: מחבר אוטומטית (בלי ON) לפי <strong>כל</strong> העמודות שיש להן אותו שם בשתי הטבלאות.</li>
+  <li><strong>כינוי (alias):</strong> <code>FROM Students S</code> (או <code>Students AS S</code>) נותן לטבלה שם קצר, ומעכשיו כותבים <code>S.first_name</code>. זו אותה טבלה, לא עותק נוסף. כינוי שלא הוגדר ב-FROM (למשל <code>L.l_name</code> בלי <code>JOIN Lecturers L</code>) הוא שגיאה. ו-<code>SELECT *</code> = כל העמודות.</li>
   <li><code>FROM A, B</code> (פסיק) = <strong>מכפלה קרטזית</strong>: כל שורה של A עם כל שורה של B (5 × 6 = 30 שורות). פסיק עובד רק יחד עם תנאי חיבור ב-WHERE <strong>לכל זוג טבלאות</strong>.</li>
   <li>INNER JOIN משאיר רק שורות <strong>שיש להן התאמה</strong>: Noa לא רשומה לאף קורס, ולכן היא נעלמת.</li>
+  <li><strong>צירוף טבלה לעצמה (self-join)</strong> מותר: <code>FROM Students S1 JOIN Students S2 ON S1.city = S2.city</code> פותח את אותה טבלה פעמיים בשני כינויים, וכל שורה בתוצאה היא זוג סטודנטים מאותה עיר. כל כינוי יכול לקבל ב-WHERE תנאי משלו.</li>
 </ul>
 <div class="lesson-rule">🔑 <strong>שרשרת מלאה:</strong> אם מסננים לפי שם המרצה (<code>l_name</code> ב-Lecturers), והשם שבוחרים נמצא ב-Students, חייבים לעבור דרך <strong>כל</strong> הטבלאות שביניהן: Students ← Enrollments ← Courses ← Lecturers. עצירה באמצע, בלי הטבלה שבה יושבת עמודת הסינון, היא המסיח של 24B-A שאלה 6 ו-25S-B שאלה 8.</div>
 <div class="lesson-trap">⚠️ <strong>חיבור לפי המזהה הלא נכון</strong> הוא המסיח הכי שקט: <code>ON E.enrollment_id = C.course_id</code> נראה תקין, אבל משווה שני מזהים שאין ביניהם קשר (25C-A, שאלה 8). בכל ON בדוק ששני הצדדים מתארים <strong>אותו דבר</strong>. ועוד: <code>NATURAL JOIN</code> בין טבלאות בלי עמודה משותפת (Students ו-Courses) הוא מכפלה קרטזית (25S-B, שאלה 5).</div>`,

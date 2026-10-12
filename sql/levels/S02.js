@@ -23,13 +23,15 @@
 <ul>
   <li><code>ORDER BY avg_grade DESC, first_name</code> = קודם לפי ממוצע בסדר יורד, ובתוך ממוצע זהה לפי שם בסדר עולה.</li>
   <li><code>DESC</code> חל <strong>רק על העמודה שלפניו</strong>. כל עמודה בלי DESC ממוינת בסדר עולה.</li>
+  <li>מותר למיין גם לפי עמודה ש<strong>לא</strong> מופיעה ב-SELECT: <code>SELECT first_name FROM Students ORDER BY avg_grade</code> חוקי.</li>
 </ul>
 {fig:0}
 <div class="lesson-rule">🔑 <strong>"X בסדר עולה ו-Y בסדר יורד"</strong> נכתב <code>ORDER BY X, Y DESC</code>. השאלה הזו חזרה כמעט מילה במילה ב-21B-A (שאלה 8) וב-22B-A (שאלה 9). המסיחים הופכים את מקום ה-DESC או כותבים GROUP BY במקום ORDER BY.</div>
-<p><strong>NULL</strong> = ערך חסר / לא ידוע. כל השוואה מול NULL (<code>=</code>, <code>!=</code>, <code>&lt;</code>…) נותנת <strong>Unknown</strong>, לא True. WHERE משאיר שורה <strong>רק אם התנאי True</strong>, ולכן:</p>
+<p><strong>NULL</strong> = ערך חסר / לא ידוע. כל השוואה מול NULL (<code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>…) נותנת <strong>Unknown</strong>, לא True. WHERE משאיר שורה <strong>רק אם התנאי True</strong>, ולכן:</p>
 <ul>
   <li><code>WHERE phone = NULL</code> לא מחזיר אף שורה. בודקים ערך חסר רק עם <code>IS NULL</code> / <code>IS NOT NULL</code>.</li>
-  <li><code>WHERE city != 'Haifa'</code> <strong>לא</strong> מחזיר את מי שהעיר שלו NULL.</li>
+  <li><code>WHERE city &lt;&gt; 'Haifa'</code> (<code>&lt;&gt;</code> = "שונה מ", זהה ל-<code>!=</code>) <strong>לא</strong> מחזיר את מי שהעיר שלו NULL: ל-Noa העיר לא ידועה, אז "שונה מחיפה?" הוא Unknown, לא True.</li>
+  <li><code>NOT</code> הופך תנאי: <code>NOT city = 'Haifa'</code> זהה ל-<code>city &lt;&gt; 'Haifa'</code>. אבל NOT של Unknown נשאר <strong>Unknown</strong>, ולכן גם הוא לא מחזיר את Noa.</li>
 </ul>
 {fig:1}
 <div class="lesson-trap">⚠️ <strong>טעימה לשלב 4:</strong> <code>COUNT(*)</code> סופר שורות, ו-<code>COUNT(phone)</code> סופר רק ערכים שאינם NULL. בטבלה למעלה: 6 לעומת 4.</div>`,
@@ -145,7 +147,7 @@
         ], correctId: "b",
         verify: { ref: "SELECT first_name FROM Students WHERE city <> 'Haifa' OR city IS NULL", same: ["b"], differ: ["a", "c", "d"] },
         recap: "כדי לכלול NULL צריך להוסיף OR col IS NULL",
-        explanation: "`city <> 'Haifa'` לבדו מפספס את Noa (העיר שלה NULL, והתנאי Unknown). מוסיפים `OR city IS NULL`. גם `NOT city = 'Haifa'` לא עוזר: NOT של Unknown הוא עדיין Unknown. עם AND אין שורה שמקיימת את שני התנאים, ולכן אפשרות c מחזירה 0 שורות." },
+        explanation: "`<>` פירושו \"שונה מ\" (בדיוק כמו `!=`). `city <> 'Haifa'` לבדו מפספס את Noa (העיר שלה NULL, והתנאי Unknown). מוסיפים `OR city IS NULL`. גם `NOT city = 'Haifa'` לא עוזר: NOT של Unknown הוא עדיין Unknown. עם AND אין שורה שמקיימת את שני התנאים, ולכן אפשרות c מחזירה 0 שורות." },
     ],
   });
 })();

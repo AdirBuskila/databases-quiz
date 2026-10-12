@@ -52,6 +52,8 @@
   <li><strong>כל עמודה ב-SELECT שאינה בתוך אגרגציה חייבת להופיע ב-GROUP BY.</strong> "לכל X" ← <code>GROUP BY X</code>; "לכל זוג X ו-Y" ← <code>GROUP BY X, Y</code> (21B-A, שאלה 13).</li>
   <li>"כמה <strong>שונים</strong>" ← <code>COUNT(DISTINCT …)</code>. <code>COUNT(col)</code> סופר הופעות, כולל כפילויות (26B-A שאלה 8, 25S-B שאלה 11).</li>
   <li>"<strong>לפחות</strong> 3" ← <code>&gt;= 3</code> · "<strong>יותר</strong> מ-3" ← <code>&gt; 3</code>.</li>
+  <li>גם ב-<code>HAVING</code> מותר רק מה שיש לו ערך <strong>אחד לכל קבוצה</strong>: עמודה מה-GROUP BY או אגרגציה. <code>HAVING semester = 'Spring 2024'</code> כשמקבצים לפי סטודנט פסול, כי לסטודנט יש כמה סמסטרים. תנאי כזה על שורה שייך ל-WHERE.</li>
+  <li><code>COUNT(*) AS n</code> (בתרשים) נותן לעמודת התוצאה <strong>שם</strong>, n. זה רק שם בפלט, ולא משנה אילו שורות חוזרות.</li>
   <li>מקבצים לפי <strong>מזהה</strong>, לא לפי שם: שני סטודנטים בשם Dana יתמזגו לקבוצה אחת (25B-A, שאלה 7).</li>
 </ul>
 <div class="lesson-trap">⚠️ <strong>אגרגציה ב-WHERE פסולה תמיד:</strong> ‏<code>WHERE AVG(grade) &gt; 80</code> או <code>WHERE COUNT(*) &gt; 3</code>. בזמן ש-WHERE רץ עוד אין קבוצות. ראית COUNT/AVG בתוך WHERE? פסול מיד, בלי לקרוא הלאה (21B-C שאלה 7, 24B-A שאלה 12).</div>`,
@@ -173,7 +175,7 @@
         verify: { ref: "SELECT C.course_name FROM Courses C JOIN Enrollments E ON C.course_id = E.course_id GROUP BY C.course_id, C.course_name HAVING COUNT(DISTINCT E.student_id) >= 3",
           same: ["b"], differ: ["a", "c", "d"] },
         recap: "\"לפחות 3\" = >= 3 · \"יותר מ-3\" = > 3",
-        explanation: "\"לפחות 3\" כולל את 3, ולכן `>= 3`. ‏`> 3` (אפשרות a) מפספס קורסים עם בדיוק 3 סטודנטים. זה המסיח היחיד בשתי שאלות מבחן. אפשרות c פסולה: `course_name` מופיע ליד `COUNT(*)` בלי GROUP BY, ו-HAVING בלי GROUP BY פסול לפי הקורס. אפשרות d שמה COUNT ב-WHERE. ‏`COUNT(DISTINCT E.student_id)` עונה על \"סטודנטים **שונים**\" (25S-B, שאלה 11)." },
+        explanation: "\"לפחות 3\" כולל את 3, ולכן `>= 3`. ‏`> 3` (אפשרות a) מפספס קורסים עם בדיוק 3 סטודנטים. זה המסיח היחיד בשתי שאלות מבחן. אפשרות c פסולה: `course_name` מופיע ליד `COUNT(*)` בלי GROUP BY. בלי GROUP BY כל השורות הן קבוצה אחת, ואין לה `course_name` אחד. אפשרות d שמה COUNT ב-WHERE. ‏`COUNT(DISTINCT E.student_id)` עונה על \"סטודנטים **שונים**\" (25S-B, שאלה 11)." },
     ],
   });
 })();

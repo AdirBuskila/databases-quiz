@@ -19,6 +19,7 @@
   <li>X ו-Y הן <strong>קבוצות</strong> של תכונות: <code>AB → C</code> אומרת שהצירוף של A ו-B קובע את C.</li>
   <li><strong>תלות טריוויאלית</strong>: Y ⊆ X, למשל <code>AB → A</code>. היא מתקיימת תמיד, בכל טבלה.</li>
   <li>F = קבוצת התלויות שהיחס חייב לקיים <strong>תמיד</strong>, בכל מופע עתידי, לא רק בטבלה שמולך.</li>
+  <li><strong>מפתח-על</strong> (superkey): קבוצה X שקובעת את <strong>כל</strong> התכונות של R (<code>X → R</code>). שתי שורות שמסכימות על X מסכימות על הכול. למשל ב-R = (A, B, C) עם <code>A → BC</code>, ‏{A} הוא מפתח-על.</li>
 </ul>
 {fig:0}
 <div class="lesson-rule">🔑 <strong>איך בודקים מופע:</strong> מחפשים <strong>זוג שורות</strong> שמסכימות בצד שמאל וחולקות בצד ימין. מצאת זוג כזה? המופע <strong>מפר</strong> את התלות. לא מצאת? המופע <strong>מקיים</strong> אותה.</div>
