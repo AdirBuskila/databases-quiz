@@ -31,13 +31,13 @@
   <li><code>A NATURAL JOIN B</code>: מחבר אוטומטית (בלי ON) לפי <strong>כל</strong> העמודות שיש להן אותו שם בשתי הטבלאות.</li>
   <li><strong>כינוי (alias):</strong> <code>FROM Students S</code> (או <code>Students AS S</code>) נותן לטבלה שם קצר, ומעכשיו כותבים <code>S.first_name</code>. זו אותה טבלה, לא עותק נוסף. כינוי שלא הוגדר ב-FROM (למשל <code>L.l_name</code> בלי <code>JOIN Lecturers L</code>) הוא שגיאה. ו-<code>SELECT *</code> = כל העמודות.</li>
   <li><code>FROM A, B</code> (פסיק) = <strong>מכפלה קרטזית</strong>: כל שורה של A עם כל שורה של B (5 × 6 = 30 שורות). פסיק עובד רק יחד עם תנאי חיבור ב-WHERE <strong>לכל זוג טבלאות</strong>.</li>
-  <li>INNER JOIN משאיר רק שורות <strong>שיש להן התאמה</strong>: Nataf לא רשומה לאף קורס, ולכן היא נעלמת.</li>
+  <li>INNER JOIN משאיר רק שורות <strong>שיש להן התאמה</strong>: Nataf לא רשום לאף קורס, ולכן הוא נעלם.</li>
   <li><strong>צירוף טבלה לעצמה (self-join)</strong> מותר: <code>FROM Students S1 JOIN Students S2 ON S1.city = S2.city</code> פותח את אותה טבלה פעמיים בשני כינויים, וכל שורה בתוצאה היא זוג סטודנטים מאותה עיר. כל כינוי יכול לקבל ב-WHERE תנאי משלו.</li>
 </ul>
 <div class="lesson-rule">🔑 <strong>שרשרת מלאה:</strong> אם מסננים לפי שם המרצה (<code>l_name</code> ב-Lecturers), והשם שבוחרים נמצא ב-Students, חייבים לעבור דרך <strong>כל</strong> הטבלאות שביניהן: Students ← Enrollments ← Courses ← Lecturers. עצירה באמצע, בלי הטבלה שבה יושבת עמודת הסינון, היא המסיח של 24B-A שאלה 6 ו-25S-B שאלה 8.</div>
 <div class="lesson-trap">⚠️ <strong>חיבור לפי המזהה הלא נכון</strong> הוא המסיח הכי שקט: <code>ON E.enrollment_id = C.course_id</code> נראה תקין, אבל משווה שני מזהים שאין ביניהם קשר (25C-A, שאלה 8). בכל ON בדוק ששני הצדדים מתארים <strong>אותו דבר</strong>. ועוד: <code>NATURAL JOIN</code> בין טבלאות בלי עמודה משותפת (Students ו-Courses) הוא מכפלה קרטזית (25S-B, שאלה 5).</div>`,
       figs: [
-        { caption: "כל רישום מקבל את שם הסטודנט שלו. ל-Nataf אין רישום, ולכן היא לא בתוצאה.",
+        { caption: "כל רישום מקבל את שם הסטודנט שלו. ל-Nataf אין רישום, ולכן הוא לא בתוצאה.",
           tables: [STUDENTS, ENROLL], sql: "SELECT first_name, course_id, grade\nFROM Students JOIN Enrollments USING(student_id)",
           result: { name: "תוצאה", columns: ["first_name", "course_id", "grade"],
             rows: [["Dana", 101, 90], ["Dana", 103, 72], ["Adi", 101, 85], ["Ido", 102, 64], ["Adi", 103, 95], ["Yael", 101, 77]] } },
@@ -62,14 +62,14 @@
         code: "SELECT first_name, course_id\nFROM Students JOIN Enrollments USING(student_id)",
         options: [
           {id:"a", type:"text", value:"5 שורות, שורה אחת לכל סטודנט."},
-          {id:"b", type:"text", value:"7 שורות. Nataf מופיעה עם course_id ריק (NULL)."},
-          {id:"c", type:"text", value:"6 שורות. Nataf לא מופיעה, ו-Dana ו-Adi מופיעים פעמיים."},
+          {id:"b", type:"text", value:"7 שורות. Nataf מופיע עם course_id ריק (NULL)."},
+          {id:"c", type:"text", value:"6 שורות. Nataf לא מופיע, ו-Dana ו-Adi מופיעים פעמיים."},
           {id:"d", type:"text", value:"30 שורות, כי USING לא מגביל את החיבור."},
         ], correctId: "c",
         verify: { sql: "SELECT first_name, course_id FROM Students JOIN Enrollments USING(student_id)",
           expect: [["Dana", 101], ["Dana", 103], ["Adi", 101], ["Ido", 102], ["Adi", 103], ["Yael", 101]] },
         recap: "INNER JOIN = שורה לכל התאמה, ומי שאין לו התאמה נעלם",
-        explanation: "JOIN יוצר שורה **לכל רישום** שיש לו סטודנט תואם: 6 שורות. Dana ו-Adi רשומים לשני קורסים, ולכן מופיעים פעמיים. Nataf לא רשומה לאף קורס, ולכן היא **נעלמת**: INNER JOIN לא ממציא שורות עם NULL. רק LEFT JOIN היה משאיר אותה עם NULL (שלב 7)." },
+        explanation: "JOIN יוצר שורה **לכל רישום** שיש לו סטודנט תואם: 6 שורות. Dana ו-Adi רשומים לשני קורסים, ולכן מופיעים פעמיים. Nataf לא רשום לאף קורס, ולכן הוא **נעלם**: INNER JOIN לא ממציא שורות עם NULL. רק LEFT JOIN היה משאיר אותו עם NULL (שלב 7)." },
 
       { id: "S03-Q3", ctx: schema,
         question: "איזו שאילתה מציגה את שם הסטודנט ואת **שם הקורס** לכל רישום?",
