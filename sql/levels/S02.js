@@ -8,7 +8,7 @@
       [3, "Ido", "Haifa", 75, "052-3333"],
       [4, "Noa", "NULL", 92, "054-4444"],
       [5, "David", "Tel Aviv", 81, "NULL"],
-      [6, "Maya", "Haifa", 92, "053-6666"],
+      [6, "Nataf", "Haifa", 92, "053-6666"],
     ] };
   const schema = { relations: [ { schema: "Students([u]student_id[/u], first_name, city, avg_grade, phone)", meaning: "סטודנט: מזהה, שם, עיר (ייתכן NULL), ממוצע ציונים, טלפון (ייתכן NULL)" } ] };
   const withData = { title: "הטבלה Students (נתונים לדוגמה)", tables: [STUDENTS] };
@@ -36,9 +36,9 @@
 {fig:1}
 <div class="lesson-trap">⚠️ <strong>טעימה לשלב 4:</strong> <code>COUNT(*)</code> סופר שורות, ו-<code>COUNT(phone)</code> סופר רק ערכים שאינם NULL. בטבלה למעלה: 6 לעומת 4.</div>`,
       figs: [
-        { caption: "ממוצע יורד, ובתוך 92 שמות בסדר עולה: Adi, Maya, Noa.",
+        { caption: "ממוצע יורד, ובתוך 92 שמות בסדר עולה: Adi, Nataf, Noa.",
           tables: [STUDENTS], sql: "SELECT first_name, avg_grade\nFROM Students\nORDER BY avg_grade DESC, first_name",
-          result: { name: "תוצאה", columns: ["first_name", "avg_grade"], rows: [["Adi", 92], ["Maya", 92], ["Noa", 92], ["Dana", 88], ["David", 81], ["Ido", 75]] } },
+          result: { name: "תוצאה", columns: ["first_name", "avg_grade"], rows: [["Adi", 92], ["Nataf", 92], ["Noa", 92], ["Dana", 88], ["David", 81], ["Ido", 75]] } },
         { caption: "רק IS NULL מוצא את מי שאין לו טלפון.",
           tables: [STUDENTS], sql: "SELECT first_name\nFROM Students\nWHERE phone IS NULL",
           result: { name: "תוצאה", columns: ["first_name"], rows: [["Adi"], ["David"]] } },
@@ -62,14 +62,14 @@
         question: "מה סדר **שלוש השורות הראשונות** בתוצאה?",
         code: "SELECT first_name\nFROM Students\nORDER BY avg_grade DESC, first_name",
         options: [
-          {id:"a", type:"text", value:"Noa, Maya, Adi"},
-          {id:"b", type:"text", value:"Adi, Maya, Noa"},
+          {id:"a", type:"text", value:"Noa, Nataf, Adi"},
+          {id:"b", type:"text", value:"Adi, Nataf, Noa"},
           {id:"c", type:"text", value:"Ido, David, Dana"},
-          {id:"d", type:"text", value:"Adi, Noa, Maya"},
+          {id:"d", type:"text", value:"Adi, Noa, Nataf"},
         ], correctId: "b",
-        verify: { sql: "SELECT first_name FROM Students ORDER BY avg_grade DESC, first_name", expect: [["Adi"], ["Maya"], ["Noa"], ["Dana"], ["David"], ["Ido"]] },
+        verify: { sql: "SELECT first_name FROM Students ORDER BY avg_grade DESC, first_name", expect: [["Adi"], ["Nataf"], ["Noa"], ["Dana"], ["David"], ["Ido"]] },
         recap: "DESC חל רק על העמודה שלפניו",
-        explanation: "DESC חל רק על `avg_grade`, ולכן קודם באים בעלי 92. ביניהם הסדר נקבע לפי `first_name` בסדר **עולה** (אין אחריו DESC): Adi, Maya, Noa. Noa, Maya, Adi היה נכון רק עם `first_name DESC`. Ido, David, Dana הוא סוף הרשימה ההפוכה." },
+        explanation: "DESC חל רק על `avg_grade`, ולכן קודם באים בעלי 92. ביניהם הסדר נקבע לפי `first_name` בסדר **עולה** (אין אחריו DESC): Adi, Nataf, Noa. Noa, Nataf, Adi היה נכון רק עם `first_name DESC`. Ido, David, Dana הוא סוף הרשימה ההפוכה." },
 
       { id: "S02-Q3", ctx: schema,
         question: "איזו שאילתה מציגה את שמות הסטודנטים וממוצעיהם, כשהממוצעים **בסדר יורד**, ובתוך ממוצע זהה השמות **בסדר עולה**?",

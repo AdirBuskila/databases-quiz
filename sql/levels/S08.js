@@ -2,7 +2,7 @@
 (function(){
   const STUDENTS = { name: "Students", pk: ["student_id"],
     columns: ["student_id", "first_name"],
-    rows: [ [1, "Dana"], [2, "Adi"], [3, "Ido"], [4, "Noa"], [5, "Maya"] ] };
+    rows: [ [1, "Dana"], [2, "Adi"], [3, "Ido"], [4, "Noa"], [5, "Nataf"] ] };
   const COURSES = { name: "Courses", pk: ["course_id"],
     columns: ["course_id", "course_name", "department"],
     rows: [
@@ -19,7 +19,7 @@
       [2, 101, "A"], [2, 101, "B"], [2, 102, "A"],                    // Adi: 101 twice, no 103
       [3, 101, "A"], [3, 102, "B"], [3, 103, "B"], [3, 201, "A"],     // Ido: all math + physics
       [4, 201, "A"],                                                  // Noa: physics only
-    ] };                                                              // Maya: nothing
+    ] };                                                              // Nataf: nothing
   const DB = [STUDENTS, COURSES, ENROLL];
   const schema = { relations: [
     { schema: "Students([u]student_id[/u], first_name)", meaning: "סטודנט" },
@@ -45,7 +45,7 @@
 <tr><td>Adi</td><td>✓ (פעמיים)</td><td>✓</td><td>✗</td><td>103</td><td>❌</td></tr>
 <tr><td>Ido</td><td>✓</td><td>✓</td><td>✓</td><td>אין (Mechanics לא משנה)</td><td>✅</td></tr>
 <tr><td>Noa</td><td>✗</td><td>✗</td><td>✗</td><td>כולם</td><td>❌</td></tr>
-<tr><td>Maya</td><td>✗</td><td>✗</td><td>✗</td><td>כולם</td><td>❌</td></tr>
+<tr><td>Nataf</td><td>✗</td><td>✗</td><td>✗</td><td>כולם</td><td>❌</td></tr>
 </tbody></table>
 <p>שתי דרכים נוספות לאותה שאלה:</p>
 <ul>
@@ -73,24 +73,24 @@
           {id:"a", type:"text", value:"רק Dana, כי ל-Ido יש גם קורס שאינו במתמטיקה."},
           {id:"b", type:"text", value:"Dana, Adi ו-Ido"},
           {id:"c", type:"text", value:"Dana ו-Ido"},
-          {id:"d", type:"text", value:"Noa ו-Maya"},
+          {id:"d", type:"text", value:"Noa ו-Nataf"},
         ], correctId: "c",
         verify: { sql: DNE, expect: [["Dana"], ["Ido"]] },
         recap: "שלילה כפולה = אין קורס נדרש שחסר לו",
-        explanation: "קוראים מבפנים: לכל סטודנט מחפשים קורס מתמטיקה **שהוא לא רשום אליו**. ל-Dana ול-Ido אין קורס כזה, ולכן הם עוברים. ל-Adi חסר 103. קורסים נוספים מחוץ למתמטיקה לא מפריעים, כי השאילתה בודקת רק שאין **חוסר**, ולכן Ido עובר. Noa ו-Maya הם בדיוק ההפך: חסרים להם כל הקורסים." },
+        explanation: "קוראים מבפנים: לכל סטודנט מחפשים קורס מתמטיקה **שהוא לא רשום אליו**. ל-Dana ול-Ido אין קורס כזה, ולכן הם עוברים. ל-Adi חסר 103. קורסים נוספים מחוץ למתמטיקה לא מפריעים, כי השאילתה בודקת רק שאין **חוסר**, ולכן Ido עובר. Noa ו-Nataf הם בדיוק ההפך: חסרים להם כל הקורסים." },
 
       { id: "S08-Q2", ctx: withData,
         question: "מה מחזירה השאילתה?",
         code: "SELECT S.first_name\nFROM Students S\nWHERE NOT EXISTS (\n  SELECT * FROM Courses C\n  WHERE C.department = 'Mathematics'\n    AND EXISTS (\n      SELECT * FROM Enrollments E\n      WHERE E.student_id = S.student_id\n        AND E.course_id = C.course_id))",
         options: [
           {id:"a", type:"text", value:"סטודנטים שנרשמו לכל קורסי המתמטיקה (Dana, Ido)."},
-          {id:"b", type:"text", value:"סטודנטים שלא נרשמו לאף קורס במתמטיקה (Noa, Maya)."},
+          {id:"b", type:"text", value:"סטודנטים שלא נרשמו לאף קורס במתמטיקה (Noa, Nataf)."},
           {id:"c", type:"text", value:"סטודנטים שנרשמו לקורס מתמטיקה אחד לפחות (Dana, Adi, Ido)."},
-          {id:"d", type:"text", value:"סטודנטים שחסר להם לפחות קורס מתמטיקה אחד (Adi, Noa, Maya)."},
+          {id:"d", type:"text", value:"סטודנטים שחסר להם לפחות קורס מתמטיקה אחד (Adi, Noa, Nataf)."},
         ], correctId: "b",
-        verify: { sql: "SELECT S.first_name FROM Students S WHERE NOT EXISTS (SELECT * FROM Courses C WHERE C.department = 'Mathematics' AND EXISTS (SELECT * FROM Enrollments E WHERE E.student_id = S.student_id AND E.course_id = C.course_id))", expect: [["Noa"], ["Maya"]] },
+        verify: { sql: "SELECT S.first_name FROM Students S WHERE NOT EXISTS (SELECT * FROM Courses C WHERE C.department = 'Mathematics' AND EXISTS (SELECT * FROM Enrollments E WHERE E.student_id = S.student_id AND E.course_id = C.course_id))", expect: [["Noa"], ["Nataf"]] },
         recap: "NOT EXISTS ( … EXISTS ) = \"אין אף קורס שהוא רשום אליו\"",
-        explanation: "הפנימי כאן הוא **EXISTS** ולא NOT EXISTS: \"קיים קורס מתמטיקה שהסטודנט רשום אליו\". החיצוני שולל: **אין** קורס מתמטיקה שהוא רשום אליו, כלומר הוא לא נרשם לאף קורס במתמטיקה: Noa (רק פיזיקה) ו-Maya (כלום). זה המסיח הקבוע של 25B-A שאלה 10: מספיקה מילה אחת (EXISTS במקום NOT EXISTS) והמשמעות מתהפכת מ\"לכל\" ל\"לאף אחד\"." },
+        explanation: "הפנימי כאן הוא **EXISTS** ולא NOT EXISTS: \"קיים קורס מתמטיקה שהסטודנט רשום אליו\". החיצוני שולל: **אין** קורס מתמטיקה שהוא רשום אליו, כלומר הוא לא נרשם לאף קורס במתמטיקה: Noa (רק פיזיקה) ו-Nataf (כלום). זה המסיח הקבוע של 25B-A שאלה 10: מספיקה מילה אחת (EXISTS במקום NOT EXISTS) והמשמעות מתהפכת מ\"לכל\" ל\"לאף אחד\"." },
 
       { id: "S08-Q3", ctx: schema,
         question: "איזו שאילתה מחזירה את שמות הסטודנטים שנרשמו **לכל** הקורסים שמציעה המחלקה `'Mathematics'`?",
@@ -103,7 +103,7 @@
         ], correctId: "c",
         verify: { ref: DNE, same: ["c"], differ: ["a", "b", "d"] },
         recap: "רק NOT EXISTS כפול (על הקורסים הנדרשים) נותן \"לכל\"",
-        explanation: "התשובה היא השלילה הכפולה: **אין** קורס מתמטיקה ש**אין** לסטודנט רישום אליו. אפשרות {opt:a} היא שלילה יחידה: \"אין לו אף רישום לקורס מתמטיקה\" (Noa, Maya). אפשרות {opt:d} (EXISTS כפול) ואפשרות {opt:b} (JOIN רגיל) מחזירות את מי שנרשם **לפחות** לקורס מתמטיקה אחד, כולל Adi שחסר לו 103. זה בדיוק מבנה 25B-A שאלה 10." },
+        explanation: "התשובה היא השלילה הכפולה: **אין** קורס מתמטיקה ש**אין** לסטודנט רישום אליו. אפשרות {opt:a} היא שלילה יחידה: \"אין לו אף רישום לקורס מתמטיקה\" (Noa, Nataf). אפשרות {opt:d} (EXISTS כפול) ואפשרות {opt:b} (JOIN רגיל) מחזירות את מי שנרשם **לפחות** לקורס מתמטיקה אחד, כולל Adi שחסר לו 103. זה בדיוק מבנה 25B-A שאלה 10." },
 
       { id: "S08-Q4", ctx: schema,
         question: "השלימו את החלקים החסרים __1__ ו-__2__ כך שהשאילתה תחזיר את הסטודנטים שנרשמו לכל קורסי המתמטיקה.",

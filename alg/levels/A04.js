@@ -1,7 +1,7 @@
 /* Algebra course · level 4 — set operations: ∪ ∩ − (union-compatibility, "both", "never", "only") */
 (function(){
   const STUDENTS = { name: "Students", pk: ["s_id"], columns: ["s_id", "name", "city"],
-    rows: [[1, "Dana", "Haifa"], [2, "Adi", "Haifa"], [3, "Ido", "Eilat"], [4, "Noa", "Haifa"], [5, "Maya", "Eilat"]] };
+    rows: [[1, "Dana", "Haifa"], [2, "Adi", "Haifa"], [3, "Ido", "Eilat"], [4, "Noa", "Haifa"], [5, "Nataf", "Eilat"]] };
   const ENROLL = { name: "Enroll", pk: ["s_id", "course"], columns: ["s_id", "course"],
     rows: [[1, "DB"], [1, "AI"], [2, "DB"], [3, "AI"], [3, "OS"], [5, "OS"]] };
   const COURSES = { name: "Courses", pk: ["course"], columns: ["course", "dept"],
