@@ -1,7 +1,7 @@
 /* Algebra course · level 6 — division ÷: "for all", schema checks, restricting the divisor, ρ */
 (function(){
   const STUDENTS = { name: "Students", pk: ["s_id"], columns: ["s_id", "name", "city"],
-    rows: [[1, "Dana", "Haifa"], [2, "Adi", "Haifa"], [3, "Ido", "Haifa"], [4, "Noa", "Eilat"], [5, "Maya", "Eilat"]] };
+    rows: [[1, "Dana", "Haifa"], [2, "Adi", "Haifa"], [3, "Ido", "Haifa"], [4, "Nataf", "Eilat"], [5, "Maya", "Eilat"]] };
   const ENROLL = { name: "Enroll", pk: ["s_id", "course"], columns: ["s_id", "course"],
     rows: [[1, "DB"], [1, "AI"], [1, "ML"], [2, "DB"], [2, "AI"], [3, "DB"], [3, "AI"], [3, "ML"], [3, "OS"], [4, "OS"], [4, "DB"]] };
   const COURSES = { name: "Courses", pk: ["course"], columns: ["course", "dept"],
@@ -39,7 +39,7 @@
 <div class="lesson-rule">🔑 <strong>מסננים את המחלק</strong> לקבוצה שנדרשת בלבד ("כל קורסי CS" ← σ_{dept="CS"}). בלי הסינון שואלים "כל הקורסים בכלל". ואם שם העמודה שונה בין המחולק למחלק (c_code מול code), צריך <strong>ρ</strong> כדי לשנות שם, וגם זו פעולה שנספרת (25B-A, שאלה 15).</div>
 <div class="lesson-trap">⚠️ <strong>חיתוך אינו חילוק:</strong> ∩ עונה על "גם וגם" של שני תנאים שכתובים מראש, לא על "לכל" של קבוצה שנקבעת מהנתונים. ו"בכל פעם לא" הוא הפרש, לא חילוק.</div>`,
       figs: [
-        { caption: "Dana (1) ו-Ido (3) לקחו את כל שלושת קורסי CS. ‏Adi (2) חסר ML, ו-Noa (4) חסרה AI ו-ML. ל-Ido יש גם OS, וזה לא מפריע.",
+        { caption: "Dana (1) ו-Ido (3) לקחו את כל שלושת קורסי CS. ‏Adi (2) חסר ML, ו-Nataf (4) חסרה AI ו-ML. ל-Ido יש גם OS, וזה לא מפריע.",
           tables: [ENROLL, COURSES],
           alg: "Π_{s_id, course} (Enroll) ÷ Π_{course} σ_{dept=\"CS\"} (Courses)",
           result: { columns: ["s_id"], rows: [[1], [3]] } },
@@ -81,7 +81,7 @@
         ], correctId: "b",
         verify: { ref: DIV_CS, same: ["b"], differ: ["c", "d"], invalid: ["a"] },
         recap: "מחולק = זוג (מי, מה) · מחלק = הקבוצה המסוננת · צירוף = \"לפחות אחד\"",
-        explanation: "‏{opt:b}: הזוגות (סטודנט, קורס) מחולקים בקבוצת קורסי CS. ‏{opt:a} פסולה: במחולק יש רק s_id, ולכן עמודת המחלק (course) לא מוכלת בו (23B-A2 שאלה 14). ‏{opt:c} לא מסננת את המחלק, ולכן שואלת על **כל** הקורסים ומחזירה רק את Ido. ‏{opt:d} היא צירוף רגיל, ומחזירה כל מי שלקח **לפחות** קורס CS אחד (גם את Adi ואת Noa)." },
+        explanation: "‏{opt:b}: הזוגות (סטודנט, קורס) מחולקים בקבוצת קורסי CS. ‏{opt:a} פסולה: במחולק יש רק s_id, ולכן עמודת המחלק (course) לא מוכלת בו (23B-A2 שאלה 14). ‏{opt:c} לא מסננת את המחלק, ולכן שואלת על **כל** הקורסים ומחזירה רק את Ido. ‏{opt:d} היא צירוף רגיל, ומחזירה כל מי שלקח **לפחות** קורס CS אחד (גם את Adi ואת Nataf)." },
 
       { id: "A06-Q4", ctx: schema,
         question: "מהי הפעולה העיקרית שהכי קרובה לענות על השאלה \"מיהו הסטודנט שנרשם לכל הקורסים של מחלקת CS\"?",
@@ -146,7 +146,7 @@
         verify: { ref: "Π_{s_id} (Enroll) − Π_{s_id} ((Π_{s_id} (Enroll) × Π_{course} σ_{s_id=2} (Enroll)) − Π_{s_id, course} (Enroll))",
           same: ["a"], differ: ["b", "d"], invalid: ["c"] },
         recap: "המחלק יכול להיות כל קבוצה מחושבת, גם \"הקורסים של Adi\"",
-        explanation: "המחלק הוא הקבוצה שצריך לכסות, כאן הקורסים של Adi: {DB, AI}. ‏{opt:a} מחלקת את הזוגות בקבוצה הזו ומחזירה {1, 2, 3}. ‏{opt:b} היא חיתוך: מחזירה את הזוגות של Adi עצמה (2 עמודות), לא \"לכל\". ‏{opt:c} פסולה, כי המחולק הוא עמודה אחת. ‏{opt:d} היא צירוף, ומחזירה גם את Noa (4), שלקחה רק את DB מתוך הקורסים של Adi." },
+        explanation: "המחלק הוא הקבוצה שצריך לכסות, כאן הקורסים של Adi: {DB, AI}. ‏{opt:a} מחלקת את הזוגות בקבוצה הזו ומחזירה {1, 2, 3}. ‏{opt:b} היא חיתוך: מחזירה את הזוגות של Adi עצמה (2 עמודות), לא \"לכל\". ‏{opt:c} פסולה, כי המחולק הוא עמודה אחת. ‏{opt:d} היא צירוף, ומחזירה גם את Nataf (4), שלקחה רק את DB מתוך הקורסים של Adi." },
     ],
   });
 })();

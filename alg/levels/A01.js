@@ -6,13 +6,13 @@
       [1, "Dana", "Haifa", 22],
       [2, "Adi", "Tel Aviv", 25],
       [3, "Ido", "Haifa", 22],
-      [4, "Noa", "Eilat", 30],
+      [4, "Nataf", "Eilat", 30],
       [5, "Dana", "Eilat", 25],
       [6, "Maya", "Haifa", 27],
     ] };
   // a person may live in more than one city (one row per person-city pair)
   const LIVES = { name: "Lives", pk: ["name", "city"], columns: ["name", "city"],
-    rows: [["Dana", "Haifa"], ["Dana", "Eilat"], ["Adi", "Haifa"], ["Noa", "Eilat"], ["Ido", "Tel Aviv"], ["Ido", "Haifa"]] };
+    rows: [["Dana", "Haifa"], ["Dana", "Eilat"], ["Adi", "Haifa"], ["Nataf", "Eilat"], ["Ido", "Tel Aviv"], ["Ido", "Haifa"]] };
   const R = { name: "R", columns: ["A", "B", "C"], rows: [[2, 2, 3], [1, 2, 5], [3, 2, 7], [2, 5, 3], [2, 2, 5]] };
 
   const schema = { relations: [ { schema: "Student([u]sid[/u], name, city, age)", meaning: "סטודנט: מזהה, שם, עיר מגורים וגיל. שני סטודנטים שונים יכולים לשאת אותו שם." } ] };
@@ -69,19 +69,19 @@
         ], correctId: "b",
         verify: { expr: "Π_{name} (Student)", rows: 5, cols: 1 },
         recap: "Π מוחק שורות כפולות: סופרים ערכים שונים",
-        explanation: "יש 6 סטודנטים, אבל השם Dana מופיע פעמיים (sid 1 ו-sid 5). אחרי היטל לעמודת השם בלבד שתי השורות זהות, ו-Π מוחק את הכפילות, ולכן 5 שורות: Dana, Adi, Ido, Noa, Maya. אותה מלכודת כמו ב-25B-A שאלה 16 (4 שורות ולא 5)." },
+        explanation: "יש 6 סטודנטים, אבל השם Dana מופיע פעמיים (sid 1 ו-sid 5). אחרי היטל לעמודת השם בלבד שתי השורות זהות, ו-Π מוחק את הכפילות, ולכן 5 שורות: Dana, Adi, Ido, Nataf, Maya. אותה מלכודת כמו ב-25B-A שאלה 16 (4 שורות ולא 5)." },
 
       { id: "A01-Q3", ctx: withData,
         question: "מה מחזיר הביטוי? $$Π_{name} σ_{city=\"Haifa\" ∨ age > 26} (Student)$$",
         options: [
           {id:"a", type:"text", value:"Maya בלבד"},
-          {id:"b", type:"text", value:"Dana, Ido, Maya, Noa"},
-          {id:"c", type:"text", value:"Noa בלבד"},
-          {id:"d", type:"text", value:"Dana, Ido, Maya, Noa, Maya (חמש שורות)"},
+          {id:"b", type:"text", value:"Dana, Ido, Maya, Nataf"},
+          {id:"c", type:"text", value:"Nataf בלבד"},
+          {id:"d", type:"text", value:"Dana, Ido, Maya, Nataf, Maya (חמש שורות)"},
         ], correctId: "b",
-        verify: { expr: "Π_{name} σ_{city=\"Haifa\" ∨ age > 26} (Student)", expect: [["Dana"], ["Ido"], ["Maya"], ["Noa"]] },
+        verify: { expr: "Π_{name} σ_{city=\"Haifa\" ∨ age > 26} (Student)", expect: [["Dana"], ["Ido"], ["Maya"], ["Nataf"]] },
         recap: "∨ = מספיק תנאי אחד · Π לא משאיר כפילויות",
-        explanation: "∨ = \"או\": שורה עוברת אם היא מחיפה **או** שהגיל מעל 26. מחיפה: Dana, Ido, Maya. מעל 26: Noa (30) ו-Maya (27). Maya עומדת בשני התנאים, אבל מופיעה פעם אחת, כי Π מוחק כפילויות. \"Maya בלבד\" הוא הפירוש של ∧ (וגם)." },
+        explanation: "∨ = \"או\": שורה עוברת אם היא מחיפה **או** שהגיל מעל 26. מחיפה: Dana, Ido, Maya. מעל 26: Nataf (30) ו-Maya (27). Maya עומדת בשני התנאים, אבל מופיעה פעם אחת, כי Π מוחק כפילויות. \"Maya בלבד\" הוא הפירוש של ∧ (וגם)." },
 
       { id: "A01-Q4", ctx: { relations: [ { schema: "Lives([u]name[/u], [u]city[/u])", meaning: "אדם ועיר שבה הוא גר. אדם יכול לגור בכמה ערים, ואז יש לו כמה שורות." } ] },
         question: "איזה ביטוי מחזיר את שמות האנשים שגרים **גם** ב-Haifa **וגם** ב-Eilat?",
@@ -135,7 +135,7 @@
         ], correctId: "c",
         verify: { ref: "Π_{name} σ_{¬(city=\"Haifa\")} (Student)", same: ["a", "b"], differ: ["d"] },
         recap: "¬(x=v) שקול ל-x != v · הפרש על שם (לא מפתח) מוחק גם אנשים אחרים עם אותו שם",
-        explanation: "‏`¬(city=\"Haifa\")` ו-`city != \"Haifa\"` הם אותו תנאי, ושניהם משאירים את Adi, Noa ו-Dana מאילת. ‏{opt:d} נראה נכון אבל הוא מלכודת: ההפרש נעשה על **השם**, ו-Dana מחיפה מוחקת גם את Dana מאילת, שהיא סטודנטית אחרת. כשמחסירים, מחסירים לפי **מפתח** (sid) ורק אחר כך מקרינים לשם." },
+        explanation: "‏`¬(city=\"Haifa\")` ו-`city != \"Haifa\"` הם אותו תנאי, ושניהם משאירים את Adi, Nataf ו-Dana מאילת. ‏{opt:d} נראה נכון אבל הוא מלכודת: ההפרש נעשה על **השם**, ו-Dana מחיפה מוחקת גם את Dana מאילת, שהיא סטודנטית אחרת. כשמחסירים, מחסירים לפי **מפתח** (sid) ורק אחר כך מקרינים לשם." },
 
       { id: "A01-Q8", ctx: { title: "היחס R (נתונים לדוגמה)", tables: [R] },
         question: "כמה שורות וכמה עמודות יש בתוצאה? $$Π_{A, B} σ_{C > 3} (R)$$",

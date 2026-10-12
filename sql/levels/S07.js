@@ -1,7 +1,7 @@
 /* SQL course · level 7 — negation: NOT IN / NOT EXISTS / LEFT JOIN … IS NULL, and the traps around them */
 (function(){
   const READERS = { name: "Readers", pk: ["reader_id"], columns: ["reader_id", "name", "city"],
-    rows: [[1, "Dana", "Haifa"], [2, "Adi", "Tel Aviv"], [3, "Ido", "Haifa"], [4, "Noa", "Eilat"], [5, "Gal", "Haifa"]] };
+    rows: [[1, "Dana", "Haifa"], [2, "Adi", "Tel Aviv"], [3, "Ido", "Haifa"], [4, "Nataf", "Eilat"], [5, "Gal", "Haifa"]] };
   const BOOKS = { name: "Books", pk: ["book_id"], columns: ["book_id", "title", "genre"],
     rows: [[100, "Dune", "SciFi"], [101, "Emma", "Classic"], [102, "Ubik", "SciFi"], [103, "Odyssey", "Classic"], [104, "Matilda", "Kids"], [105, "Hamlet", "Classic"]] };
   const LOANS = { name: "Loans", pk: ["reader_id", "book_id"], columns: ["reader_id", "book_id", "loan_year"],
@@ -45,7 +45,7 @@
       figs: [
         { caption: "ל-Gal אין השאלות, ולכן העמודה book_id שלה מתמלאת ב-NULL. ב-JOIN רגיל היא הייתה נעלמת.",
           tables: [READERS, LOANS], sql: "SELECT R.name, L.book_id\nFROM Readers R LEFT JOIN Loans L ON R.reader_id = L.reader_id",
-          result: { columns: ["name", "book_id"], rows: [["Dana", 100], ["Dana", 101], ["Adi", 101], ["Adi", 103], ["Ido", 100], ["Ido", 102], ["Noa", 104], ["Gal", "NULL"]] } },
+          result: { columns: ["name", "book_id"], rows: [["Dana", 100], ["Dana", 101], ["Adi", 101], ["Adi", 103], ["Ido", 100], ["Ido", 102], ["Nataf", 104], ["Gal", "NULL"]] } },
         { caption: "השלמה ל-anti-join: משאירים רק את השורות שבהן לא נמצאה התאמה.",
           tables: [READERS, LOANS], sql: "SELECT R.name\nFROM Readers R LEFT JOIN Loans L ON R.reader_id = L.reader_id\nWHERE L.reader_id IS NULL",
           result: { columns: ["name"], rows: [["Gal"]] } },
@@ -62,7 +62,7 @@
           {id:"d", type:"text", value:"8 שורות: אחת לכל השאלה, ועוד שורה ל-Gal עם 0 בעמודה book_id."},
         ], correctId: "b",
         verify: { db: [READERS, LOANS], sql: "SELECT R.name, L.book_id FROM Readers R LEFT JOIN Loans L ON R.reader_id = L.reader_id",
-          expect: [["Dana", 100], ["Dana", 101], ["Adi", 101], ["Adi", 103], ["Ido", 100], ["Ido", 102], ["Noa", 104], ["Gal", null]] },
+          expect: [["Dana", 100], ["Dana", 101], ["Adi", 101], ["Adi", 103], ["Ido", 100], ["Ido", 102], ["Nataf", 104], ["Gal", null]] },
         recap: "LEFT JOIN שומר את כל השורות משמאל; בלי התאמה = NULL",
         explanation: "לכל קורא עם השאלות יוצאת שורה לכל השאלה (7 שורות). LEFT JOIN שומר גם את מי שאין לו התאמה: Gal מופיעה פעם אחת, והעמודות מהטבלה Loans מתמלאות ב-**NULL**, לא ב-0. ב-JOIN רגיל היו יוצאות רק 7 השורות. זו שאלה 11 של 21S-B." },
 
@@ -90,9 +90,9 @@
           {id:"d", type:"text", value:"לא. היא מחזירה רק את Ido."},
         ], correctId: "c",
         verify: { db: [READERS, BOOKS, LOANS], sql: "SELECT DISTINCT R.name FROM Readers R JOIN Loans L ON R.reader_id = L.reader_id JOIN Books B ON L.book_id = B.book_id WHERE B.genre <> 'SciFi'",
-          expect: [["Dana"], ["Adi"], ["Noa"]] },
+          expect: [["Dana"], ["Adi"], ["Nataf"]] },
         recap: "col <> value = \"יש לו לפחות ערך אחר\", לא \"מעולם לא\"",
-        explanation: "התנאי `<>` בודק כל השאלה **בנפרד**: Dana השאילה גם את Emma (Classic), ולכן היא עוברת למרות ש-Dune הוא SciFi. בנוסף, ה-JOIN הרגיל מעלים את Gal, שלא השאילה כלום ולכן מעולם לא השאילה SciFi. ‏`<>` ו-`!=` זהים. התשובה הנכונה היא Adi, Noa ו-Gal, ומקבלים אותה עם `NOT IN (מי שכן השאיל SciFi)`. זו המלכודת של 21B-A שאלה 6." },
+        explanation: "התנאי `<>` בודק כל השאלה **בנפרד**: Dana השאילה גם את Emma (Classic), ולכן היא עוברת למרות ש-Dune הוא SciFi. בנוסף, ה-JOIN הרגיל מעלים את Gal, שלא השאילה כלום ולכן מעולם לא השאילה SciFi. ‏`<>` ו-`!=` זהים. התשובה הנכונה היא Adi, Nataf ו-Gal, ומקבלים אותה עם `NOT IN (מי שכן השאיל SciFi)`. זו המלכודת של 21B-A שאלה 6." },
 
       { id: "S07-Q4", ctx: schema,
         question: "איזו שאילתה מחזירה את שמות הספרים **שמעולם לא הושאלו**?",
@@ -118,7 +118,7 @@
         ], correctId: "c",
         verify: { ref: "SELECT name FROM Readers WHERE reader_id NOT IN (SELECT L.reader_id FROM Loans L JOIN Books B ON L.book_id = B.book_id WHERE B.genre = 'SciFi')", same: ["c"], differ: ["a", "b", "d"] },
         recap: "\"מעולם לא X\" = NOT IN (מי שכן עשה X), עם החיבור עד הטבלה שמסננים לפיה",
-        explanation: "מוצאים את מי **שכן** השאיל SciFi (צריך את Loans ואת Books, כי הז'אנר יושב ב-Books), ושוללים: `NOT IN`. התוצאה: Adi, Noa ו-Gal. אפשרות a היא מסיח ה-`<>`, שמחזיר את מי שהשאיל לפחות ספר אחד שאינו SciFi. אפשרות b משווה מזהה קורא למזהה ספר, וזו תת-שאילתה על הטבלה הלא נכונה. אפשרות d מחפשת את genre בטבלה Readers, שבה אין עמודה כזו. זה המבנה של 26B-A, שאלה 7." },
+        explanation: "מוצאים את מי **שכן** השאיל SciFi (צריך את Loans ואת Books, כי הז'אנר יושב ב-Books), ושוללים: `NOT IN`. התוצאה: Adi, Nataf ו-Gal. אפשרות a היא מסיח ה-`<>`, שמחזיר את מי שהשאיל לפחות ספר אחד שאינו SciFi. אפשרות b משווה מזהה קורא למזהה ספר, וזו תת-שאילתה על הטבלה הלא נכונה. אפשרות d מחפשת את genre בטבלה Readers, שבה אין עמודה כזו. זה המבנה של 26B-A, שאלה 7." },
 
       { id: "S07-Q6", ctx: schema,
         question: "מיהם הקוראים שהשאילו ספרים, ו**כל** ההשאלות שלהם היו בשנת 2024?",

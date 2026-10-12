@@ -1,7 +1,7 @@
 /* Algebra course · level 9 — 🏆 final: one exam-sized schema (music school), every pattern mixed */
 (function(){
   const STUDENT = { name: "Student", pk: ["sid"], columns: ["sid", "name", "city", "age"],
-    rows: [[1, "Dana", "Haifa", 16], [2, "Adi", "Tel Aviv", 14], [3, "Ido", "Haifa", 17], [4, "Noa", "Eilat", 14], [5, "Gal", "Tel Aviv", 19], [6, "Maya", "Haifa", 15]] };
+    rows: [[1, "Dana", "Haifa", 16], [2, "Adi", "Tel Aviv", 14], [3, "Ido", "Haifa", 17], [4, "Nataf", "Eilat", 14], [5, "Gal", "Tel Aviv", 19], [6, "Maya", "Haifa", 15]] };
   const TEACHER = { name: "Teacher", pk: ["tid"], columns: ["tid", "t_name", "city", "instrument"],
     rows: [[10, "Levi", "Haifa", "piano"], [11, "Cohen", "Tel Aviv", "guitar"], [12, "Mizrahi", "Haifa", "violin"], [13, "Peretz", "Eilat", "piano"]] };
   const LESSON = { name: "Lesson", pk: ["sid", "tid", "instrument"], columns: ["sid", "tid", "instrument", "is_online"],
@@ -104,7 +104,7 @@
         ], correctId: "a",
         verify: { ref: 'Π_{performer_id} (Plays) − Π_{performer_id} σ_{city != "Haifa"} (Plays ⊗ Concert)', same: ["a"], differ: ["b", "c", "d"] },
         recap: "\"רק X\" = מי שהופיע − מי שהופיע גם במשהו שאינו X",
-        explanation: "\"רק בחיפה\" = מי שהופיע **פחות** מי שהופיע ולו פעם אחת מחוץ לחיפה: {opt:a} (רק Ido). {opt:b} מחזיר מי שהופיע **לפחות** פעם בחיפה, גם אם הופיע גם בתל אביב. ב-{opt:c} מתחילים מכל התלמידים, ולכן נכנסת גם Noa שלא הופיעה בכלל, בניגוד להנחה. {opt:d} = מי שהופיע **גם** בחיפה **וגם** מחוצה לה. זה המבנה של 23B-A2 שאלה 15." },
+        explanation: "\"רק בחיפה\" = מי שהופיע **פחות** מי שהופיע ולו פעם אחת מחוץ לחיפה: {opt:a} (רק Ido). {opt:b} מחזיר מי שהופיע **לפחות** פעם בחיפה, גם אם הופיע גם בתל אביב. ב-{opt:c} מתחילים מכל התלמידים, ולכן נכנסת גם Nataf שלא הופיעה בכלל, בניגוד להנחה. {opt:d} = מי שהופיע **גם** בחיפה **וגם** מחוצה לה. זה המבנה של 23B-A2 שאלה 15." },
 
       { id: "A09-Q6", ctx: schema,
         question: "איזה ביטוי מחזיר את שם התלמיד (או התלמידים) **המבוגר ביותר**? (הניחו ששמות התלמידים ייחודיים.)",
@@ -117,7 +117,7 @@
         ], correctId: "a",
         verify: { ref: 'Π_{name} (Student) − Π_{S1.name} σ_{S1.age < S2.age} (ρ_{S1} Student × ρ_{S2} Student)', same: ["a"], differ: ["b", "c"], invalid: ["d"] },
         recap: "מקסימום = הכול − Π(הקטן בזוג) · אין MAX באלגברה",
-        explanation: "מקסימום = כל התלמידים פחות מי שיש מבוגר ממנו. ב-{opt:a} מקרינים את S1 כשהוא **הצעיר** בזוג, ולכן הצעירים יוצאים ונשאר Gal. {opt:b} הופך את הסימן ומחזיר את הצעירים ביותר (Adi ו-Noa). {opt:c} בלי הפרש מחזיר כל מי שמבוגר ממישהו. ב-{opt:d} אין `MAX` באלגברה, ולכן הביטוי פסול (26B-A שאלה 16, 21S-B שאלה 15). כדאי לשים לב: ההפרש לפי `name` עובד כאן כי השמות שונים זה מזה. אחרת מקרינים את `sid`." },
+        explanation: "מקסימום = כל התלמידים פחות מי שיש מבוגר ממנו. ב-{opt:a} מקרינים את S1 כשהוא **הצעיר** בזוג, ולכן הצעירים יוצאים ונשאר Gal. {opt:b} הופך את הסימן ומחזיר את הצעירים ביותר (Adi ו-Nataf). {opt:c} בלי הפרש מחזיר כל מי שמבוגר ממישהו. ב-{opt:d} אין `MAX` באלגברה, ולכן הביטוי פסול (26B-A שאלה 16, 21S-B שאלה 15). כדאי לשים לב: ההפרש לפי `name` עובד כאן כי השמות שונים זה מזה. אחרת מקרינים את `sid`." },
 
       { id: "A09-Q7", ctx: schema,
         question: "איזה ביטוי מחזיר את מזהי התלמידים שלמדו אצל **כל** המורים שגרים בחיפה?",

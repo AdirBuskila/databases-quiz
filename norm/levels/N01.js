@@ -6,7 +6,7 @@
   const T4 = { name: "R", columns: ["A", "B", "C"], rows: [[1, "x", "p"], [2, "x", "q"], [3, "y", "p"], [4, "y", "p"]] };
   const EMP = { name: "Emp", columns: ["id", "name", "dept", "mgr", "city"], rows: [
     [1, "Dana", "IT", "Ron", "Haifa"], [2, "Adi", "IT", "Ron", "Tel Aviv"], [3, "Ido", "HR", "Gal", "Haifa"],
-    [4, "Noa", "Sales", "Gal", "Eilat"], [5, "Dana", "HR", "Gal", "Haifa"]] };
+    [4, "Nataf", "Sales", "Gal", "Eilat"], [5, "Dana", "HR", "Gal", "Haifa"]] };
   const inst = (t, title) => ({ kind: "relations", title: title || "מופע חוקי של היחס", tables: [t] });
 
   NORM_LEVEL({

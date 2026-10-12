@@ -1,7 +1,7 @@
 /* Algebra course · level 7 — validity first, what algebra can't do, multi-step queries (←), counting operations */
 (function(){
   const STUDENT = { name: "Student", pk: ["sid"], columns: ["sid", "name", "city", "age"],
-    rows: [[1, "Dana", "Haifa", 22], [2, "Adi", "Tel Aviv", 25], [3, "Ido", "Haifa", 22], [4, "Noa", "Eilat", 30], [5, "Gal", "Tel Aviv", 27]] };
+    rows: [[1, "Dana", "Haifa", 22], [2, "Adi", "Tel Aviv", 25], [3, "Ido", "Haifa", 22], [4, "Nataf", "Eilat", 30], [5, "Gal", "Tel Aviv", 27]] };
   const COURSE = { name: "Course", pk: ["cid"], columns: ["cid", "title", "dept"],
     rows: [[10, "DB", "CS"], [11, "Algo", "CS"], [12, "Calculus", "Math"], [13, "Stats", "Math"]] };
   const TAKES = { name: "Takes", pk: ["sid", "cid"], columns: ["sid", "cid", "grade"],

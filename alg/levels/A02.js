@@ -1,7 +1,7 @@
 /* Algebra course · level 2 — Cartesian product × and natural join ⊗ */
 (function(){
   const STUDENT = { name: "Student", pk: ["sid"], columns: ["sid", "name", "city"],
-    rows: [[1, "Dana", "Haifa"], [2, "Adi", "Tel Aviv"], [3, "Ido", "Haifa"], [4, "Noa", "Eilat"], [5, "Gal", "Eilat"]] };
+    rows: [[1, "Dana", "Haifa"], [2, "Adi", "Tel Aviv"], [3, "Ido", "Haifa"], [4, "Nataf", "Eilat"], [5, "Gal", "Eilat"]] };
   const ENROLL = { name: "Enroll", pk: ["sid", "cid"], columns: ["sid", "cid"],
     rows: [[1, 101], [1, 102], [2, 101], [3, 103], [4, 102]] };
   const COURSE = { name: "Course", pk: ["cid"], columns: ["cid", "title", "credits"],
@@ -10,7 +10,7 @@
   const MORNING = { name: "Morning", columns: ["sid", "teacher", "room"], rows: [[1, "Cohen", 10], [2, "Levi", 11], [3, "Cohen", 12]] };
   const EVENING = { name: "Evening", columns: ["sid", "teacher", "room"], rows: [[1, "Cohen", 10], [2, "Levi", 20], [3, "Mor", 12], [4, "Cohen", 10]] };
   // deliveries (4 relations, 25S-B / 25C-A style)
-  const CUSTOMER = { name: "Customer", pk: ["cust_id"], columns: ["cust_id", "name", "city"], rows: [[1, "Dana", "Haifa"], [2, "Adi", "Haifa"], [3, "Noa", "Eilat"]] };
+  const CUSTOMER = { name: "Customer", pk: ["cust_id"], columns: ["cust_id", "name", "city"], rows: [[1, "Dana", "Haifa"], [2, "Adi", "Haifa"], [3, "Nataf", "Eilat"]] };
   const COURIER = { name: "Courier", pk: ["courier_id"], columns: ["courier_id", "cname", "region"], rows: [[10, "Moshe", "Haifa"], [11, "Rina", "Eilat"]] };
   const ORDERS = { name: "Orders", pk: ["order_id"], columns: ["order_id", "cust_id", "courier_id", "express"],
     rows: [[100, 1, 10, "yes"], [101, 2, 11, "yes"], [102, 3, 11, "yes"], [103, 2, 10, "no"]] };
@@ -46,7 +46,7 @@
       figs: [
         { caption: "Student ⊗ Enroll מזווג לפי sid. ‏sid מופיע פעם אחת, ו-Gal, שלא נרשמה לאף קורס, נעלמת.",
           tables: [STUDENT, ENROLL], alg: "Student ⊗ Enroll",
-          result: { columns: ["sid", "name", "city", "cid"], rows: [[1, "Dana", "Haifa", 101], [1, "Dana", "Haifa", 102], [2, "Adi", "Tel Aviv", 101], [3, "Ido", "Haifa", 103], [4, "Noa", "Eilat", 102]] } },
+          result: { columns: ["sid", "name", "city", "cid"], rows: [[1, "Dana", "Haifa", 101], [1, "Dana", "Haifa", 102], [2, "Adi", "Tel Aviv", 101], [3, "Ido", "Haifa", 103], [4, "Nataf", "Eilat", 102]] } },
       ],
     },
     questions: [
@@ -77,12 +77,12 @@
       { id: "A02-Q3", ctx: withData,
         question: "מה מחזיר הביטוי? $$Π_{name} (Student ⊗ Enroll)$$",
         options: [
-          {id:"a", type:"text", value:"Dana, Adi, Ido, Noa: הסטודנטים שרשומים לקורס אחד לפחות"},
-          {id:"b", type:"text", value:"Dana, Adi, Ido, Noa, Gal: כל הסטודנטים"},
+          {id:"a", type:"text", value:"Dana, Adi, Ido, Nataf: הסטודנטים שרשומים לקורס אחד לפחות"},
+          {id:"b", type:"text", value:"Dana, Adi, Ido, Nataf, Gal: כל הסטודנטים"},
           {id:"c", type:"text", value:"Gal: הסטודנטים שלא רשומים לאף קורס"},
           {id:"d", type:"text", value:"Dana בלבד: הסטודנטים שרשומים ליותר מקורס אחד"},
         ], correctId: "a",
-        verify: { expr: "Π_{name} (Student ⊗ Enroll)", expect: [["Dana"], ["Adi"], ["Ido"], ["Noa"]] },
+        verify: { expr: "Π_{name} (Student ⊗ Enroll)", expect: [["Dana"], ["Adi"], ["Ido"], ["Nataf"]] },
         recap: "⊗ משאיר רק מי שיש לו התאמה = \"לפחות אחד\"",
         explanation: "הצירוף משאיר רק שורות שיש להן התאמה בשתי הטבלאות. Gal לא מופיעה ב-Enroll ולכן נעלמת. התוצאה היא הסטודנטים עם **לפחות** רישום אחד, ו-Dana מופיעה פעם אחת אחרי Π. \"מי שלא נרשם כלל\" דורש הפרש, ו\"יותר מאחד\" דורש צירוף עצמי. זה המבנה של 25S-B שאלה 13." },
 
@@ -109,7 +109,7 @@
         ], correctId: "c",
         verify: { ref: "Π_{name} σ_{credits = 4 ∧ Student.sid = Enroll.sid ∧ Enroll.cid = Course.cid} (Student × Enroll × Course)", same: ["c"], differ: ["a", "b", "d"] },
         recap: "3 טבלאות ב-× = 2 תנאי חיבור + תנאי הסינון",
-        explanation: "שלוש טבלאות ב-×, ולכן צריך **שני** תנאי חיבור: Student עם Enroll (sid), ו-Enroll עם Course (cid), ובנוסף את הסינון credits = 4. ‏{opt:a} בלי תנאי חיבור מחבר כל סטודנט לכל קורס של 4 נקודות, ולכן מחזיר את כולם. ‏{opt:b} בלי חיבור Enroll-Course מחזיר כל מי שרשום לקורס כלשהו (גם Noa, שרשומה רק לקורס של 3). ‏{opt:d} שוכח את הסינון. זו 25C-A שאלה 14 בקטן." },
+        explanation: "שלוש טבלאות ב-×, ולכן צריך **שני** תנאי חיבור: Student עם Enroll (sid), ו-Enroll עם Course (cid), ובנוסף את הסינון credits = 4. ‏{opt:a} בלי תנאי חיבור מחבר כל סטודנט לכל קורס של 4 נקודות, ולכן מחזיר את כולם. ‏{opt:b} בלי חיבור Enroll-Course מחזיר כל מי שרשום לקורס כלשהו (גם Nataf, שרשומה רק לקורס של 3). ‏{opt:d} שוכח את הסינון. זו 25C-A שאלה 14 בקטן." },
 
       { id: "A02-Q6", ctx: schema,
         question: "איזה ביטוי מחזיר את **אותה** תשובה (שמות הסטודנטים שרשומים לקורס של 4 נקודות) בעזרת צירוף טבעי?",
