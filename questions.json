@@ -1,10 +1,10 @@
 {
  "meta": {
   "generated": "build_questions.py",
-  "exams": 11,
+  "exams": 12,
   "counts": {
-   "total": 232,
-   "contexts": 40
+   "total": 252,
+   "contexts": 45
   }
  },
  "contexts": {
@@ -774,6 +774,428 @@
    "algebra": [
     "R = (A, B, C, D, E)",
     "F = {A → B, B → C, A → D, AC → E}"
+   ]
+  },
+  "PRAC-CL26-erd": {
+   "kind": "erd",
+   "title": "חלק א׳ — ERD",
+   "intro": "התייחסו לתרשים ה-ERD הנתון וענו על השאלות. הניחו שבתרגום משתמשים בשיטה הסטנדרטית של הקורס (טבלה לכל תת-סוג עם המפתח היורש), ושאר הקשרים מתורגמים בתרגום היעיל ביותר.",
+   "erd": {
+    "w": 960,
+    "h": 560,
+    "alt": "תרשים מופשט: הקבצה A-R1-B, הקשר R2 אל C1, היררכיית C, קשר טרינארי R3, ישות חלשה W",
+    "nodes": [
+     {
+      "id": "G",
+      "t": "agg",
+      "x": 300,
+      "y": 120,
+      "w": 540,
+      "h": 200,
+      "label": "A - R1 - B"
+     },
+     {
+      "id": "A",
+      "t": "entity",
+      "x": 130,
+      "y": 130,
+      "label": "A"
+     },
+     {
+      "id": "kA",
+      "t": "attr",
+      "x": 120,
+      "y": 62,
+      "label": "KeyA",
+      "key": true,
+      "of": "A"
+     },
+     {
+      "id": "pA",
+      "t": "attr",
+      "x": 150,
+      "y": 190,
+      "label": "PropA_2",
+      "multi": true,
+      "of": "A"
+     },
+     {
+      "id": "R1",
+      "t": "rel",
+      "x": 300,
+      "y": 130,
+      "label": "R1"
+     },
+     {
+      "id": "pR1",
+      "t": "attr",
+      "x": 300,
+      "y": 55,
+      "label": "PropR1_1",
+      "of": "R1"
+     },
+     {
+      "id": "B",
+      "t": "entity",
+      "x": 470,
+      "y": 130,
+      "label": "B"
+     },
+     {
+      "id": "kB",
+      "t": "attr",
+      "x": 480,
+      "y": 55,
+      "label": "KeyB",
+      "key": true,
+      "of": "B"
+     },
+     {
+      "id": "R2",
+      "t": "rel",
+      "x": 300,
+      "y": 300,
+      "label": "R2"
+     },
+     {
+      "id": "C",
+      "t": "entity",
+      "x": 720,
+      "y": 110,
+      "label": "C"
+     },
+     {
+      "id": "kC",
+      "t": "attr",
+      "x": 720,
+      "y": 40,
+      "label": "KeyC",
+      "key": true,
+      "of": "C"
+     },
+     {
+      "id": "pC",
+      "t": "attr",
+      "x": 840,
+      "y": 110,
+      "label": "PropC_1",
+      "of": "C"
+     },
+     {
+      "id": "isa",
+      "t": "isa",
+      "x": 720,
+      "y": 190
+     },
+     {
+      "id": "C1",
+      "t": "entity",
+      "x": 600,
+      "y": 300,
+      "label": "C1"
+     },
+     {
+      "id": "pC1",
+      "t": "attr",
+      "x": 600,
+      "y": 375,
+      "label": "PropC1_1",
+      "of": "C1"
+     },
+     {
+      "id": "C2",
+      "t": "entity",
+      "x": 820,
+      "y": 300,
+      "label": "C2"
+     },
+     {
+      "id": "pC2",
+      "t": "attr",
+      "x": 900,
+      "y": 230,
+      "label": "PropC2_1",
+      "of": "C2"
+     },
+     {
+      "id": "R3",
+      "t": "rel",
+      "x": 760,
+      "y": 420,
+      "label": "R3"
+     },
+     {
+      "id": "D",
+      "t": "entity",
+      "x": 900,
+      "y": 440,
+      "label": "D"
+     },
+     {
+      "id": "kD",
+      "t": "attr",
+      "x": 900,
+      "y": 370,
+      "label": "KeyD",
+      "key": true,
+      "of": "D"
+     },
+     {
+      "id": "pD",
+      "t": "attr",
+      "x": 900,
+      "y": 515,
+      "label": "PropD_1",
+      "derived": true,
+      "of": "D"
+     },
+     {
+      "id": "W",
+      "t": "entity",
+      "x": 620,
+      "y": 440,
+      "label": "W",
+      "weak": true
+     },
+     {
+      "id": "dW",
+      "t": "attr",
+      "x": 560,
+      "y": 515,
+      "label": "DiscW_1",
+      "partial": true,
+      "of": "W"
+     },
+     {
+      "id": "pW",
+      "t": "attr",
+      "x": 680,
+      "y": 515,
+      "label": "PropW_1",
+      "of": "W"
+     },
+     {
+      "id": "R4",
+      "t": "rel",
+      "x": 450,
+      "y": 440,
+      "label": "R4",
+      "ident": true
+     },
+     {
+      "id": "E",
+      "t": "entity",
+      "x": 280,
+      "y": 440,
+      "label": "E"
+     },
+     {
+      "id": "kE",
+      "t": "attr",
+      "x": 280,
+      "y": 370,
+      "label": "KeyE",
+      "key": true,
+      "of": "E"
+     },
+     {
+      "id": "pE",
+      "t": "attr",
+      "x": 280,
+      "y": 515,
+      "label": "PropE_1",
+      "of": "E"
+     }
+    ],
+    "edges": [
+     {
+      "a": "R1",
+      "b": "A"
+     },
+     {
+      "a": "R1",
+      "b": "B"
+     },
+     {
+      "a": "R2",
+      "b": "G",
+      "total": true
+     },
+     {
+      "a": "R2",
+      "b": "C1",
+      "arrow": true
+     },
+     {
+      "a": "isa",
+      "b": "C"
+     },
+     {
+      "a": "isa",
+      "b": "C1"
+     },
+     {
+      "a": "isa",
+      "b": "C2"
+     },
+     {
+      "a": "R3",
+      "b": "C2"
+     },
+     {
+      "a": "R3",
+      "b": "D",
+      "arrow": true
+     },
+     {
+      "a": "R3",
+      "b": "W"
+     },
+     {
+      "a": "R4",
+      "b": "E",
+      "arrow": true
+     },
+     {
+      "a": "R4",
+      "b": "W",
+      "total": true
+     }
+    ]
+   }
+  },
+  "PRAC-CL26-sql": {
+   "kind": "schema",
+   "title": "חלק ב׳ — SQL: חברת תעופה",
+   "intro": "נתונות תבניות היחסים הבאות של חברת תעופה. קו תחתון מסמן מפתח ראשי.",
+   "relations": [
+    {
+     "schema": "Passengers([u]passenger_id[/u], name, country, birth_year)",
+     "meaning": "נוסע — מזהה, שם, מדינה ושנת לידה."
+    },
+    {
+     "schema": "Flights([u]flight_id[/u], origin, destination, flight_date, price)",
+     "meaning": "טיסה — מזהה, שדה מוצא (למשל `'TLV'`), יעד (למשל `'Rome'`), תאריך ומחיר בסיס."
+    },
+    {
+     "schema": "Bookings([u]passenger_id[/u], [u]flight_id[/u], seat_class, paid)",
+     "meaning": "הזמנה — נוסע הזמין מקום בטיסה. מחלקה (`'Economy'` / `'Business'`) והסכום ששולם בפועל (`paid`). נוסע מזמין טיסה מסוימת פעם אחת לכל היותר."
+    },
+    {
+     "schema": "Pilots([u]pilot_id[/u], name, hire_year)",
+     "meaning": "טייס — מזהה, שם ושנת קליטה."
+    },
+    {
+     "schema": "Assignments([u]pilot_id[/u], [u]flight_id[/u])",
+     "meaning": "שיבוץ — טייס שובץ לטיסה (בטיסה יכולים להיות כמה טייסים)."
+    }
+   ]
+  },
+  "PRAC-CL26-ra": {
+   "kind": "schema",
+   "title": "חלק ג׳ — אלגברת היחסים: שירות סטרימינג למוזיקה",
+   "intro": "נתונות סכמות היחסים הבאות. ניתן להניח שאין ערכים ריקים (Null).",
+   "relations": [
+    {
+     "schema": "listener([u]listener_id[/u], name, country, age)",
+     "meaning": "מאזין: מזהה, שם, מדינה וגיל."
+    },
+    {
+     "schema": "artist([u]artist_id[/u], name, country)",
+     "meaning": "אמן: מזהה, שם ומדינת מוצא."
+    },
+    {
+     "schema": "album([u]album_id[/u], title, artist_id, genre)",
+     "meaning": "אלבום: מזהה, שם, מזהה האמן וז׳אנר (למשל `\"Jazz\"`)."
+    },
+    {
+     "schema": "plays([u]listener_id[/u], [u]album_id[/u])",
+     "meaning": "האזנה: המאזין האזין לאלבום (לפחות פעם אחת)."
+    }
+   ]
+  },
+  "PRAC-CL26-q16": {
+   "kind": "relations",
+   "title": "שני יחסים R, S",
+   "tables": [
+    {
+     "name": "R",
+     "columns": [
+      "A",
+      "B",
+      "C"
+     ],
+     "rows": [
+      [
+       "1",
+       "x",
+       "10"
+      ],
+      [
+       "2",
+       "y",
+       "20"
+      ],
+      [
+       "3",
+       "x",
+       "10"
+      ],
+      [
+       "4",
+       "z",
+       "30"
+      ]
+     ]
+    },
+    {
+     "name": "S",
+     "columns": [
+      "B",
+      "C",
+      "D"
+     ],
+     "rows": [
+      [
+       "x",
+       "10",
+       "5"
+      ],
+      [
+       "x",
+       "12",
+       "5"
+      ],
+      [
+       "x",
+       "10",
+       "6"
+      ],
+      [
+       "y",
+       "20",
+       "7"
+      ],
+      [
+       "y",
+       "25",
+       "8"
+      ],
+      [
+       "w",
+       "30",
+       "9"
+      ]
+     ]
+    }
+   ]
+  },
+  "PRAC-CL26-fd": {
+   "kind": "fd",
+   "title": "חלק ד׳ — יחס ותלויות",
+   "algebra": [
+    "R = (A, B, C, D, E)",
+    "F1 = {AB → C, C → D, D → A, BD → E}"
    ]
   }
  },
@@ -2636,6 +3058,182 @@
    "official": true
   },
   {
+   "part": "א",
+   "topic": "erd",
+   "contextId": "PRAC-CL26-erd",
+   "question": "בתרגום היעיל ביותר, כמה טבלאות נדרשות לכל התרשים?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "9"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "10"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "11"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "12"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "13"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "claude-practice",
+   "explanation": "**ישויות:** A, B, C, C1, C2, D, E, W, כלומר 8 (תת-סוגים וישות חלשה מקבלים טבלה). **מרובות-ערכים:** PropA_2, כלומר 1. **R1:** קשר N:M, כלומר 1. **R3:** קשר טרינארי, שתמיד מקבל טבלה (גם עם חץ), כלומר 1. סה״כ **11**.\nלא סופרים: R2 (חץ אל C1, ולכן הוא מתמזג לטבלת R1, שהיא הטבלה של ההקבצה), R4 (קשר מזהה), PropD_1 (מחושבת) ואת משולש ה-ISA. מי שסופר את R2 מגיע ל-12, ומי ששוכח את PropA_2 מגיע ל-10.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q1",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "מודל ERD",
+   "official": false
+  },
+  {
+   "part": "א",
+   "topic": "erd",
+   "contextId": "PRAC-CL26-erd",
+   "question": "מה יהיה המפתח הראשי של הטבלה של `R3`?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "{KeyC, KeyD, KeyE, DiscW_1}"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "{KeyC, DiscW_1}"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "{KeyC, KeyE, DiscW_1}"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "{KeyC2, KeyE, DiscW_1}"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "ל-R3 אין טבלה: בגלל החץ הוא מתמזג לטבלה של D"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "claude-practice",
+   "explanation": "בקשר טרינארי, חץ אל D אומר שלכל צירוף (C2, W) יש D אחד לכל היותר, ולכן KeyD יוצא מהמפתח ונשאר עמודה רגילה. המפתח = מפתח C2 + מפתח W. ל-C2 אין מפתח משלו, והוא **יורש את KeyC**. ‏W היא ישות חלשה, והמפתח שלה הוא **DiscW_1 + KeyE** (מפתח הבעלים דרך R4). לכן {KeyC, KeyE, DiscW_1}. מי שלוקח רק את DiscW_1 שוכח שמפתח של ישות חלשה כולל את מפתח הבעלים. קשר טרינארי לא מתמזג לישות גם כשיש בו חץ.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q2",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "מודל ERD",
+   "official": false
+  },
+  {
+   "part": "א",
+   "topic": "erd",
+   "contextId": "PRAC-CL26-erd",
+   "question": "לפי התרשים, איזו מהטענות הבאות נכונה לגבי הקשר `R2`?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "כל מופע של C1 חייב להיות קשור דרך R2 לזוג (A, B) אחד לפחות"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "כל זוג (A, B) שמופיע ב-R1 קשור דרך R2 ל-C1 אחד בדיוק, ו-C1 יכול להיות קשור לכמה זוגות או לאף זוג"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "זוג (A, B) שמופיע ב-R1 יכול להיות קשור דרך R2 לכמה מופעים שונים של C1"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "כל מופע של C1 קשור לזוג (A, B) אחד לכל היותר"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "כל התשובות האחרות אינן נכונות"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "claude-practice",
+   "explanation": "קוראים כל קו בנפרד. **קו כפול בצד ההקבצה:** כל מופע של R1, כלומר כל זוג (A, B), חייב להשתתף ב-R2 (לפחות אחד). **חץ אל C1:** כל זוג קשור ל-C1 אחד לכל היותר. יחד: **בדיוק אחד**. בצד של C1 הקו רגיל ואין חץ שמכוון אל ההקבצה, ולכן C1 יכול להיות קשור לכמה זוגות או לאף זוג. בתרגום זה בדיוק מה שאוכפים: KeyC נכנס לטבלת R1 כמפתח זר מוגדר NOT NULL.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q3",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "מודל ERD",
+   "official": false
+  },
+  {
+   "part": "א",
+   "topic": "erd",
+   "contextId": "PRAC-CL26-erd",
+   "question": "בתרגום היעיל ביותר, איזו סכמה תתקבל עבור הטבלה של `R1`?",
+   "options": [
+    {
+     "id": "a",
+     "type": "schema",
+     "value": "R1 ([u]KeyA[/u], [u]KeyB[/u], PropR1_1)"
+    },
+    {
+     "id": "b",
+     "type": "schema",
+     "value": "R1 ([u]KeyA[/u], [u]KeyB[/u], [u]KeyC[/u], PropR1_1)"
+    },
+    {
+     "id": "c",
+     "type": "schema",
+     "value": "R1 ([u]KeyA[/u], [u]KeyB[/u], PropR1_1, KeyC)"
+    },
+    {
+     "id": "d",
+     "type": "schema",
+     "value": "R1 ([u]KeyA[/u], [u]KeyB[/u], PropR1_1, PropA_2, KeyC)"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "כל התשובות האחרות אינן נכונות"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "claude-practice",
+   "explanation": "‏R1 הוא N:M, ולכן המפתח שלו הוא {KeyA, KeyB}, ותכונת הקשר PropR1_1 נכנסת לטבלה. ‏R2 יוצא מההקבצה עם חץ אל C1, כלומר כל זוג קשור ל-C1 אחד לכל היותר. לכן R2 **מתמזג לטבלת R1** (הטבלה של ההקבצה) ו-KeyC נכנס כמפתח זר, **מחוץ למפתח** (עם NOT NULL, בגלל הקו הכפול). אם KeyC נכנס למפתח, החץ הולך לאיבוד. סכמה בלי KeyC מחייבת טבלה נפרדת ל-R2, וזה לא התרגום היעיל ביותר. ‏PropA_2 מרובת-ערכים, ולכן יוצאת לטבלה משלה ולא נכנסת ל-R1.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q4",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "מודל ERD",
+   "official": false
+  },
+  {
    "part": "ד",
    "topic": "fd_norm",
    "contextId": "21B-A-fd",
@@ -4447,6 +5045,180 @@
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
    "official": true
+  },
+  {
+   "part": "ד",
+   "topic": "fd_norm",
+   "contextId": "PRAC-CL26-fd",
+   "question": "מהם **כל** המפתחות הקבילים (candidate keys) של R בהינתן F1?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "{A, B} בלבד"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "{A, B} ו-{B, D} בלבד"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "{A, B}, ‏{B, C} ו-{B, D}"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "{A, B}, ‏{B, C} ו-{C, D}"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "{A, B}, ‏{B, C}, ‏{B, D} ו-{B, E}"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "claude-practice",
+   "explanation": "‏B לא מופיע באף צד ימין, ולכן הוא חייב להיות בכל מפתח, אבל B⁺ = {B} לבדו. בודקים את B עם כל תכונה: ‏{A,B}⁺: ‏AB → C, ‏C → D, ‏BD → E, כלומר הכול. ‏{B,C}⁺: ‏C → D, ‏D → A, ואז AB → C ו-BD → E, כלומר הכול. ‏{B,D}⁺: ‏D → A, ‏AB → C, ‏BD → E, כלומר הכול. ‏{B,E}⁺ = {B, E}. שלושתם מינימליים, כי אף תכונה לבדה אינה מפתח. ‏{C,D} אינו מפתח, כי אין בו B.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q17",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "תלויות ונרמול",
+   "official": false
+  },
+  {
+   "part": "ד",
+   "topic": "fd_norm",
+   "contextId": "PRAC-CL26-fd",
+   "question": "איזו מהטענות הבאות נכונה לגבי R עם F1?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "‏R נמצאת ב-BCNF"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "‏R לא נמצאת ב-3NF, בגלל התלות C → D"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "‏R לא נמצאת ב-2NF, בגלל התלות D → A (‏D הוא חלק מהמפתח BD)"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "‏R לא נמצאת ב-BCNF, אבל נמצאת ב-3NF"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "כל התשובות האחרות אינן נכונות"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "claude-practice",
+   "explanation": "המפתחות הם AB, ‏BC ו-BD, ולכן התכונות הראשיות הן **A, B, C, D**. ‏E היא היחידה שאינה ראשית. **BCNF:** ‏C → D ו-D → A הן תלויות שהצד השמאלי שלהן אינו על-מפתח, ולכן R אינה ב-BCNF. **3NF:** בשתיהן צד ימין (‏D, ‏A) הוא תכונה **ראשית**, ולכן הן מותרות. ‏AB → C ו-BD → E הן על מפתח. לכן R ב-3NF. גם 2NF מתקיימת: תלות חלקית פוסלת 2NF רק כשהיא קובעת תכונה **לא ראשית**, ו-A ראשית.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q18",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "תלויות ונרמול",
+   "official": false
+  },
+  {
+   "part": "ד",
+   "topic": "fd_norm",
+   "question": "נתונה הסכמה $R = (A, B, C, D, E)$ וקבוצת התלויות $F = \\{A → B, B → C, C → A, D → E\\}$. כמו כן נתון הפירוק `R1(A, B)`, `R2(B, C)`, `R3(C, D, E)`. יש לבחור את הטענה הנכונה מבין הבאות:",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "הפירוק משמר מידע, אך אינו משמר תלויות, כי התלות C → A אובדת"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "הפירוק משמר מידע ומשמר תלויות, אך לא כל היחסים בפירוק נמצאים ב-3NF"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "הפירוק משמר מידע ומשמר תלויות, וכל היחסים בפירוק נמצאים ב-BCNF"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "הפירוק אינו משמר מידע"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "הפירוק אינו משמר מידע ואינו משמר תלויות"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "claude-practice",
+   "explanation": "**משמר מידע:** ‏R1 ⋈ R2 על B, ו-B → C, ולכן B מפתח של R2 והצירוף בלי אובדן, ומתקבל (A,B,C). את זה מצרפים עם R3 על C, ו-C → A → B, ולכן C מפתח של (A,B,C). **משמר תלויות:** ‏A → B ב-R1, ‏B → C ב-R2, ‏D → E ב-R3. ‏C → A לא נמצאת באף יחס, אבל **נגזרת**: בודקים את C⁺ על פני הרכיבים. ב-R2 נקבל C → B, וב-R1 נקבל B → A. לכן היא נשמרת. **צורה נורמלית:** ב-R3(C,D,E) המפתח הוא CD, והתלות D → E היא תלות חלקית של תכונה לא ראשית. לכן R3 אינו אפילו ב-2NF, והטענה שכל היחסים ב-BCNF נופלת.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q19",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "תלויות ונרמול",
+   "official": false
+  },
+  {
+   "part": "ד",
+   "topic": "fd_norm",
+   "question": "נתונה קבוצת התלויות $F = \\{A → BC, B → C, AB → D, CD → E\\}$. מהו הכיסוי הקנוני (canonical cover) של F?",
+   "options": [
+    {
+     "id": "a",
+     "type": "algebra",
+     "value": "{A → BCD, B → C, CD → E}"
+    },
+    {
+     "id": "b",
+     "type": "algebra",
+     "value": "{A → B, B → C, CD → E}"
+    },
+    {
+     "id": "c",
+     "type": "algebra",
+     "value": "{A → BD, B → C, D → E}"
+    },
+    {
+     "id": "d",
+     "type": "algebra",
+     "value": "{A → D, B → C, CD → E}"
+    },
+    {
+     "id": "e",
+     "type": "algebra",
+     "value": "{A → BD, B → C, CD → E}"
+    }
+   ],
+   "correctId": "e",
+   "answerSource": "claude-practice",
+   "explanation": "מחפשים תכונות עודפות. ב-**AB → D** התכונה **B עודפת**, כי A⁺ מכיל את B ‏(A → B), ולכן A → D. ב-**A → BC** התכונה **C עודפת בצד ימין**, כי A → B ו-B → C כבר נותנות A → C. מאחדים את A → B ו-A → D ל-**A → BD**. ב-CD → E אין עודפות, כי C⁺ = {C} ו-D⁺ = {D}. התוצאה היא {A → BD, B → C, CD → E}. ‏A → BCD שקולה ל-F, אבל עדיין יש בה את C העודפת, ולכן אינה קנונית. בשלוש האפשרויות האחרות חסרה תלות או שהשתנתה, ולכן אינן שקולות ל-F.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q20",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "תלויות ונרמול",
+   "official": false
   },
   {
    "part": "ה",
@@ -6895,6 +7667,182 @@
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
    "official": true
+  },
+  {
+   "part": "ג",
+   "topic": "relalg",
+   "contextId": "PRAC-CL26-ra",
+   "question": "מה מחזירה השאילתה הבאה? בחרו את התשובה הנכונה ביותר.\n$$Π_{name}(listener ⊗ artist)$$",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "את שמות המאזינים שגרים במדינה שיש בה לפחות אמן אחד"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "את השמות של מאזינים שיש אמן **עם אותו שם ומאותה מדינה** כמוהם"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "את שמות כל המאזינים ואת שמות כל האמנים (איחוד)"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "את שמות כל המאזינים, כי ליחסים אין מפתח משותף והצירוף הוא מכפלה קרטזית"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "השאילתה אינה תקינה, כי לשני היחסים יש תכונה בשם `name`"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "claude-practice",
+   "explanation": "צירוף טבעי משווה את **כל** התכונות בעלות שם משותף. ל-listener ול-artist יש שתיים כאלה: `name` **וגם** `country`. לכן נשארים רק זוגות (מאזין, אמן) עם אותו שם ואותה מדינה, ומהם מוקרן השם. מי שמשווה רק לפי country מקבל את האפשרות של \"גרים באותה מדינה\". המפתחות (`listener_id`, `artist_id`) שונים בשמם ולא משתתפים בצירוף. תכונה משותפת היא בדיוק מה שהצירוף הטבעי משתמש בו, ולא שגיאה.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q13",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "אלגברה רלציונית",
+   "official": false
+  },
+  {
+   "part": "ג",
+   "topic": "relalg",
+   "contextId": "PRAC-CL26-ra",
+   "question": "איזו שאילתה מחזירה את המזהים של **המאזין המבוגר ביותר בכל מדינה** (מאזין שאין מאזין מבוגר ממנו באותה מדינה)?",
+   "options": [
+    {
+     "id": "a",
+     "type": "algebra",
+     "value": "Π_{listener_id}(listener) − Π_{L1.listener_id}(σ_{L1.age < L2.age}(ρ_{L1}(listener) × ρ_{L2}(listener)))"
+    },
+    {
+     "id": "b",
+     "type": "algebra",
+     "value": "Π_{L1.listener_id}(σ_{L1.country = L2.country ∧ L1.age > L2.age}(ρ_{L1}(listener) × ρ_{L2}(listener)))"
+    },
+    {
+     "id": "c",
+     "type": "algebra",
+     "value": "Π_{listener_id}(listener) − Π_{L1.listener_id}(σ_{L1.country = L2.country ∧ L1.age > L2.age}(ρ_{L1}(listener) × ρ_{L2}(listener)))"
+    },
+    {
+     "id": "d",
+     "type": "algebra",
+     "value": "Π_{listener_id}(listener) − Π_{L1.listener_id}(σ_{L1.country = L2.country ∧ L1.age < L2.age}(ρ_{L1}(listener) × ρ_{L2}(listener)))"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף אחת מהאפשרויות."
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "claude-practice",
+   "explanation": "התבנית של מקסימום: **כולם פחות מי שיש מישהו גדול ממנו**. ‏`L1.age < L2.age` עם `L1.country = L2.country` מוצא כל מאזין שיש מאזין מבוגר ממנו **באותה מדינה**. מחסירים אותם מכולם ונשאר המבוגר ביותר בכל מדינה. מאזין יחיד במדינתו נשאר, כי אין לו עם מי להשוות. בלי תנאי המדינה מתקבל רק המבוגר ביותר בכלל. עם `>` בהפרש מתקבל הצעיר ביותר בכל מדינה. בלי הפרש בכלל, `>` מחזיר כל מי שמבוגר ממישהו במדינתו, כלומר כל מי שאינו הצעיר ביותר.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q14",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "אלגברה רלציונית",
+   "official": false
+  },
+  {
+   "part": "ג",
+   "topic": "relalg",
+   "contextId": "PRAC-CL26-ra",
+   "question": "איזו שאילתה מחזירה את המזהים של המאזינים שהאזינו ל**כל** האלבומים מז׳אנר `\"Jazz\"`?",
+   "options": [
+    {
+     "id": "a",
+     "type": "algebra",
+     "value": "plays ÷ Π_{album_id}(σ_{genre = \"Jazz\"}(album))"
+    },
+    {
+     "id": "b",
+     "type": "algebra",
+     "value": "Π_{listener_id}(plays ⊗ σ_{genre = \"Jazz\"}(album))"
+    },
+    {
+     "id": "c",
+     "type": "algebra",
+     "value": "Π_{listener_id}(plays) − Π_{listener_id}((Π_{listener_id}(plays) × Π_{album_id}(σ_{genre = \"Jazz\"}(album))) − plays)"
+    },
+    {
+     "id": "d",
+     "type": "algebra",
+     "value": "Π_{listener_id}(plays) − Π_{listener_id}(σ_{genre ≠ \"Jazz\"}(plays ⊗ album))"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "תשובות {opt:a} ו-{opt:c} נכונות."
+    }
+   ],
+   "correctId": "e",
+   "answerSource": "claude-practice",
+   "explanation": "\"כל\" = **חילוק**. ‏plays(listener_id, album_id) ÷ (מזהי אלבומי הג׳אז) מחזיר מאזינים שמופיעים עם **כל** אלבומי הג׳אז. השאילתה הארוכה היא **הגדרת החילוק** בפעולות בסיסיות: (כל מאזין × כל אלבום ג׳אז) פחות מה שקרה באמת נותן את הזוגות החסרים. מאזין שחסר לו אלבום ג׳אז כלשהו מוחסר מכל המאזינים. לכן שתיהן נכונות. הצירוף עם אלבומי ג׳אז מחזיר מי שהאזין לאלבום ג׳אז **אחד לפחות**. ההפרש עם `genre ≠ \"Jazz\"` מחזיר מי שהאזין **רק** לג׳אז, ולא בהכרח לכל אלבומי הג׳אז.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q15",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "אלגברה רלציונית",
+   "official": false
+  },
+  {
+   "part": "ג",
+   "topic": "relalg",
+   "contextId": "PRAC-CL26-q16",
+   "question": "נתונים היחסים R ו-S (ראו טבלאות) ונתונה השאילתה:\n$$σ_{D < 7}(Π_{A,B}(R) ⊗ Π_{B,D}(S))$$\nכמה שורות וכמה עמודות תכיל תוצאת השאילתה? (`⊗` — צירוף טבעי)",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "שש שורות ושלוש עמודות."
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "ארבע שורות וארבע עמודות."
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "ארבע שורות ושלוש עמודות."
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "שתי שורות ושלוש עמודות."
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "חמש שורות ושלוש עמודות."
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "claude-practice",
+   "explanation": "‏$Π_{B,D}(S)$ הוא **קבוצה**: השורות (x, 10, 5) ו-(x, 12, 5) הופכות לזוג אחד (x, 5). נשארים (x,5), (x,6), (y,7), (y,8), (w,9). ‏$Π_{A,B}(R)$ = (1,x), (2,y), (3,x), (4,z). אחרי ההטלות התכונה המשותפת היחידה היא **B** (‏C כבר לא קיימת). הצירוף: A=1 ו-A=3 עם (x,5), (x,6) ‏←‏ 4 שורות, ו-A=2 עם (y,7), (y,8) ‏←‏ 2 שורות. ‏$σ_{D<7}$ משאיר את 4 השורות של x. התוצאה היא **4 שורות ו-3 עמודות (A, B, D)**. מי שלא מוחק כפילויות מקבל 6 שורות. מי שמצרף גם לפי C מקבל 2.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q16",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "אלגברה רלציונית",
+   "official": false
   },
   {
    "part": "ב",
@@ -10974,6 +11922,384 @@
    "source": "exam",
    "topicLabel": "SQL",
    "official": true
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "PRAC-CL26-sql",
+   "question": "מי הטייסים ששובצו ל**כל** הטיסות שיוצאות מ-`'TLV'`? עיינו בשלוש ההצעות וקבעו מה נכון.",
+   "code": "(A) SELECT name FROM Pilots P WHERE NOT EXISTS\n      (SELECT * FROM Flights F WHERE F.origin = 'TLV' AND NOT EXISTS\n         (SELECT * FROM Assignments A\n          WHERE A.flight_id = F.flight_id AND A.pilot_id = P.pilot_id))\n\n(B) SELECT name FROM Pilots P WHERE NOT EXISTS\n      (SELECT * FROM Flights F WHERE F.origin = 'TLV' AND NOT EXISTS\n         (SELECT * FROM Assignments A WHERE A.flight_id = F.flight_id))\n\n(C) SELECT name FROM Pilots P WHERE NOT EXISTS\n      (SELECT flight_id FROM Flights WHERE origin = 'TLV'\n       EXCEPT\n       SELECT flight_id FROM Assignments A WHERE A.pilot_id = P.pilot_id)",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "רק השאילתה A נכונה"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "רק השאילתה C נכונה"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "השאילתות A ו-C נכונות, ו-B שגויה"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "כל שלוש השאילתות נכונות"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף תשובה אינה נכונה"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "claude-practice",
+   "explanation": "‏A היא החילוק הקלאסי: \"לא קיימת טיסה מ-TLV שאין שיבוץ **של הטייס הזה** אליה\". ‏C עושה את אותו הדבר בעזרת הפרש: (כל הטיסות מ-TLV) EXCEPT (הטיסות של הטייס). אם לא נשאר כלום, הטייס שובץ לכולן. ב-B תת-השאילתה הפנימית **לא מקושרת לטייס** (אין `A.pilot_id = P.pilot_id`). היא בודקת רק שלכל טיסה יש טייס כלשהו, ולכן מחזירה את כל הטייסים או אף אחד.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q10",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "PRAC-CL26-sql",
+   "question": "איזו שאילתה מחזירה את המזהים של הנוסעים שטסו (הזמינו טיסות) עם לפחות **3 טייסים שונים**?",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT B.passenger_id\nFROM Bookings B JOIN Assignments A ON B.flight_id = A.flight_id\nGROUP BY B.passenger_id\nHAVING COUNT(*) >= 3"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT B.passenger_id\nFROM Bookings B JOIN Assignments A ON B.flight_id = A.flight_id\nGROUP BY B.passenger_id\nHAVING COUNT(DISTINCT B.flight_id) >= 3"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT B.passenger_id\nFROM Bookings B JOIN Assignments A ON B.flight_id = A.flight_id\nGROUP BY B.passenger_id\nHAVING COUNT(DISTINCT A.pilot_id) >= 3"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT B.passenger_id\nFROM Bookings B JOIN Assignments A ON B.flight_id = A.flight_id\nWHERE COUNT(DISTINCT A.pilot_id) >= 3\nGROUP BY B.passenger_id"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף תשובה אינה נכונה"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "claude-practice",
+   "explanation": "אחרי הצירוף יש שורה לכל (הזמנה, טייס בטיסה). סופרים **טייסים שונים**, ולכן `COUNT(DISTINCT A.pilot_id)`. ‏`COUNT(*)` סופר שורות: אותו טייס בשתי טיסות ייספר פעמיים, וגם נוסע עם 2 טיסות של 2 טייסים כל אחת יגיע ל-4. ספירת טיסות שונות בודקת שלוש טיסות, אבל כולן יכולות להיות עם אותו טייס. צבירה ב-WHERE אסורה.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q11",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "PRAC-CL26-sql",
+   "question": "איזו שאילתה מחזירה את **המחיר השני בגובהו** בטבלה `Flights`, כלומר את המחיר הגבוה ביותר שקטן מהמחיר המקסימלי?",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT MAX(price) FROM Flights\nWHERE price <> MAX(price)"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT MAX(price) FROM Flights\nWHERE price < ALL (SELECT price FROM Flights)"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT MAX(price) FROM Flights\nWHERE price NOT IN (SELECT MAX(price) FROM Flights\n                    GROUP BY destination)"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT MAX(price) FROM Flights\nWHERE price < (SELECT MAX(price) FROM Flights)"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף תשובה אינה נכונה"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "claude-practice",
+   "explanation": "מסירים את המקסימום בעזרת תת-שאילתה סקלרית (`price < (SELECT MAX…)`), ואז לוקחים את המקסימום של מה שנשאר. ‏`MAX` ב-WHERE אסור. ‏`< ALL` דורש מחיר שקטן מכל המחירים, כולל מעצמו, ולכן אין כזה ומתקבל NULL. ‏`NOT IN` של המקסימום **לכל יעד** מוריד מחירים רבים מדי (כל מקסימום של כל יעד), ולכן מתקבל מחיר נמוך מהנדרש.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q12",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "PRAC-CL26-sql",
+   "question": "איזו שאילתה מחזירה את שמות הנוסעים שהזמינו לפחות טיסה אחת ליעד `'Rome'`, ו**מעולם לא** הזמינו מקום במחלקת `'Business'` (באף טיסה)?",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT DISTINCT P.name\nFROM Passengers P JOIN Bookings B ON P.passenger_id = B.passenger_id\n  JOIN Flights F ON B.flight_id = F.flight_id\nWHERE F.destination = 'Rome' AND B.seat_class <> 'Business'"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT DISTINCT P.name\nFROM Passengers P JOIN Bookings B ON P.passenger_id = B.passenger_id\n  JOIN Flights F ON B.flight_id = F.flight_id\nWHERE F.destination = 'Rome'\n  AND P.passenger_id NOT IN (SELECT passenger_id FROM Bookings\n                             WHERE seat_class = 'Business')"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT DISTINCT P.name\nFROM Passengers P JOIN Bookings B ON P.passenger_id = B.passenger_id\n  JOIN Flights F ON B.flight_id = F.flight_id\nWHERE F.destination = 'Rome'\n  AND P.passenger_id NOT IN (SELECT B2.passenger_id\n      FROM Bookings B2 JOIN Flights F2 ON B2.flight_id = F2.flight_id\n      WHERE F2.destination = 'Rome' AND B2.seat_class = 'Business')"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT DISTINCT P.name\nFROM Passengers P JOIN Bookings B ON P.passenger_id = B.passenger_id\n  JOIN Flights F ON B.flight_id = F.flight_id\nWHERE F.destination = 'Rome'\n  AND B.passenger_id NOT IN (SELECT flight_id FROM Bookings\n                             WHERE seat_class = 'Business')"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף תשובה אינה נכונה"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "claude-practice",
+   "explanation": "\"מעולם לא\" זו שלילה על **כל** ההזמנות של הנוסע, ולכן `NOT IN` על תת-שאילתה שמוצאת את כל מי שהזמין Business אי-פעם. התנאי `seat_class <> 'Business'` בודק רק את השורה הנוכחית: נוסע שטס לרומא באקונומי ובמקום אחר בביזנס עדיין נכנס. תת-שאילתה שמסוננת ל-Rome פוסלת רק ביזנס **לרומא**, ולא ביזנס בטיסה אחרת. ההשוואה של `passenger_id` מול `flight_id` משווה עמודות שאינן מאותו תחום.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q5",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "PRAC-CL26-sql",
+   "question": "מה מחזירה השאילתה הבאה? בחרו את התשובה הנכונה ביותר.",
+   "code": "SELECT P.name\nFROM Passengers P JOIN Bookings B ON P.passenger_id = B.passenger_id\n  JOIN Flights F ON B.flight_id = F.flight_id\nWHERE F.destination = 'Rome'\nGROUP BY P.passenger_id, P.name\nHAVING COUNT(*) = (SELECT COUNT(*) FROM Flights\n                   WHERE destination = 'Rome')",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "את שמות הנוסעים שהזמינו לפחות טיסה אחת לרומא"
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "את שמות הנוסעים שכל ההזמנות שלהם הן לרומא"
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "את שמות הנוסעים שהזמינו את **כל** הטיסות שהיעד שלהן רומא"
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "את שמות הנוסעים שמספר ההזמנות הכולל שלהם שווה למספר הטיסות לרומא"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "השאילתה אינה תקינה, כי `P.name` מופיע ב-SELECT"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "claude-practice",
+   "explanation": "זה **חילוק בעזרת ספירה**. ה-WHERE משאיר רק הזמנות לרומא, ה-GROUP BY סופר לכל נוסע כמה טיסות לרומא הזמין, וה-HAVING דורש שהמספר יהיה שווה למספר כל הטיסות לרומא. מכיוון שנוסע מזמין טיסה פעם אחת לכל היותר (המפתח של Bookings), ספירה שווה = הזמין את כולן. הספירה נעשית **אחרי** הסינון לרומא, ולכן היא לא סופרת את סך ההזמנות. נוסע שכל הזמנותיו לרומא אבל לא הזמין את כל הטיסות לרומא לא יוחזר. ‏`P.name` מופיע ב-GROUP BY, ולכן מותר לבחור אותו.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q6",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "PRAC-CL26-sql",
+   "question": "איזו שאילתה מחזירה, **לכל יעד**, את הטיסה (או הטיסות) היקרה ביותר לאותו יעד?",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT flight_id, destination, price FROM Flights\nWHERE price IN (SELECT MAX(price) FROM Flights GROUP BY destination)"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT flight_id, destination, price FROM Flights F1\nWHERE price = (SELECT MAX(price) FROM Flights F2\n               WHERE F2.destination = F1.destination)"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT flight_id, destination, MAX(price) FROM Flights\nGROUP BY destination"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT flight_id, destination, price FROM Flights\nWHERE price >= ALL (SELECT price FROM Flights)"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף תשובה אינה נכונה"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "claude-practice",
+   "explanation": "צריך להשוות כל טיסה **למקסימום של היעד שלה**, ולכן תת-שאילתה **מתואמת** (`F2.destination = F1.destination`). ‏`IN` על רשימת המקסימומים של כל היעדים מחזיר גם טיסה שמחירה שווה למקסימום של יעד **אחר**. דוגמה: טיסה לרומא ב-450, כשהמקסימום לרומא 520 אבל המקסימום ל-TLV הוא 450. ‏GROUP BY destination עם `flight_id` ב-SELECT אינה תקינה, כי `flight_id` אינו בקבוצה ואינו בצבירה. ‏`>= ALL` מול כל הטבלה מחזיר רק את הטיסה היקרה ביותר בכלל, ולא אחת לכל יעד.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q7",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "PRAC-CL26-sql",
+   "question": "איזו שאילתה מחזירה **לכל טייס**, כולל טייסים שלא שובצו לאף טיסה, את שמו ואת מספר הטיסות שאליהן שובץ?",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT P.name, COUNT(*)\nFROM Pilots P LEFT JOIN Assignments A ON P.pilot_id = A.pilot_id\nGROUP BY P.pilot_id, P.name"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT P.name, COUNT(A.flight_id)\nFROM Pilots P JOIN Assignments A ON P.pilot_id = A.pilot_id\nGROUP BY P.pilot_id, P.name"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT P.name, COUNT(A.flight_id)\nFROM Assignments A LEFT JOIN Pilots P ON P.pilot_id = A.pilot_id\nGROUP BY P.pilot_id, P.name"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT P.name, COUNT(A.flight_id)\nFROM Pilots P LEFT JOIN Assignments A ON P.pilot_id = A.pilot_id\nGROUP BY P.pilot_id, P.name"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף תשובה אינה נכונה"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "claude-practice",
+   "explanation": "כדי שטייס בלי שיבוצים יופיע צריך `LEFT JOIN` **מ-Pilots**. אז הוא מקבל שורה אחת שבה עמודות Assignments הן NULL. ‏`COUNT(A.flight_id)` לא סופר NULL, ולכן הוא נותן 0. ‏`COUNT(*)` סופר את השורה עצמה ונותן 1, וזו טעות. ‏JOIN רגיל מעלים את הטייסים בלי שיבוצים. ‏LEFT JOIN בכיוון ההפוך (מ-Assignments) שומר את כל השיבוצים ולא את כל הטייסים, ולכן גם הוא מעלים אותם.",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q8",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "PRAC-CL26-sql",
+   "question": "איזו פקודה יוצרת VIEW שמציג לכל נוסע את המזהה שלו ואת הסכום הכולל ששילם, **רק** עבור נוסעים שהסכום הכולל שלהם גבוה מ-2000?",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "CREATE VIEW BigSpenders AS\nSELECT passenger_id, SUM(paid) AS total\nFROM Bookings\nGROUP BY passenger_id\nHAVING SUM(paid) > 2000"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "CREATE VIEW BigSpenders AS\nSELECT passenger_id, SUM(paid) AS total\nFROM Bookings\nWHERE paid > 2000\nGROUP BY passenger_id"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "CREATE VIEW BigSpenders AS\nSELECT passenger_id, SUM(paid) AS total\nFROM Bookings\nWHERE SUM(paid) > 2000\nGROUP BY passenger_id"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "CREATE VIEW BigSpenders AS\nSELECT passenger_id, SUM(paid) AS total\nFROM Bookings\nHAVING SUM(paid) > 2000\nGROUP BY passenger_id"
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "אף תשובה אינה נכונה"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "claude-practice",
+   "explanation": "תנאי על **סכום הקבוצה** שייך ל-`HAVING`, שבא **אחרי** `GROUP BY`. ‏`WHERE paid > 2000` מסנן הזמנות בודדות לפני הקיבוץ: נוסע ששילם 1800 + 450 לא ייכנס, ונוסע שיישאר יקבל סכום חלקי. פונקציית צבירה ב-WHERE אסורה. ‏HAVING לפני GROUP BY היא שגיאת תחביר (הסדר הוא WHERE ← GROUP BY ← HAVING).",
+   "confidence": "high",
+   "id": "PRAC-CL26-Q9",
+   "examCode": "PRAC-CL26",
+   "examLabel": "המבחן הקשה של קלוד 2026",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
   }
  ]
 }

@@ -1,25 +1,25 @@
 # Build report — Databases questions
 
-- Raw exam files: **11**
+- Raw exam files: **12**
 - Excluded: **0** ({})
 - Cross-exam duplicates (kept): **1**
-- Shared context blocks: **40**
-- **Final questions: 232**
+- Shared context blocks: **45**
+- **Final questions: 252**
 
 ## By topic
 
-- SQL (`sql`): 89
-- אלגברה רלציונית (`relalg`): 45
-- מודל ERD (`erd`): 44
-- תלויות ונרמול (`fd_norm`): 42
+- SQL (`sql`): 97
+- אלגברה רלציונית (`relalg`): 49
+- מודל ERD (`erd`): 48
+- תלויות ונרמול (`fd_norm`): 46
 - NoSQL (`nosql`): 12
 
 ## By part
 
-- חלק א: 44
-- חלק ב: 89
-- חלק ג: 45
-- חלק ד: 42
+- חלק א: 48
+- חלק ב: 97
+- חלק ג: 49
+- חלק ד: 46
 - חלק ה: 12
 
 ## By exam
@@ -35,7 +35,8 @@
 - 25C-A: 20
 - 25S-B: 20
 - 26B-A: 20
+- PRAC-CL26: 20
 
 ## Answer provenance
-- official key: 212  ·  derived: 20
+- official key: 212  ·  derived: 40
 
