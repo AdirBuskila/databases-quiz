@@ -776,7 +776,7 @@
     "F = {A → B, B → C, A → D, AC → E}"
    ]
   },
-  "PRAC-CL26-erd": {
+  "26Z-CL-erd": {
    "kind": "erd",
    "title": "חלק א׳ — ERD",
    "intro": "התייחסו לתרשים ה-ERD הנתון וענו על השאלות. הניחו שבתרגום משתמשים בשיטה הסטנדרטית של הקורס (טבלה לכל תת-סוג עם המפתח היורש), ושאר הקשרים מתורגמים בתרגום היעיל ביותר.",
@@ -1064,7 +1064,7 @@
     ]
    }
   },
-  "PRAC-CL26-sql": {
+  "26Z-CL-sql": {
    "kind": "schema",
    "title": "חלק ב׳ — SQL: חברת תעופה",
    "intro": "נתונות תבניות היחסים הבאות של חברת תעופה. קו תחתון מסמן מפתח ראשי.",
@@ -1091,7 +1091,7 @@
     }
    ]
   },
-  "PRAC-CL26-ra": {
+  "26Z-CL-ra": {
    "kind": "schema",
    "title": "חלק ג׳ — אלגברת היחסים: שירות סטרימינג למוזיקה",
    "intro": "נתונות סכמות היחסים הבאות. ניתן להניח שאין ערכים ריקים (Null).",
@@ -1114,7 +1114,7 @@
     }
    ]
   },
-  "PRAC-CL26-q16": {
+  "26Z-CL-q16": {
    "kind": "relations",
    "title": "שני יחסים R, S",
    "tables": [
@@ -1190,7 +1190,7 @@
     }
    ]
   },
-  "PRAC-CL26-fd": {
+  "26Z-CL-fd": {
    "kind": "fd",
    "title": "חלק ד׳ — יחס ותלויות",
    "algebra": [
@@ -3060,7 +3060,7 @@
   {
    "part": "א",
    "topic": "erd",
-   "contextId": "PRAC-CL26-erd",
+   "contextId": "26Z-CL-erd",
    "question": "בתרגום היעיל ביותר, כמה טבלאות נדרשות לכל התרשים?",
    "options": [
     {
@@ -3093,8 +3093,8 @@
    "answerSource": "claude-practice",
    "explanation": "**ישויות:** A, B, C, C1, C2, D, E, W, כלומר 8 (תת-סוגים וישות חלשה מקבלים טבלה). **מרובות-ערכים:** PropA_2, כלומר 1. **R1:** קשר N:M, כלומר 1. **R3:** קשר טרינארי, שתמיד מקבל טבלה (גם עם חץ), כלומר 1. סה״כ **11**.\nלא סופרים: R2 (חץ אל C1, ולכן הוא מתמזג לטבלת R1, שהיא הטבלה של ההקבצה), R4 (קשר מזהה), PropD_1 (מחושבת) ואת משולש ה-ISA. מי שסופר את R2 מגיע ל-12, ומי ששוכח את PropA_2 מגיע ל-10.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q1",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q1",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -3104,7 +3104,7 @@
   {
    "part": "א",
    "topic": "erd",
-   "contextId": "PRAC-CL26-erd",
+   "contextId": "26Z-CL-erd",
    "question": "מה יהיה המפתח הראשי של הטבלה של `R3`?",
    "options": [
     {
@@ -3137,8 +3137,8 @@
    "answerSource": "claude-practice",
    "explanation": "בקשר טרינארי, חץ אל D אומר שלכל צירוף (C2, W) יש D אחד לכל היותר, ולכן KeyD יוצא מהמפתח ונשאר עמודה רגילה. המפתח = מפתח C2 + מפתח W. ל-C2 אין מפתח משלו, והוא **יורש את KeyC**. ‏W היא ישות חלשה, והמפתח שלה הוא **DiscW_1 + KeyE** (מפתח הבעלים דרך R4). לכן {KeyC, KeyE, DiscW_1}. מי שלוקח רק את DiscW_1 שוכח שמפתח של ישות חלשה כולל את מפתח הבעלים. קשר טרינארי לא מתמזג לישות גם כשיש בו חץ.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q2",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q2",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -3148,7 +3148,7 @@
   {
    "part": "א",
    "topic": "erd",
-   "contextId": "PRAC-CL26-erd",
+   "contextId": "26Z-CL-erd",
    "question": "לפי התרשים, איזו מהטענות הבאות נכונה לגבי הקשר `R2`?",
    "options": [
     {
@@ -3181,8 +3181,8 @@
    "answerSource": "claude-practice",
    "explanation": "קוראים כל קו בנפרד. **קו כפול בצד ההקבצה:** כל מופע של R1, כלומר כל זוג (A, B), חייב להשתתף ב-R2 (לפחות אחד). **חץ אל C1:** כל זוג קשור ל-C1 אחד לכל היותר. יחד: **בדיוק אחד**. בצד של C1 הקו רגיל ואין חץ שמכוון אל ההקבצה, ולכן C1 יכול להיות קשור לכמה זוגות או לאף זוג. בתרגום זה בדיוק מה שאוכפים: KeyC נכנס לטבלת R1 כמפתח זר מוגדר NOT NULL.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q3",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q3",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -3192,7 +3192,7 @@
   {
    "part": "א",
    "topic": "erd",
-   "contextId": "PRAC-CL26-erd",
+   "contextId": "26Z-CL-erd",
    "question": "בתרגום היעיל ביותר, איזו סכמה תתקבל עבור הטבלה של `R1`?",
    "options": [
     {
@@ -3225,8 +3225,8 @@
    "answerSource": "claude-practice",
    "explanation": "‏R1 הוא N:M, ולכן המפתח שלו הוא {KeyA, KeyB}, ותכונת הקשר PropR1_1 נכנסת לטבלה. ‏R2 יוצא מההקבצה עם חץ אל C1, כלומר כל זוג קשור ל-C1 אחד לכל היותר. לכן R2 **מתמזג לטבלת R1** (הטבלה של ההקבצה) ו-KeyC נכנס כמפתח זר, **מחוץ למפתח** (עם NOT NULL, בגלל הקו הכפול). אם KeyC נכנס למפתח, החץ הולך לאיבוד. סכמה בלי KeyC מחייבת טבלה נפרדת ל-R2, וזה לא התרגום היעיל ביותר. ‏PropA_2 מרובת-ערכים, ולכן יוצאת לטבלה משלה ולא נכנסת ל-R1.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q4",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q4",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -5049,7 +5049,7 @@
   {
    "part": "ד",
    "topic": "fd_norm",
-   "contextId": "PRAC-CL26-fd",
+   "contextId": "26Z-CL-fd",
    "question": "מהם **כל** המפתחות הקבילים (candidate keys) של R בהינתן F1?",
    "options": [
     {
@@ -5082,8 +5082,8 @@
    "answerSource": "claude-practice",
    "explanation": "‏B לא מופיע באף צד ימין, ולכן הוא חייב להיות בכל מפתח, אבל B⁺ = {B} לבדו. בודקים את B עם כל תכונה: ‏{A,B}⁺: ‏AB → C, ‏C → D, ‏BD → E, כלומר הכול. ‏{B,C}⁺: ‏C → D, ‏D → A, ואז AB → C ו-BD → E, כלומר הכול. ‏{B,D}⁺: ‏D → A, ‏AB → C, ‏BD → E, כלומר הכול. ‏{B,E}⁺ = {B, E}. שלושתם מינימליים, כי אף תכונה לבדה אינה מפתח. ‏{C,D} אינו מפתח, כי אין בו B.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q17",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q17",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -5093,7 +5093,7 @@
   {
    "part": "ד",
    "topic": "fd_norm",
-   "contextId": "PRAC-CL26-fd",
+   "contextId": "26Z-CL-fd",
    "question": "איזו מהטענות הבאות נכונה לגבי R עם F1?",
    "options": [
     {
@@ -5126,8 +5126,8 @@
    "answerSource": "claude-practice",
    "explanation": "המפתחות הם AB, ‏BC ו-BD, ולכן התכונות הראשיות הן **A, B, C, D**. ‏E היא היחידה שאינה ראשית. **BCNF:** ‏C → D ו-D → A הן תלויות שהצד השמאלי שלהן אינו על-מפתח, ולכן R אינה ב-BCNF. **3NF:** בשתיהן צד ימין (‏D, ‏A) הוא תכונה **ראשית**, ולכן הן מותרות. ‏AB → C ו-BD → E הן על מפתח. לכן R ב-3NF. גם 2NF מתקיימת: תלות חלקית פוסלת 2NF רק כשהיא קובעת תכונה **לא ראשית**, ו-A ראשית.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q18",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q18",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -5169,8 +5169,8 @@
    "answerSource": "claude-practice",
    "explanation": "**משמר מידע:** ‏R1 ⋈ R2 על B, ו-B → C, ולכן B מפתח של R2 והצירוף בלי אובדן, ומתקבל (A,B,C). את זה מצרפים עם R3 על C, ו-C → A → B, ולכן C מפתח של (A,B,C). **משמר תלויות:** ‏A → B ב-R1, ‏B → C ב-R2, ‏D → E ב-R3. ‏C → A לא נמצאת באף יחס, אבל **נגזרת**: בודקים את C⁺ על פני הרכיבים. ב-R2 נקבל C → B, וב-R1 נקבל B → A. לכן היא נשמרת. **צורה נורמלית:** ב-R3(C,D,E) המפתח הוא CD, והתלות D → E היא תלות חלקית של תכונה לא ראשית. לכן R3 אינו אפילו ב-2NF, והטענה שכל היחסים ב-BCNF נופלת.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q19",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q19",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -5212,8 +5212,8 @@
    "answerSource": "claude-practice",
    "explanation": "מחפשים תכונות עודפות. ב-**AB → D** התכונה **B עודפת**, כי A⁺ מכיל את B ‏(A → B), ולכן A → D. ב-**A → BC** התכונה **C עודפת בצד ימין**, כי A → B ו-B → C כבר נותנות A → C. מאחדים את A → B ו-A → D ל-**A → BD**. ב-CD → E אין עודפות, כי C⁺ = {C} ו-D⁺ = {D}. התוצאה היא {A → BD, B → C, CD → E}. ‏A → BCD שקולה ל-F, אבל עדיין יש בה את C העודפת, ולכן אינה קנונית. בשלוש האפשרויות האחרות חסרה תלות או שהשתנתה, ולכן אינן שקולות ל-F.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q20",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q20",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -7671,7 +7671,7 @@
   {
    "part": "ג",
    "topic": "relalg",
-   "contextId": "PRAC-CL26-ra",
+   "contextId": "26Z-CL-ra",
    "question": "מה מחזירה השאילתה הבאה? בחרו את התשובה הנכונה ביותר.\n$$Π_{name}(listener ⊗ artist)$$",
    "options": [
     {
@@ -7704,8 +7704,8 @@
    "answerSource": "claude-practice",
    "explanation": "צירוף טבעי משווה את **כל** התכונות בעלות שם משותף. ל-listener ול-artist יש שתיים כאלה: `name` **וגם** `country`. לכן נשארים רק זוגות (מאזין, אמן) עם אותו שם ואותה מדינה, ומהם מוקרן השם. מי שמשווה רק לפי country מקבל את האפשרות של \"גרים באותה מדינה\". המפתחות (`listener_id`, `artist_id`) שונים בשמם ולא משתתפים בצירוף. תכונה משותפת היא בדיוק מה שהצירוף הטבעי משתמש בו, ולא שגיאה.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q13",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q13",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -7715,7 +7715,7 @@
   {
    "part": "ג",
    "topic": "relalg",
-   "contextId": "PRAC-CL26-ra",
+   "contextId": "26Z-CL-ra",
    "question": "איזו שאילתה מחזירה את המזהים של **המאזין המבוגר ביותר בכל מדינה** (מאזין שאין מאזין מבוגר ממנו באותה מדינה)?",
    "options": [
     {
@@ -7748,8 +7748,8 @@
    "answerSource": "claude-practice",
    "explanation": "התבנית של מקסימום: **כולם פחות מי שיש מישהו גדול ממנו**. ‏`L1.age < L2.age` עם `L1.country = L2.country` מוצא כל מאזין שיש מאזין מבוגר ממנו **באותה מדינה**. מחסירים אותם מכולם ונשאר המבוגר ביותר בכל מדינה. מאזין יחיד במדינתו נשאר, כי אין לו עם מי להשוות. בלי תנאי המדינה מתקבל רק המבוגר ביותר בכלל. עם `>` בהפרש מתקבל הצעיר ביותר בכל מדינה. בלי הפרש בכלל, `>` מחזיר כל מי שמבוגר ממישהו במדינתו, כלומר כל מי שאינו הצעיר ביותר.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q14",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q14",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -7759,7 +7759,7 @@
   {
    "part": "ג",
    "topic": "relalg",
-   "contextId": "PRAC-CL26-ra",
+   "contextId": "26Z-CL-ra",
    "question": "איזו שאילתה מחזירה את המזהים של המאזינים שהאזינו ל**כל** האלבומים מז׳אנר `\"Jazz\"`?",
    "options": [
     {
@@ -7792,8 +7792,8 @@
    "answerSource": "claude-practice",
    "explanation": "\"כל\" = **חילוק**. ‏plays(listener_id, album_id) ÷ (מזהי אלבומי הג׳אז) מחזיר מאזינים שמופיעים עם **כל** אלבומי הג׳אז. השאילתה הארוכה היא **הגדרת החילוק** בפעולות בסיסיות: (כל מאזין × כל אלבום ג׳אז) פחות מה שקרה באמת נותן את הזוגות החסרים. מאזין שחסר לו אלבום ג׳אז כלשהו מוחסר מכל המאזינים. לכן שתיהן נכונות. הצירוף עם אלבומי ג׳אז מחזיר מי שהאזין לאלבום ג׳אז **אחד לפחות**. ההפרש עם `genre ≠ \"Jazz\"` מחזיר מי שהאזין **רק** לג׳אז, ולא בהכרח לכל אלבומי הג׳אז.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q15",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q15",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -7803,7 +7803,7 @@
   {
    "part": "ג",
    "topic": "relalg",
-   "contextId": "PRAC-CL26-q16",
+   "contextId": "26Z-CL-q16",
    "question": "נתונים היחסים R ו-S (ראו טבלאות) ונתונה השאילתה:\n$$σ_{D < 7}(Π_{A,B}(R) ⊗ Π_{B,D}(S))$$\nכמה שורות וכמה עמודות תכיל תוצאת השאילתה? (`⊗` — צירוף טבעי)",
    "options": [
     {
@@ -7836,8 +7836,8 @@
    "answerSource": "claude-practice",
    "explanation": "‏$Π_{B,D}(S)$ הוא **קבוצה**: השורות (x, 10, 5) ו-(x, 12, 5) הופכות לזוג אחד (x, 5). נשארים (x,5), (x,6), (y,7), (y,8), (w,9). ‏$Π_{A,B}(R)$ = (1,x), (2,y), (3,x), (4,z). אחרי ההטלות התכונה המשותפת היחידה היא **B** (‏C כבר לא קיימת). הצירוף: A=1 ו-A=3 עם (x,5), (x,6) ‏←‏ 4 שורות, ו-A=2 עם (y,7), (y,8) ‏←‏ 2 שורות. ‏$σ_{D<7}$ משאיר את 4 השורות של x. התוצאה היא **4 שורות ו-3 עמודות (A, B, D)**. מי שלא מוחק כפילויות מקבל 6 שורות. מי שמצרף גם לפי C מקבל 2.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q16",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q16",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -11926,7 +11926,7 @@
   {
    "part": "ב",
    "topic": "sql",
-   "contextId": "PRAC-CL26-sql",
+   "contextId": "26Z-CL-sql",
    "question": "מי הטייסים ששובצו ל**כל** הטיסות שיוצאות מ-`'TLV'`? עיינו בשלוש ההצעות וקבעו מה נכון.",
    "code": "(A) SELECT name FROM Pilots P WHERE NOT EXISTS\n      (SELECT * FROM Flights F WHERE F.origin = 'TLV' AND NOT EXISTS\n         (SELECT * FROM Assignments A\n          WHERE A.flight_id = F.flight_id AND A.pilot_id = P.pilot_id))\n\n(B) SELECT name FROM Pilots P WHERE NOT EXISTS\n      (SELECT * FROM Flights F WHERE F.origin = 'TLV' AND NOT EXISTS\n         (SELECT * FROM Assignments A WHERE A.flight_id = F.flight_id))\n\n(C) SELECT name FROM Pilots P WHERE NOT EXISTS\n      (SELECT flight_id FROM Flights WHERE origin = 'TLV'\n       EXCEPT\n       SELECT flight_id FROM Assignments A WHERE A.pilot_id = P.pilot_id)",
    "options": [
@@ -11960,8 +11960,8 @@
    "answerSource": "claude-practice",
    "explanation": "‏A היא החילוק הקלאסי: \"לא קיימת טיסה מ-TLV שאין שיבוץ **של הטייס הזה** אליה\". ‏C עושה את אותו הדבר בעזרת הפרש: (כל הטיסות מ-TLV) EXCEPT (הטיסות של הטייס). אם לא נשאר כלום, הטייס שובץ לכולן. ב-B תת-השאילתה הפנימית **לא מקושרת לטייס** (אין `A.pilot_id = P.pilot_id`). היא בודקת רק שלכל טיסה יש טייס כלשהו, ולכן מחזירה את כל הטייסים או אף אחד.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q10",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q10",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -11971,7 +11971,7 @@
   {
    "part": "ב",
    "topic": "sql",
-   "contextId": "PRAC-CL26-sql",
+   "contextId": "26Z-CL-sql",
    "question": "איזו שאילתה מחזירה את המזהים של הנוסעים שטסו (הזמינו טיסות) עם לפחות **3 טייסים שונים**?",
    "options": [
     {
@@ -12008,8 +12008,8 @@
    "answerSource": "claude-practice",
    "explanation": "אחרי הצירוף יש שורה לכל (הזמנה, טייס בטיסה). סופרים **טייסים שונים**, ולכן `COUNT(DISTINCT A.pilot_id)`. ‏`COUNT(*)` סופר שורות: אותו טייס בשתי טיסות ייספר פעמיים, וגם נוסע עם 2 טיסות של 2 טייסים כל אחת יגיע ל-4. ספירת טיסות שונות בודקת שלוש טיסות, אבל כולן יכולות להיות עם אותו טייס. צבירה ב-WHERE אסורה.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q11",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q11",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -12019,7 +12019,7 @@
   {
    "part": "ב",
    "topic": "sql",
-   "contextId": "PRAC-CL26-sql",
+   "contextId": "26Z-CL-sql",
    "question": "איזו שאילתה מחזירה את **המחיר השני בגובהו** בטבלה `Flights`, כלומר את המחיר הגבוה ביותר שקטן מהמחיר המקסימלי?",
    "options": [
     {
@@ -12056,8 +12056,8 @@
    "answerSource": "claude-practice",
    "explanation": "מסירים את המקסימום בעזרת תת-שאילתה סקלרית (`price < (SELECT MAX…)`), ואז לוקחים את המקסימום של מה שנשאר. ‏`MAX` ב-WHERE אסור. ‏`< ALL` דורש מחיר שקטן מכל המחירים, כולל מעצמו, ולכן אין כזה ומתקבל NULL. ‏`NOT IN` של המקסימום **לכל יעד** מוריד מחירים רבים מדי (כל מקסימום של כל יעד), ולכן מתקבל מחיר נמוך מהנדרש.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q12",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q12",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -12067,7 +12067,7 @@
   {
    "part": "ב",
    "topic": "sql",
-   "contextId": "PRAC-CL26-sql",
+   "contextId": "26Z-CL-sql",
    "question": "איזו שאילתה מחזירה את שמות הנוסעים שהזמינו לפחות טיסה אחת ליעד `'Rome'`, ו**מעולם לא** הזמינו מקום במחלקת `'Business'` (באף טיסה)?",
    "options": [
     {
@@ -12104,8 +12104,8 @@
    "answerSource": "claude-practice",
    "explanation": "\"מעולם לא\" זו שלילה על **כל** ההזמנות של הנוסע, ולכן `NOT IN` על תת-שאילתה שמוצאת את כל מי שהזמין Business אי-פעם. התנאי `seat_class <> 'Business'` בודק רק את השורה הנוכחית: נוסע שטס לרומא באקונומי ובמקום אחר בביזנס עדיין נכנס. תת-שאילתה שמסוננת ל-Rome פוסלת רק ביזנס **לרומא**, ולא ביזנס בטיסה אחרת. ההשוואה של `passenger_id` מול `flight_id` משווה עמודות שאינן מאותו תחום.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q5",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q5",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -12115,7 +12115,7 @@
   {
    "part": "ב",
    "topic": "sql",
-   "contextId": "PRAC-CL26-sql",
+   "contextId": "26Z-CL-sql",
    "question": "מה מחזירה השאילתה הבאה? בחרו את התשובה הנכונה ביותר.",
    "code": "SELECT P.name\nFROM Passengers P JOIN Bookings B ON P.passenger_id = B.passenger_id\n  JOIN Flights F ON B.flight_id = F.flight_id\nWHERE F.destination = 'Rome'\nGROUP BY P.passenger_id, P.name\nHAVING COUNT(*) = (SELECT COUNT(*) FROM Flights\n                   WHERE destination = 'Rome')",
    "options": [
@@ -12149,8 +12149,8 @@
    "answerSource": "claude-practice",
    "explanation": "זה **חילוק בעזרת ספירה**. ה-WHERE משאיר רק הזמנות לרומא, ה-GROUP BY סופר לכל נוסע כמה טיסות לרומא הזמין, וה-HAVING דורש שהמספר יהיה שווה למספר כל הטיסות לרומא. מכיוון שנוסע מזמין טיסה פעם אחת לכל היותר (המפתח של Bookings), ספירה שווה = הזמין את כולן. הספירה נעשית **אחרי** הסינון לרומא, ולכן היא לא סופרת את סך ההזמנות. נוסע שכל הזמנותיו לרומא אבל לא הזמין את כל הטיסות לרומא לא יוחזר. ‏`P.name` מופיע ב-GROUP BY, ולכן מותר לבחור אותו.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q6",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q6",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -12160,7 +12160,7 @@
   {
    "part": "ב",
    "topic": "sql",
-   "contextId": "PRAC-CL26-sql",
+   "contextId": "26Z-CL-sql",
    "question": "איזו שאילתה מחזירה, **לכל יעד**, את הטיסה (או הטיסות) היקרה ביותר לאותו יעד?",
    "options": [
     {
@@ -12197,8 +12197,8 @@
    "answerSource": "claude-practice",
    "explanation": "צריך להשוות כל טיסה **למקסימום של היעד שלה**, ולכן תת-שאילתה **מתואמת** (`F2.destination = F1.destination`). ‏`IN` על רשימת המקסימומים של כל היעדים מחזיר גם טיסה שמחירה שווה למקסימום של יעד **אחר**. דוגמה: טיסה לרומא ב-450, כשהמקסימום לרומא 520 אבל המקסימום ל-TLV הוא 450. ‏GROUP BY destination עם `flight_id` ב-SELECT אינה תקינה, כי `flight_id` אינו בקבוצה ואינו בצבירה. ‏`>= ALL` מול כל הטבלה מחזיר רק את הטיסה היקרה ביותר בכלל, ולא אחת לכל יעד.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q7",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q7",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -12208,7 +12208,7 @@
   {
    "part": "ב",
    "topic": "sql",
-   "contextId": "PRAC-CL26-sql",
+   "contextId": "26Z-CL-sql",
    "question": "איזו שאילתה מחזירה **לכל טייס**, כולל טייסים שלא שובצו לאף טיסה, את שמו ואת מספר הטיסות שאליהן שובץ?",
    "options": [
     {
@@ -12245,8 +12245,8 @@
    "answerSource": "claude-practice",
    "explanation": "כדי שטייס בלי שיבוצים יופיע צריך `LEFT JOIN` **מ-Pilots**. אז הוא מקבל שורה אחת שבה עמודות Assignments הן NULL. ‏`COUNT(A.flight_id)` לא סופר NULL, ולכן הוא נותן 0. ‏`COUNT(*)` סופר את השורה עצמה ונותן 1, וזו טעות. ‏JOIN רגיל מעלים את הטייסים בלי שיבוצים. ‏LEFT JOIN בכיוון ההפוך (מ-Assignments) שומר את כל השיבוצים ולא את כל הטייסים, ולכן גם הוא מעלים אותם.",
    "confidence": "high",
-   "id": "PRAC-CL26-Q8",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q8",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",
@@ -12256,7 +12256,7 @@
   {
    "part": "ב",
    "topic": "sql",
-   "contextId": "PRAC-CL26-sql",
+   "contextId": "26Z-CL-sql",
    "question": "איזו פקודה יוצרת VIEW שמציג לכל נוסע את המזהה שלו ואת הסכום הכולל ששילם, **רק** עבור נוסעים שהסכום הכולל שלהם גבוה מ-2000?",
    "options": [
     {
@@ -12293,8 +12293,8 @@
    "answerSource": "claude-practice",
    "explanation": "תנאי על **סכום הקבוצה** שייך ל-`HAVING`, שבא **אחרי** `GROUP BY`. ‏`WHERE paid > 2000` מסנן הזמנות בודדות לפני הקיבוץ: נוסע ששילם 1800 + 450 לא ייכנס, ונוסע שיישאר יקבל סכום חלקי. פונקציית צבירה ב-WHERE אסורה. ‏HAVING לפני GROUP BY היא שגיאת תחביר (הסדר הוא WHERE ← GROUP BY ← HAVING).",
    "confidence": "high",
-   "id": "PRAC-CL26-Q9",
-   "examCode": "PRAC-CL26",
+   "id": "26Z-CL-Q9",
+   "examCode": "26Z-CL",
    "examLabel": "המבחן הקשה של קלוד 2026",
    "year": 2026,
    "source": "exam",

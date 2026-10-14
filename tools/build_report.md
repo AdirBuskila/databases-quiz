@@ -35,7 +35,7 @@
 - 25C-A: 20
 - 25S-B: 20
 - 26B-A: 20
-- PRAC-CL26: 20
+- 26Z-CL: 20
 
 ## Answer provenance
 - official key: 212  ·  derived: 40

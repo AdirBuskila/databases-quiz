@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Generate tools/raw/PRAC-CL26.json — "המבחן הקשה של קלוד 2026".
+"""Generate tools/raw/26Z-CL.json — "המבחן הקשה של קלוד 2026".
 
 An original practice exam (not a past paper), written in the 2024–2026 format:
 4 ERD · 8 SQL · 4 relational algebra · 4 FDs/normalization. Each question takes a
@@ -10,7 +10,7 @@ recomputes every FD fact with fdlib.
 """
 import json, pathlib
 
-OUT = pathlib.Path(__file__).parent / "raw" / "PRAC-CL26.json"
+OUT = pathlib.Path(__file__).parent / "raw" / "26Z-CL.json"
 SRC = "claude-practice"
 NONE_TEXT = "אף תשובה אינה נכונה"
 OTHERS_TEXT = "כל התשובות האחרות אינן נכונות"
@@ -407,7 +407,8 @@ questions = [
 ]
 
 data = {
-    "examCode": "PRAC-CL26",
+    # "26Z" sorts it as a 2026 paper after the real 26B-A in the exam picker (newest at the bottom)
+    "examCode": "26Z-CL",
     "examLabel": "המבחן הקשה של קלוד 2026",
     "year": 2026,
     "course": "61303",

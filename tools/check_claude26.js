@@ -1,4 +1,4 @@
-// Verifies "המבחן הקשה של קלוד 2026" (tools/raw/PRAC-CL26.json, from tools/gen_claude26.py).
+// Verifies "המבחן הקשה של קלוד 2026" (tools/raw/26Z-CL.json, from tools/gen_claude26.py).
 // usage: node tools/check_claude26.js [--show]
 //  SQL     every option runs in SQLite (tools/sql_run.py) on the sample airline DB below; the keyed
 //          option must return the reference rows and every distractor must differ or fail to run
@@ -9,7 +9,7 @@
 const fs = require("fs"), path = require("path"), { spawnSync } = require("child_process");
 const ROOT = path.join(__dirname, "..");
 const show = process.argv.includes("--show");
-const X = JSON.parse(fs.readFileSync(path.join(__dirname, "raw", "PRAC-CL26.json"), "utf8"));
+const X = JSON.parse(fs.readFileSync(path.join(__dirname, "raw", "26Z-CL.json"), "utf8"));
 const Q = n => X.questions.find(q => q.num === n);
 const opt = (n, id) => Q(n).options.find(o => o.id === id).value;
 let bad = 0, checks = 0;
