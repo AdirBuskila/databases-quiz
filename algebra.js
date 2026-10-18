@@ -25,6 +25,7 @@
 
   // render sub/superscript groups; everything else literal (+ Hebrew isolation)
   function algInner(src) {
+    src = String(src).replace(/\\([{}])/g, "$1");   // \{A, B\} written TeX-style: show plain braces
     return String(src).split(/(_\{[^}]*\}|\^\{[^}]*\})/g).map(function (p) {
       if (/^_\{[^}]*\}$/.test(p)) return "<sub>" + bidi(p.slice(2, -1)) + "</sub>";
       if (/^\^\{[^}]*\}$/.test(p)) return "<sup>" + bidi(p.slice(2, -1)) + "</sup>";

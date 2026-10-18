@@ -56,8 +56,8 @@
         : passed(L) ? `✓ עברת · שיא ${st.best}%` : `ניסיון אחרון ${st.last}% · שיא ${st.best}% (צריך 80%)`;
       return `<button class="${cls}" data-id="${L.id}" type="button">
         <span class="num">שלב ${L.order}${L.boss ? " · מבחן גמר" : ""}</span>
-        <span class="ttl">${L.icon || ""} ${escapeHtml(L.title)}</span>
-        <span class="gl">${escapeHtml(L.goal || "")}</span>
+        <span class="ttl">${L.icon || ""} ${plainBidi(L.title, true)}</span>
+        <span class="gl">${plainBidi(L.goal || "", true)}</span>
         <span class="st">${status}</span></button>`;
     }).join("");
     $("#crsMap").querySelectorAll(".crs-lvl").forEach(b => b.onclick = () => openLesson(LV.find(L => L.id === b.dataset.id)));
@@ -79,11 +79,12 @@
   function openLesson(L){
     cur = L;
     const ls = L.lesson || {}, figs = ls.figs || [], used = new Set();
-    let html = String(ls.html || "").replace(/\{fig:(\d+)\}/g, (m, i) => { used.add(+i); return figHtml(figs[+i]); });
+    // the lesson prose gets bidi isolates; figures (svg, tables, algebra) are inserted afterwards, untouched
+    let html = String(ls.html || "").split(/(\{fig:\d+\})/).map(p => { const m = /^\{fig:(\d+)\}$/.exec(p); if (!m) return window.bidiHtml ? bidiHtml(p) : p; used.add(+m[1]); return figHtml(figs[+m[1]]); }).join("");
     html += figs.filter((f, i) => !used.has(i)).map(figHtml).join("");
     $("#crsLesson").innerHTML =
       `<div class="q-head"><span class="chip part">שלב ${L.order} מתוך ${C.levels.length}</span><span class="chip">${L.questions.length} שאלות</span></div>` +
-      `<h2>${L.icon || ""} ${escapeHtml(L.title)}</h2><p class="sub">${escapeHtml(L.goal || "")}</p>` +
+      `<h2>${L.icon || ""} ${plainBidi(L.title, true)}</h2><p class="sub">${plainBidi(L.goal || "", true)}</p>` +
       `<div class="lesson-body">${html}</div>`;
     if (window.ERD) ERD.finish($("#crsLesson"));
     view("crsLessonView");
@@ -118,14 +119,14 @@
     const wrong = L.questions.filter(q => !(run && run[q.id]));
     backToMode();
     $("#crsSum").innerHTML =
-      `<div class="q-head" style="justify-content:center"><span class="chip part">${escapeHtml(levelName(L))}</span></div>` +
-      `<div class="big">${pct}%</div><div><b>${correct} / ${total}</b> תשובות נכונות</div>` +
+      `<div class="q-head" style="justify-content:center"><span class="chip part">${plainBidi(levelName(L), true)}</span></div>` +
+      `<div class="big">${pct}%</div><div><b><bdi dir="ltr">${correct} / ${total}</bdi></b> תשובות נכונות</div>` +
       `<p class="msg">${ok ? (L.boss ? `🏆 עברת את מבחן הגמר. אתה מאסטר ${C.meta.name}!` : "✓ עברת את השלב! אפשר להתקדם.") :
         "עוד לא 80%. כדאי לקרוא שוב את השיעור ולנסות שוב, זה בדיוק השלב שבו זה נבנה."}</p>` +
       (wrong.length ? `<div class="ctx" style="text-align:right"><div class="ctx-title">כדאי לחזור על:</div>${
         wrong.map(q => `<div class="ctx-note">• ${richText(q.recap || q.question)}</div>`).join("")}</div>` : "") +
       `<div class="crs-actions">` +
-        (nextL ? `<button class="btn ${ok ? "primary" : "ghost"}" data-act="next">לשלב הבא: ${escapeHtml(nextL.title)} ⟵</button>` : "") +
+        (nextL ? `<button class="btn ${ok ? "primary" : "ghost"}" data-act="next">לשלב הבא: ${plainBidi(nextL.title, true)} ⟵</button>` : "") +
         (L.boss || !nextL ? `<button class="btn primary" data-act="real">לשאלות ${C.meta.topicLabel} מהמבחנים האמיתיים ⟵</button>` : "") +
         `<button class="btn ${ok ? "ghost" : "primary"}" data-act="retry">🔁 לנסות שוב</button>` +
         `<button class="btn ghost" data-act="lesson">📘 לשיעור</button>` +

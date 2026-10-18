@@ -94,13 +94,21 @@ function richText(s){
     if(part.length>4 && part.startsWith("$$") && part.endsWith("$$")) return algBlock(part.slice(2,-2));
     if(part.length>2 && part[0]==="$" && part[part.length-1]==="$") return algInline(part.slice(1,-1));
     if(part.length>2 && part[0]==="`" && part[part.length-1]==="`") return `<code class="tok" dir="ltr">${escapeHtml(part.slice(1,-1))}</code>`;
-    if(part.length>4 && part.startsWith("**") && part.endsWith("**")) return `<strong>${escapeHtml(part.slice(2,-2))}</strong>`;
+    if(part.length>4 && part.startsWith("**") && part.endsWith("**")) return `<strong>${plainBidi(part.slice(2,-2), he)}</strong>`;
     // in Hebrew text, "…SQL. B שגויה" would join "SQL. B" into one LTR run and show the
     // letter before the term; an RLM after the punctuation keeps it with the preceding word
     // and a bare closure (EI⁺, {B}⁺) gets isolated so the ⁺ can't jump to the other side
-    return he ? escapeHtml(part).replace(/([.;:]["'”]?)(\s+)(?=[A-Za-z])/g, "$1&rlm;$2")
-                  .replace(/[A-Za-z0-9{}(), ]*[A-Za-z0-9}\)]⁺/g, m => `<bdi dir="ltr">${m}</bdi>`) : escapeHtml(part);
+    return plainBidi(part, he);
   }).join("");
+}
+/* a plain run of text: escape, `code`, a stray algebra subscript (Π_{T1}) as <sub>, then LTR isolates.
+   Without the isolates, "{A, B} = R" or "1200 + 3000" inside a Hebrew sentence shows reversed. */
+function plainBidi(part, he){
+  let h = escapeHtml(part).replace(/`([^`]+)`/g, (m,c)=>`<code class="tok" dir="ltr">${c}</code>`)
+                          .replace(/_\{([^{}]*)\}/g, "<sub>$1</sub>");
+  if(he) h = h.replace(/([.;:]["'”]?)(\s+)(?=[A-Za-z])/g, "$1&rlm;$2")
+              .replace(/[A-Za-z0-9{}(), ]*[A-Za-z0-9}\)]⁺/g, m => `<bdi dir="ltr">${m}</bdi>`);
+  return window.bidiHtml ? window.bidiHtml(h) : h;
 }
 
 /* ---------- shared context block ---------- */
@@ -495,7 +503,7 @@ function renderResults(correct, byTopic, byPart, review){
   const total=S.pool.length, pct=Math.round(correct/total*100);
   $("#resultsSummary").innerHTML =
     `<div class="scorering" style="--p:${pct}"><span>${pct}%</span></div>`+
-    `<div class="txt"><b>${correct} / ${total}</b> תשובות נכונות<br>`+
+    `<div class="txt"><b><bdi dir="ltr">${correct} / ${total}</bdi></b> תשובות נכונות<br>`+
     `<span style="color:var(--muted)">${pct>=60?"עברת! 🎉":"עוד קצת תרגול 💪"}</span></div>`;
   $("#resultsByTopic").innerHTML = Object.entries(byTopic).map(([t,o])=>{
     const lbl=TOPIC_LABEL[t]||t; const p=Math.round(o.c/o.n*100);
@@ -612,7 +620,10 @@ function bindGlobal(){
   function go(i){
     idx=Math.max(0,Math.min(data.length-1,i));
     const s=data[idx];
-    content.innerHTML = `<h2 class="learn-h">${escapeHtml(s.title)}</h2>` + s.html;
+    content.innerHTML = `<h2 class="learn-h">${plainBidi(s.title, true)}</h2>` + (window.bidiHtml ? bidiHtml(s.html) : s.html);
+    // an inline formula wider than its line cannot wrap: it scrolls inside its own box
+    content.querySelectorAll(".katex").forEach(el=>{ if(el.closest(".katex-display")) return; const box=el.parentElement;
+      if(box && Math.max(el.getBoundingClientRect().width, el.scrollWidth) > box.clientWidth+1) el.classList.add("wide"); });
     toc.querySelectorAll("button").forEach((b,j)=> b.classList.toggle("active", j===idx));
     const active=toc.querySelector("button.active"); if(active) active.scrollIntoView({block:"nearest"});
     fill.style.width = ((idx+1)/data.length*100)+"%";

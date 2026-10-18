@@ -679,3 +679,8 @@ main{max-width:860px;margin:1.6rem auto;padding:0 1rem}
 .sample-data summary:hover{color:var(--ink)}
 .sample-data .ctx-tables{margin-top:.5rem}
 .crs-promos{scroll-margin-top:8.5rem}
+
+/* bidi isolates (bidi.js): a formula inside Hebrew keeps its left-to-right order */
+bdi.ltr{unicode-bidi:isolate;overflow-wrap:anywhere}
+bdi.ltr.nw{white-space:nowrap}
+.learn-content .katex.wide{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
