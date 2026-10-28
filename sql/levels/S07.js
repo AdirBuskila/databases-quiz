@@ -41,7 +41,10 @@
 • <code>WHERE genre &lt;&gt; 'SciFi'</code> מחזיר מי שהשאיל <strong>לפחות ספר אחד אחר</strong>, ולא מי שמעולם לא השאיל מדע בדיוני.<br>
 • <code>INNER JOIN … WHERE R.x IS NULL</code>: חיבור פנימי לא מייצר NULL, ולכן התוצאה תמיד ריקה.<br>
 • <code>INNER JOIN … HAVING COUNT(*) = 0</code>: קבוצה ריקה לא נוצרת בכלל, ולכן תמיד ריק (25S-B שאלות 7, 12).<br>
-• <code>LEFT JOIN</code> ואחריו WHERE על עמודה מהצד הימני: ‏<code>NULL = 2024</code> אינו אמת, ולכן השורות בלי התאמה נזרקות וה-LEFT הופך ל-INNER (25B-A, שאלה 8).</div>`,
+• <code>LEFT JOIN</code> ואחריו WHERE על עמודה מהצד הימני: ‏<code>NULL = 2024</code> אינו אמת, ולכן השורות בלי התאמה נזרקות וה-LEFT הופך ל-INNER (25B-A, שאלה 8).</div>
+<div class="lesson-trap">⚠️ <strong>עוד שני מסיחים (26S-A, שאלה 8):</strong><br>
+• <code>NOT EXISTS</code> <strong>בלי תנאי קישור</strong> לשורה החיצונית (<code>WHERE L.reader_id = R.reader_id</code>) בודק שאלה אחת לכל הטבלה: אם קיים בכלל ספר כזה, אף אחד לא חוזר. אחרת, חוזרים כולם.<br>
+• <code>x NOT IN (… WHERE genre &lt;&gt; 'SciFi')</code> הוא שלילה כפולה: "לא בין הספרים שאינם SciFi" = <strong>כן</strong> SciFi. השאילתה מחזירה בדיוק את מי שכן השאיל.</div>`,
       figs: [
         { caption: "ל-Gal אין השאלות, ולכן העמודה book_id שלה מתמלאת ב-NULL. ב-JOIN רגיל היא הייתה נעלמת.",
           tables: [READERS, LOANS], sql: "SELECT R.name, L.book_id\nFROM Readers R LEFT JOIN Loans L ON R.reader_id = L.reader_id",
@@ -158,6 +161,19 @@
         verify: { sql: "SELECT R.name FROM Readers AS R WHERE R.reader_id NOT IN (SELECT L.reader_id FROM Loans AS L WHERE L.reader_id = R.reader_id)", expect: [["Gal"]] },
         recap: "NOT IN מתואם שקול ל-NOT EXISTS · INNER JOIN + IS NULL = תמיד ריק",
         explanation: "שאילתה 1 היא NOT IN **מתואם**: לכל קורא תת-השאילתה מחזירה את המזהה שלו עצמו אם יש לו השאלות, ורשימה ריקה אם אין. ‏`NOT IN` מצליח בדיוק כשהרשימה ריקה, ולכן זה אותו דבר כמו NOT EXISTS (Gal). כך זה היה ב-21B-C, שאלות 12–13. שאילתה 2 משתמשת ב-JOIN **פנימי**: הוא לא מייצר NULL, ולכן `L.reader_id IS NULL` לעולם לא מתקיים והתוצאה תמיד ריקה." },
+
+      { id: "S07-Q9", ctx: schema,
+        question: "מיהם הקוראים **שמעולם לא** השאילו ספר מז'אנר `'Classic'`? בחרו את השאילתה הנכונה.",
+        options: [
+          {id:"a", type:"code", value:"SELECT R.name\nFROM Readers R\nWHERE NOT EXISTS (\n  SELECT 1\n  FROM Loans L JOIN Books B ON L.book_id = B.book_id\n  WHERE L.reader_id = R.reader_id\n    AND B.genre = 'Classic')"},
+          {id:"b", type:"code", value:"SELECT R.name\nFROM Readers R\nWHERE NOT EXISTS (\n  SELECT 1 FROM Books B\n  WHERE B.genre = 'Classic')"},
+          {id:"c", type:"code", value:"SELECT R.name\nFROM Readers R JOIN Loans L ON R.reader_id = L.reader_id\nWHERE L.book_id NOT IN (\n  SELECT book_id FROM Books\n  WHERE genre <> 'Classic')"},
+          {id:"d", type:"code", value:"SELECT DISTINCT R.name\nFROM Readers R JOIN Loans L ON R.reader_id = L.reader_id\n               JOIN Books B ON L.book_id = B.book_id\nWHERE B.genre <> 'Classic'"},
+          {id:"e", type:"text", value:"כל התשובות האחרות אינן נכונות."},
+        ], correctId: "a",
+        verify: { ref: "SELECT name FROM Readers WHERE reader_id NOT IN (SELECT L.reader_id FROM Loans L JOIN Books B ON L.book_id = B.book_id WHERE B.genre = 'Classic')", same: ["a"], differ: ["b", "c", "d"] },
+        recap: "NOT EXISTS חייב תנאי קישור לשורה החיצונית · NOT IN על \"שאינם X\" = כן X",
+        explanation: "‏{opt:a} שואלת לכל קורא: האם **הוא** השאיל ספר Classic? אם לא, הוא חוזר: Ido, Nataf ו-Gal. ‏{opt:b} לא מקושרת לקורא: ספרי Classic קיימים, ולכן היא לא מחזירה אף אחד. ‏{opt:c} היא שלילה כפולה: \"השאלה של ספר שאינו בין הלא-Classic\" = השאלה של ספר Classic. לכן היא מחזירה בדיוק את Dana ואת Adi (את Adi פעמיים), ומפספסת גם את Gal, שאין לה השאלות בכלל. ‏{opt:d} היא מסיח ה-`<>` המוכר. זה המבנה של 26S-A, שאלה 8." },
     ],
   });
 })();

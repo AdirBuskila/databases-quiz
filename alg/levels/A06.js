@@ -147,6 +147,19 @@
           same: ["a"], differ: ["b", "d"], invalid: ["c"] },
         recap: "המחלק יכול להיות כל קבוצה מחושבת, גם \"הקורסים של Adi\"",
         explanation: "המחלק הוא הקבוצה שצריך לכסות, כאן הקורסים של Adi: {DB, AI}. ‏{opt:a} מחלקת את הזוגות בקבוצה הזו ומחזירה {1, 2, 3}. ‏{opt:b} היא חיתוך: מחזירה את הזוגות של Adi עצמה (2 עמודות), לא \"לכל\". ‏{opt:c} פסולה, כי המחולק הוא עמודה אחת. ‏{opt:d} היא צירוף, ומחזירה גם את Noa (4), שלקחה רק את DB מתוך הקורסים של Adi." },
+
+      { id: "A06-Q9", ctx: schema,
+        question: "איזה ביטוי מחזיר את מזהי הסטודנטים שנרשמו **לכל** הקורסים של מחלקת `CS`?",
+        options: [
+          {id:"a", type:"algebra", value:"Π_{s_id, course} (Enroll) ÷ Π_{course} σ_{dept=\"CS\"} (Courses)"},
+          {id:"b", type:"algebra", value:"Π_{s_id} (Enroll) − Π_{s_id} (Enroll ⊗ σ_{dept≠\"CS\"} (Courses))"},
+          {id:"c", type:"algebra", value:"(Enroll ⊗ Courses) ÷ Π_{course} σ_{dept=\"CS\"} (Courses)"},
+          {id:"d", type:"algebra", value:"Π_{course} σ_{dept=\"CS\"} (Courses) ÷ Π_{s_id, course} (Enroll)"},
+          {id:"e", type:"text", value:"אף אחת מהתשובות אינה נכונה"},
+        ], correctId: "a",
+        verify: { ref: DIV_CS, same: ["a"], differ: ["b", "c"], invalid: ["d"] },
+        recap: "במחולק רק (מי, מה) · הפרש עם ≠ = \"רק\", לא \"כל\"",
+        explanation: "‏{opt:a}: הזוגות (סטודנט, קורס) מחולקים בקבוצת קורסי CS, ונשארים Dana ו-Ido (1, 3). ‏{opt:b} מחסירה את מי שלקח קורס **שאינו** CS, ולכן מחזירה את מי שלקח **רק** קורסי CS (Dana ו-Adi). Adi לא לקח ML, ובכל זאת היא חוזרת. ‏{opt:c}: במחולק נשארה גם העמודה dept, ולכן החילוק מקבץ לפי (s_id, dept) ומחזיר שתי עמודות במקום מזהים בלבד. ‏{opt:d} הפוכה: עמודות המחלק לא מוכלות במחולק, ולכן הביטוי אינו תקין. זה המבנה של 26S-A, שאלה 14." },
     ],
   });
 })();
