@@ -1,10 +1,10 @@
 window.DB_QUIZ = {
  "meta": {
   "generated": "build_questions.py",
-  "exams": 12,
+  "exams": 13,
   "counts": {
-   "total": 252,
-   "contexts": 45
+   "total": 272,
+   "contexts": 48
   }
  },
  "contexts": {
@@ -774,6 +774,43 @@ window.DB_QUIZ = {
    "algebra": [
     "R = (A, B, C, D, E)",
     "F = {A → B, B → C, A → D, AC → E}"
+   ]
+  },
+  "26S-A-erd": {
+   "kind": "image",
+   "title": "חלק א׳ — ERD: חברת תעופה (עם ISA)",
+   "image": "images/exams/26S-A-erd.png",
+   "caption": "התייחסו לתרשים ה-ERD הנתון. קו תחתון מסמן מפתח ראשי בתבניות היחסים. (התרשים חולץ מהמבחן.)"
+  },
+  "26S-A-sql": {
+   "kind": "schema",
+   "title": "חלקים ב׳–ג׳ — SQL ואלגברת היחסים: טיסות",
+   "intro": "נתונות תבניות היחסים הבאות (סכמה חדשה, שאינה קשורה לתרשים ה-ERD שבחלק א׳). קו תחתון מסמן מפתח ראשי. ב-Booking, התכונה `passenger_id` היא מפתח זר ל-Passenger, והתכונה `flight_number` היא מפתח זר ל-Flight. השאילתות כתובות בתחביר MySQL. בחלק ג׳ הסימן ÷ מציין חילוק (division).",
+   "relations": [
+    {
+     "schema": "Passenger([u]passenger_id[/u], full_name, city, birth_year)",
+     "meaning": "נוסע — מזהה, שם מלא, עיר מגורים, שנת לידה."
+    },
+    {
+     "schema": "Flight([u]flight_number[/u], origin, destination, dep_date, price)",
+     "meaning": "טיסה — מספר טיסה, מוצא, יעד, תאריך המראה, מחיר."
+    },
+    {
+     "schema": "Booking([u]passenger_id[/u], [u]flight_number[/u], seat_no, booking_date)",
+     "meaning": "הזמנה — נוסע הזמין טיסה, עם מספר מושב ותאריך הזמנה."
+    },
+    {
+     "schema": "Aircraft([u]tail_number[/u], model, capacity)",
+     "meaning": "מטוס — מספר זנב, דגם, קיבולת."
+    }
+   ]
+  },
+  "26S-A-fd": {
+   "kind": "fd",
+   "title": "חלק ד׳ — תלויות פונקציונליות",
+   "algebra": [
+    "R = (A, B, C, D, E)",
+    "F = {E → A, A → B, B → C, AC → D, E → C}"
    ]
   },
   "26Z-CL-erd": {
@@ -3060,6 +3097,226 @@ window.DB_QUIZ = {
   {
    "part": "א",
    "topic": "erd",
+   "contextId": "26S-A-erd",
+   "question": "איזה מההיגדים הבאים **אינו נובע** מן התרשים?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "הגיל של Passenger אינו נשמר פיזית אלא מחושב."
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "‏Booking הוא קשר רבים-לרבים בין Passenger ל-Flight."
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "כל Employee חייב להיות Pilot או Attendant."
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "ל-Attendant יכולות להיות כמה שפות."
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "‏Pilot יורש את התכונה full_name מן הישות Employee."
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "self-solved",
+   "explanation": "ההיררכיה (ISA) מחוברת בקווים **בודדים**, כלומר ההשתתפות חלקית: יכול להיות Employee שאינו Pilot ואינו Attendant (למשל עובד קרקע). כדי ש'כל Employee חייב להיות אחד מהם' היה נדרש קו כפול (כיסוי מלא). השאר נובעים: `age` באליפסה מקווקוות = תכונה נגזרת; ‏N:M על Booking; ‏`languages` באליפסה כפולה = רב-ערכית; ותת-סוג תמיד יורש את תכונות האב.",
+   "confidence": "high",
+   "id": "26S-A-Q1",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "מודל ERD",
+   "official": false
+  },
+  {
+   "part": "א",
+   "topic": "erd",
+   "contextId": "26S-A-erd",
+   "question": "בשיטת המרה שבה טבלת תת-הסוג כוללת גם את התכונות הנורשות מ-Employee, איזו אפשרות מייצגת נכון את Attendant ואת התכונה מרובת-הערכים `languages`?",
+   "options": [
+    {
+     "id": "a",
+     "type": "schema",
+     "value": "Attendant([u]employee_id[/u], full_name, salary)   AttendantLanguages([u]employee_id[/u], [u]language[/u])"
+    },
+    {
+     "id": "b",
+     "type": "schema",
+     "value": "Attendant([u]employee_id[/u], full_name, salary, languages)"
+    },
+    {
+     "id": "c",
+     "type": "schema",
+     "value": "Employee([u]employee_id[/u], full_name, salary, languages)"
+    },
+    {
+     "id": "d",
+     "type": "schema",
+     "value": "Attendant([u]employee_id[/u], full_name, salary, license_number)"
+    },
+    {
+     "id": "e",
+     "type": "schema",
+     "value": "AttendantLanguages([u]employee_id[/u], [u]language[/u])"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "self-solved",
+   "explanation": "תכונה רב-ערכית לא נכנסת לטבלה עצמה (זה שובר 1NF), אלא מקבלת טבלה נפרדת שהמפתח שלה הוא מפתח הישות + הערך: ‏`AttendantLanguages(employee_id, language)`. בנוסף צריך את טבלת Attendant עם התכונות הנורשות. {opt:e} מציגה רק את טבלת השפות, ו-{opt:d} מכניסה את `license_number`, שהיא תכונה של Pilot.",
+   "confidence": "high",
+   "id": "26S-A-Q2",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "מודל ERD",
+   "official": false
+  },
+  {
+   "part": "א",
+   "topic": "erd",
+   "contextId": "26S-A-erd",
+   "question": "איזו מהטענות הבאות מתארת נכון את התכונה `languages` ביחס לישות Pilot?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "התכונה languages מוגדרת עבור Attendant בלבד, והיא אינה נורשת ל-Pilot דרך Employee."
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "מהתרשים נובע ש-languages היא תכונה של Passenger."
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "‏languages היא תכונה מחושבת של Pilot."
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "לכל Pilot יש languages, משום שתכונות של תת-סוג אחד נורשות לכל תתי-הסוגים האחרים."
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "לכל Employee יש languages, ולכן גם לכל Pilot."
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "self-solved",
+   "explanation": "ירושה זורמת רק **מהאב לבן**: Pilot ו-Attendant יורשים מ-Employee. ‏`languages` מחוברת ל-Attendant בלבד, ולכן היא לא עוברת לאב ולא 'לאחים'. Pilot מקבל רק את `employee_id`, `full_name`, `salary` ואת `license_number` שלו.",
+   "confidence": "high",
+   "id": "26S-A-Q3",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "מודל ERD",
+   "official": false
+  },
+  {
+   "part": "א",
+   "topic": "erd",
+   "contextId": "26S-A-erd",
+   "question": "איזה מההיגדים הבאים נכון לפי התרשים?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "כל Flight חייבת להיות מפוקדת על-ידי Pilot אחד בדיוק."
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "לכל Passenger יכול להיות מספר טלפון אחד בלבד."
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "‏Pilot יכול לפקד על Flight אחת בלבד."
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "כל Flight יכולה להיות מוזמנת על-ידי Passenger אחד לכל היותר."
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "כל Employee חייב להשתייך בו-זמנית גם ל-Pilot וגם ל-Attendant."
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "self-solved",
+   "explanation": "בקשר Commands יש קו **כפול** בצד Flight (השתתפות מלאה: כל טיסה חייבת מפקד) וחץ אל Pilot (‏1: לכל היותר מפקד אחד). יחד: בדיוק Pilot אחד. ‏`phone` היא רב-ערכית (ולא טלפון אחד), Pilot מפקד על N טיסות, Booking הוא M:N, ו-ISA לא מחייב שייכות לשני תתי-הסוגים.",
+   "confidence": "high",
+   "id": "26S-A-Q4",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "מודל ERD",
+   "official": false
+  },
+  {
+   "part": "א",
+   "topic": "erd",
+   "contextId": "26S-A-erd",
+   "question": "הקשר Booking בין Passenger ל-Flight הוא מסוג רבים-לרבים, ויש לו את התכונות `seat_no` ו-`booking_date`. איזו תבנית יחס מייצגת נכון את המרת הקשר?",
+   "options": [
+    {
+     "id": "a",
+     "type": "schema",
+     "value": "Passenger([u]passenger_id[/u], full_name, flight_number)"
+    },
+    {
+     "id": "b",
+     "type": "schema",
+     "value": "Booking([u]flight_number[/u], seat_no, booking_date)"
+    },
+    {
+     "id": "c",
+     "type": "schema",
+     "value": "Booking([u]passenger_id[/u], [u]flight_number[/u], seat_no, booking_date)"
+    },
+    {
+     "id": "d",
+     "type": "schema",
+     "value": "Flight([u]flight_number[/u], destination, price, passenger_id)"
+    },
+    {
+     "id": "e",
+     "type": "schema",
+     "value": "Booking([u]passenger_id[/u], seat_no, booking_date)"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "self-solved",
+   "explanation": "קשר M:N תמיד הופך לטבלה נפרדת, שהמפתח שלה הוא **צירוף** המפתחות של שני הצדדים, יחד עם תכונות הקשר. {opt:b} ו-{opt:e} לוקחות רק מפתח אחד, כך שנוסע לא יוכל להזמין שתי טיסות (או טיסה לא תוכל להכיל שני נוסעים). {opt:a} ו-{opt:d} ממזגות לצד אחד, וזה מתאים רק לקשר 1:N.",
+   "confidence": "high",
+   "id": "26S-A-Q5",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "מודל ERD",
+   "official": false
+  },
+  {
+   "part": "א",
+   "topic": "erd",
    "contextId": "26Z-CL-erd",
    "question": "בתרגום היעיל ביותר, כמה טבלאות נדרשות לכל התרשים?",
    "options": [
@@ -5045,6 +5302,182 @@ window.DB_QUIZ = {
    "source": "exam",
    "topicLabel": "תלויות ונרמול",
    "official": true
+  },
+  {
+   "part": "ד",
+   "topic": "fd_norm",
+   "contextId": "26S-A-fd",
+   "question": "איזו מהתלויות הבאות **אינה נובעת** מ-F?",
+   "options": [
+    {
+     "id": "a",
+     "type": "algebra",
+     "value": "C → A"
+    },
+    {
+     "id": "b",
+     "type": "algebra",
+     "value": "A → D"
+    },
+    {
+     "id": "c",
+     "type": "algebra",
+     "value": "E → D"
+    },
+    {
+     "id": "d",
+     "type": "algebra",
+     "value": "A → C"
+    },
+    {
+     "id": "e",
+     "type": "algebra",
+     "value": "E → BC"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "self-solved",
+   "explanation": "‏C⁺ = {C}: אף תלות לא מתחילה ב-C לבד, ולכן C → A לא נובעת. לעומת זאת A⁺: A → B → C, ואז AC → D, כך ש-A⁺ = {A, B, C, D}, ולכן A → D ו-A → C נובעות. ‏E⁺ = {A, B, C, D, E}, ולכן E → D ו-E → BC נובעות.",
+   "confidence": "high",
+   "id": "26S-A-Q17",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "תלויות ונרמול",
+   "official": false
+  },
+  {
+   "part": "ד",
+   "topic": "fd_norm",
+   "contextId": "26S-A-fd",
+   "question": "נתון פירוק של R לשני היחסים R₁ = (A, B, D) ו-R₂ = (A, C, E). איזו מהטענות הבאות נכונה לגבי הפירוק ביחס ל-F?",
+   "options": [
+    {
+     "id": "a",
+     "type": "text",
+     "value": "הפירוק משמר תלויות, אך אינו משמר מידע."
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "value": "הפירוק אינו משמר מידע ואינו משמר תלויות."
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "value": "הפירוק משמר מידע ומשמר תלויות."
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "value": "הפירוק משמר מידע, אך אינו משמר תלויות."
+    },
+    {
+     "id": "e",
+     "type": "text",
+     "value": "הפירוק משמר תלויות, משום שכל תכונה של R מופיעה לפחות באחד מהיחסים."
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "self-solved",
+   "explanation": "**שימור מידע:** ‏R₁ ∩ R₂ = {A}, ו-A⁺ = {A, B, C, D} ⊇ R₁, כלומר A מפתח של R₁, ולכן הפירוק משמר מידע. **שימור תלויות:** בהטלה, ב-R₁ נשאר A → BD, וב-R₂ נשארים E → AC ו-A → C. התלות B → C אבדה: B ו-C לא נמצאים יחד באף יחס, ו-B⁺ לפי ההטלות = {B}. לכן הפירוק אינו משמר תלויות. ({opt:e} מבלבלת בין 'כל התכונות מופיעות' לבין שימור תלויות.)",
+   "confidence": "high",
+   "id": "26S-A-Q18",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "תלויות ונרמול",
+   "official": false
+  },
+  {
+   "part": "ד",
+   "topic": "fd_norm",
+   "contextId": "26S-A-fd",
+   "question": "מהו מפתח קביל של R ביחס ל-F?",
+   "options": [
+    {
+     "id": "a",
+     "type": "algebra",
+     "value": "{C, D}"
+    },
+    {
+     "id": "b",
+     "type": "algebra",
+     "value": "{A, E}"
+    },
+    {
+     "id": "c",
+     "type": "algebra",
+     "value": "{A}"
+    },
+    {
+     "id": "d",
+     "type": "algebra",
+     "value": "{E}"
+    },
+    {
+     "id": "e",
+     "type": "algebra",
+     "value": "{B, E}"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "self-solved",
+   "explanation": "‏E לא מופיעה באף צד ימני, ולכן היא חייבת להיות בכל מפתח. ‏E⁺ = {E, A, C, B, D} = R, ולכן {E} לבדו הוא מפתח, והוא היחיד. ‏{A, E} ו-{B, E} הם על-מפתחות לא מינימליים, ו-A⁺ = {A, B, C, D} חסר את E.",
+   "confidence": "high",
+   "id": "26S-A-Q19",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "תלויות ונרמול",
+   "official": false
+  },
+  {
+   "part": "ד",
+   "topic": "fd_norm",
+   "contextId": "26S-A-fd",
+   "question": "מהו כיסוי קנוני של F?",
+   "options": [
+    {
+     "id": "a",
+     "type": "algebra",
+     "value": "{E → A, A → BCD}"
+    },
+    {
+     "id": "b",
+     "type": "algebra",
+     "value": "{E → AC, A → BD, B → C}"
+    },
+    {
+     "id": "c",
+     "type": "algebra",
+     "value": "{E → A, A → BD, B → C}"
+    },
+    {
+     "id": "d",
+     "type": "algebra",
+     "value": "{E → ABCD}"
+    },
+    {
+     "id": "e",
+     "type": "algebra",
+     "value": "{E → A, A → B, B → C, AC → D}"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "self-solved",
+   "explanation": "‏E → C מיותרת (E → A → B → C). ב-AC → D התכונה C עודפת, כי A⁺ כבר מכיל את C, ולכן נשאר A → D. מאחדים צדדים שמאליים זהים: ‏{E → A, A → BD, B → C}. {opt:a} מאבדת את B → C (ו-C ב-A → BCD עודפת). {opt:b} משאירה את C העודפת ב-E → AC. {opt:d} לא שקולה ל-F. ב-{opt:e} נשארת התכונה העודפת C.",
+   "confidence": "high",
+   "id": "26S-A-Q20",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "תלויות ונרמול",
+   "official": false
   },
   {
    "part": "ד",
@@ -7667,6 +8100,138 @@ window.DB_QUIZ = {
    "source": "exam",
    "topicLabel": "אלגברה רלציונית",
    "official": true
+  },
+  {
+   "part": "ג",
+   "topic": "relalg",
+   "contextId": "26S-A-sql",
+   "question": "איזה ביטוי מחזיר את מזהי הנוסעים שהזמינו את **כל** הטיסות שממריאות מ-`'TLV'`?",
+   "options": [
+    {
+     "id": "a",
+     "type": "algebra",
+     "value": "Π_{passenger_id, flight_number}(Booking) ÷ Π_{flight_number}(σ_{origin='TLV'}(Flight))"
+    },
+    {
+     "id": "b",
+     "type": "algebra",
+     "value": "Π_{passenger_id}(Booking) − Π_{passenger_id}(Booking ⋈ σ_{origin≠'TLV'}(Flight))"
+    },
+    {
+     "id": "c",
+     "type": "algebra",
+     "value": "Π_{passenger_id}(Booking ⋈ σ_{origin='TLV'}(Flight))"
+    },
+    {
+     "id": "d",
+     "type": "algebra",
+     "value": "Π_{flight_number}(σ_{origin='TLV'}(Flight)) ÷ Π_{passenger_id, flight_number}(Booking)"
+    },
+    {
+     "id": "e",
+     "type": "algebra",
+     "value": "Booking ÷ Π_{flight_number}(σ_{origin='TLV'}(Flight))"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "self-solved",
+   "explanation": "'את כל' = חילוק. המחולק הוא הזוגות (נוסע, טיסה), והמחלק הוא קבוצת הטיסות מ-TLV. נשאר `passenger_id` שמופיע עם **כל** טיסה במחלק. {opt:c} מחזירה מי שהזמין **לפחות** טיסה אחת מ-TLV. {opt:b} מחזירה מי שהזמין **רק** טיסות מ-TLV. {opt:d} הפוכה. ב-{opt:e} המחולק כולל גם `seat_no` ו-`booking_date`, אז החילוק מקבץ לפי (נוסע, מושב, תאריך) לכל טיסה בנפרד.",
+   "confidence": "high",
+   "id": "26S-A-Q14",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "אלגברה רלציונית",
+   "official": false
+  },
+  {
+   "part": "ג",
+   "topic": "relalg",
+   "contextId": "26S-A-sql",
+   "question": "איזה ביטוי מחזיר את יעדי הטיסות שהזמין הנוסע ששמו `'Dana Levi'`?",
+   "options": [
+    {
+     "id": "a",
+     "type": "algebra",
+     "value": "Π_{destination}(σ_{full_name='Dana Levi'}(Passenger) × Flight)"
+    },
+    {
+     "id": "b",
+     "type": "algebra",
+     "value": "Π_{full_name}(σ_{destination='Dana Levi'}(Flight))"
+    },
+    {
+     "id": "c",
+     "type": "algebra",
+     "value": "Π_{destination}(Booking ⋈ Flight)"
+    },
+    {
+     "id": "d",
+     "type": "algebra",
+     "value": "σ_{full_name='Dana Levi'}(Passenger ⋈ Booking ⋈ Flight)"
+    },
+    {
+     "id": "e",
+     "type": "algebra",
+     "value": "Π_{destination}(σ_{full_name='Dana Levi'}(Passenger ⋈ Booking ⋈ Flight))"
+    }
+   ],
+   "correctId": "e",
+   "answerSource": "self-solved",
+   "explanation": "מצרפים Passenger ⋈ Booking ⋈ Flight (צירוף טבעי לפי `passenger_id` ואז `flight_number`), בוחרים את Dana Levi ומטילים על `destination`. {opt:a} היא מכפלה בלי Booking, כלומר **כל** היעדים. {opt:c} לא מסננת לפי שם. {opt:d} מחזירה שורות שלמות ולא רק יעדים. {opt:b} לא הגיונית: אין `full_name` ב-Flight.",
+   "confidence": "high",
+   "id": "26S-A-Q15",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "אלגברה רלציונית",
+   "official": false
+  },
+  {
+   "part": "ג",
+   "topic": "relalg",
+   "contextId": "26S-A-sql",
+   "question": "איזה ביטוי מחזיר את שמות הנוסעים המתגוררים בעיר `'Holon'`?",
+   "options": [
+    {
+     "id": "a",
+     "type": "algebra",
+     "value": "σ_{city='Holon'}(Π_{full_name}(Passenger))"
+    },
+    {
+     "id": "b",
+     "type": "algebra",
+     "value": "Π_{full_name}(σ_{city='Holon'}(Passenger))"
+    },
+    {
+     "id": "c",
+     "type": "algebra",
+     "value": "Π_{full_name}(σ_{destination='Holon'}(Passenger))"
+    },
+    {
+     "id": "d",
+     "type": "algebra",
+     "value": "Π_{city}(σ_{full_name='Holon'}(Passenger))"
+    },
+    {
+     "id": "e",
+     "type": "algebra",
+     "value": "σ_{full_name='Holon'}(Π_{city}(Passenger))"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "self-solved",
+   "explanation": "קודם σ (בחירת השורות של חולון) ורק אז Π (הטלה על השם). ב-{opt:a} ההטלה מוחקת את `city` לפני הבחירה, ולכן התנאי לא תקין. ל-Passenger אין `destination` ({opt:c}). {opt:d} ו-{opt:e} מחליפות בין השם לעיר.",
+   "confidence": "high",
+   "id": "26S-A-Q16",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "אלגברה רלציונית",
+   "official": false
   },
   {
    "part": "ג",
@@ -11922,6 +12487,398 @@ window.DB_QUIZ = {
    "source": "exam",
    "topicLabel": "SQL",
    "official": true
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26S-A-sql",
+   "question": "מהם מספרי הטיסות שמחירן הוא המחיר המקסימלי בטבלת Flight? אם קיימות כמה טיסות במחיר המקסימלי, יש להחזיר את כולן.",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT flight_number\nFROM Flight\nWHERE price = (SELECT MAX(price) FROM Flight);"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT flight_number\nFROM Flight\nWHERE price = (SELECT MIN(price) FROM Flight);"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT flight_number\nFROM Flight\nWHERE price = MAX(price);"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT flight_number\nFROM Flight\nWHERE price > ALL (SELECT price FROM Flight);"
+    },
+    {
+     "id": "e",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT MAX(flight_number)\nFROM Flight;"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "self-solved",
+   "explanation": "תת-שאילתא סקלרית מחזירה את המחיר המקסימלי, ו-`=` מחזיר את **כל** הטיסות במחיר הזה (כולל שוויון). {opt:c}: צבירה ב-`WHERE` אסורה. {opt:d}: `> ALL` לא מחזיר כלום, כי מחיר לא גדול ממש מעצמו (היה צריך `>= ALL`). {opt:e} מחזירה את מספר הטיסה הגבוה ביותר, לא את היקרה.",
+   "confidence": "high",
+   "id": "26S-A-Q10",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26S-A-sql",
+   "question": "לכל נוסע, החזירו את מזהה הנוסע ואת מספר ההזמנות שביצע. נוסע שלא ביצע אף הזמנה צריך להופיע בתוצאה עם הערך 0.",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.passenger_id, COUNT(b.flight_number)\nFROM Passenger p\nJOIN Booking b ON p.passenger_id = b.passenger_id\nGROUP BY p.passenger_id;"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.passenger_id, COUNT(b.flight_number)\nFROM Passenger p\nLEFT JOIN Booking b ON p.passenger_id = b.passenger_id\nWHERE b.flight_number IS NULL\nGROUP BY p.passenger_id;"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT b.passenger_id, COUNT(b.flight_number)\nFROM Passenger p\nLEFT JOIN Booking b ON p.passenger_id = b.passenger_id\nGROUP BY b.passenger_id;"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.passenger_id, COUNT(b.flight_number)\nFROM Passenger p\nLEFT JOIN Booking b ON p.passenger_id = b.passenger_id\nGROUP BY p.passenger_id;"
+    },
+    {
+     "id": "e",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.passenger_id, COUNT(*)\nFROM Passenger p\nLEFT JOIN Booking b ON p.passenger_id = b.passenger_id\nGROUP BY p.passenger_id;"
+    }
+   ],
+   "correctId": "d",
+   "answerSource": "self-solved",
+   "explanation": "‏`LEFT JOIN` שומר נוסעים בלי הזמנות (עם NULL בעמודות של Booking), ו-`COUNT(b.flight_number)` לא סופר NULL, כך שהם מקבלים 0. {opt:a} (‏JOIN רגיל) מעיפה אותם. {opt:b} משאירה **רק** אותם. {opt:c} מקבצת לפי `b.passenger_id`, שהוא NULL אצלם, ומחזירה NULL במקום המזהה. {opt:e}: ‏`COUNT(*)` סופר את שורת ה-NULL ונותן 1 במקום 0.",
+   "confidence": "high",
+   "id": "26S-A-Q11",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26S-A-sql",
+   "question": "מיהם הנוסעים, לפי מזהה, שהזמינו את **כל** הטיסות ליעד `'London'`?",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.passenger_id\nFROM Passenger p\nWHERE NOT EXISTS (\n  SELECT f.flight_number FROM Flight f\n  WHERE f.destination = 'London'\n    AND f.flight_number NOT IN (\n      SELECT b.flight_number FROM Booking b\n      WHERE b.passenger_id = p.passenger_id));"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT passenger_id\nFROM Passenger\nWHERE EXISTS (SELECT 1 FROM Flight\n              WHERE destination = 'London');"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT passenger_id\nFROM Booking JOIN Flight USING(flight_number)\nWHERE destination = 'London'\nGROUP BY passenger_id HAVING COUNT(*) > 1;"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.passenger_id\nFROM Passenger p\nWHERE NOT EXISTS (\n  SELECT f.flight_number FROM Flight f\n  WHERE f.flight_number NOT IN (\n    SELECT b.flight_number FROM Booking b\n    WHERE b.passenger_id = p.passenger_id));"
+    },
+    {
+     "id": "e",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT DISTINCT passenger_id\nFROM Booking JOIN Flight USING(flight_number)\nWHERE destination = 'London';"
+    }
+   ],
+   "correctId": "a",
+   "answerSource": "self-solved",
+   "explanation": "חילוק ב-SQL: 'לא קיימת טיסה ללונדון שהנוסע **לא** הזמין'. {opt:d} שוכחת את הסינון ללונדון, ולכן דורשת את **כל** הטיסות. {opt:b} לא תלויה בנוסע. {opt:c} סופרת 'יותר מטיסה אחת ללונדון' ולא 'את כולן'. {opt:e} מחזירה מי שהזמין לפחות טיסה אחת ללונדון.",
+   "confidence": "high",
+   "id": "26S-A-Q12",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26S-A-sql",
+   "question": "מיהם הנוסעים, לפי מזהה, שהזמינו טיסות ליותר מיעד אחד, כלומר למספר יעדים שונים?",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT passenger_id\nFROM Flight\nGROUP BY passenger_id\nHAVING COUNT(destination) > 1;"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT passenger_id\nFROM Booking JOIN Flight USING(flight_number)\nGROUP BY passenger_id\nHAVING COUNT(DISTINCT destination) > 1;"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT passenger_id\nFROM Booking JOIN Flight USING(flight_number)\nWHERE COUNT(DISTINCT destination) > 1;"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT passenger_id\nFROM Booking JOIN Flight USING(flight_number)\nGROUP BY passenger_id\nHAVING COUNT(destination) > 1;"
+    },
+    {
+     "id": "e",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT passenger_id\nFROM Booking JOIN Flight USING(flight_number)\nGROUP BY passenger_id\nHAVING COUNT(DISTINCT flight_number) > 1;"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "self-solved",
+   "explanation": "סופרים יעדים **שונים** לכל נוסע: `COUNT(DISTINCT destination)` ב-`HAVING`. {opt:d} ו-{opt:e} סופרות טיסות, כך ששתי טיסות לרומא ייספרו כ-2. ב-{opt:c} צבירה ב-`WHERE` אסורה. ב-{opt:a} אין `passenger_id` בטבלת Flight.",
+   "confidence": "high",
+   "id": "26S-A-Q13",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26S-A-sql",
+   "question": "אילו יעדים שונים ששמם מכיל את המילה `'York'` מופיעים בטיסות שמחירן גבוה מ-500?",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT DISTINCT destination\nFROM Flight\nWHERE destination = '%York%' AND price > 500;"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT DISTINCT destination\nFROM Flight\nWHERE destination LIKE '%York%' OR price > 500;"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT DISTINCT destination\nFROM Flight\nWHERE destination LIKE '%York%' AND price > 500;"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT DISTINCT destination\nFROM Flight\nWHERE destination LIKE 'York' AND price > 500;"
+    },
+    {
+     "id": "e",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT destination\nFROM Flight\nWHERE destination LIKE '%York%' AND price > 500;"
+    }
+   ],
+   "correctId": "c",
+   "answerSource": "self-solved",
+   "explanation": "'מכיל' = `LIKE '%York%'`; 'שונים' = `DISTINCT`; ושני התנאים יחד = `AND`. עם `=` התו `%` הוא תו רגיל; `LIKE 'York'` תופס רק 'York' בדיוק (לא 'New York'); `OR` מחזיר כל טיסה יקרה; ובלי `DISTINCT` ({opt:e}) יעד יחזור פעם לכל טיסה.",
+   "confidence": "high",
+   "id": "26S-A-Q6",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26S-A-sql",
+   "question": "לכל הזמנה שבה מחיר הטיסה גבוה מ-1000, החזירו את שם הנוסע ואת יעד הטיסה.",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.full_name, f.destination\nFROM Passenger p\nJOIN Flight f ON p.passenger_id = f.flight_number\nWHERE f.price > 1000;"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.full_name, f.destination\nFROM Booking b\nJOIN Passenger p ON b.passenger_id = p.passenger_id\nJOIN Flight f ON b.flight_number = f.flight_number\nWHERE f.price > 1000;"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.full_name, f.destination\nFROM Booking b\nJOIN Passenger p ON b.passenger_id = p.passenger_id\nWHERE b.price > 1000;"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT b.passenger_id, f.destination\nFROM Booking b\nJOIN Flight f ON b.flight_number = f.flight_number\nWHERE f.price > 1000;"
+    },
+    {
+     "id": "e",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.full_name, f.destination\nFROM Passenger p, Flight f\nWHERE f.price > 1000;"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "self-solved",
+   "explanation": "השם נמצא ב-Passenger, היעד והמחיר ב-Flight, והחיבור ביניהם עובר דרך Booking. לכן צריך לצרף את שלוש הטבלאות. {opt:a} משווה מזהה נוסע למספר טיסה (אין לזה משמעות); ב-{opt:c} אין `f` ואין `price` ב-Booking; {opt:d} מחזירה מזהה במקום שם; ו-{opt:e} היא מכפלה קרטזית: כל נוסע עם כל טיסה יקרה.",
+   "confidence": "high",
+   "id": "26S-A-Q7",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26S-A-sql",
+   "question": "מיהם הנוסעים **שמעולם לא** הזמינו טיסה ליעד `'Paris'`?",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.full_name\nFROM Passenger p\nJOIN Booking b ON p.passenger_id = b.passenger_id\nJOIN Flight f ON b.flight_number = f.flight_number\nWHERE f.destination <> 'Paris';"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.full_name\nFROM Passenger p\nWHERE NOT EXISTS (\n  SELECT 1\n  FROM Booking b JOIN Flight f\n    ON b.flight_number = f.flight_number\n  WHERE b.passenger_id = p.passenger_id\n    AND f.destination = 'Paris');"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.full_name\nFROM Passenger p\nWHERE p.passenger_id NOT IN (\n  SELECT passenger_id FROM Flight\n  WHERE destination = 'Paris');"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.full_name\nFROM Passenger p\nWHERE NOT EXISTS (\n  SELECT 1 FROM Flight f\n  WHERE f.destination = 'Paris');"
+    },
+    {
+     "id": "e",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT p.full_name\nFROM Passenger p\nJOIN Booking b ON p.passenger_id = b.passenger_id\nWHERE b.flight_number NOT IN (\n  SELECT flight_number FROM Flight\n  WHERE destination <> 'Paris');"
+    }
+   ],
+   "correctId": "b",
+   "answerSource": "self-solved",
+   "explanation": "'מעולם לא' = לא קיימת הזמנה **של הנוסע הזה** לפריז, כלומר `NOT EXISTS` מתואם (`b.passenger_id = p.passenger_id`). {opt:a} מחזירה מי שהזמין טיסה כלשהי שאינה לפריז (גם אם הזמין גם לפריז). ב-{opt:c} אין `passenger_id` בטבלת Flight. {opt:d} לא מתואמת: אם קיימת טיסה לפריז היא לא מחזירה אף אחד. {opt:e} הפוכה: `flight_number NOT IN (טיסות שאינן לפריז)` = הזמנות **לפריז**, והיא גם מפספסת נוסעים בלי הזמנות.",
+   "confidence": "high",
+   "id": "26S-A-Q8",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
+  },
+  {
+   "part": "ב",
+   "topic": "sql",
+   "contextId": "26S-A-sql",
+   "question": "לכל יעד מחשבים תחילה את המחיר המקסימלי של טיסה אליו. החזירו את הממוצע של ערכים מקסימליים אלה על פני כל היעדים.",
+   "options": [
+    {
+     "id": "a",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT AVG(mx)\nFROM (\n  SELECT destination, MIN(price) AS mx\n  FROM Flight\n  GROUP BY destination\n) AS T;"
+    },
+    {
+     "id": "b",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT destination, MAX(price)\nFROM Flight\nGROUP BY destination;"
+    },
+    {
+     "id": "c",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT AVG(price)\nFROM Flight;"
+    },
+    {
+     "id": "d",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT AVG(MAX(price))\nFROM Flight\nGROUP BY destination;"
+    },
+    {
+     "id": "e",
+     "type": "code",
+     "lang": "sql",
+     "value": "SELECT AVG(mx)\nFROM (\n  SELECT destination, MAX(price) AS mx\n  FROM Flight\n  GROUP BY destination\n) AS T;"
+    }
+   ],
+   "correctId": "e",
+   "answerSource": "self-solved",
+   "explanation": "קודם תת-שאילתא ב-`FROM` שמחשבת `MAX` לכל יעד, ואז `AVG` עליה. {opt:a} משתמשת ב-`MIN`; {opt:b} עוצרת אחרי שלב המקסימום; {opt:c} מחשבת ממוצע של כל הטיסות; ו-{opt:d} היא צבירה מקוננת `AVG(MAX(...))`, שאסורה ב-MySQL.",
+   "confidence": "high",
+   "id": "26S-A-Q9",
+   "examCode": "26S-A",
+   "examLabel": "2026 סמסטר קיץ מועד א׳",
+   "year": 2026,
+   "source": "exam",
+   "topicLabel": "SQL",
+   "official": false
   },
   {
    "part": "ב",

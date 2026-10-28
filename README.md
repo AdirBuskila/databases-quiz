@@ -66,10 +66,10 @@ node tools/course_flow.js <erd|sql|norm|alg> [level] [light|dark] [mobile]  # a 
 ## Status
 **Shipped** — live at https://adirbuskila.github.io/databases-quiz/
 
-252 questions across 11 exams (2021–2026) plus one original practice exam, 45 shared context blocks.
+272 questions across 12 exams (2021–2026) plus one original practice exam, 48 shared context blocks.
 Learn mode is the Obsidian exam summary, split into 8 chapters (intro + sections 1–7).
-By topic: SQL 97 · ERD 48 · אלגברה רלציונית 49 · תלויות ונרמול 46 · NoSQL 12.
-Answer provenance: 192 from official keys, 20 from טופס 0 (26B-A), 20 derived, 20 computed (26Z-CL). See `tools/build_report.md`
+By topic: SQL 105 · ERD 53 · אלגברה רלציונית 52 · תלויות ונרמול 50 · NoSQL 12.
+Answer provenance: 192 from official keys, 20 from טופס 0 (26B-A), 20 derived, 20 computed (26Z-CL), 20 self-solved (26S-A). See `tools/build_report.md`
 for the full breakdown and `docs/build_plan.md` for the build history.
 
 Note: the rendered exam pages under `tools/raw/<CODE>/` are not committed (196M of
@@ -84,5 +84,8 @@ option with `ralib`, recomputes the FD facts with `fdlib` and lints the ERD (`an
 Built from the course's 2021–2026 exams with matching solution files. Answers come from real
 פתרון/פתרונות files; questions without a key are flagged. The one exception is 2026 סמסטר ב׳
 מועד א׳ (`26B-A`): it is "מבחן מס' 000" (טופס 0, answer always א) with no published key, so its
-answers use `answerSource: "form-0"` — every question was also solved independently and agrees. Answers marked
+answers use `answerSource: "form-0"` — every question was also solved independently and agrees.
+2026 סמסטר קיץ מועד א׳ (`26S-A`) is a shuffled form (053) with no published key: its answers are
+self-solved (`answerSource: "self-solved"`, shown as "לא רשמי") and recomputed by `node tools/check_26S-A.js`
+(SQL in SQLite, algebra with `ralib`, FDs with `fdlib`). Answers marked
 "לא רשמי" were derived from course material — verify against the source.
