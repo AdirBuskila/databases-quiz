@@ -1,0 +1,65 @@
+/* erd-course widgets (w_erd.py: Chen-notation diagrams, schema lines, table counts); every class starts with er- */
+svg.er-svg{overflow:visible}
+svg.er-svg .er-shape{fill:#181a33;stroke:#dfe3ff;stroke-width:2.6}
+svg.er-svg .er-shape.inner{fill:none}
+svg.er-svg .er-shape.dashed{stroke-dasharray:9 6}
+svg.er-svg .er-shape.agg{fill:rgba(56,189,248,.05);stroke:#9aa0cf;stroke-width:2.4;stroke-dasharray:2 0}
+svg.er-svg .er-edge{stroke:#dfe3ff;stroke-width:2.4}
+svg.er-svg .er-arrow{fill:#dfe3ff}
+svg.er-svg .er-label{fill:#eaedff;font-family:"Segoe UI",sans-serif}
+svg.er-svg .er-label.strong{font-weight:700}
+svg.er-svg .er-label.small{font-weight:800}
+svg.er-svg .er-label.agg{font-style:italic;fill:#9aa0cf}
+svg.er-svg .er-label.elabel{font-weight:700;fill:#38bdf8}
+svg.er-svg .er-label.note{fill:#9aa0cf}
+svg.er-svg .er-ul{stroke:#eaedff;stroke-width:2}
+svg.er-svg .er-ul.dashed{stroke-dasharray:6 4}
+svg.er-svg .er-hi{fill:rgba(45,212,191,.20);stroke:#2dd4bf;stroke-width:6}
+svg.er-svg .er-ehi{fill:none;stroke:#2dd4bf;stroke-width:9;stroke-linecap:round;opacity:0}
+svg.er-svg .er-ehi.h{opacity:0}
+svg.er-svg .er-tagbg{fill:#fbbf24}
+svg.er-svg .er-tag{fill:#0a0c18;font-family:"Segoe UI",sans-serif;font-weight:800}
+
+/* schema lines */
+.er-schemas{display:flex;flex-direction:column;gap:14px;align-items:stretch;width:100%}
+.er-sch{position:relative;font-size:32px;line-height:1.5;background:var(--card2);border:1px solid var(--line);
+  border-radius:12px;padding:6px 20px;white-space:nowrap}
+.er-sch.sm{font-size:28px;padding:4px 16px}
+.er-sch b{color:#fff;font-weight:700}
+.er-sch .er-par{color:var(--muted)}
+.er-sbar{position:absolute;inset:0;border-radius:12px;box-shadow:0 0 0 4px var(--brand) inset;background:rgba(45,212,191,.12)}
+.er-col{position:relative}
+.er-pk{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+.er-ppk{text-decoration:underline dashed;text-decoration-thickness:3px;text-underline-offset:6px}
+.er-fk{color:#7dd3fc}
+.er-nn{font-size:.62em;font-weight:700;color:#fbbf24;margin:0 8px;direction:ltr;unicode-bidi:isolate}
+.er-osch{unicode-bidi:isolate;display:inline-block}
+.er-code{font-family:Consolas,monospace;direction:ltr;unicode-bidi:isolate}
+
+/* layout helpers */
+.er-stack{display:flex;flex-direction:column;align-items:center;width:100%}
+.er-box{font-size:32px;line-height:1.45;direction:rtl;text-align:center;background:var(--card2);border:1px solid var(--line);
+  border-radius:14px;padding:10px 24px}
+.er-box.big{font-size:40px;font-weight:700}
+.er-box.plain{background:none;border:none}
+.er-count{display:flex;align-items:center;gap:14px;font-size:34px;direction:rtl;flex-wrap:nowrap}
+.er-cnt{display:flex;align-items:center;gap:8px;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:6px 14px}
+.er-cnt .er-cl{color:var(--muted);font-size:.8em}
+.er-cnt b{font-size:1.15em;color:#fff}
+.er-cnt.tot{background:rgba(45,212,191,.14);border-color:var(--brand)}
+.er-op{color:var(--brand);font-weight:800;margin-inline-end:6px}
+.er-qsm .qstem{font-size:30px}
+.er-osm .opt{font-size:28px;padding:8px 18px}
+.er-osm .onote{font-size:23px}
+.er-box.er-bad{border-color:rgba(251,113,133,.6);background:rgba(251,113,133,.07);font-size:28px;white-space:nowrap}
+.er-claims{display:flex;flex-direction:column;gap:12px;width:100%}
+.er-claim{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:30px;line-height:1.4;direction:rtl;
+  background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:8px 20px}
+.er-v{font-size:40px}
+.er-ok{color:var(--ok)}
+.er-no{color:var(--bad)}
+.er-swap2{position:relative}
+.er-over{position:absolute;left:0;top:0;background:#0a0c18}
+.er-oxs .opt{font-size:25px;padding:6px 16px;gap:10px}
+.er-oxs .onote{font-size:21px}
+.er-oxs .opts{gap:9px}

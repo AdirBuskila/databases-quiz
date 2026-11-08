@@ -1,0 +1,70 @@
+/* normalization-course widgets (w_norm.py: FD sets, closure/key/NF tables, decompositions); every class starts with nf- */
+.nf-stack{display:flex;flex-direction:column;align-items:center;width:100%}
+.nf-big{font-size:44px;direction:ltr;text-align:center}
+.nf-big.sm{font-size:36px}
+.nf-big.xs{font-size:31px}
+.nf-ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.nf-row{font-size:33px;direction:rtl;text-align:center;line-height:1.4}
+.nf-row.sm{font-size:29px}
+.nf-ok{color:var(--ok);font-weight:700}
+.nf-no{color:var(--bad);font-weight:700}
+.nf-warn{color:var(--warn);font-weight:700}
+.nf-res{color:var(--brand)}
+.nf-dash{text-decoration-style:dashed}
+
+/* R = (…) and F = {…} */
+.nf-fdset{display:flex;flex-direction:column;align-items:center;gap:12px;font-size:38px;direction:ltr}
+.nf-fdset.sm{font-size:32px}
+.nf-fdset.xs{font-size:28px}
+.nf-fl{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:4px 6px;max-width:1040px}
+.nf-fd{position:relative;display:inline-flex;flex-direction:column;align-items:center;padding:2px 10px}
+.nf-fdt{position:relative}
+.nf-cm{align-self:flex-start;padding-top:2px}
+.nf-hi{position:absolute;left:-8px;right:-8px;top:-3px;bottom:-3px;border-radius:10px;background:rgba(45,212,191,.22);
+  box-shadow:0 0 0 3px var(--brand) inset}
+.nf-strike{position:absolute;left:2px;right:2px;top:50%;height:4px;border-radius:2px;background:var(--bad)}
+.nf-ftag{font-size:.62em;line-height:1.2;color:var(--warn);font-weight:700;direction:rtl;white-space:nowrap}
+
+/* tables */
+table.nf-tab{border-collapse:separate;border-spacing:0;font-size:29px;direction:rtl;background:var(--card2);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden}
+table.nf-tab th,table.nf-tab td{padding:6px 18px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap}
+table.nf-tab thead th{color:var(--muted);font-weight:600;font-size:25px}
+table.nf-tab tbody tr:last-child>*{border-bottom:none}
+table.nf-tab.sm{font-size:26px}
+table.nf-tab.sm th,table.nf-tab.sm td{padding:5px 14px}
+table.nf-tab.xs{font-size:24px}
+table.nf-tab.xs th,table.nf-tab.xs td{padding:4px 12px}
+
+/* a table instance */
+table.nf-inst{border-collapse:separate;border-spacing:0;font-size:40px;background:var(--card2);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;direction:ltr}
+table.nf-inst.nf-sm{font-size:36px}
+table.nf-inst caption{font-size:26px;color:var(--muted);padding-bottom:6px}
+table.nf-inst th,table.nf-inst td{position:relative;padding:8px 34px;text-align:center;border-bottom:1px solid var(--line);
+  font-family:Consolas,monospace}
+table.nf-inst thead th{color:var(--brand);font-weight:700}
+table.nf-inst tbody tr:last-child>*{border-bottom:none}
+table.nf-inst td span{position:relative}
+table.nf-inst tr{position:relative}
+table.nf-inst td.nf-rowhi-cell{position:static;color:var(--muted);font-size:24px;padding:7px 12px}
+.nf-cellhi{position:absolute;left:3px;right:3px;top:3px;bottom:3px;border-radius:9px;background:rgba(251,191,36,.25);
+  box-shadow:0 0 0 3px var(--warn) inset}
+.nf-rowhi{position:absolute;left:2px;right:2px;top:2px;bottom:2px;border-radius:10px;
+  background:rgba(45,212,191,.13);box-shadow:0 0 0 3px var(--brand) inset}
+
+/* decomposition */
+.nf-comps{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 18px;max-width:1040px;direction:ltr}
+.nf-comp{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;background:var(--card2);
+  border:1px solid var(--line);border-radius:14px;padding:10px 20px;font-size:31px}
+.nf-cn{font-weight:700}
+.nf-cf{font-size:.86em;color:var(--muted)}
+.nf-nf{font-size:24px;font-weight:700;border-radius:999px;padding:0 14px;direction:ltr}
+.nf-nf.ok{color:var(--ok);background:rgba(52,211,153,.13)}
+.nf-nf.mid{color:var(--warn);background:rgba(251,191,36,.13)}
+.nf-nf.bad{color:var(--bad);background:rgba(251,113,133,.13)}
+
+/* smaller option list / stem */
+.nf-osm .opt{font-size:28px;padding:7px 18px;line-height:1.35}
+.nf-osm .onote{font-size:23px}
+.nf-qsm{font-size:29px;line-height:1.42}

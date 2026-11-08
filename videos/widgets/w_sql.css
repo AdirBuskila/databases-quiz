@@ -1,0 +1,79 @@
+/* SQL-course widgets (w_sql.py); every class starts with sq-. Token colours: styles.css --tok-* (dark). */
+.sq-code{direction:ltr;text-align:left;background:#10122a;border:1px solid var(--line);border-radius:14px;
+  padding:14px 26px;font-family:Consolas,monospace;font-size:30px;line-height:1.45;color:#eaedff}
+.sq-code.sm{font-size:26px;padding:12px 22px}
+.sq-code.xs{font-size:23px;padding:10px 18px}
+.sq-line{position:relative;white-space:pre}
+.sq-lt{position:relative}
+.sq-mark{position:absolute;left:-14px;right:-14px;top:0;bottom:0;border-radius:8px;background:rgba(45,212,191,.16);
+  box-shadow:inset 4px 0 0 var(--brand)}
+.sq-kw{color:#c792ea;font-weight:700}
+.sq-str{color:#7ee787}
+.sq-num{color:#f2cc60}
+.sq-com{color:#8b93b8;font-style:italic}
+.sq-fn{color:#79c0ff}
+.sq-op{color:#ff9e64}
+.sq-pu{color:#c9d1e9}
+.sq-ic{direction:ltr;unicode-bidi:isolate;font-family:Consolas,monospace;font-size:.9em;background:rgba(255,255,255,.06);
+  border:1px solid var(--line);border-radius:7px;padding:0 8px;white-space:nowrap}
+
+/* data / result tables: a grid per row, so a row can carry overlays */
+.sq-tw{display:flex;flex-direction:column;align-items:flex-start;gap:6px;font-size:26px}
+.sq-tw.sm{font-size:23px}
+.sq-tw.xs{font-size:20px}
+.sq-cap{font-size:.92em;direction:rtl}
+.sq-tn{font-family:Consolas,monospace;color:var(--brand);font-weight:700;direction:ltr;unicode-bidi:isolate}
+.sq-rc{color:var(--warn);font-weight:700}
+.sq-tab{direction:ltr;font-family:Consolas,monospace;background:var(--card2);border:1px solid var(--line);border-radius:12px;
+  overflow:hidden}
+.sq-row{position:relative;display:grid;grid-template-columns:var(--sq-cols);border-top:1px solid var(--line)}
+.sq-row.sq-head{border-top:none;background:rgba(45,212,191,.10)}
+.sq-cell{position:relative;padding:5px 13px;white-space:nowrap;text-align:left}
+.sq-th{font-weight:700;color:#cfd3ff}
+.sq-pk{text-decoration:underline;text-underline-offset:5px}
+.sq-null{color:var(--muted);font-style:italic}
+.sq-hi{position:absolute;inset:1px;border-radius:6px;background:rgba(45,212,191,.20);box-shadow:inset 0 0 0 3px var(--brand)}
+.sq-x{position:absolute;inset:1px;background:rgba(10,12,24,.62);
+  background-image:linear-gradient(transparent calc(50% - 2px),var(--bad) calc(50% - 2px),var(--bad) calc(50% + 2px),transparent calc(50% + 2px))}
+.sq-ch{position:absolute;inset:2px;border-radius:6px;box-shadow:inset 0 0 0 3px var(--warn);background:rgba(251,191,36,.16)}
+.sq-g{position:absolute;inset:1px;box-shadow:inset 8px 0 0 var(--sq-gc)}
+.sq-g::after{content:"";position:absolute;inset:1px;background:var(--sq-gc);opacity:.17}
+.sq-g0{--sq-gc:#2dd4bf}.sq-g1{--sq-gc:#38bdf8}.sq-g2{--sq-gc:#fbbf24}.sq-g3{--sq-gc:#f472b6}.sq-g4{--sq-gc:#a78bfa}
+.sq-g5{--sq-gc:#a3e635}
+.sq-empty{font-size:.95em;color:var(--muted);direction:rtl;padding:4px 10px;border:1px dashed var(--line);border-radius:10px}
+
+/* layout */
+.sq-hrow{display:flex;flex-direction:row;align-items:flex-start;justify-content:center}
+.sq-hrow.mid{align-items:center}
+.sq-vcol{display:flex;flex-direction:column;align-items:center}
+.sq-vcol.start{align-items:flex-start}
+.sq-note{font-size:32px;direction:rtl;text-align:center;line-height:1.4}
+.sq-note.sm{font-size:28px}
+.sq-chip{display:inline-block;font-size:28px;direction:rtl;padding:4px 18px;border-radius:999px;background:var(--card2);
+  border:1px solid var(--line)}
+.sq-chip.ok{color:var(--ok);border-color:var(--ok)}
+.sq-chip.bad{color:var(--bad);border-color:var(--bad)}
+.sq-ok{color:var(--ok);font-weight:700}
+.sq-bad{color:var(--bad);font-weight:700}
+.sq-flow{font-size:30px;direction:ltr;font-family:Consolas,monospace;color:var(--muted)}
+.sq-flow b{color:var(--brand)}
+
+/* exam: stem + option cards */
+.sq-stem{width:100%;font-size:32px;line-height:1.45;direction:rtl;text-align:right}
+.sq-stem .qid{display:inline-block;margin:0 0 0 14px;vertical-align:middle}
+.sq-opts{display:grid;gap:14px 22px;width:100%;direction:rtl}
+.sq-opt{position:relative;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:10px 16px}
+.sq-ocode{direction:ltr;text-align:left;font-family:Consolas,monospace;font-size:21px;line-height:1.38;white-space:pre}
+.sq-opts.sm .sq-ocode{font-size:19px}
+.sq-opts.xs .sq-ocode{font-size:17px}
+.sq-otext{direction:rtl;text-align:right;font-size:27px;line-height:1.4}
+.sq-ox{position:absolute;inset:1px;border-radius:14px;background:rgba(10,12,24,.55);box-shadow:inset 0 0 0 3px var(--bad)}
+.sq-ook{position:absolute;inset:-3px;border-radius:16px;box-shadow:0 0 0 4px var(--ok),0 0 24px rgba(52,211,153,.5);
+  font-size:0}
+.sq-ook::after{content:"✓";position:absolute;left:-16px;top:-18px;width:40px;height:40px;border-radius:50%;background:var(--ok);
+  color:#0a0c18;font-size:28px;font-weight:700;line-height:40px;text-align:center}
+.sq-onote{position:absolute;right:12px;bottom:8px;font-size:22px;direction:rtl;background:#2a1720;color:#ffd6de;
+  border:1px solid var(--bad);border-radius:999px;padding:0 12px;white-space:nowrap}
+.sq-onote.sq-ntop{bottom:auto;top:8px}
+.sq-k-text .sq-onote{right:auto;bottom:auto;left:14px;top:50%;transform:translateY(-50%)}
+.sq-onote.good{background:#10291f;color:#c9ffe6;border-color:var(--ok)}
