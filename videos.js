@@ -11,61 +11,71 @@ window.VIDEO_COURSE = {
      "id": "L01",
      "level": "L01",
      "title": "אבני הבניין",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "uKlQAHHO4FQ"
     },
     {
      "id": "L02",
      "level": "L02",
      "title": "סוגי תכונות",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "aDf0MLNaanM"
     },
     {
      "id": "L03",
      "level": "L03",
      "title": "קרדינליות",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "92dIKX0NGiM"
     },
     {
      "id": "L04",
      "level": "L04",
      "title": "השתתפות",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "q6bo5xjPSsc"
     },
     {
      "id": "L05",
      "level": "L05",
      "title": "המרת קשרים לטבלאות",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "CA20Alh2U4k"
     },
     {
      "id": "L06",
      "level": "L06",
      "title": "ישות חלשה",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "-oYJFjVwZ1U"
     },
     {
      "id": "L07",
      "level": "L07",
      "title": "ISA: היררכיית תת-סוגים",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "-Iela1WDU18"
     },
     {
      "id": "L08",
      "level": "L08",
      "title": "קשרים מיוחדים",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "5mplk6M6mD0"
     },
     {
      "id": "L09",
      "level": "L09",
      "title": "צבירה (הקבצה)",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "ncfq3_Pilf4"
     },
     {
      "id": "L10",
      "level": "L10",
      "title": "מבחן גמר: שאלות ממבחנים",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "FfOp5fhhjRc"
     }
    ]
   },
@@ -78,61 +88,71 @@ window.VIDEO_COURSE = {
      "id": "S01",
      "level": "S01",
      "title": "SELECT בסיסי",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "QUfNcURPl9c"
     },
     {
      "id": "S02",
      "level": "S02",
      "title": "ORDER BY ו-NULL",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "u5WckcpCRPU"
     },
     {
      "id": "S03",
      "level": "S03",
      "title": "JOIN: חיבור טבלאות",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "wK_JNIsk2SE"
     },
     {
      "id": "S04",
      "level": "S04",
      "title": "אגרגציה",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "qps3cKLVC0M"
     },
     {
      "id": "S05",
      "level": "S05",
      "title": "GROUP BY ו-HAVING",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "Yp2H7an_AOA"
     },
     {
      "id": "S06",
      "level": "S06",
      "title": "תת-שאילתות וקיצון",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "DC_1uzzQDG4"
     },
     {
      "id": "S07",
      "level": "S07",
      "title": "שלילה: אף פעם לא / אין לו",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "y-IA2iNpUJU"
     },
     {
      "id": "S08",
      "level": "S08",
-     "title": "חילוק: \\",
-     "minutes": 4
+     "title": "חילוק: \"לכל ה-___\"",
+     "minutes": 4,
+     "youtube": "S41e-KngJCY"
     },
     {
      "id": "S09",
      "level": "S09",
      "title": "VIEW, תת-שאילתה ב-FROM ושאילתות בשלבים",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "11E__rQNXGM"
     },
     {
      "id": "S10",
      "level": "S10",
      "title": "מבחן גמר: שאלות ממבחנים",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "p28r8_a7DYI"
     }
    ]
   },
@@ -145,55 +165,64 @@ window.VIDEO_COURSE = {
      "id": "N01",
      "level": "N01",
      "title": "תלות פונקציונלית",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "tdrjGCcYAFc"
     },
     {
      "id": "N02",
      "level": "N02",
      "title": "כללי ארמסטרונג",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "XvoRGAiTQVA"
     },
     {
      "id": "N03",
      "level": "N03",
      "title": "סגור X⁺‎",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "FrRzXPGaQko"
     },
     {
      "id": "N04",
      "level": "N04",
      "title": "מפתחות: מפתח-על ומפתח קביל",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "9AtB50hhLmU"
     },
     {
      "id": "N05",
      "level": "N05",
      "title": "תכונות עודפות וכיסוי מינימלי",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "Ipb5Cbv4uBo"
     },
     {
      "id": "N06",
      "level": "N06",
      "title": "צורות נורמליות",
-     "minutes": 6
+     "minutes": 6,
+     "youtube": "qonru7QAsmU"
     },
     {
      "id": "N07",
      "level": "N07",
      "title": "פירוק: שימור מידע ושימור תלויות",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "s5_Df8pElDo"
     },
     {
      "id": "N08",
      "level": "N08",
      "title": "אלגוריתמי נרמול: BCNF ו-3NF",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "GSu3rg0Rh7Y"
     },
     {
      "id": "N09",
      "level": "N09",
      "title": "מבחן גמר: שאלות ממבחנים",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "l08GqMb2lPs"
     }
    ]
   },
@@ -206,55 +235,64 @@ window.VIDEO_COURSE = {
      "id": "A01",
      "level": "A01",
      "title": "σ ו-Π: בחירה והיטל",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "qrvFZKN7jzo"
     },
     {
      "id": "A02",
      "level": "A02",
      "title": "מכפלה קרטזית וצירוף טבעי",
-     "minutes": 5
+     "minutes": 5,
+     "youtube": "dINFAa2Cj7A"
     },
     {
      "id": "A03",
      "level": "A03",
      "title": "ρ וצירוף עצמי",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "VMImp61pZ6c"
     },
     {
      "id": "A04",
      "level": "A04",
      "title": "פעולות קבוצה: ∪ ∩ −",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "OV4BGho7h9Y"
     },
     {
      "id": "A05",
      "level": "A05",
      "title": "מקסימום ומינימום",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "3SUZ9sbIoyQ"
     },
     {
      "id": "A06",
      "level": "A06",
      "title": "חילוק ÷",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "D3fN0gkGWIE"
     },
     {
      "id": "A07",
      "level": "A07",
      "title": "תקינות, גבולות האלגברה ושאילתות בשלבים",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "XDiZDgdVrbs"
     },
     {
      "id": "A08",
      "level": "A08",
      "title": "SQL ↔ אלגברה: חמש התבניות",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "TI-_oJ-OKfc"
     },
     {
      "id": "A09",
      "level": "A09",
      "title": "מבחן גמר: שאלות ממבחנים",
-     "minutes": 4
+     "minutes": 4,
+     "youtube": "kYKVBOXZ1Pw"
     }
    ]
   }
