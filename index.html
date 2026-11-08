@@ -6,7 +6,7 @@
 <title>משחק תרגול — מערכות בסיסי נתונים</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="katex/katex.min.css">
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="styles.css?v=7">
 <script>
   // Apply saved theme before first paint to avoid a flash of the wrong theme.
   (function(){ try{ var t=localStorage.getItem("dbq_theme"); if(t==="light"||t==="dark") document.documentElement.dataset.theme=t; }catch(e){} })();
@@ -25,6 +25,7 @@
   <div class="topbar-right">
     <div class="topstats" id="topStats"></div>
     <button id="crsHub" class="btn ghost crs-entry" type="button" title="קורסים מודרכים: ERD · SQL · נרמול · אלגברה">🎓 צריך עזרה?</button>
+    <button id="vidEntry" class="btn ghost vid-entry" type="button" title="קורס וידאו: סרטון לכל שלב בקורסים המודרכים">🎬 קורס וידאו</button>
     <button id="learnEntry" class="btn ghost learn-entry" type="button">📖 מצב לימוד</button>
     <a id="sheetDownload" class="btn ghost sheet-link" href="docs/formula-sheet/formula-sheet.pdf" download="דף נוסחאות - מערכות בסיסי נתונים.pdf" title="הורדת דף הנוסחאות למבחן (PDF, 2 עמודים)">📄 דף נוסחאות</a>
     <button id="themeToggle" class="theme-toggle" type="button" aria-label="החלפת מצב תצוגה (בהיר/כהה)" title="מצב בהיר/כהה"></button>
@@ -34,6 +35,11 @@
 <main id="app">
   <!-- START -->
   <section id="screen-start" class="screen">
+    <div class="card crs-promo vid-promo vid-entry" role="button" tabindex="0">
+      <span class="big-ico">🎬</span>
+      <div><b>קורס וידאו: סרטון קצר לכל שלב</b><span class="crs-promo-sub" id="vidPromoSub">הסבר מצולם לכל שלב בקורסים המודרכים: הרעיון, דוגמאות ושאלה ממבחן.</span></div>
+      <span class="btn primary go">לסרטונים ⟵</span>
+    </div>
     <div class="crs-promos">
       <div class="card crs-promo" data-course="erd" role="button" tabindex="0">
         <span class="big-ico">🧩</span>
@@ -179,6 +185,36 @@
   </section>
 
   <!-- RESULTS -->
+  <!-- VIDEO COURSE ("🎬 קורס וידאו", video-ui.js) -->
+  <section id="screen-video" class="screen hidden">
+    <div id="vidListView">
+      <div class="card">
+        <div class="crs-head">
+          <div class="grow"><h2>🎬 קורס וידאו</h2><p class="sub">סרטון אחד לכל שלב בקורסים המודרכים, באותו סדר. כל סרטון מסביר את הרעיון, מראה דוגמאות ופותר שאלה ממבחן. אחרי הצפייה אפשר לעבור ישר לתרגול של אותו שלב.</p></div>
+        </div>
+        <div id="vidOverall" class="crs-overall"></div>
+      </div>
+      <div id="vidCourses" class="vid-courses"></div>
+      <div class="crs-actions"><button id="vidHomeBtn" class="btn ghost" type="button">⟵ חזרה לדף הבית</button></div>
+    </div>
+    <div id="vidPlayView" class="hidden">
+      <div class="card vid-player">
+        <div id="vidHead"></div>
+        <div id="vidFrame" class="vid-frame"></div>
+        <div id="vidYtLink" class="vid-ytlink"></div>
+        <div class="vid-nav">
+          <button id="vidPrev" class="btn ghost" type="button">⟶ הקודם</button>
+          <button id="vidWatchBtn" class="btn ghost vid-watch" type="button"></button>
+          <button id="vidNext" class="btn ghost" type="button">הבא ⟵</button>
+        </div>
+      </div>
+      <div class="crs-actions">
+        <button id="vidBack" class="btn ghost" type="button">⟵ לרשימת הסרטונים</button>
+        <button id="vidLevel" class="btn primary" type="button">לתרגול בשלב הזה ⟵</button>
+      </div>
+    </div>
+  </section>
+
   <section id="screen-results" class="screen hidden">
     <div class="card">
       <h2>תוצאות המבחן</h2>
@@ -261,6 +297,8 @@
 <script src="bidi.js?v=1"></script>
 <script src="app.js?v=9"></script>
 <script src="feedback.js?v=3"></script>
-<script src="course-ui.js?v=3"></script>
+<script src="videos.js?v=1"></script>
+<script src="video-ui.js?v=1"></script>
+<script src="course-ui.js?v=4"></script>
 </body>
 </html>

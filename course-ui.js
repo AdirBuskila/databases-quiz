@@ -85,6 +85,7 @@
     $("#crsLesson").innerHTML =
       `<div class="q-head"><span class="chip part">שלב ${L.order} מתוך ${C.levels.length}</span><span class="chip">${L.questions.length} שאלות</span></div>` +
       `<h2>${L.icon || ""} ${plainBidi(L.title, true)}</h2><p class="sub">${plainBidi(L.goal || "", true)}</p>` +
+      (window.VIDEO_UI ? window.VIDEO_UI.lessonButtons(L.id, C.id) : "") +   // video-ui.js: "▶ צפו בסרטון של השלב"
       `<div class="lesson-body">${html}</div>`;
     if (window.ERD) ERD.finish($("#crsLesson"));
     view("crsLessonView");
