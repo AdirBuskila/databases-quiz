@@ -54,7 +54,7 @@ let P = loadProgress();
 /* ---------- helpers ---------- */
 const $ = s => document.querySelector(s);
 function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
-function show(id){ document.querySelectorAll(".screen").forEach(s=>s.classList.add("hidden")); $("#"+id).classList.remove("hidden"); window.scrollTo({top:0,behavior:"smooth"}); }
+function show(id){ if(window.navUrl&&(id==="screen-start"||id==="screen-results")) navUrl(null); document.querySelectorAll(".screen").forEach(s=>s.classList.add("hidden")); $("#"+id).classList.remove("hidden"); window.scrollTo({top:0,behavior:"smooth"}); }
 function escapeHtml(s){ return String(s).replace(/[&<>]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m])); }
 function optById(q,id){ return (q.options||[]).find(o=>o.id===id); }
 function hasHebrew(s){ return /[֐-׿]/.test(String(s)); }
@@ -288,7 +288,7 @@ function initStart(){
 }
 
 /* ---------- session ---------- */
-function startSession(){
+function startSession(){ if(window.navUrl&&S.mode!=="course") navUrl(S.mode==="practice"&&!selectedExam()&&S.topic?{practice:S.topic}:null);
   S._views=null;
   const opts=selectedOpts();
   const pickedExam = selectedExam();
@@ -618,7 +618,7 @@ function bindGlobal(){
     toc.querySelectorAll("button").forEach(b=> b.onclick=()=>{ go(+b.dataset.i); closeDrawer(); });
     built=true;
   }
-  function go(i){
+  function go(i){ if(window.navUrl){ const c=data[Math.max(0,Math.min(data.length-1,i))]; navUrl(c&&c.id?{learn:c.id}:null); }
     idx=Math.max(0,Math.min(data.length-1,i));
     const s=data[idx];
     content.innerHTML = `<h2 class="learn-h">${plainBidi(s.title, true)}</h2>` + (window.bidiHtml ? bidiHtml(s.html) : s.html);
@@ -632,7 +632,8 @@ function bindGlobal(){
     prevB.disabled=idx===0; nextB.disabled=idx===data.length-1;
     window.scrollTo({top:0,behavior:"smooth"}); content.focus({preventScroll:true});
   }
-  function openLearn(){ if(!built) buildToc(); show("screen-learn"); go(idx); }
+  function openLearn(){ if(!built) buildToc(); show("screen-learn"); go(idx); } 
+  try{ const c=new URLSearchParams(location.search).get("learn"), j=data.findIndex(s=>s.id===c); if(c && j>=0){ idx=j; setTimeout(openLearn,0); } }catch(e){}   // deep link ?learn=<chapterId>
   function setDrawer(open){ toc.classList.toggle("open",open); backdrop.classList.toggle("hidden",!open); toggle.setAttribute("aria-expanded", open?"true":"false"); }
   function closeDrawer(){ setDrawer(false); }
 

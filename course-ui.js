@@ -62,7 +62,7 @@
     }).join("");
     $("#crsMap").querySelectorAll(".crs-lvl").forEach(b => b.onclick = () => openLesson(LV.find(L => L.id === b.dataset.id)));
   }
-  function openMap(id){ if (id) C = course(id); cur = null; renderMap(); view("crsMapView"); }
+  function openMap(id){ if(window.navUrl){ const cid=id||((typeof C!=="undefined"&&C)?C.id:null); if(cid) navUrl({[cid]:"map"}); } if (id) C = course(id); cur = null; renderMap(); view("crsMapView"); }
 
   /* ---------- lesson ---------- */
   function figHtml(f){
@@ -76,7 +76,7 @@
     if (f.result) body += `<div class="lesson-result"><div class="ctx-title">⟵ התוצאה</div><div class="ctx-tables">${tableHtml(Object.assign({}, f.result, { name: "" }))}</div></div>`;
     return `<figure class="lesson-fig">${body}` + (f.caption ? `<figcaption>${richText(f.caption)}</figcaption>` : "") + `</figure>`;
   }
-  function openLesson(L){
+  function openLesson(L){ if(window.navUrl){ const cid=(typeof C!=="undefined"&&C)?C.id:null; if(cid&&L) navUrl({[cid]:L.id}); }
     cur = L;
     const ls = L.lesson || {}, figs = ls.figs || [], used = new Set();
     // the lesson prose gets bidi isolates; figures (svg, tables, algebra) are inserted afterwards, untouched
@@ -92,7 +92,7 @@
   }
 
   /* ---------- level quiz (runs on the main engine) ---------- */
-  function startLevel(L){
+  function startLevel(L){ if(window.navUrl){ const cid=(typeof C!=="undefined"&&C)?C.id:null; if(cid&&L) navUrl({[cid]:L.id, play:true}); }
     cur = L; run = {};
     const levelTitle = levelName(L), badge = `${C.meta.icon} קורס ${C.meta.name}`;
     S.mode = "course"; S._views = null;
